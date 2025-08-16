@@ -1,0 +1,42 @@
+model Model
+	culture: en-IN
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Date Last Refreshed","FACT_IP_OP","DBName","SchemaName","TableName","WH Name","DIM_PATIENT","DIM_FACILITY","DIM_CPS","DIM_MSDRG","DIM_DIAGNOSIS","DIM_DATE","DIM_AGE","DIM_PAYOR","DIM_PROCEDURE","DIM_GENDER","/Measures","Role Name","PSJH_ZIP_TO_GEOGRAPHIES"]
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBIDesktopVersion = 2.144.1378.0 (25.06)+cba1e61f16ea36d44901f06fa446299040122394
+
+annotation PBI_ProTooling = ["CalcGroup","DaxQueryView_Desktop","DevMode"]
+
+ref table 'Date Last Refreshed'
+ref table FACT_IP_OP
+ref table 'Select CPS Parameter'
+ref table Rank
+ref table 'Measure Selection'
+ref table 'Patient Geography'
+ref table 'Discharge Year Quarter'
+ref table FACILITY_SYSTEM_NM
+ref table DIM_PATIENT
+ref table DIM_FACILITY
+ref table DIM_CPS
+ref table DIM_MSDRG
+ref table DIM_DIAGNOSIS
+ref table DIM_DATE
+ref table DIM_AGE
+ref table DIM_PAYOR
+ref table DIM_PROCEDURE
+ref table DIM_GENDER
+ref table FACILITY_NM
+ref table System/Facility
+ref table 'Service Line Group Options'
+ref table /Measures
+ref table PSJH_ZIP_TO_GEOGRAPHIES
+
+ref cultureInfo en-IN
+

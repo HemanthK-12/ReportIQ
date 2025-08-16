@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Lab Order Turnaround Times 1"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "df8dcc6a-8f3b-405a-a485-b680ffe6fffd"
+  }
+}

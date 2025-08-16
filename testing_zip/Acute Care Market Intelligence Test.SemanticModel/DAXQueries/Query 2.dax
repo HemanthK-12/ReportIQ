@@ -1,0 +1,172 @@
+DEFINE
+	VAR __DS0FilterTable = 
+		FILTER(KEEPFILTERS(VALUES('Rank'[Rank])), 'Rank'[Rank] = 5)
+
+	VAR __DS0FilterTable2 = 
+		TREATAS(
+			{"'FACT_IP_OP'[Market Share System/Facility]"},
+			'Measure Selection'[Measure Selection Fields]
+		)
+
+	VAR __DS0FilterTable3 = 
+		TREATAS(
+			{"'DIM_DATE'[YEAR_QTR_DESC]"},
+			'Discharge Year Quarter'[Discharge Year/Quarter Fields]
+		)
+
+	VAR __DS0FilterTable4 = 
+		TREATAS(
+			{"'DIM_PATIENT'[PATIENT_SERVICE_AREA_NM]"},
+			'Patient Geography'[Patient Geography Fields]
+		)
+
+	VAR __DS0FilterTable5 = 
+		TREATAS({"Exclude Normal Newborns"}, 'FACT_IP_OP'[NB Filter])
+
+	VAR __DS0FilterTable6 = 
+		TREATAS({"IP"}, 'FACT_IP_OP'[BASE_CLASS_CD])
+
+	VAR __DS0FilterTable7 = 
+		TREATAS({1}, 'DIM_DATE'[IsActiveDate])
+
+	VAR __DS0FilterTable8 = 
+		TREATAS({1}, 'DIM_FACILITY'[IsActiveFacility])
+
+	VAR __DS0FilterTable9 = 
+		TREATAS({1}, 'DIM_AGE'[IsActiveAgeCD])
+
+	VAR __DS0FilterTable10 = 
+		TREATAS({1}, 'DIM_PATIENT'[isActivePatientZipCD])
+
+	VAR __DS0FilterTable11 = 
+		TREATAS({1}, 'DIM_GENDER'[isActiveGender])
+
+	VAR __ValueFilterConstraintDM1 = 
+		SUMMARIZECOLUMNS(
+			'FACILITY_SYSTEM_NM'[FACILITY_SYSTEM_NM],
+			'DIM_DATE'[YEAR_QTR_DESC],
+			__DS0FilterTable,
+			__DS0FilterTable2,
+			__DS0FilterTable3,
+			__DS0FilterTable4,
+			__DS0FilterTable5,
+			__DS0FilterTable6,
+			__DS0FilterTable7,
+			__DS0FilterTable8,
+			__DS0FilterTable9,
+			__DS0FilterTable10,
+			__DS0FilterTable11,
+			"Cases_Amt", 'FACILITY_SYSTEM_NM'[Cases Amt],
+			"M1", DIVIDE('FACILITY_SYSTEM_NM'[Cases Amt], CALCULATE(
+				'FACILITY_SYSTEM_NM'[Cases Amt],
+				ALLSELECTED('FACILITY_SYSTEM_NM'[FACILITY_SYSTEM_NM])
+			))
+		)
+
+	VAR __ValueFilterDM1 = 
+		FILTER(
+			KEEPFILTERS(
+				SUMMARIZECOLUMNS(
+					'FACILITY_SYSTEM_NM'[FACILITY_SYSTEM_NM],
+					__DS0FilterTable,
+					__DS0FilterTable2,
+					__DS0FilterTable3,
+					__DS0FilterTable4,
+					__DS0FilterTable5,
+					__DS0FilterTable6,
+					__DS0FilterTable7,
+					__DS0FilterTable8,
+					__DS0FilterTable9,
+					__DS0FilterTable10,
+					__DS0FilterTable11,
+					__ValueFilterConstraintDM1,
+					"Visible_Row", IGNORE('FACILITY_SYSTEM_NM'[Visible Row]),
+					"Cases_Amt", IGNORE('FACILITY_SYSTEM_NM'[Cases Amt])
+				)
+			),
+			AND([Visible_Row] <> 0, [Cases_Amt] <> 0)
+		)
+
+	VAR __DS0Core = 
+		SUMMARIZECOLUMNS(
+			ROLLUPADDISSUBTOTAL('FACILITY_SYSTEM_NM'[FACILITY_SYSTEM_NM], "IsGrandTotalRowTotal"),
+			ROLLUPADDISSUBTOTAL('DIM_DATE'[YEAR_QTR_DESC], "IsGrandTotalColumnTotal"),
+			__DS0FilterTable,
+			__DS0FilterTable2,
+			__DS0FilterTable3,
+			__DS0FilterTable4,
+			__DS0FilterTable5,
+			__DS0FilterTable6,
+			__DS0FilterTable7,
+			__DS0FilterTable8,
+			__DS0FilterTable9,
+			__DS0FilterTable10,
+			__DS0FilterTable11,
+			__ValueFilterDM1,
+			"Cases_Amt", 'FACILITY_SYSTEM_NM'[Cases Amt],
+			"A3", DIVIDE('FACILITY_SYSTEM_NM'[Cases Amt], CALCULATE(
+				'FACILITY_SYSTEM_NM'[Cases Amt],
+				ALLSELECTED('FACILITY_SYSTEM_NM'[FACILITY_SYSTEM_NM])
+			))
+		)
+
+	VAR __DS0CoreTableByDM1 = 
+		SELECTCOLUMNS(
+			KEEPFILTERS(FILTER(KEEPFILTERS(__DS0Core), [IsGrandTotalColumnTotal] = TRUE)),
+			"IsGrandTotalRowTotal", [IsGrandTotalRowTotal],
+			"'FACILITY_SYSTEM_NM'[FACILITY_SYSTEM_NM]", 'FACILITY_SYSTEM_NM'[FACILITY_SYSTEM_NM],
+			"SortBy_DM1_0", [Cases_Amt]
+		)
+
+	VAR __DS0PrimaryWithSortColumns = 
+		NATURALLEFTOUTERJOIN(
+			SUMMARIZE(__DS0Core, 'FACILITY_SYSTEM_NM'[FACILITY_SYSTEM_NM], [IsGrandTotalRowTotal]),
+			__DS0CoreTableByDM1
+		)
+
+	VAR __DS0PrimaryWindowed = 
+		TOPN(
+			102,
+			__DS0PrimaryWithSortColumns,
+			[IsGrandTotalRowTotal],
+			0,
+			[SortBy_DM1_0],
+			0,
+			'FACILITY_SYSTEM_NM'[FACILITY_SYSTEM_NM],
+			1
+		)
+
+	VAR __DS0SecondaryBase = 
+		SUMMARIZE(__DS0Core, 'DIM_DATE'[YEAR_QTR_DESC], [IsGrandTotalColumnTotal])
+
+	VAR __DS0Secondary = 
+		TOPN(102, __DS0SecondaryBase, [IsGrandTotalColumnTotal], 1, 'DIM_DATE'[YEAR_QTR_DESC], 1)
+
+	VAR __DS0BodyLimited = 
+		NATURALLEFTOUTERJOIN(
+			__DS0PrimaryWindowed,
+			SUBSTITUTEWITHINDEX(
+				__DS0Core,
+				"ColumnIndex",
+				__DS0Secondary,
+				[IsGrandTotalColumnTotal],
+				ASC,
+				'DIM_DATE'[YEAR_QTR_DESC],
+				ASC
+			)
+		)
+
+EVALUATE
+	__DS0Secondary
+
+ORDER BY
+	[IsGrandTotalColumnTotal], 'DIM_DATE'[YEAR_QTR_DESC]
+
+EVALUATE
+	__DS0BodyLimited
+
+ORDER BY
+	[IsGrandTotalRowTotal] DESC,
+	[SortBy_DM1_0] DESC,
+	'FACILITY_SYSTEM_NM'[FACILITY_SYSTEM_NM],
+	[ColumnIndex]

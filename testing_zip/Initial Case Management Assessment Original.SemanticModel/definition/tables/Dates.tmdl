@@ -1,0 +1,178 @@
+table Dates
+	lineageTag: 002de2cc-00d9-41fb-8100-55dcdcb91138
+
+	column Date
+		formatString: General Date
+		lineageTag: d8375dbc-c3ab-4a4a-9f37-722a6653782b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 3cf94156-65a6-4359-9d88-688df69a749b
+			defaultHierarchy: LocalDateTable_e78c4e85-5d81-4183-8759-ec05cead86e2.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column AbbvMonth
+		lineageTag: 53e4438f-40be-4609-acdd-cde95c0f8576
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [AbbvMonth]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthNum
+		formatString: 0
+		lineageTag: 898648ad-4dff-40be-97b7-4cf907785b05
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [MonthNum]
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsB4Today
+		lineageTag: 5f488f20-1568-4400-a2fc-6bba8f8e3aa0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [IsB4Today]
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsCurrentMonth
+		formatString: 0
+		lineageTag: 0d4312ff-d181-43c4-bade-335a3f8b6233
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [IsCurrentMonth]
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsCurrentWeek
+		formatString: 0
+		lineageTag: 5cf2e19e-bfd5-438f-ab61-3540c7b1562d
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [IsCurrentWeek]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year-Mon
+		lineageTag: b89f0e92-6de7-4583-9980-33acda63fd34
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year-Mon]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mon-Year
+		lineageTag: 5e587fd8-0112-49cc-9bb0-8d156cc9040a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Mon-Year]
+		sortByColumn: Year-Mon
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayofWeekNum
+		formatString: 0
+		lineageTag: 4a41c196-2845-4051-9643-64f78f4ba216
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [DayofWeekNum]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayofWeek
+		dataType: string
+		lineageTag: fba6c582-93f9-49b4-8bfb-183b4755313f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DayofWeek]
+		sortByColumn: DayofWeekNum
+
+		annotation SummarizationSetBy = Automatic
+
+	column CurYrOffset
+		formatString: 0
+		lineageTag: 10770c33-3b6c-4a89-9b09-a0b90dacc661
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [CurYrOffset]
+
+		annotation SummarizationSetBy = Automatic
+
+	column CurMoOffset
+		formatString: 0
+		lineageTag: 6244b4f4-14a2-4185-98c8-25bb4a3a3c8e
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [CurMoOffset]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		formatString: 0
+		lineageTag: 222f8efd-c78e-4d6b-8140-63d03d2a0ac3
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		lineageTag: 5a16936d-7bff-4010-af49-92f638827185
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsInLast12Mo
+		lineageTag: 257cc97d-f2ba-4cdd-9a0c-24fb58e3b532
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [IsInLast12Mo]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Weekend = IF(WEEKDAY('Dates'[Date], 2) >= 6, "Weekend", "Weekday")
+		lineageTag: 0366a16a-ae52-413e-8544-8905e33d5995
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dates = calculated
+		mode: import
+		source = ```
+				
+				
+				ADDCOLUMNS (
+				
+				CALENDAR(MINX('FSMain', FSMain[Admit Date]), MAXX('FSMain', FSMain[Admit Date])),
+				
+				"AbbvMonth", Format([Date],"MMM"),
+				"MonthNum", Month([Date]),
+				"IsB4Today", IF([Date] <= TODAY(), "Past", "Future" ),
+				"IsCurrentMonth", IF(MONTH([Date]) = MONTH(TODAY()) && YEAR([Date]) = YEAR(TODAY()), 1, 0),
+				"IsCurrentWeek", IF(WEEKNUM([Date]) = WEEKNUM(TODAY()) && YEAR([Date]) = YEAR(TODAY()), 1, 0),
+				"Year-Mon", FORMAT([Date], "YYYY-MM"),
+				"Mon-Year", FORMAT([Date], "MM-YYYY"),
+				"DayofWeekNum", WEEKDAY([Date]),
+				"DayofWeek", FORMAT([Date], "DDD"),
+				"CurYrOffset", YEAR([Date]) - YEAR(Today()),
+				"CurMoOffset", DATEDIFF([Date], TODAY(), MONTH) * -1,
+				"Year", YEAR([Date]),
+				"Month", Format([Date], "MMMM"),
+				
+				"IsInLast12Mo", 
+				var daydiff = DATEDIFF([Date],TODAY(), MONTH) 
+				Return
+				IF(daydiff >= 0 && daydiff <= 12, "Yes", "No")
+				
+				)
+				```
+
+	annotation PBI_Id = d3a60a46b1ed4a348bf9e56e28ecce34
+

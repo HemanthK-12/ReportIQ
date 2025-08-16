@@ -1,0 +1,48 @@
+table 'Hours Between MRD'
+	lineageTag: 20eab297-9f7f-4667-b8a1-474a1f40d071
+
+	column 'Hours Between MRD'
+		lineageTag: a4a3b41e-9c49-408c-bea4-8d4bed20da4a
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Hours Between MRD Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Hours Between MRD Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hours Between MRD Fields'
+		isHidden
+		lineageTag: 4169db8d-7b11-4f07-bdc6-1dd530610fe4
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Hours Between MRD Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hours Between MRD Order'
+		isHidden
+		formatString: 0
+		lineageTag: e745cbb6-c855-4f0b-b067-0e7dcf625c4d
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Hours Between MRD' = calculated
+		mode: import
+		source =
+				{
+				    ("Hours Between Admission and First MRD Entered", NAMEOF('FACT_HOSPITALADMISSION_EDD'[Time To First MRD Entered Label]), 0),
+				    ("Hours Between Last MRD Entered and Discharge", NAMEOF('FACT_HOSPITALADMISSION_EDD'[Last MRD to Discharge Label]), 1)
+				}
+
+	annotation PBI_Id = 19b9950267e2473a9a5c24a90a1e5356
+

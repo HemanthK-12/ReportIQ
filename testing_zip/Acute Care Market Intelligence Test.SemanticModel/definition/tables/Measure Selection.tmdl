@@ -1,0 +1,68 @@
+table 'Measure Selection'
+	isHidden
+	lineageTag: e75982e7-b0ef-4703-b0e3-b4dc2336a70b
+
+	measure sort_Measure = SWITCH(SELECTEDVALUE('Measure Selection'[Measure Selection Order]),0,[cases fac/sys__],1,[Market Share System/Facility])
+		formatString: 0
+		isHidden
+		lineageTag: 99def15a-9b1e-431d-9324-ade56f8c0bb2
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column 'Measure Selection'
+		isHidden
+		lineageTag: 390f6573-6b2e-4b90-8521-c2ab2d112f52
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Measure Selection Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Measure Selection Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Measure Selection Fields'
+		isHidden
+		lineageTag: 5145ff08-f38c-46cd-9244-9d473144c19f
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Measure Selection Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Measure Selection Order'
+		isHidden
+		formatString: 0
+		lineageTag: 17ad4b64-63a9-4c1f-92df-0b7615459539
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Measure_Names = ```
+			SWITCH('Measure Selection'[Measure Selection Order],0,"Cases",1,"Market Share",2,"Cases - Delta",3,"Market Share - Delta") 
+			```
+		isHidden
+		lineageTag: 6940ec21-04e1-4fcb-bcb6-2259953224bb
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Measure Selection' = calculated
+		mode: import
+		source =
+				{
+				    ("Cases", NAMEOF([cases fac/sys__]), 0),
+				    ("Market Share", NAMEOF('/Measures'[Market Share System/Facility]), 1)
+				   /* ,("Cases - Delta", NAMEOF('/Measures'[Rate of Change]), 2),
+				    ("Market Share - Delta", NAMEOF('/Measures'[Rate of Change - Market Share]),3) */
+				}
+
+	annotation PBI_Id = c54d3e85415143b292831c477471cdd0
+

@@ -1,0 +1,39 @@
+table 'Min # of Encounters'
+	lineageTag: 5b477c0e-f828-4f90-8d4c-fcfe68d7dee2
+
+	column 'Encounter Count'
+		dataType: int64
+		formatString: 0
+		lineageTag: bd65cb78-b9d2-4118-adfc-a5e5fa023695
+		summarizeBy: sum
+		sourceColumn: Encounter Count
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Encounter Name'
+		dataType: string
+		lineageTag: d7cc47f8-d745-48c4-91c3-cb98e97a50ff
+		summarizeBy: none
+		sourceColumn: Encounter Name
+		sortByColumn: 'Encounter Count'
+
+		changedProperty = SortByColumn
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Min # of Encounters' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlXSAeJYnWglQwMgE0iA2SBhQ4i4EUjcCCJuBBI3goibgsRNIeLmIHFzmDkQg6AmAdmOOTlKsbEA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Encounter Count" = _t, #"Encounter Label" = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Encounter Count", Int64.Type}, {"Encounter Label", type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"Encounter Label", "Encounter Name"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+

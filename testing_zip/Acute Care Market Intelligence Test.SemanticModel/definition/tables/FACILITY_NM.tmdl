@@ -1,0 +1,24 @@
+table FACILITY_NM
+	isHidden
+	lineageTag: 044a4255-2fdb-4f76-bef2-a072b009f79c
+
+	column FACILITY_NM
+		isHidden
+		lineageTag: 465b98e8-899c-471e-b476-5fcc825cd0ee
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DIM_FACILITY[FACILITY_NM]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FACILITY_NM = calculated
+		mode: import
+		source =
+				
+				UNION (
+				    ALLNOBLANKROW ( DIM_FACILITY[FACILITY_NM] ),
+				    { "Others" }
+				)
+
+	annotation PBI_Id = 1e5fed6b52bd4d4b81585213067c19d4
+

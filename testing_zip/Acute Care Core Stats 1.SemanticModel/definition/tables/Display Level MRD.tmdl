@@ -1,0 +1,53 @@
+table 'Display Level MRD'
+	lineageTag: 097d1a41-514e-46bb-945e-541dd9221c4c
+
+	column Parameter
+		lineageTag: 031d83e5-5716-4b0a-9e72-62f2ade8eb10
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Fields'
+		isHidden
+		lineageTag: b91d0a29-0fa1-4719-b861-50b19fe3265c
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: c334b84a-44cc-4dff-881c-a41c600fd07b
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Display Level MRD' = calculated
+		mode: import
+		source =
+				{
+				    ("System", NAMEOF('VW_PCP_CORE_STATS'[System]), 0),
+				    ("Division", NAMEOF('VW_PCP_CORE_STATS'[Division]), 1),
+				    ("Service Area", NAMEOF('VW_PCP_CORE_STATS'[Clinical Service Area]), 2),
+				    ("Location", NAMEOF('VW_PCP_CORE_STATS'[Location]), 3),
+				    ("Department", NAMEOF('VW_PCP_CORE_STATS'[Department]), 4),
+				    ("First Attending Provider", NAMEOF('VW_PCP_CORE_STATS'[First Attending Provider]), 5),
+				    ("Last Attending Provider", NAMEOF('VW_PCP_CORE_STATS'[Last Attending Provider]), 6)
+				}
+
+	annotation PBI_Id = 84f0c03e0c8f4a7f9001fc26998fa2bd
+

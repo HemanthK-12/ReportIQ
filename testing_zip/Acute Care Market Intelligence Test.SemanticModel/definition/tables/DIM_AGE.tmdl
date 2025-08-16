@@ -1,0 +1,82 @@
+table DIM_AGE
+	lineageTag: 92725e18-be44-46c1-a690-3f0287cc2650
+
+	column AGE_CD
+		dataType: double
+		lineageTag: 5c221ed7-f36d-48de-960d-f0ea682059c8
+		summarizeBy: none
+		sourceColumn: AGE_CD
+
+		changedProperty = DataType
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Age Range'
+		dataType: string
+		isHidden
+		lineageTag: 6c74ffa7-0855-4fd7-b5ea-bd32b4fe2150
+		summarizeBy: none
+		sourceColumn: Age Range
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsActiveAgeCD = LOOKUPVALUE(FACT_IP_OP[I],FACT_IP_OP[AGE_CD],DIM_AGE[AGE_CD],0)
+		isHidden
+		formatString: 0
+		lineageTag: 9c5c40dd-4cdf-47ed-aa44-2bbcdd571932
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'New Age Group' =
+			SWITCH(ROUNDDOWN(DIM_AGE[AGE_CD]/5.0,0),
+			0,"00-04",
+			1,"05-09",
+			2,"10-14",
+			3,"15-19",
+			4,"20-24",
+			5,"25-29",
+			6,"30-34",
+			7,"35-39",
+			8,"40-44",
+			9,"45-49",
+			10,"50-54",
+			11,"55-59",
+			12,"60-64",
+			13,"65-69",
+			14,"70-74",
+			15,"75-79",
+			16,"80-84"
+			,"85+")
+		lineageTag: 3757866c-256d-4b35-8afd-67c48bcdbcf2
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_AGE = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("psjh_prod.west-us-2.azure.snowflakecomputing.com",#"WH Name",[Role=#"Role Name"]),
+				    ACOE_DEV_Database = Source{[Name=DBName,Kind="Database"]}[Data],
+				    RPT_STATE_INTELLIMED_Schema = ACOE_DEV_Database{[Name="RPT_STATE_INTELLIMED",Kind="Schema"]}[Data],
+				    DIM_AGE_Table = RPT_STATE_INTELLIMED_Schema{[Name="DIM_AGE",Kind="Table"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(DIM_AGE_Table,{"INSERT_DTS", "UPDATE_DTS"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{{"AGE_RANGE_DSC", "Age Range"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

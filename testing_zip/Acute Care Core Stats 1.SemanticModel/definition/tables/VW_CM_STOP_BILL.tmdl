@@ -1,0 +1,284 @@
+table VW_CM_STOP_BILL
+	lineageTag: 2f864992-d82b-4806-88af-2112bd7dc8a2
+
+	measure 'CC44 Case Count' = CALCULATE(DISTINCTCOUNTNOBLANK(VW_CM_STOP_BILL[HAR]), VW_CM_STOP_BILL[STOP_BILL_DSC]= "CC44")
+		formatString: #,0
+		lineageTag: c4f30f1d-5f32-42a1-949f-4409fda94060
+
+	measure '1599 Case Count' = CALCULATE(DISTINCTCOUNTNOBLANK(VW_CM_STOP_BILL[HAR]), VW_CM_STOP_BILL[STOP_BILL_DSC]= "1599")
+		formatString: #,0
+		lineageTag: 4c943218-727b-4ef4-868f-e1412ae5bb21
+
+	column HAR
+		dataType: double
+		lineageTag: 56928951-9460-4f4f-a198-d72f4c0f288e
+		summarizeBy: none
+		sourceColumn: HAR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column STOP_BILL_DSC
+		dataType: string
+		lineageTag: 8e1d6a4b-1742-43d0-950c-30af6a7f183d
+		summarizeBy: none
+		sourceColumn: STOP_BILL_DSC
+
+		annotation SummarizationSetBy = Automatic
+
+	column REGION_NM
+		dataType: string
+		lineageTag: 8cd28700-9211-4338-aaa1-e5a13dfe31d4
+		summarizeBy: none
+		sourceColumn: REGION_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column FACILITY_NM
+		dataType: string
+		lineageTag: 7b90e678-b71d-4403-a27a-4e04b0c06004
+		summarizeBy: none
+		sourceColumn: FACILITY_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column HSP_ACCOUNT_ID
+		dataType: double
+		lineageTag: 5269d34b-d3ee-440d-8538-1730023b3196
+		summarizeBy: count
+		sourceColumn: HSP_ACCOUNT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PAT_MRN_ID
+		dataType: string
+		lineageTag: fd37cba0-bcce-41c4-8d83-74ee635e2e2d
+		summarizeBy: none
+		sourceColumn: PAT_MRN_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACCOUNT_CLASS_NM
+		dataType: string
+		lineageTag: 61c3e1e8-5a4a-41ed-856c-193ce4a249e7
+		summarizeBy: none
+		sourceColumn: ACCOUNT_CLASS_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADMIT_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6ba1e80a-697a-47f7-a95d-2cbf67fe75b4
+		summarizeBy: none
+		sourceColumn: ADMIT_DTS
+
+		variation Variation
+			isDefault
+			relationship: 26b74b8c-daab-471c-b49a-fad39169fc85
+			defaultHierarchy: LocalDateTable_f7a434d1-c096-4c47-9740-7cbec4070e81.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCHARGE_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 2c60752d-a870-4075-93cc-f5b553ac6688
+		summarizeBy: none
+		sourceColumn: DISCHARGE_DTS
+
+		variation Variation
+			isDefault
+			relationship: 392d537c-132a-4f6f-86a2-88517bdd1161
+			defaultHierarchy: LocalDateTable_7f055867-b331-44bc-a75a-e4055af89c05.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column FINANCIAL_CLASS_NM
+		dataType: string
+		lineageTag: f5735eec-4e6e-4c42-9149-bf0077e3148a
+		summarizeBy: none
+		sourceColumn: FINANCIAL_CLASS_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column PAYOR_NM
+		dataType: string
+		lineageTag: 767cd55c-3b6e-4efb-88c2-f1a754b0fcbd
+		summarizeBy: none
+		sourceColumn: PAYOR_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column PLAN_NM
+		dataType: string
+		lineageTag: ac0037ce-b2a6-4143-ba8d-03992f9e81c8
+		summarizeBy: none
+		sourceColumn: PLAN_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCHARGE_DEPARTMENT_NM
+		dataType: string
+		lineageTag: 52bda43d-cfbd-4dde-a67e-8c0877ea9d27
+		summarizeBy: none
+		sourceColumn: DISCHARGE_DEPARTMENT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column ATTENDING_PROVIDER_NM
+		dataType: string
+		lineageTag: 1406dfa6-a92d-4084-bef0-0590fd003256
+		summarizeBy: none
+		sourceColumn: ATTENDING_PROVIDER_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column TOTAL_CHARGES_AMT
+		dataType: double
+		lineageTag: 61b9d152-ceba-4869-863f-ace175468a9d
+		summarizeBy: sum
+		sourceColumn: TOTAL_CHARGES_AMT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column STOP_BILL_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 2e5efb1d-a8b4-43e4-8647-00f6b1289d52
+		summarizeBy: none
+		sourceColumn: STOP_BILL_DTS
+
+		variation Variation
+			isDefault
+			relationship: 6ac78cc1-f01b-4036-b092-0c90867b4cdf
+			defaultHierarchy: LocalDateTable_412325cf-77b5-48a2-9d16-a9fb314ea709.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column CAREGIVER_NM
+		dataType: string
+		lineageTag: 712ddbcd-1056-4d9d-888b-4aa8f10c0b23
+		summarizeBy: none
+		sourceColumn: CAREGIVER_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column STOP_BILL_YEAR_ID
+		dataType: double
+		lineageTag: deadf201-6086-4f13-a4c5-5b5f55d0ec58
+		summarizeBy: count
+		sourceColumn: STOP_BILL_YEAR_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DISCHARGE_WEEKS_AGO_NBR
+		dataType: double
+		lineageTag: c2e45a6a-ad99-4f71-ab5e-982d91d90e2e
+		summarizeBy: sum
+		sourceColumn: DISCHARGE_WEEKS_AGO_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DISCHARGE_MONTHS_AGO_NBR
+		dataType: double
+		lineageTag: 8577d900-36e9-4495-bb27-ee7237cf209c
+		summarizeBy: sum
+		sourceColumn: DISCHARGE_MONTHS_AGO_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DISCHARGE_YEARS_AGO_NBR
+		dataType: double
+		lineageTag: 4f1012f6-f027-4d6d-8842-c8ef67012eff
+		summarizeBy: sum
+		sourceColumn: DISCHARGE_YEARS_AGO_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column STOP_BILL_MONTH_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 342bedbc-c106-46a8-a5ef-17e7871a87e4
+		summarizeBy: none
+		sourceColumn: STOP_BILL_MONTH_DTS
+
+		variation Variation
+			isDefault
+			relationship: 8b6be965-8277-46ac-85cf-a576615f01bb
+			defaultHierarchy: LocalDateTable_8fe03a49-240a-403a-aeeb-d577f6b41fef.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column STOP_BILL_DT
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 35443742-40ab-40d0-8b55-3acb20690bac
+		summarizeBy: none
+		sourceColumn: STOP_BILL_DT
+
+		variation Variation
+			isDefault
+			relationship: 093eb002-cee0-44eb-a7ed-0e4114b7ad0f
+			defaultHierarchy: LocalDateTable_b7b827cd-07f7-4452-9979-02b14aa90da2.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DISCHARGE_DEPARTMENT_EPIC_ID
+		dataType: string
+		lineageTag: c77fc0c9-896c-4b1b-8f7f-70b72f997723
+		summarizeBy: none
+		sourceColumn: DISCHARGE_DEPARTMENT_EPIC_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCHARGINGPROVIDERKEY
+		dataType: double
+		lineageTag: 15ccc21f-8f7b-437b-b7ef-5cac0b5047a1
+		summarizeBy: sum
+		sourceColumn: DISCHARGINGPROVIDERKEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DISCHARGINGPROVIDERDURABLEKEY
+		dataType: double
+		lineageTag: 82d829f6-f65b-4e07-b1c6-5844559f3ba9
+		summarizeBy: sum
+		sourceColumn: DISCHARGINGPROVIDERDURABLEKEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition VW_CM_STOP_BILL = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("psjh_prod.west-us-2.azure.snowflakecomputing.com","ACOE_WH_M",[Role="ACOE_REPORTING_RO"]),
+				    ACOE_DEV_Database = Source{[Name="ACOE_PROD",Kind="Database"]}[Data],
+				    RPT_PATIENT_JOURNEY_Schema = ACOE_DEV_Database{[Name="RPT_PATIENT_JOURNEY",Kind="Schema"]}[Data],
+				    VW_CM_STOP_BILL_View = RPT_PATIENT_JOURNEY_Schema{[Name="VW_CM_STOP_BILL",Kind="View"]}[Data]
+				in
+				    VW_CM_STOP_BILL_View
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

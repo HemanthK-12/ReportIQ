@@ -1,0 +1,50 @@
+relationship a1917407-878e-41bc-8c55-fbc25beff40e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_PACSNF.STARTDT
+	toColumn: LocalDateTable_bcca7b1e-8237-4619-aeca-b537e5b8319e.Date
+
+relationship b6112050-2bda-473d-94f7-c98ad26ce516
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_PACSNF.ENDDT
+	toColumn: LocalDateTable_16b98cea-6079-43d5-b0ec-5987b73a677e.Date
+
+relationship d4751cb7-72ee-492b-8ec8-df11c2e31566
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_PACSNF.DOB
+	toColumn: LocalDateTable_fcc2f972-d97c-43fc-a835-82156c7e3a81.Date
+
+relationship 724bb7e7-5173-4430-b0a7-50a98cd3d521
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_PACSNF.INSERT_DTS
+	toColumn: LocalDateTable_4f72104c-96da-4fff-823d-7430466faa95.Date
+
+relationship 130f96cd-a953-45b6-8ec2-e42e40fbf9dd
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_PACSNF.UDATE_DTS
+	toColumn: LocalDateTable_71d39923-67a7-4862-8f7a-aaedf23cd5f9.Date
+
+relationship d9c2e5e9-62c0-4f0d-8e83-d5193be5911c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: HomeHealth.StartDT
+	toColumn: LocalDateTable_fac78f75-43b0-4c3f-a918-0a240716900c.Date
+
+relationship c3223f57-d01a-42ee-a46a-79e126b69513
+	joinOnDateBehavior: datePartOnly
+	fromColumn: HomeHealth.EndDT
+	toColumn: LocalDateTable_59f67382-f0b6-4464-b441-f89e4ae33b88.Date
+
+relationship f35b2429-16d8-4a04-8234-242b99d4e710
+	joinOnDateBehavior: datePartOnly
+	fromColumn: HomeHealth.DOB
+	toColumn: LocalDateTable_770ae082-e859-4645-914c-8e9a338dff19.Date
+
+relationship 38021724-4e5b-438e-838d-f95630be6735
+	joinOnDateBehavior: datePartOnly
+	fromColumn: HomeHealth.INSERT_DTS
+	toColumn: LocalDateTable_fc0506a3-bd2e-48c2-93ad-9892fc7c554d.Date
+
+relationship fc39aa57-4c87-4dae-8788-225ca45e5e02
+	joinOnDateBehavior: datePartOnly
+	fromColumn: HomeHealth.UPDATE_DTS
+	toColumn: LocalDateTable_8ae13b76-e479-4d1c-be79-cc19c680459d.Date
+

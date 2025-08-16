@@ -1,0 +1,298 @@
+table VW_LAB_ORDER_TURNAROUND
+	lineageTag: b3f75d1d-ae47-4246-9f7f-4fff4dafd992
+
+	measure test =
+			IF (
+			    HASONEVALUE(VW_LAB_ORDER_TURNAROUND[RCV_TO_RSLT]),
+			    MEDIAN(VW_LAB_ORDER_TURNAROUND[RCV_TO_RSLT]),
+			    BLANK()
+			)
+		formatString: 0
+		lineageTag: 0dc058c8-51fd-43b2-9e38-8cea960a4212
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'System Median' =
+			
+			CALCULATE(
+			    MEDIAN(VW_LAB_ORDER_TURNAROUND[RCV_TO_RSLT]),
+			    ALLEXCEPT(VW_LAB_ORDER_TURNAROUND, VW_LAB_ORDER_TURNAROUND[PROC_NAME])
+			)
+		formatString: 0
+		lineageTag: a4cffecb-8368-42f6-926c-6ea117124526
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'System Mean' =
+			
+			CALCULATE(
+			    AVERAGE(VW_LAB_ORDER_TURNAROUND[RCV_TO_RSLT]),
+			    ALLEXCEPT(VW_LAB_ORDER_TURNAROUND, VW_LAB_ORDER_TURNAROUND[PROC_NAME])
+			)
+		lineageTag: 8344100d-f328-4ef6-9818-ac63afa41b7a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure color = if(MEDIAN(VW_LAB_ORDER_TURNAROUND[RCV_TO_RSLT])>[System Median],1,0)
+		formatString: 0
+		lineageTag: afe6ea45-1420-4e0f-abee-d6366e2deb5d
+
+	measure 'color mean' = if(AVERAGE(VW_LAB_ORDER_TURNAROUND[RCV_TO_RSLT])>[System Mean],1,0)
+		formatString: 0
+		lineageTag: 9cb222e0-5967-4e0c-97ec-d94c5654a846
+
+	column SILO
+		dataType: string
+		lineageTag: b28fcfe4-49c6-4b7e-bc6d-f0bdea58c734
+		summarizeBy: none
+		sourceColumn: SILO
+
+		annotation SummarizationSetBy = Automatic
+
+	column COLLECTING_SERVICE_AREA
+		dataType: string
+		lineageTag: 586dc97e-0ef0-4e53-a5b5-00a7d689db42
+		summarizeBy: none
+		sourceColumn: COLLECTING_SERVICE_AREA
+
+		annotation SummarizationSetBy = Automatic
+
+	column COLLECTING_HOSPITAL
+		dataType: string
+		lineageTag: 872acaed-e30b-4aa0-ba1b-c928e7558da1
+		summarizeBy: none
+		sourceColumn: COLLECTING_HOSPITAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column RESULTING_LAB
+		dataType: string
+		lineageTag: f2ea9efd-7336-4bf5-9464-36765b38e23f
+		summarizeBy: none
+		sourceColumn: RESULTING_LAB
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROC_NAME
+		dataType: string
+		lineageTag: 5849567e-47e5-481d-99c4-40dc752402ce
+		summarizeBy: none
+		sourceColumn: PROC_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ORDER_ID
+		dataType: double
+		lineageTag: 782cd5d0-7b9e-4932-90ca-08ef53f13b10
+		summarizeBy: count
+		sourceColumn: ORDER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RESULT_DATE
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f15f9b98-b49f-4d07-abf5-58536e8c3b0a
+		summarizeBy: none
+		sourceColumn: RESULT_DATE
+		sortByColumn: WeekID
+
+		variation Variation
+			isDefault
+			relationship: 3dfbf6dc-d6fc-4654-b0df-0a4e9595ad7a
+			defaultHierarchy: LocalDateTable_2f9ad19d-57dc-4df6-85c5-dae426cd7a6d.'Date Hierarchy'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column RCV_TO_RSLT
+		dataType: double
+		lineageTag: c9014821-9d35-4cc9-a50d-630bfd5ef4db
+		summarizeBy: sum
+		sourceColumn: RCV_TO_RSLT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RESULT_DT
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b90b0fd2-ce7c-441f-9ec0-26a4f47503b1
+		summarizeBy: none
+		sourceColumn: RESULT_DT
+
+		variation Variation
+			isDefault
+			relationship: c346aa74-5a42-4c7f-9db7-c9fe6f828b53
+			defaultHierarchy: LocalDateTable_13609593-0ef3-46f2-87f8-ac3e6b31411e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column CREATE_TS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 92f5bf4c-289f-43bd-9ac3-3ce53a5d0db0
+		summarizeBy: none
+		sourceColumn: CREATE_TS
+
+		variation Variation
+			isDefault
+			relationship: 139c472a-3048-4987-89ab-a8c22b3c7ed2
+			defaultHierarchy: LocalDateTable_1d0705c1-c62b-4ee1-8670-a3ab529cb3bc.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Service Area' = SUBSTITUTE(VW_LAB_ORDER_TURNAROUND[COLLECTING_SERVICE_AREA],"PHS ","")
+		lineageTag: e2b39aec-b160-46a5-bb5a-434bed6bf099
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Hospital =
+			
+			VAR CleanedHospital = TRIM(SUBSTITUTE([COLLECTING_HOSPITAL], " PARENT LOCATION", ""))
+			RETURN
+			    SWITCH(
+			        CleanedHospital,
+			        "AKI", "Providence Kodiak Island Medical Center (AKI)",
+			        "AVZ", "Valdez Medical (AVZ)",
+			        "CHC", "Holy Cross Medical (CHC)",
+			        "CJN", "Saint Johns Health (CJN)",
+			        "CLS", "Little Company of Mary San Pedro (CLS)",
+			        "CLT", "Little Company of Mary Torrance (CLT)",
+			        "CSJ", "St. Joseph (CSJ)",
+			        "CTZ", "Tarzana (CTZ)",
+			        "MSJ", "Saint Joseph Polson (MSJ)",
+			        "MSP", "Saint Patrick (MSP)",
+			        "OHR", "Hood River (OHR)",
+			        "OMD", "Medford Medical (OMD)",
+			        "OMW", "Milwaukie Hospital (OMW)",
+			        "ONB", "Newberg (ONB)",
+			        "OPH", "Portland (OPH)",
+			        "OSS", "Seaside (OSS)",
+			        "OSV", "Saint Vincent (OSV)",
+			        "OWF", "Willamette Falls (OWF)",
+			        "PAMC", "Alaska Medical (PAMC)",
+			        "PSMC", "Seward Medical (PSMC)",
+			        "WCH", "Centralia (WCH)",
+			        "WEV", "Everett (WEV)",
+			        "WHF", "Holy Family (WHF)",
+			        "WMC", "Mount Carmel (WMC)",
+			        "WSH", "Sacred Heart (WSH)",
+			        "WSJ", "Saint Joseph Chewelah (WSJ)",
+			        "WSM", "Saint Mary Medical (WSM)",
+			        "WSP", "St Peter Hospital (WSP)",
+			        "BALLARD", "Swedish - Ballard (SBL)",
+			        "SBL", "Swedish - Ballard (SBL)",
+			        "CHERRY HILL", "Swedish - Cherry Hill (SCH)",
+			        "SCH", "Swedish - Cherry Hill (SCH)",
+			        "FIRST HILL", "Swedish - First Hill (SFH)",
+			        "SFH", "Swedish - First Hill (SFH)",
+			        "MILL CREEK", "Swedish - Mill Creek (SML)",
+			        "SML", "Swedish - Mill Creek (SML)",
+			        "REDMOND", "Swedish - Redmond (SRE)",
+			        "SRE", "Swedish - Redmond (SRE)",
+			        "SWEDISH EDMONDS", "Swedish - Edmonds (SED)",
+			        "SED", "Swedish - Edmonds (SED)",
+			        "SWEDISH ISSAQUAH", "Swedish - Issaquah (SIQ)",
+			        "SIQ", "Swedish - Issaquah (SIQ)",
+			        "KADLEC REGIONAL MEDICAL CENTER", "Kadlec Regional Medical",
+			        "HMHP", "HOAG Memorial Hosp Presbyterian (HMHP)",
+			        "JV HOI", "Joint Venture HOAG Orthopedic Institute (JV HOI)",
+			        "CFM", "Providence St Jude Medical Center (CFM)",
+			        "CJO", "Providence St Joseph (CJO)",
+			        "CMM", "Providence Mission Hospital (CMM)",
+			        "CYM", "Providence St Mary Medical Center (CYM)",
+			        "TGS", "Covenant Health Grace Surgical Hospital (TGS)",
+			        "KMC", "Kadlec Regional Medical Center (KMC)",
+			        "OPC", "Providence Child Center (OPC)",
+			        "*Unspecified Hospital", "*Unspecified",
+			        "Unspecified", "*Unspecified",
+			        CleanedHospital
+			    )
+		lineageTag: ccb5ece6-baa6-4e95-8f00-bdbd958caf58
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column States =
+			
+			SWITCH (
+			    TRUE(),
+			    [Service Area] IN { "CALIFORNIA", "FMF FACEY MEDICAL FOUNDATION SA", "HMHP HOAG MEMORIAL HOSPITAL PRESBYTERIAN SA" ,"JV HOI HOAG ORTHOPEDIC INSTITUTE SA"}, "California",
+			    [Service Area] IN { "FIRST HILL SURGERY CENTER", "KADLEC HEALTH SYSTEM", "KHS KADLEC HEALTH SYSTEM SA","SHS SWEDISH HEALTH SERVICES SA","SWEDISH MEDICAL CENTER","WASHINGTON MONTANA" }, "Washington & Montana",
+			    [Service Area] IN { "OREGON"}, "Oregon",
+			    [Service Area] IN { "PHS VALDEZ","PHSA ANCHORAGE","PHSA SEWARD","VALDEZ"}, "Alaska",
+			    [Service Area] IN { "TEXAS"}, "Texas",
+			    [Service Area]
+			)
+		lineageTag: 7bb32396-2134-455b-92b6-57efe7092bcd
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekDayName = FORMAT([RESULT_DATE], "dddd")
+		lineageTag: a4b0d6f5-1eed-426a-81b9-936e7a5b080b
+		summarizeBy: none
+		sortByColumn: WeekOrder
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekOrder =
+			
+			SWITCH(
+			    FORMAT([RESULT_DATE], "dddd"),
+			    "Sunday", 0,
+			    "Monday", 1,
+			    "Tuesday", 2,
+			    "Wednesday", 3,
+			    "Thursday", 4,
+			    "Friday", 5,
+			    "Saturday", 6,
+			    BLANK()
+			)
+		formatString: 0
+		lineageTag: 139f16a2-2e51-4527-933c-13b60caadbe0
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekID =
+			
+			VAR WeekNum = WEEKNUM(VW_LAB_ORDER_TURNAROUND[RESULT_DT].[Date], 1)
+			RETURN WeekNum
+		formatString: 0
+		lineageTag: 71d2bd7d-78f0-4863-9774-6c4c7d41de11
+		summarizeBy: count
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthWeek = CONCATENATE(CONCATENATE(FORMAT([RESULT_DT], "mmm"),", "),FORMAT([RESULT_DATE], "yy"))
+		lineageTag: 5791a96b-9dcf-4374-b084-02e3503cbf87
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition VW_LAB_ORDER_TURNAROUND = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("psjh_prod.west-us-2.azure.snowflakecomputing.com","ACOE_WH_M"),
+				    ACOE_DEV_Database = Source{[Name="ACOE_DEV",Kind="Database"]}[Data],
+				    RPT_LAB_Schema = ACOE_DEV_Database{[Name="RPT_LAB",Kind="Schema"]}[Data],
+				    LAB_ORDER_TURNAROUND_Table = RPT_LAB_Schema{[Name="LAB_ORDER_TURNAROUND",Kind="Table"]}[Data]
+				in
+				    LAB_ORDER_TURNAROUND_Table
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

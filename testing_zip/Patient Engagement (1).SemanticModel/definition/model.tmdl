@@ -1,0 +1,32 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["VW_PATIENT_ENGAGEMENT_VISIT_SUMMARY","VW_PATIENT_ENGAGEMENT_VISIT_DETAIL","Sort Order","Last Refresh Date","Enviroment Switch CDW Schema"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.145.1105.0 (25.07)+decbc46fce458c5b8d5109d6f32a743f2ac949c8
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_9c4910d2-f1b1-488e-a01c-06c683933108
+ref table VW_PATIENT_ENGAGEMENT_VISIT_SUMMARY
+ref table LocalDateTable_8f71a9ea-4ed3-49d6-8146-5e9a048d89a2
+ref table VW_PATIENT_ENGAGEMENT_VISIT_DETAIL
+ref table LocalDateTable_2d3531a9-eb3e-4b74-8efc-5b7fdb3eda23
+ref table LocalDateTable_6a4d33d3-b2ba-462a-87f8-73301877d011
+ref table LocalDateTable_794990c4-b092-4b91-9887-aae6f256d866
+ref table 'Sort Order'
+ref table 'Last Refresh Date'
+ref table LocalDateTable_875a7d46-e197-4ea0-8262-d9580283995a
+ref table LocalDateTable_d4f7674b-4cf5-453d-a130-f60222ba2182
+ref table LocalDateTable_23737f63-c8f6-4716-a47a-7fd42b10a437
+ref table LocalDateTable_07f4cc7e-df4c-4bfd-a9ed-dc41a1006e14
+
+ref cultureInfo en-US
+

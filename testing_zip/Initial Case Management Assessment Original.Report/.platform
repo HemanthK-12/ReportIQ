@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Initial Case Management Assessment Original"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e83f3e30-8544-4809-9b17-a800b3a11732"
+  }
+}

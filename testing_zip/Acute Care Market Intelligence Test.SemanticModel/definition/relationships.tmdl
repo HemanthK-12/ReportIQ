@@ -1,0 +1,48 @@
+relationship AutoDetected_a4c53a5b-4ae2-4d9b-a923-7031cc2c83db
+	fromColumn: FACT_IP_OP.PATIENT_ZIP_CD
+	toColumn: DIM_PATIENT.PATIENT_ZIP_CD
+
+relationship AutoDetected_42f11f54-0b8d-4942-98f3-c38ae3235ba2
+	fromColumn: FACT_IP_OP.FACILITY_KEY
+	toColumn: DIM_FACILITY.FACILITY_KEY
+
+relationship AutoDetected_bdcbcacc-ab4d-404d-9c49-536529754152
+	fromColumn: FACT_IP_OP.CPS_KEY
+	toColumn: DIM_CPS.CPS_KEY
+
+relationship 7662fb86-a496-95c8-fa60-6ea482fdfdad
+	fromColumn: FACT_IP_OP.MSDRG_CD
+	toColumn: DIM_MSDRG.MSDRG_CD
+
+relationship AutoDetected_6c53d18d-90f2-4e25-8f86-bf7cd87b2e80
+	fromColumn: FACT_IP_OP.DIAGNOSIS_CD
+	toColumn: DIM_DIAGNOSIS.DIAGNOSIS_CD
+
+relationship b407fcbf-a8db-0bb7-7323-71bc5083d03f
+	fromColumn: FACT_IP_OP.DATE_KEY
+	toColumn: DIM_DATE.DATE_KEY
+
+relationship AutoDetected_ff8c7737-aba9-4043-96a2-41e54b3286f8
+	fromColumn: FACT_IP_OP.AGE_CD
+	toColumn: DIM_AGE.AGE_CD
+
+relationship AutoDetected_8bcdd973-93ba-42c9-9bd1-e2aecceec61b
+	fromColumn: FACT_IP_OP.PAYOR_KEY
+	toColumn: DIM_PAYOR.PAYOR_KEY
+
+relationship 4d465c58-2887-0fad-f8ed-94b550b2bc61
+	fromColumn: FACT_IP_OP.HIGHEST_WEIGHTED_CPT_VAL
+	toColumn: DIM_PROCEDURE.PROCEDURE_CD
+
+relationship 62e87dd4-8995-9ab9-d172-6566c024079f
+	fromColumn: DIM_FACILITY.FACILITY_SYSTEM_NM
+	toColumn: FACILITY_SYSTEM_NM.FACILITY_SYSTEM_NM
+
+relationship 0f980284-f63b-8e18-f1dc-f293118ac62b
+	fromColumn: DIM_FACILITY.FACILITY_NM
+	toColumn: FACILITY_NM.FACILITY_NM
+
+relationship AutoDetected_d021556c-56c3-44c5-aacb-4c9643832297
+	fromColumn: FACT_IP_OP.GENDER_CD
+	toColumn: DIM_GENDER.GENDER_CD
+

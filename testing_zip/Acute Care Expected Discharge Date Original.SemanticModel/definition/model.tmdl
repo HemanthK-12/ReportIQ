@@ -1,0 +1,47 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.145.1105.0 (25.07)+decbc46fce458c5b8d5109d6f32a743f2ac949c8
+
+annotation PBI_QueryOrder = ["FACT_HOSPITALADMISSION_EDD","DIM_METRIC_DEFINITION","Last Refresh Date","Environment Switch CDW Schema","Measures and Calc"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_bf6bab97-2da5-45da-86ef-04c15c7483cd
+ref table 'Last Refresh Date'
+ref table LocalDateTable_61a3a043-0d4a-4254-9eef-1457fc073468
+ref table FACT_HOSPITALADMISSION_EDD
+ref table LocalDateTable_f0100d79-8dd4-4393-94e9-d7afcd32bd28
+ref table LocalDateTable_e980968d-d955-4e8d-b85b-7d3c915bdab6
+ref table LocalDateTable_8657659d-a618-4444-8521-7dd8560bfe28
+ref table LocalDateTable_a1e8e2c8-a695-42f9-8445-387e6c080324
+ref table 'Display Level'
+ref table LocalDateTable_60fd01d5-5d9e-483f-842b-bb8b9a3ce7bb
+ref table LocalDateTable_e9cee9a1-da2d-46c0-b863-8fb873c60854
+ref table LocalDateTable_de4c180b-bf94-4ab9-bcf4-542471f3e90a
+ref table Metric
+ref table 'Display Level MRD'
+ref table LocalDateTable_0f9998cc-f2f9-4f43-b74b-f64fc91b5b82
+ref table LocalDateTable_c5a3f110-964a-4ac0-acc2-a940e6a2bd20
+ref table LocalDateTable_af19c6c6-211f-4889-9288-6ec0dffa66a7
+ref table 'Hours Between EDD'
+ref table 'Hours Between MRD'
+ref table LocalDateTable_ba556605-a4d0-4456-9881-6794e44c21a1
+ref table LocalDateTable_1a903809-abb5-4da5-b771-1a913b5c1124
+ref table LocalDateTable_e163a063-10b9-40cc-bf04-e37d38a457ac
+ref table DIM_METRIC_DEFINITION
+ref table LocalDateTable_a585bf5c-670b-457a-9409-bc3d7f2280a5
+ref table LocalDateTable_4b2435b0-16ed-490e-8472-846f6a3074e8
+ref table LocalDateTable_8f09662f-697a-4052-9de4-2eac239337e4
+ref table LocalDateTable_f8a96f09-9013-42d0-83d3-2bb68f2e5388
+ref table LocalDateTable_7de592ef-7b00-4bb2-b0cd-8975ad42be46
+
+ref cultureInfo en-US
+

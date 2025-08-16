@@ -1,0 +1,58 @@
+table 'Select CPS Parameter'
+	isHidden
+	lineageTag: 7fe9c678-3d5e-4729-8b39-ccc1ba12c88c
+
+	column 'CPS Parameter'
+		isHidden
+		lineageTag: 84f61d70-6f3d-466a-b8c9-9b63e6fd8281
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'CPS Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'CPS Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CPS Parameter Fields'
+		isHidden
+		lineageTag: 62e0342f-91a7-49fb-93d6-e16a58f2113a
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'CPS Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CPS Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: 2038ad76-7c75-4ea9-8e9f-ecfe92ddb4c0
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CPS Parameter field Name' = 'Select CPS Parameter'[CPS Parameter Fields]
+		isHidden
+		lineageTag: 671c7074-58cc-479a-8d1e-e95e952bc535
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Select CPS Parameter' = calculated
+		mode: import
+		source =
+				{
+				    ("CPS INSTITUTE", NAMEOF('DIM_CPS'[CPS Institute]), 0),
+				    ("CPS PROGRAM", NAMEOF('DIM_CPS'[CPS Program]), 1),
+				    ("CPS BUSINESS UNIT", NAMEOF('DIM_CPS'[CPS Business Unit]), 2)
+				}
+
+	annotation PBI_Id = 21b0aa61264f4a75989c913ab47774a6
+

@@ -1,0 +1,518 @@
+table VW_PACSNF
+	lineageTag: 3f2d49eb-34f9-4472-9dde-33a641971cd8
+
+	measure 'Cost Per Day' = sum([Allowed])/sum([TotalDays])
+		formatString: \$#,0.0;(\$#,0.0);\$#,0.0
+		lineageTag: 7ae01f33-45de-4cf2-a6a6-07f9211d92a4
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Cost Per Encounter Label' = CALCULATE(SUM(VW_PACSNF[ALLOWED])/SUM(VW_PACSNF[Episodes]),ALLSELECTED(VW_PACSNF[AffiliateType]))
+		formatString: 0.0
+		lineageTag: 829edfb8-90ac-45f9-8923-14a8768cee93
+
+		changedProperty = IsHidden
+
+	measure 'Cost Per Episode' = SUM([Allowed])/SUM([Episodes])
+		formatString: \$#,0.0;(\$#,0.0);\$#,0.0
+		lineageTag: bd55e31a-0118-4fca-9b0a-83173df827d8
+
+		changedProperty = IsHidden
+
+	measure 'Days Per Episode' = sum([MR_UNITS_DAYS])/sum([MR_CASES_ADMITS])
+		formatString: 0
+		lineageTag: 86eae462-c598-45bd-92d2-781bef83a62a
+
+		changedProperty = IsHidden
+
+	measure Encounter = SUM(VW_PACSNF[Episodes])
+		formatString: 0.0
+		lineageTag: 5fcd1f71-3e35-4234-b777-2657fa900d5d
+
+		changedProperty = IsHidden
+
+	measure 'Top Comparision' = IF(CALCULATE(SUM(VW_PACSNF[Episodes]),REMOVEFILTERS(VW_PACSNF[AFFILIATETYPE],VW_PACSNF[EndDate_Year_Month_No])) >= SELECTEDVALUE('Min # of Encounters'[Encounter Count]),1,0)
+		formatString: 0
+		lineageTag: 25926fd5-9e74-472e-937a-60bdfbf8c54c
+
+		changedProperty = IsHidden
+
+	measure 'Date Range' =
+			--Date Range (Header)
+			MIN(VW_PACSNF[ENDDT]) & "-" & EOMONTH(MAX(VW_PACSNF[ENDDT]), 0)
+		lineageTag: 66a245fe-937a-4a50-843c-fdf6496eea16
+
+		changedProperty = IsHidden
+
+	measure 'Filter for SNF Trend' = CALCULATE ( IF ( ISFILTERED ( VW_PACSNF[SNF] ), 1, 0 ), ALLSELECTED ( VW_PACSNF ) )
+		formatString: 0
+		lineageTag: 35c7420e-94cc-495f-b9bb-8ff259ede19e
+
+	measure Filter_Card = IF ( ISFILTERED ( VW_PACSNF[SNF] ), 1, 0 )
+		formatString: 0
+		lineageTag: dbe328e2-5b98-4613-be40-b2ccdd60ea7f
+
+	measure 'Show Text' = IF(ISFILTERED(VW_PACSNF[SNF])," ","Click on the SNF in table below to see the trend")
+		lineageTag: e164678a-0385-4d17-8b8e-a822d46a2411
+
+	column SOURCEMEMBERID
+		dataType: string
+		lineageTag: f48f1e39-a53e-4cce-893b-eddeb6a8d448
+		summarizeBy: none
+		sourceColumn: SOURCEMEMBERID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Risk Contract'
+		dataType: string
+		lineageTag: 107ecc65-7f51-4688-8e43-835814c82ab8
+		summarizeBy: none
+		sourceColumn: Risk Contract
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column COHORT
+		dataType: string
+		lineageTag: cf0cdd28-e601-4dd1-803a-89649fc33c3a
+		summarizeBy: none
+		sourceColumn: COHORT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column REGION
+		dataType: string
+		lineageTag: c29cdd73-6ab5-4713-92c4-5bda971e9a5f
+		summarizeBy: none
+		sourceColumn: REGION
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Service Area'
+		dataType: string
+		lineageTag: 7f3efe60-5127-4b9c-8d17-d435f4a1554d
+		summarizeBy: none
+		sourceColumn: Service Area
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column BILLINGPROVNPI
+		dataType: string
+		lineageTag: 563f9828-3818-4788-8f1f-f2482b6dbab3
+		summarizeBy: none
+		sourceColumn: BILLINGPROVNPI
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column STARTDT
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 07a87499-e0b9-4785-9dbb-e7f1a20411d9
+		summarizeBy: none
+		sourceColumn: STARTDT
+
+		variation Variation
+			isDefault
+			relationship: a1917407-878e-41bc-8c55-fbc25beff40e
+			defaultHierarchy: LocalDateTable_bcca7b1e-8237-4619-aeca-b537e5b8319e.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column ENDDT
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: e440b676-6d53-425f-b1f2-9513cbea2e4d
+		summarizeBy: none
+		sourceColumn: ENDDT
+
+		variation Variation
+			isDefault
+			relationship: b6112050-2bda-473d-94f7-c98ad26ce516
+			defaultHierarchy: LocalDateTable_16b98cea-6079-43d5-b0ec-5987b73a677e.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column ALLOWED
+		dataType: double
+		formatString: \$#,0.0;(\$#,0.0);\$#,0.0
+		lineageTag: a8f1722e-b343-4478-8612-6a07ef745333
+		summarizeBy: sum
+		sourceColumn: ALLOWED
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column TOTALDAYS
+		dataType: int64
+		formatString: 0
+		lineageTag: 0b09a03e-0f0e-4bb2-8c9b-0511a3c987e3
+		summarizeBy: sum
+		sourceColumn: TOTALDAYS
+
+		changedProperty = DataType
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column LOS
+		dataType: double
+		formatString: 0
+		lineageTag: 088112c9-4970-4698-ae46-1a2e49a08e25
+		summarizeBy: average
+		sourceColumn: LOS
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column DISCHARGINGFACILITYNPI
+		dataType: string
+		lineageTag: d8936d14-8096-4a06-a8f2-723b0e45ab95
+		summarizeBy: none
+		sourceColumn: DISCHARGINGFACILITYNPI
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCHARGINGDRG
+		dataType: string
+		lineageTag: ab733d5e-ab51-44cd-952f-ba6b7675d179
+		summarizeBy: none
+		sourceColumn: DISCHARGINGDRG
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCHARGESTATUS
+		dataType: string
+		lineageTag: 647db3d8-410f-499c-b79b-bdaa65ac3898
+		summarizeBy: none
+		sourceColumn: DISCHARGESTATUS
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FACILITYNAME
+		dataType: string
+		lineageTag: f9f3661f-7ed4-46b3-8b37-2763fc35a1f6
+		summarizeBy: none
+		sourceColumn: FACILITYNAME
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column COVIDFLG
+		dataType: string
+		lineageTag: a31311d5-c969-482c-8284-04a86edf9143
+		summarizeBy: none
+		sourceColumn: COVIDFLG
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column AFFILIATETYPE
+		dataType: string
+		lineageTag: 23aa0ec8-dc62-4136-9472-47dcab17fd3c
+		summarizeBy: none
+		sourceColumn: AFFILIATETYPE
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCHARGINGFACILITY
+		dataType: string
+		lineageTag: f84ab268-742d-4c05-aaee-145886a69fb1
+		summarizeBy: none
+		sourceColumn: DISCHARGINGFACILITY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DOB
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 367ad670-946f-4e78-9f2a-5d4fb492537b
+		summarizeBy: none
+		sourceColumn: DOB
+
+		variation Variation
+			isDefault
+			relationship: d4751cb7-72ee-492b-8ec8-df11c2e31566
+			defaultHierarchy: LocalDateTable_fcc2f972-d97c-43fc-a835-82156c7e3a81.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column DRG_DESC
+		dataType: string
+		lineageTag: a608eba4-5ea9-4735-985a-d8010bb095b5
+		summarizeBy: none
+		sourceColumn: DRG_DESC
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SERVICEPROVNPI
+		dataType: string
+		lineageTag: 997ca626-dd11-44a0-a445-d36d7e53822e
+		summarizeBy: none
+		sourceColumn: SERVICEPROVNPI
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROVIDERFIRSTNM
+		dataType: string
+		lineageTag: 5b6dc2a2-9694-4347-bd9b-061b743adadf
+		summarizeBy: none
+		sourceColumn: PROVIDERFIRSTNM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROVIDERLASTNM
+		dataType: string
+		lineageTag: cbaedb7a-d437-4897-9530-27c406b70782
+		summarizeBy: none
+		sourceColumn: PROVIDERLASTNM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SOURCEFIRSTNM
+		dataType: string
+		lineageTag: 7f06511e-0ec9-4721-9a94-8a70d747c407
+		summarizeBy: none
+		sourceColumn: SOURCEFIRSTNM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SOURCELASTNM
+		dataType: string
+		lineageTag: 9d674908-029c-4b48-8c4f-eac1bc333f47
+		summarizeBy: none
+		sourceColumn: SOURCELASTNM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Episodes = 1
+		formatString: 0
+		lineageTag: 6ad0416a-7544-4fdb-9595-298134577849
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Encounter End Date' = (year([EndDT]))&" Q"&(QUARTER([EndDT]))
+		lineageTag: 962cc161-3619-47d4-b185-dc2984887164
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column EndDate_Year_Month_No = ```
+			YEAR(VW_PACSNF[ENDDT]) &"-"& FORMAT(VW_PACSNF[ENDDT],"mm")  
+			```
+		lineageTag: ffb7564a-afd3-4a85-a7f7-332127ff3561
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Patient Name' = [SOURCELASTNM]&", "&[SOURCEFIRSTNM]
+		lineageTag: 97b5ba02-71cf-4b13-a841-8ee3fc881af9
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Referring DRG' = IF(ISBLANK([DischargingDRG]) ,"Unknown",IF([DischargingDRG]="Null","Unknown",IF([DischargingDRG] = "Unknown", "Unknown",[DischargingDRG]&": "&[DRG_DESC])))
+		lineageTag: dc550a8d-2316-4abe-bbe6-29c7c6572a22
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Referring Facility' = IF(ISBLANK(VW_PACSNF[DISCHARGINGFACILITY]), "Unknown",VW_PACSNF[DISCHARGINGFACILITY])
+		lineageTag: 6993b981-b522-441b-80fd-315f01be1ba8
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SNF = IF (ISBLANK(VW_PACSNF[FACILITYNAME]),VW_PACSNF[BILLINGPROVNPI],UPPER(VW_PACSNF[FACILITYNAME]))
+		lineageTag: 657a018b-83a3-4165-9166-89dcda5cd6f6
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SNF Provider' = IF(ISBLANK([ServiceProvNPI]), "Unknown",(IF(ISBLANK([ProviderLastNM]),[ServiceProvNPI],[ProviderLastNM]&", "&[ProviderFirstNM])))
+		lineageTag: 215f5eaf-0f9c-4d5c-9c83-c0bb0f98ab97
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column MR_UNITS_DAYS
+		dataType: double
+		lineageTag: 6a6ed286-2976-4b96-a894-5768c5ea8e9a
+		summarizeBy: sum
+		sourceColumn: MR_UNITS_DAYS
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MR_CASES_ADMITS
+		dataType: double
+		lineageTag: 369c50d9-94c4-43d2-a670-70816dbfbfe1
+		summarizeBy: sum
+		sourceColumn: MR_CASES_ADMITS
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column INSERT_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 2c97b1eb-67cc-4385-99ac-57edabe4665c
+		summarizeBy: none
+		sourceColumn: INSERT_DTS
+
+		variation Variation
+			isDefault
+			relationship: 724bb7e7-5173-4430-b0a7-50a98cd3d521
+			defaultHierarchy: LocalDateTable_4f72104c-96da-4fff-823d-7430466faa95.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column UDATE_DTS
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 97311bbf-e8be-4045-b273-d93480cfc515
+		summarizeBy: none
+		sourceColumn: UDATE_DTS
+
+		variation Variation
+			isDefault
+			relationship: 130f96cd-a953-45b6-8ec2-e42e40fbf9dd
+			defaultHierarchy: LocalDateTable_71d39923-67a7-4862-8f7a-aaedf23cd5f9.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column MASTERPERSON_DWKEY
+		dataType: double
+		lineageTag: 22234deb-b247-42d8-ad78-9250dc26135a
+		summarizeBy: sum
+		sourceColumn: MASTERPERSON_DWKEY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CASE_ADMIT_ID
+		dataType: string
+		lineageTag: 25bffedb-68e1-4b9d-8d30-8c7140251fe0
+		summarizeBy: none
+		sourceColumn: CASE_ADMIT_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCHARGESTATUS_DESC
+		dataType: string
+		lineageTag: 62b18b0f-2bb2-49fb-a58a-1bd0aacb9f93
+		summarizeBy: none
+		sourceColumn: DISCHARGESTATUS_DESC
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column = IF(ISFILTERED(VW_PACSNF[SNF]),[SNF])
+		lineageTag: efc6596a-9043-41ad-a488-b6844fd3a58e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition VW_PACSNF = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("psjh_prod.west-us-2.azure.snowflakecomputing.com","ACOE_WH_M",[Role="ACOE_DEVELOPER"]),
+				    ACOE_DEV_Database = Source{[Name=DB_NAME,Kind="Database"]}[Data],
+				    DMS_VBC_Schema = ACOE_DEV_Database{[Name="RPT_VBC",Kind="Schema"]}[Data],
+				    VW_PACSNF_View = DMS_VBC_Schema{[Name="VW_VBA_POST_ACUTE_SNF",Kind="View"]}[Data]
+				in
+				    VW_PACSNF_View
+
+	annotation PBI_ResultType = Table
+

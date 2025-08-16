@@ -1,0 +1,70 @@
+table DIM_METRIC_DEFINITION
+	lineageTag: de12e154-12fc-483c-8e5c-a5e1b6e9fd57
+
+	column METRIC_KEY
+		dataType: double
+		lineageTag: 6551bfbd-4d69-4507-be01-165b309178c4
+		summarizeBy: sum
+		sourceColumn: METRIC_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column METRIC_NM
+		dataType: string
+		lineageTag: c1a5fd0c-3aad-4eec-b539-20de8a280526
+		summarizeBy: none
+		sourceColumn: METRIC_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 25487278-f1ba-4a44-92a4-875cc34940ca
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Definition
+		dataType: string
+		lineageTag: c9756e08-87ab-405e-8794-17cbfd0b0dc5
+		summarizeBy: none
+		sourceColumn: Definition
+
+		annotation SummarizationSetBy = Automatic
+
+	column METRIC_PROJECT_TXT
+		dataType: string
+		lineageTag: a427369c-6d98-4499-b912-6237bc6fd6eb
+		summarizeBy: none
+		sourceColumn: METRIC_PROJECT_TXT
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: e0fd78bf-cd84-4ea8-813d-f5e9d790dce7
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_METRIC_DEFINITION = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("psjh_prod.west-us-2.azure.snowflakecomputing.com","ACOE_WH_M"),
+				    ACOE_DEV_Database = Source{[Name="ACOE_PROD",Kind="Database"]}[Data],
+				    REF_Schema = ACOE_DEV_Database{[Name="REF",Kind="Schema"]}[Data],
+				    DIM_METRIC_DEFINITION_Table = REF_Schema{[Name="DIM_METRIC_DEFINITION",Kind="Table"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(DIM_METRIC_DEFINITION_Table,{"METRIC_CD", "METRIC_ID", "METRIC_TYPE_DSC", "METRIC_SUBTYPE_DSC", "CALCULATION_DSC", "SOURCE_NM", "ACTIVE_IND", "PROCESSING_IND", "METRIC_SPECIFICATION_LINK_TXT", "METRIC_STORED_PROCEDURE_NM", "INSERT_DTS", "UPDATE_DTS"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{{"METRIC_SHORT_NM", "Name"}, {"METRIC_DSC", "Definition"}, {"METRIC_SET_TXT", "Category"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

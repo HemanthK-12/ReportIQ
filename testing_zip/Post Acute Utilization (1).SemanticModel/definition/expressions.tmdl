@@ -1,0 +1,5 @@
+expression DB_NAME = "ACOE_DEV" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: ea86cca5-4543-4087-aa1b-7d51d639bb8a
+
+	annotation PBI_ResultType = Text
+

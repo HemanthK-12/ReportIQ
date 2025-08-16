@@ -1,0 +1,25 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["VW_LAB_ORDER_TURNAROUND"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.145.1262.0 (25.07)+10bdeda5ab0db954b2cf824e7a117ad7cee97f88
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table VW_LAB_ORDER_TURNAROUND
+ref table DateTableTemplate_25005dee-0b9d-4339-863a-6ca637bd055b
+ref table LocalDateTable_2f9ad19d-57dc-4df6-85c5-dae426cd7a6d
+ref table LocalDateTable_13609593-0ef3-46f2-87f8-ac3e6b31411e
+ref table LocalDateTable_1d0705c1-c62b-4ee1-8670-a3ab529cb3bc
+ref table Perspective
+
+ref cultureInfo en-US
+

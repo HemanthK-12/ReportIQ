@@ -1,0 +1,38 @@
+table 'Display Top N Records'
+	lineageTag: 2b661cc0-9c40-4c89-8b4d-f58204e40e14
+
+	column Records
+		dataType: int64
+		formatString: 0
+		lineageTag: c7bacb02-585e-4ccc-81ac-585f83c6de2d
+		summarizeBy: sum
+		sourceColumn: Records
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Record Name'
+		dataType: string
+		lineageTag: 9977d831-702a-43b6-8400-741cf80f749a
+		summarizeBy: none
+		sourceColumn: Record Name
+		sortByColumn: Records
+
+		changedProperty = SortByColumn
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Display Top N Records' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlTSUXLMyVFwTE/NS85MLVaK1QEKGgBFgQSYbQpim4LZRiBxI4i4EUjcCCJuChI3hYibg8TNTaHmQAyCmQTmQdUZGUAMA/JiAQ==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Records = _t, #"Record Name" = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Records", Int64.Type}, {"Record Name", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,58 @@
+table 'Service Line Group Options'
+	isHidden
+	lineageTag: 4d04137b-0a84-44f6-aef8-ccecec18cd24
+
+	column 'Service Line Group Options'
+		isHidden
+		lineageTag: 6ae5a774-be0b-4ff5-9604-15c835b1ce10
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Service Line Group Options Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Service Line Group Options Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Service Line Group Options Fields'
+		isHidden
+		lineageTag: 69ba941b-fdec-4a6c-8597-992adb865ee8
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Service Line Group Options Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Service Line Group Options Order'
+		isHidden
+		formatString: 0
+		lineageTag: 0d932c06-0fd2-4a91-adc2-09f8d875f30f
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Service Line Group Options' = calculated
+		mode: import
+		source =
+				{
+				    ("CPS Institute", NAMEOF('DIM_CPS'[CPS Institute]), 0),
+				    ("CPS Program", NAMEOF('DIM_CPS'[CPS Program]), 1),
+				    ("CPS Business Unit", NAMEOF('DIM_CPS'[CPS Business Unit]), 2),
+				    //("MSDRG MED/SURG", NAMEOF('DIM_MSDRG'[MSDRG_MED_SURG_TYPE_CD]), 3),//
+				    ("ICD DX CD/DESC", NAMEOF('DIM_DIAGNOSIS'[ICD DX CD/DESC]), 3),
+				    ("ICD PX CD/DESC", NAMEOF('DIM_PROCEDURE'[ICD PX CD/DESC]), 4),
+				    ("MSDRG Service Line", NAMEOF('DIM_MSDRG'[MSDRG_SERVICE_LINE_DSC]), 5),
+				    ("MSDRG Sub Service Line", NAMEOF('DIM_MSDRG'[MSDRG_SUB_SERVICE_LINE_DSC]), 6),
+				    ("MSDRG", NAMEOF('FACT_IP_OP'[DRG_DESC]), 7),
+				    ("Highest Weighted CPT", NAMEOF('FACT_IP_OP'[CPT_DESC]), 8)
+				}
+
+	annotation PBI_Id = a29c273fe442401ba3174434eb92a196
+

@@ -1,0 +1,4736 @@
+cultureInfo en-US
+
+	linguisticMetadata =
+			{
+			  "Version": "3.5.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "vw_lab_order_turnaround": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vw lab order turnaround": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "VW_LAB_ORDER_TURNAROUND": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "turnaround": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "order turnaround": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "lab order turnaround": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "vw lab order reversal": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "vw lab order U-turn": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "vw lab order improvement": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "lab order reversal": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "lab order U-turn": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "lab order improvement": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "order reversal": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "order U-turn": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "order improvement": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "vw lab order change": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround.silo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "ConceptualProperty": "SILO"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "silo": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "storage tower": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "Test Group": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround.collecting_service_area": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "ConceptualProperty": "COLLECTING_SERVICE_AREA"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "collecting service area": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "COLLECTING_SERVICE_AREA": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "area": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "collecting service region": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "collecting service locale": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "collecting service locality": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "collecting service neighbourhood": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "collecting service district": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "collecting service continent": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "collecting service field": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "collecting service neighborhood": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "collecting service section": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "collecting service space": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround.collecting_hospital": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "ConceptualProperty": "COLLECTING_HOSPITAL"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "collecting hospital": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "COLLECTING_HOSPITAL": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "collecting infirmary": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "collecting hospice": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "collecting sickbay": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "collecting sanatorium": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "collecting clinic": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround.resulting_lab": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "ConceptualProperty": "RESULTING_LAB"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "resulting lab": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "RESULTING_LAB": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "lab": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "resulting workroom": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "resulting laboratory": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "workroom": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "laboratory": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "resulting workshop": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "workshop": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround.proc_name": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "ConceptualProperty": "PROC_NAME"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "proc name": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "PROC_NAME": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "proc nickname": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "proc title": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "proc label": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "proc tag": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "Procedure": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Procedure Name": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround.order_id": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "ConceptualProperty": "ORDER_ID"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "order id": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "ORDER_ID": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "order": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "order identification": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "order identity": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "order identifier": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "order credential": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "instruction": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "direction": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "edict": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "command": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "directive": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "demand": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround.result_date": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "ConceptualProperty": "RESULT_DATE"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "result date": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "RESULT_DATE": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        },
+			        {
+			          "result moment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "result period": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "vw_lab_order_turnaround.result_date.date_hierarchy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "VariationSource": "RESULT_DATE",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "result date hierarchy": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date hierarchy": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "vw_lab_order_turnaround.result_date.year": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "VariationSource": "RESULT_DATE",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Year"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "result year": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "year": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "result date year": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date year": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "result date yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "result yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "date yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "result moment year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "moment year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "result period year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "period year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "vw_lab_order_turnaround.result_date.quarter": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "VariationSource": "RESULT_DATE",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Quarter"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "result quarter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "quarter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "result date quarter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date quarter": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "result date qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.846
+			          }
+			        },
+			        {
+			          "result qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.833
+			          }
+			        },
+			        {
+			          "date qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.833
+			          }
+			        },
+			        {
+			          "qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.818
+			          }
+			        },
+			        {
+			          "result moment quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "moment quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "result period quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "period quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "vw_lab_order_turnaround.result_date.month": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "VariationSource": "RESULT_DATE",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Month"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "result month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "result date month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date month": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "result date mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "result mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "date mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "result moment month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "moment month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "result period month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "period month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "vw_lab_order_turnaround.result_date.day": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "VariationSource": "RESULT_DATE",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Day"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "result day": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "day": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "result date day": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date day": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "result moment day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "moment day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "result period day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "period day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "vw_lab_order_turnaround.rcv_to_rslt": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "ConceptualProperty": "RCV_TO_RSLT"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "rcv to rslt": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "RCV_TO_RSLT": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround.result_dt": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "ConceptualProperty": "RESULT_DT"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "result dt": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "RESULT_DT": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        },
+			        {
+			          "dt": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "vw_lab_order_turnaround.result_dt.date_hierarchy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "VariationSource": "RESULT_DT",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "result dt date hierarchy": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date hierarchy": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "dt date hierarchy": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "vw_lab_order_turnaround.result_dt.year": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "VariationSource": "RESULT_DT",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Year"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "result dt year": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "year": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dt year": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "result dt yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "dt yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "vw_lab_order_turnaround.result_dt.quarter": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "VariationSource": "RESULT_DT",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Quarter"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "result dt quarter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "quarter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dt quarter": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "result dt qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.846
+			          }
+			        },
+			        {
+			          "dt qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.833
+			          }
+			        },
+			        {
+			          "qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.818
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "vw_lab_order_turnaround.result_dt.month": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "VariationSource": "RESULT_DT",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Month"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "result dt month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dt month": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "result dt mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "dt mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "vw_lab_order_turnaround.result_dt.day": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "VariationSource": "RESULT_DT",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Day"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "result dt day": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "day": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dt day": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "vw_lab_order_turnaround.collection_dt.date_hierarchy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "VariationSource": "COLLECTION_DT",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "collection dt date hierarchy": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date hierarchy": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "dt date hierarchy": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "vw_lab_order_turnaround.collection_dt.year": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "VariationSource": "COLLECTION_DT",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Year"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "collection dt year": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "year": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dt year": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "collection dt yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "dt yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "vw_lab_order_turnaround.collection_dt.quarter": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "VariationSource": "COLLECTION_DT",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Quarter"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "collection dt quarter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "quarter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dt quarter": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "collection dt qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.846
+			          }
+			        },
+			        {
+			          "dt qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.833
+			          }
+			        },
+			        {
+			          "qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.818
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "vw_lab_order_turnaround.collection_dt.month": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "VariationSource": "COLLECTION_DT",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Month"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "collection dt month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dt month": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "collection dt mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "dt mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "vw_lab_order_turnaround.collection_dt.day": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "VariationSource": "COLLECTION_DT",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Day"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "collection dt day": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "day": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dt day": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "vw_lab_order_turnaround.arrival_dt.date_hierarchy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "VariationSource": "ARRIVAL_DT",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "arrival dt date hierarchy": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date hierarchy": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "dt date hierarchy": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "vw_lab_order_turnaround.arrival_dt.year": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "VariationSource": "ARRIVAL_DT",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Year"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "arrival dt year": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "year": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dt year": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "arrival dt yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "dt yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "vw_lab_order_turnaround.arrival_dt.quarter": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "VariationSource": "ARRIVAL_DT",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Quarter"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "arrival dt quarter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "quarter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dt quarter": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "arrival dt qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.846
+			          }
+			        },
+			        {
+			          "dt qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.833
+			          }
+			        },
+			        {
+			          "qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.818
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "vw_lab_order_turnaround.arrival_dt.month": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "VariationSource": "ARRIVAL_DT",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Month"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "arrival dt month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dt month": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "arrival dt mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "dt mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "vw_lab_order_turnaround.arrival_dt.day": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "VariationSource": "ARRIVAL_DT",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Day"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "arrival dt day": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "day": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dt day": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "vw_lab_order_turnaround.create_ts": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "ConceptualProperty": "CREATE_TS"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "create ts": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "CREATE_TS": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "vw_lab_order_turnaround.create_ts.date_hierarchy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "VariationSource": "CREATE_TS",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "create ts date hierarchy": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date hierarchy": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "vw_lab_order_turnaround.create_ts.year": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "VariationSource": "CREATE_TS",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Year"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "create ts year": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "year": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "create ts yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "vw_lab_order_turnaround.create_ts.quarter": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "VariationSource": "CREATE_TS",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Quarter"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "create ts quarter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "quarter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "create ts qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.846
+			          }
+			        },
+			        {
+			          "qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.818
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "vw_lab_order_turnaround.create_ts.month": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "VariationSource": "CREATE_TS",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Month"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "create ts month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "create ts mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "vw_lab_order_turnaround.create_ts.day": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "VariationSource": "CREATE_TS",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Day"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "create ts day": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "day": {
+			            "State": "Generated"
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "vw_lab_order_turnaround.service_area": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "ConceptualProperty": "Service Area"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "service area": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "area": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "service region": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "service locale": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "service locality": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "service neighbourhood": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "locale": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "locality": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "neighbourhood": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "service district": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "service continent": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "service field": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround.hospital": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "ConceptualProperty": "Hospital"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "hospital": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "infirmary": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "hospice": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "sickbay": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "sanatorium": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "clinic": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "Collection Hospital": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround.state": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND",
+			          "ConceptualProperty": "States"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {},
+			        {
+			          "province": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "territory": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "nation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "condition": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "country": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "State(s)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "perspective": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Perspective"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "perspective": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "viewpoint": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "standpoint": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "outlook": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "perception": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "evaluation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "assessment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "view": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "side": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "angle": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "take": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        }
+			      ]
+			    },
+			    "perspective.location": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Perspective",
+			          "ConceptualProperty": "Location"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "location": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "locality": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "placement": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "scene": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "venue": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "address": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "place": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "position": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "setting": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "site": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "spot": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ]
+			    },
+			    "perspective.parameter_field": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Perspective",
+			          "ConceptualProperty": "Parameter Fields"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "parameter field": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "field": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "parameter arena": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "arena": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "parameter turf": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "parameter ground": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "parameter pitch": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "parameter park": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "turf": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "ground": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "pitch": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "park": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        }
+			      ]
+			    },
+			    "perspective.parameter_order": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Perspective",
+			          "ConceptualProperty": "Parameter Order"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "parameter order": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "order": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "parameter instruction": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "parameter direction": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "parameter edict": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "instruction": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "direction": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "edict": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "parameter command": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "parameter directive": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "parameter demand": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "parameter mandate": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        }
+			      ]
+			    }
+			  },
+			  "Relationships": {
+			    "vw_lab_order_turnaround_create_ts_date_hierarchy_has_vw_lab_order_turnaround_create_ts_day": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround.create_ts.date_hierarchy": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.create_ts.date_hierarchy"
+			          }
+			        },
+			        "vw_lab_order_turnaround.create_ts.day": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.create_ts.day"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround.create_ts.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.create_ts.day"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "create_ts_date_hierarchy_have_create_ts_day"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_create_ts_date_hierarchy_has_vw_lab_order_turnaround_create_ts_month": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround.create_ts.date_hierarchy": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.create_ts.date_hierarchy"
+			          }
+			        },
+			        "vw_lab_order_turnaround.create_ts.month": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.create_ts.month"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround.create_ts.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.create_ts.month"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "create_ts_date_hierarchy_have_create_ts_month"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_create_ts_date_hierarchy_has_vw_lab_order_turnaround_create_ts_quarter": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround.create_ts.date_hierarchy": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.create_ts.date_hierarchy"
+			          }
+			        },
+			        "vw_lab_order_turnaround.create_ts.quarter": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.create_ts.quarter"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround.create_ts.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.create_ts.quarter"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "create_ts_date_hierarchy_have_create_ts_quarter"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_create_ts_date_hierarchy_has_vw_lab_order_turnaround_create_ts_year": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround.create_ts.date_hierarchy": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.create_ts.date_hierarchy"
+			          }
+			        },
+			        "vw_lab_order_turnaround.create_ts.year": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.create_ts.year"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround.create_ts.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.create_ts.year"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "create_ts_date_hierarchy_have_create_ts_year"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_create_ts_has_date_hierarchy": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround.create_ts": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.create_ts"
+			          }
+			        },
+			        "vw_lab_order_turnaround.create_ts.date_hierarchy": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.create_ts.date_hierarchy"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround.create_ts"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.create_ts.date_hierarchy"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "create_ts_have_create_ts_date_hierarchy"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_arrival_dt_date_hierarchy_has_vw_lab_order_turnaround_arrival_dt_day": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround.arrival_dt.date_hierarchy": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.arrival_dt.date_hierarchy"
+			          }
+			        },
+			        "vw_lab_order_turnaround.arrival_dt.day": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.arrival_dt.day"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround.arrival_dt.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.arrival_dt.day"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "arrival_dt_date_hierarchies_have_arrival_dt_days"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_arrival_dt_date_hierarchy_has_vw_lab_order_turnaround_arrival_dt_month": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround.arrival_dt.date_hierarchy": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.arrival_dt.date_hierarchy"
+			          }
+			        },
+			        "vw_lab_order_turnaround.arrival_dt.month": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.arrival_dt.month"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround.arrival_dt.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.arrival_dt.month"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "arrival_dt_date_hierarchies_have_arrival_dt_months"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_arrival_dt_date_hierarchy_has_vw_lab_order_turnaround_arrival_dt_quarter": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround.arrival_dt.date_hierarchy": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.arrival_dt.date_hierarchy"
+			          }
+			        },
+			        "vw_lab_order_turnaround.arrival_dt.quarter": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.arrival_dt.quarter"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround.arrival_dt.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.arrival_dt.quarter"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "arrival_dt_date_hierarchies_have_arrival_dt_quarters"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_arrival_dt_date_hierarchy_has_vw_lab_order_turnaround_arrival_dt_year": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround.arrival_dt.date_hierarchy": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.arrival_dt.date_hierarchy"
+			          }
+			        },
+			        "vw_lab_order_turnaround.arrival_dt.year": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.arrival_dt.year"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround.arrival_dt.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.arrival_dt.year"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "arrival_dt_date_hierarchies_have_arrival_dt_years"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_arrival_dt_has_date_hierarchy": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround.arrival_dt": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.arrival_dt"
+			          }
+			        },
+			        "vw_lab_order_turnaround.arrival_dt.date_hierarchy": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.arrival_dt.date_hierarchy"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround.arrival_dt"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.arrival_dt.date_hierarchy"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "arrival_dts_have_arrival_dt_date_hierarchies"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_collection_dt_date_hierarchy_has_vw_lab_order_turnaround_collection_dt_day": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround.collection_dt.date_hierarchy": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.collection_dt.date_hierarchy"
+			          }
+			        },
+			        "vw_lab_order_turnaround.collection_dt.day": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.collection_dt.day"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround.collection_dt.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.collection_dt.day"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "collection_dt_date_hierarchies_have_collection_dt_days"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_collection_dt_date_hierarchy_has_vw_lab_order_turnaround_collection_dt_month": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround.collection_dt.date_hierarchy": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.collection_dt.date_hierarchy"
+			          }
+			        },
+			        "vw_lab_order_turnaround.collection_dt.month": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.collection_dt.month"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround.collection_dt.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.collection_dt.month"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "collection_dt_date_hierarchies_have_collection_dt_months"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_collection_dt_date_hierarchy_has_vw_lab_order_turnaround_collection_dt_quarter": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround.collection_dt.date_hierarchy": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.collection_dt.date_hierarchy"
+			          }
+			        },
+			        "vw_lab_order_turnaround.collection_dt.quarter": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.collection_dt.quarter"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround.collection_dt.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.collection_dt.quarter"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "collection_dt_date_hierarchies_have_collection_dt_quarters"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_collection_dt_date_hierarchy_has_vw_lab_order_turnaround_collection_dt_year": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround.collection_dt.date_hierarchy": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.collection_dt.date_hierarchy"
+			          }
+			        },
+			        "vw_lab_order_turnaround.collection_dt.year": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.collection_dt.year"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround.collection_dt.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.collection_dt.year"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "collection_dt_date_hierarchies_have_collection_dt_years"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_collection_dt_has_date_hierarchy": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround.collection_dt": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.collection_dt"
+			          }
+			        },
+			        "vw_lab_order_turnaround.collection_dt.date_hierarchy": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.collection_dt.date_hierarchy"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround.collection_dt"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.collection_dt.date_hierarchy"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "collection_dts_have_collection_dt_date_hierarchies"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_result_dt_date_hierarchy_has_vw_lab_order_turnaround_result_dt_day": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround.result_dt.date_hierarchy": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.result_dt.date_hierarchy"
+			          }
+			        },
+			        "vw_lab_order_turnaround.result_dt.day": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.result_dt.day"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround.result_dt.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.result_dt.day"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "result_dt_date_hierarchies_have_result_dt_days"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_result_dt_date_hierarchy_has_vw_lab_order_turnaround_result_dt_month": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround.result_dt.date_hierarchy": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.result_dt.date_hierarchy"
+			          }
+			        },
+			        "vw_lab_order_turnaround.result_dt.month": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.result_dt.month"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround.result_dt.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.result_dt.month"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "result_dt_date_hierarchies_have_result_dt_months"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_result_dt_date_hierarchy_has_vw_lab_order_turnaround_result_dt_quarter": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround.result_dt.date_hierarchy": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.result_dt.date_hierarchy"
+			          }
+			        },
+			        "vw_lab_order_turnaround.result_dt.quarter": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.result_dt.quarter"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround.result_dt.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.result_dt.quarter"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "result_dt_date_hierarchies_have_result_dt_quarters"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_result_dt_date_hierarchy_has_vw_lab_order_turnaround_result_dt_year": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround.result_dt.date_hierarchy": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.result_dt.date_hierarchy"
+			          }
+			        },
+			        "vw_lab_order_turnaround.result_dt.year": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.result_dt.year"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround.result_dt.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.result_dt.year"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "result_dt_date_hierarchies_have_result_dt_years"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_result_dt_has_date_hierarchy": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround.result_dt": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.result_dt"
+			          }
+			        },
+			        "vw_lab_order_turnaround.result_dt.date_hierarchy": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.result_dt.date_hierarchy"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround.result_dt"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.result_dt.date_hierarchy"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "result_dts_have_result_dt_date_hierarchies"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_result_date_date_hierarchy_has_vw_lab_order_turnaround_result_date_day": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround.result_date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.result_date.date_hierarchy"
+			          }
+			        },
+			        "vw_lab_order_turnaround.result_date.day": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.result_date.day"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround.result_date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.result_date.day"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "result_date_hierarchies_have_result_days"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_result_date_date_hierarchy_has_vw_lab_order_turnaround_result_date_month": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround.result_date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.result_date.date_hierarchy"
+			          }
+			        },
+			        "vw_lab_order_turnaround.result_date.month": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.result_date.month"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround.result_date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.result_date.month"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "result_date_hierarchies_have_result_months"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_result_date_date_hierarchy_has_vw_lab_order_turnaround_result_date_quarter": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround.result_date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.result_date.date_hierarchy"
+			          }
+			        },
+			        "vw_lab_order_turnaround.result_date.quarter": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.result_date.quarter"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround.result_date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.result_date.quarter"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "result_date_hierarchies_have_result_quarters"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_result_date_date_hierarchy_has_vw_lab_order_turnaround_result_date_year": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround.result_date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.result_date.date_hierarchy"
+			          }
+			        },
+			        "vw_lab_order_turnaround.result_date.year": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.result_date.year"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround.result_date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.result_date.year"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "result_date_hierarchies_have_result_years"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_result_date_has_date_hierarchy": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround.result_date": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.result_date"
+			          }
+			        },
+			        "vw_lab_order_turnaround.result_date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.result_date.date_hierarchy"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround.result_date"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.result_date.date_hierarchy"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "result_dates_have_result_date_hierarchies"
+			        }
+			      ]
+			    },
+			    "perspective_has_location": {
+			      "Binding": {
+			        "ConceptualEntity": "Perspective"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "perspective": {
+			          "Target": {
+			            "Entity": "perspective"
+			          }
+			        },
+			        "perspective.location": {
+			          "Target": {
+			            "Entity": "perspective.location"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "perspective"
+			            },
+			            "Object": {
+			              "Role": "perspective.location"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "perspectives_have_locations"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_has_state": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround"
+			          }
+			        },
+			        "vw_lab_order_turnaround.state": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.state"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.state"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "vw_lab_order_turnarounds_have_states"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_has_hospital": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround"
+			          }
+			        },
+			        "vw_lab_order_turnaround.hospital": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.hospital"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.hospital"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "vw_lab_order_turnarounds_have_hospitals"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_has_service_area": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround"
+			          }
+			        },
+			        "vw_lab_order_turnaround.service_area": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.service_area"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.service_area"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "vw_lab_order_turnarounds_have_service_areas"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_has_create_ts": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround"
+			          }
+			        },
+			        "vw_lab_order_turnaround.create_ts": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.create_ts"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.create_ts"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "vw_lab_order_turnarounds_have_create_ts"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_has_arrival_dt": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround"
+			          }
+			        },
+			        "vw_lab_order_turnaround.arrival_dt": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.arrival_dt"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.arrival_dt"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "vw_lab_order_turnarounds_have_arrival_dts"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_has_collection_dt": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround"
+			          }
+			        },
+			        "vw_lab_order_turnaround.collection_dt": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.collection_dt"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.collection_dt"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "vw_lab_order_turnarounds_have_collection_dts"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_has_result_dt": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround"
+			          }
+			        },
+			        "vw_lab_order_turnaround.result_dt": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.result_dt"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.result_dt"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "vw_lab_order_turnarounds_have_result_dts"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_has_priority": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround"
+			          }
+			        },
+			        "vw_lab_order_turnaround.priority": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.priority"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.priority"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "vw_lab_order_turnarounds_have_priorities"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_has_arv_to_rslt": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround"
+			          }
+			        },
+			        "vw_lab_order_turnaround.arv_to_rslt": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.arv_to_rslt"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.arv_to_rslt"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "vw_lab_order_turnarounds_have_arv_to_rslt"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_has_rcv_to_rslt": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround"
+			          }
+			        },
+			        "vw_lab_order_turnaround.rcv_to_rslt": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.rcv_to_rslt"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.rcv_to_rslt"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "vw_lab_order_turnarounds_have_rcv_to_rslt"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_has_result_date": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround"
+			          }
+			        },
+			        "vw_lab_order_turnaround.result_date": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.result_date"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.result_date"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "vw_lab_order_turnarounds_have_result_dates"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_has_order_id": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround"
+			          }
+			        },
+			        "vw_lab_order_turnaround.order_id": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.order_id"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.order_id"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "vw_lab_order_turnarounds_have_order_ids"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_has_csn": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround"
+			          }
+			        },
+			        "vw_lab_order_turnaround.csn": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.csn"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.csn"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "vw_lab_order_turnarounds_have_csns"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_has_proc_name": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround"
+			          }
+			        },
+			        "vw_lab_order_turnaround.proc_name": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.proc_name"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.proc_name"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "vw_lab_order_turnarounds_have_proc_names"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_has_resulting_lab": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround"
+			          }
+			        },
+			        "vw_lab_order_turnaround.resulting_lab": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.resulting_lab"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.resulting_lab"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "vw_lab_order_turnarounds_have_resulting_labs"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_has_collecting_hospital": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround"
+			          }
+			        },
+			        "vw_lab_order_turnaround.collecting_hospital": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.collecting_hospital"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.collecting_hospital"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "vw_lab_order_turnarounds_have_collecting_hospitals"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_has_collecting_service_area": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround"
+			          }
+			        },
+			        "vw_lab_order_turnaround.collecting_service_area": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.collecting_service_area"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.collecting_service_area"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "vw_lab_order_turnarounds_have_collecting_service_areas"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_has_collecting_region": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround"
+			          }
+			        },
+			        "vw_lab_order_turnaround.collecting_region": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.collecting_region"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.collecting_region"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "vw_lab_order_turnarounds_have_collecting_regions"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_has_enterprise": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround"
+			          }
+			        },
+			        "vw_lab_order_turnaround.enterprise": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.enterprise"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.enterprise"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "vw_lab_order_turnarounds_have_enterprises"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_has_silo": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround"
+			          }
+			        },
+			        "vw_lab_order_turnaround.silo": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.silo"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround"
+			            },
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.silo"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "vw_lab_order_turnarounds_have_silos"
+			        }
+			      ]
+			    },
+			    "perspective_in_location": {
+			      "Binding": {
+			        "ConceptualEntity": "Perspective"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "perspective": {
+			          "Target": {
+			            "Entity": "perspective"
+			          }
+			        },
+			        "perspective.location": {
+			          "Target": {
+			            "Entity": "perspective.location"
+			          }
+			        }
+			      },
+			      "SemanticSlots": {
+			        "Where": {
+			          "Role": "perspective.location"
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "perspective"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "perspective.location"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "perspectives_are_in_locations"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_in_state": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround"
+			          }
+			        },
+			        "vw_lab_order_turnaround.state": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.state"
+			          }
+			        }
+			      },
+			      "SemanticSlots": {
+			        "Where": {
+			          "Role": "vw_lab_order_turnaround.state"
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.state"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "vw_lab_order_turnarounds_are_in_states"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_in_service_area": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround"
+			          }
+			        },
+			        "vw_lab_order_turnaround.service_area": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.service_area"
+			          }
+			        }
+			      },
+			      "SemanticSlots": {
+			        "Where": {
+			          "Role": "vw_lab_order_turnaround.service_area"
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.service_area"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "vw_lab_order_turnarounds_are_in_service_areas"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_in_collecting_service_area": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround"
+			          }
+			        },
+			        "vw_lab_order_turnaround.collecting_service_area": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.collecting_service_area"
+			          }
+			        }
+			      },
+			      "SemanticSlots": {
+			        "Where": {
+			          "Role": "vw_lab_order_turnaround.collecting_service_area"
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.collecting_service_area"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "vw_lab_order_turnarounds_are_in_collecting_service_areas"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_in_collecting_region": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround"
+			          }
+			        },
+			        "vw_lab_order_turnaround.collecting_region": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.collecting_region"
+			          }
+			        }
+			      },
+			      "SemanticSlots": {
+			        "Where": {
+			          "Role": "vw_lab_order_turnaround.collecting_region"
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "vw_lab_order_turnaround"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround.collecting_region"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "vw_lab_order_turnarounds_are_in_collecting_regions"
+			        }
+			      ]
+			    },
+			    "vw_lab_order_turnaround_is_resulted_on_result_date": {
+			      "Binding": {
+			        "ConceptualEntity": "VW_LAB_ORDER_TURNAROUND"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "vw_lab_order_turnaround": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround"
+			          }
+			        },
+			        "vw_lab_order_turnaround.result_date": {
+			          "Target": {
+			            "Entity": "vw_lab_order_turnaround.result_date"
+			          }
+			        }
+			      },
+			      "SemanticSlots": {
+			        "When": {
+			          "Role": "vw_lab_order_turnaround.result_date"
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Verb": {
+			            "Verbs": [
+			              {
+			                "result": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "vw_lab_order_turnaround"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.9,
+			          "ID": "vw_lab_order_turnarounds_are_resulted_on_result_dates"
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+

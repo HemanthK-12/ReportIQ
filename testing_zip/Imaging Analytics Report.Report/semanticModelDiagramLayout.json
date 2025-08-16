@@ -1,0 +1,139 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 136,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "Measures Table",
+          "nodeLineageTag": "e6584f90-53fc-461e-942b-4421b99dfb1c",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 284,
+            "y": 62
+          },
+          "nodeIndex": "Date Last Refreshed",
+          "nodeLineageTag": "4c6f8ad4-462f-4e7b-a80d-2ed341bf2ab9",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 568,
+            "y": 74
+          },
+          "nodeIndex": "Cycle Time Selector",
+          "nodeLineageTag": "a4614477-e365-41e6-b89d-31c57b6cd393",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 852,
+            "y": 62
+          },
+          "nodeIndex": "Display Level",
+          "nodeLineageTag": "c4a84e59-f6fe-4cf4-a5e6-8c6e65e452eb",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1136,
+            "y": 0
+          },
+          "nodeIndex": "Imaging",
+          "nodeLineageTag": "cbab7477-2333-4da6-a870-69d56354d8ba",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1420,
+            "y": 0
+          },
+          "nodeIndex": "NOSHOW_CANCEL_APPOINTMENT",
+          "nodeLineageTag": "5c59def3-f01d-4201-89fc-da5d456985af",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1704,
+            "y": 86
+          },
+          "nodeIndex": "SelectedLevel",
+          "nodeLineageTag": "85a4b119-13e0-4a91-9c08-66eaa2959df6",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1988,
+            "y": 0
+          },
+          "nodeIndex": "VW_PREVENTABLE_DENIAL",
+          "nodeLineageTag": "ddaff50a-2714-40b8-9f87-45e44555cbb1",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2272,
+            "y": 74
+          },
+          "nodeIndex": "WaitingDaysGroup",
+          "nodeLineageTag": "eaacab50-a287-415d-8caa-97f8f4c4be2c",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

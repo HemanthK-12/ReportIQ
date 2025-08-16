@@ -1,0 +1,18 @@
+/// Switch ACOE_DEV to ACOE_PROD
+expression 'Environment Switch CDW Schema' = "ACOE_PROD" meta [IsParameterQuery=true, List={"ACOE_DEV", "ACOE_PROD"}, DefaultValue="ACOE_DEV", Type="Text", IsParameterQueryRequired=true]
+	lineageTag: e5c6bc2f-6d56-4176-8d51-fcbf6213d7d6
+
+	annotation PBI_ResultType = Text
+
+expression 'Measures and Calc' =
+		let
+		    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+		    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}})
+		in
+		    #"Changed Type"
+	lineageTag: 93e19820-78bd-4085-afe9-1a79532d6dce
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

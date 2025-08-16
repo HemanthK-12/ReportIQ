@@ -1,0 +1,15 @@
+relationship 3dfbf6dc-d6fc-4654-b0df-0a4e9595ad7a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_LAB_ORDER_TURNAROUND.RESULT_DATE
+	toColumn: LocalDateTable_2f9ad19d-57dc-4df6-85c5-dae426cd7a6d.Date
+
+relationship c346aa74-5a42-4c7f-9db7-c9fe6f828b53
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_LAB_ORDER_TURNAROUND.RESULT_DT
+	toColumn: LocalDateTable_13609593-0ef3-46f2-87f8-ac3e6b31411e.Date
+
+relationship 139c472a-3048-4987-89ab-a8c22b3c7ed2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_LAB_ORDER_TURNAROUND.CREATE_TS
+	toColumn: LocalDateTable_1d0705c1-c62b-4ee1-8670-a3ab529cb3bc.Date
+

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Acute Care Market Intelligence Test"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "20c2591a-aba4-450d-afe2-ba809f77b0bb"
+  }
+}

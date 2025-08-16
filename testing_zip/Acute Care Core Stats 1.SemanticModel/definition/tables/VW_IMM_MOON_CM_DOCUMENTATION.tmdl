@@ -1,0 +1,452 @@
+table VW_IMM_MOON_CM_DOCUMENTATION
+	lineageTag: 947892e3-62ee-4a58-9992-96ccbc134930
+
+	measure '% of Cases with MOON' = CALCULATE(DISTINCTCOUNTNOBLANK(VW_IMM_MOON_CM_DOCUMENTATION[PAT_ENC_CSN_ID]), VW_IMM_MOON_CM_DOCUMENTATION[DOC_CATEGORY_NM]= "Moon")/DISTINCTCOUNTNOBLANK(VW_IMM_MOON_CM_DOCUMENTATION[PAT_ENC_CSN_ID])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 0819a880-dafa-4779-9688-55b611d5a5b7
+
+	measure '% of Cases with IMM' = CALCULATE(DISTINCTCOUNTNOBLANK(VW_IMM_MOON_CM_DOCUMENTATION[PAT_ENC_CSN_ID]), VW_IMM_MOON_CM_DOCUMENTATION[DOC_CATEGORY_NM]= "IMM")/DISTINCTCOUNTNOBLANK(VW_IMM_MOON_CM_DOCUMENTATION[PAT_ENC_CSN_ID])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 9daf1550-ecb0-444f-87e5-0a5448693259
+
+	measure 'Moon Case Count' = CALCULATE(DISTINCTCOUNTNOBLANK(VW_IMM_MOON_CM_DOCUMENTATION[PAT_ENC_CSN_ID]), VW_IMM_MOON_CM_DOCUMENTATION[DOC_CATEGORY_NM]= "Moon")
+		formatString: #,0
+		lineageTag: d88b53e2-7971-483d-a3bf-ef0ecda7c8a5
+
+	measure 'IMM Case Count' = CALCULATE(DISTINCTCOUNTNOBLANK(VW_IMM_MOON_CM_DOCUMENTATION[PAT_ENC_CSN_ID]), VW_IMM_MOON_CM_DOCUMENTATION[DOC_CATEGORY_NM]= "IMM")
+		formatString: 0
+		lineageTag: 37af3fd6-9ce5-4314-b914-d75fa5621210
+
+	column DOC_INFO_ID
+		dataType: string
+		lineageTag: 554f1d21-a550-4531-81e5-152323eee2ad
+		summarizeBy: none
+		sourceColumn: DOC_INFO_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PAT_ENC_CSN_ID
+		dataType: double
+		lineageTag: e1a4287d-08bb-4655-805f-e44b8c9a0d5e
+		summarizeBy: count
+		sourceColumn: PAT_ENC_CSN_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column HAR
+		dataType: double
+		lineageTag: 83ddfd17-5c14-4fd4-bf4c-da9d011363a0
+		summarizeBy: none
+		sourceColumn: HAR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PAT_MRN_ID
+		dataType: string
+		lineageTag: 41bbfdb9-73f4-4635-8a6c-b9a2519fa7de
+		summarizeBy: none
+		sourceColumn: PAT_MRN_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACCOUNT_CLASS_NM
+		dataType: string
+		lineageTag: 5836d627-eefa-40ce-8d46-9ab49bcbaf45
+		summarizeBy: none
+		sourceColumn: ACCOUNT_CLASS_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column DOC_CATEGORY_NM
+		dataType: string
+		lineageTag: ce16beac-4a5e-49d8-acef-a485a24f7224
+		summarizeBy: none
+		sourceColumn: DOC_CATEGORY_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column DOCUMENT_TYPE_NM
+		dataType: string
+		lineageTag: 8f1909b4-0ab4-4e9a-96f0-7de6ea6f6773
+		summarizeBy: none
+		sourceColumn: DOCUMENT_TYPE_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column SIGNED_STATUS_NM
+		dataType: string
+		lineageTag: aa925faa-f186-4e08-a7c5-0b930d2915c3
+		summarizeBy: none
+		sourceColumn: SIGNED_STATUS_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADMIT_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0b2fcb2a-cf30-4f3e-9799-b768731d40d9
+		summarizeBy: none
+		sourceColumn: ADMIT_DTS
+
+		variation Variation
+			isDefault
+			relationship: b09eb383-8f5b-4e21-9475-51480e08324e
+			defaultHierarchy: LocalDateTable_18008ad4-fc5a-475f-8446-c7060b5fa305.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCHARGE_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ac9212ef-6c6a-432e-a441-a2d37aa1f1b9
+		summarizeBy: none
+		sourceColumn: DISCHARGE_DTS
+
+		variation Variation
+			isDefault
+			relationship: d35fcd61-110c-4bc2-a7af-db062610f35c
+			defaultHierarchy: LocalDateTable_e034cb5f-af86-46c4-abc3-81b8a398c8c8.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DOCUMENT_RECEIVED_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ee09f065-8d1c-452a-be97-28858660b445
+		summarizeBy: none
+		sourceColumn: DOCUMENT_RECEIVED_DTS
+
+		variation Variation
+			isDefault
+			relationship: 9a072f7a-cae1-4616-838c-9a7d7cded42a
+			defaultHierarchy: LocalDateTable_2baa5f81-7e3e-4d23-bb97-63157a6562f6.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DOC_RECEIVED_TO_DISCHARGE_HOURS_NBR
+		dataType: double
+		lineageTag: b7b43c51-3bc8-4995-bffe-0eea5d0117c6
+		summarizeBy: sum
+		sourceColumn: DOC_RECEIVED_TO_DISCHARGE_HOURS_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DOC_RECEIVED_TO_DISCHARGE_DAYS_NBR
+		dataType: double
+		lineageTag: 03e5d57f-ae56-4e7e-b6fe-19b318485848
+		summarizeBy: sum
+		sourceColumn: DOC_RECEIVED_TO_DISCHARGE_DAYS_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RECEIVED_BY_NM
+		dataType: string
+		lineageTag: 45cc0f10-72eb-4181-a2f8-4fa4e9941028
+		summarizeBy: none
+		sourceColumn: RECEIVED_BY_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column RECEIVED_BY_CREDENTIAL_NM
+		dataType: string
+		lineageTag: 8505593f-0d2e-4951-b414-c8d640cd953e
+		summarizeBy: none
+		sourceColumn: RECEIVED_BY_CREDENTIAL_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column SCANNED_BY_NM
+		dataType: string
+		lineageTag: 8a10e391-002b-40fd-8aa5-da4b0676c824
+		summarizeBy: none
+		sourceColumn: SCANNED_BY_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column DEPARTMENT_NM
+		dataType: string
+		lineageTag: e5f44a81-8370-4f9e-90b7-c975cfb80756
+		summarizeBy: none
+		sourceColumn: DEPARTMENT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column LOCATION_NM
+		dataType: string
+		lineageTag: 93e2cccd-8d1d-4f9c-ba90-706e4aaf2013
+		summarizeBy: none
+		sourceColumn: LOCATION_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column CAMPUS_CD
+		dataType: string
+		lineageTag: 97a8b3cd-921f-4e0d-bb10-29a9b153489d
+		summarizeBy: none
+		sourceColumn: CAMPUS_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column SERVICE_AREA_NM
+		dataType: string
+		lineageTag: 8dd270a0-dfd3-4976-81ee-371c4837032a
+		summarizeBy: none
+		sourceColumn: SERVICE_AREA_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column REGION_NM
+		dataType: string
+		lineageTag: c0f2a1f5-b7da-4c38-bc0b-2e6a5535ff7a
+		summarizeBy: none
+		sourceColumn: REGION_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column PAYOR_NM
+		dataType: string
+		lineageTag: 01c85230-b676-48b4-a205-4b44f4ccf05b
+		summarizeBy: none
+		sourceColumn: PAYOR_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column PLAN_NM
+		dataType: string
+		lineageTag: e008116b-bf2a-4d0d-9688-f576502fb8e6
+		summarizeBy: none
+		sourceColumn: PLAN_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column FINANCIAL_CLASS_NM
+		dataType: string
+		lineageTag: f0d2a25a-d0f0-4bcc-ac0b-913134b671f4
+		summarizeBy: none
+		sourceColumn: FINANCIAL_CLASS_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column LENGTH_OF_STAY_DAYS_NBR
+		dataType: double
+		lineageTag: 7e540bd8-c1a9-4f9b-8f59-0bfa3162647a
+		summarizeBy: sum
+		sourceColumn: LENGTH_OF_STAY_DAYS_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DISCHARGE_DISPOSITION_DSC
+		dataType: string
+		lineageTag: b8935d86-6033-4d28-8dd8-62bea78c3f56
+		summarizeBy: none
+		sourceColumn: DISCHARGE_DISPOSITION_DSC
+
+		annotation SummarizationSetBy = Automatic
+
+	column COMPLIANCE_IND
+		dataType: double
+		lineageTag: 611d0a29-368d-448c-a286-50cac5e25f29
+		summarizeBy: sum
+		sourceColumn: COMPLIANCE_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LESS_THAN_0_HOURS_COMPLIANCE_IND
+		dataType: double
+		lineageTag: 0464f767-c16a-4eee-8a52-24264fb12538
+		summarizeBy: sum
+		sourceColumn: LESS_THAN_0_HOURS_COMPLIANCE_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LOS_CATEGORY
+		dataType: string
+		lineageTag: 5c4d657d-4aa3-413b-a859-ea94ce3cf04b
+		summarizeBy: none
+		sourceColumn: LOS_CATEGORY
+
+		annotation SummarizationSetBy = Automatic
+
+	column MOON_OBS_EVENT_ID
+		dataType: double
+		lineageTag: 6af46765-8b5a-4748-8168-b7bb0cdc2128
+		summarizeBy: count
+		sourceColumn: MOON_OBS_EVENT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MOON_OBS_START_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 689d589c-bf86-4567-ae34-c1edbefdf55b
+		summarizeBy: none
+		sourceColumn: MOON_OBS_START_DTS
+
+		variation Variation
+			isDefault
+			relationship: f5a369aa-322a-469c-9f1e-d49525996101
+			defaultHierarchy: LocalDateTable_9e2fcd4b-7a59-4ab5-b880-35e929684cd4.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column MOON_OBS_EFFECTIVE_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b0ea5b5a-f1d4-43d5-81ee-4f94bd3c9271
+		summarizeBy: none
+		sourceColumn: MOON_OBS_EFFECTIVE_DTS
+
+		variation Variation
+			isDefault
+			relationship: 4594e70a-f065-48a4-ac4e-e09b277805e7
+			defaultHierarchy: LocalDateTable_6c1908f6-6f62-470f-b142-f792c5430335.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column MOON_OBS_ENTRY_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a8640147-5e8c-455b-add2-25ab48dc8a74
+		summarizeBy: none
+		sourceColumn: MOON_OBS_ENTRY_DTS
+
+		variation Variation
+			isDefault
+			relationship: e334087d-14a0-4fb7-97c8-ba681a8e7017
+			defaultHierarchy: LocalDateTable_b82fe590-52ea-4001-b892-2cf058413b13.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column MOON_OBS_COMPLIANCE_HOURS_NBR
+		dataType: double
+		lineageTag: a3c71fcf-2925-430a-b312-b3ee4fa35c2f
+		summarizeBy: sum
+		sourceColumn: MOON_OBS_COMPLIANCE_HOURS_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MOON_OBS_DURATION_HOURS_NBR
+		dataType: double
+		lineageTag: 672171d7-6492-446f-97be-4cba4e4a7751
+		summarizeBy: sum
+		sourceColumn: MOON_OBS_DURATION_HOURS_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DISCHARGE_WEEKS_AGO_NBR
+		dataType: double
+		lineageTag: 200ac8e1-2b19-4776-b9dc-69647639a668
+		summarizeBy: sum
+		sourceColumn: DISCHARGE_WEEKS_AGO_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DISCHARGE_MONTHS_AGO_NBR
+		dataType: double
+		lineageTag: 8aff6f96-ef78-4c06-92b3-fc1315cacf7d
+		summarizeBy: sum
+		sourceColumn: DISCHARGE_MONTHS_AGO_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DISCHARGE_YEARS_AGO_NBR
+		dataType: double
+		lineageTag: 23151475-2c36-48a9-9e1f-2c7198dcb5b6
+		summarizeBy: sum
+		sourceColumn: DISCHARGE_YEARS_AGO_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DEPARTMENTEPICID
+		dataType: string
+		lineageTag: 47d52193-f1d9-49c5-beb2-07b7db2d89a3
+		summarizeBy: none
+		sourceColumn: DEPARTMENTEPICID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCHARGE_DEPARTMENT_EPIC_ID
+		dataType: string
+		lineageTag: fcc0f006-89df-44e3-b438-a7446c99b78a
+		summarizeBy: none
+		sourceColumn: DISCHARGE_DEPARTMENT_EPIC_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCHARGINGPROVIDERKEY
+		dataType: double
+		lineageTag: 2d336560-f69c-4cf7-92cc-7f549ebac1a6
+		summarizeBy: sum
+		sourceColumn: DISCHARGINGPROVIDERKEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DISCHARGINGPROVIDERDURABLEKEY
+		dataType: double
+		lineageTag: f01d7081-0b96-4ec9-828f-0009f6195f0a
+		summarizeBy: sum
+		sourceColumn: DISCHARGINGPROVIDERDURABLEKEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MOON_OBS_EFFECTIVE_DT
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b1b2b911-64b3-42f3-8f61-d185ccb04b83
+		summarizeBy: none
+		sourceColumn: MOON_OBS_EFFECTIVE_DT
+
+		variation Variation
+			isDefault
+			relationship: 39807306-20d7-4214-8ec4-b3f91ecfc087
+			defaultHierarchy: LocalDateTable_36c17551-2d0f-47f5-9f15-a036dbf87554.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition VW_IMM_MOON_CM_DOCUMENTATION = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("psjh_prod.west-us-2.azure.snowflakecomputing.com","ACOE_WH_M",[Role="ACOE_REPORTING_RO"]),
+				    ACOE_DEV_Database = Source{[Name="ACOE_PROD",Kind="Database"]}[Data],
+				    RPT_PATIENT_JOURNEY_Schema = ACOE_DEV_Database{[Name="RPT_PATIENT_JOURNEY",Kind="Schema"]}[Data],
+				    VW_IMM_MOON_CM_DOCUMENTATION_View = RPT_PATIENT_JOURNEY_Schema{[Name="VW_IMM_MOON_CM_DOCUMENTATION",Kind="View"]}[Data]
+				in
+				    VW_IMM_MOON_CM_DOCUMENTATION_View
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

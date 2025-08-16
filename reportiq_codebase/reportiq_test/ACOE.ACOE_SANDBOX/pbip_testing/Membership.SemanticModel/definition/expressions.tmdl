@@ -1,0 +1,7 @@
+expression DB_NAME = "ACOE_PROD" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: a2f55831-cf55-4e01-b507-9faffcba24ab
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+

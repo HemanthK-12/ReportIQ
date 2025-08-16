@@ -1,0 +1,53 @@
+table Parameter_Criteria
+	lineageTag: 4d3f882b-095b-4799-b035-1abb2ad7b4f3
+
+	column Parameter_Criteria
+		lineageTag: baff66bf-7289-484a-a768-72c57042ee4e
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter_Criteria Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter_Criteria Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter_Criteria Fields'
+		isHidden
+		lineageTag: 0aa9a6c7-e1b7-436b-a7b2-62d294d14c7f
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter_Criteria Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter_Criteria Order'
+		isHidden
+		formatString: 0
+		lineageTag: 72e63e29-a5a8-40e1-b5ef-0cc6126581cd
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Parameter_Criteria = calculated
+		mode: import
+		source =
+				{
+				    ("AdmAssess_%", NAMEOF('Metrics'[Admission Assessment %]), 0),
+				    ("AntDD_%", NAMEOF('Metrics'[Anticipated Discharge Disp %]), 1),
+				    ("ATRPLA_%", NAMEOF('Metrics'[Able to Return to PLA %]), 2),
+				    ("BarrierDischarge_%", NAMEOF('Metrics'[Barriers to Disch %]), 3),
+				    ("FamAgree_%", NAMEOF('Metrics'[Pt Family Agree w Plan %]), 4),
+				    ("Readd30_%", NAMEOF('Metrics'[Readmit Risk 30d %]), 5),
+				    ("ServAnt_%", NAMEOF('Metrics'[Serv Ant at Disch %]), 6)
+				}
+
+	annotation PBI_Id = 53238abd7ca84180944beb389740b46b
+

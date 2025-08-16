@@ -1,0 +1,37 @@
+table 'Data Source Display Sort'
+	lineageTag: 9d8a4892-0dfd-44a8-8041-dd4f80aee62e
+
+	column 'Data Source Display Order'
+		dataType: double
+		formatString: 0
+		lineageTag: dd47fa7c-f08b-48fc-8f5d-515ef0e76be0
+		summarizeBy: none
+		sourceColumn: Data Source Display Order
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Data Source Display Name'
+		dataType: string
+		lineageTag: d7f20599-e6e6-4207-be4e-097c40a39670
+		summarizeBy: none
+		sourceColumn: Data Source Display Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Data Source Display Sort' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlTSUQooyswvyizJrEpNUYrViVYyAoo5u4SD2cZAdpCji1JsLAA=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Data Source Display Order" = _t, #"Data Source Display Name" = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Data Source Display Order", Int64.Type}, {"Data Source Display Name", type text}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Changed Type",1,0,Replacer.ReplaceValue,{"Data Source Display Order"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value",2,1,Replacer.ReplaceValue,{"Data Source Display Order"}),
+				    #"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1",3,2,Replacer.ReplaceValue,{"Data Source Display Order"}),
+				    #"Replaced Value3" = Table.ReplaceValue(#"Replaced Value2",0,3,Replacer.ReplaceValue,{"Data Source Display Order"})
+				in
+				    #"Replaced Value3"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

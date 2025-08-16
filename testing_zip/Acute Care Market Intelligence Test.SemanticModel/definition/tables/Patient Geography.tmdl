@@ -1,0 +1,56 @@
+table 'Patient Geography'
+	isHidden
+	lineageTag: 73faa30d-742b-40b4-a4ef-e84daa390d74
+
+	column 'Patient Geography'
+		isHidden
+		lineageTag: 51894400-f678-432a-ad84-0abed0a0ba2b
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Patient Geography Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Patient Geography Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Patient Geography Fields'
+		isHidden
+		lineageTag: 08fc7f98-f99a-46bf-b197-2feb56761ee2
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Patient Geography Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Patient Geography Order'
+		isHidden
+		formatString: 0
+		lineageTag: c148dfc3-7d32-4188-94b7-98750476c03f
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Patient Geography' = calculated
+		mode: import
+		source =
+				{
+				    ("PATIENT SYSTEM", NAMEOF('DIM_PATIENT'[PATIENT_SYSTEM_NM]), 0),
+				    ("PATIENT DIVISION", NAMEOF('DIM_PATIENT'[PATIENT_DIVISION_NM]), 1),
+				    ("PATIENT REGION", NAMEOF('DIM_PATIENT'[PATIENT_REGION_NM]), 2),
+				    ("PATIENT SERVICE AREA", NAMEOF('DIM_PATIENT'[PATIENT_SERVICE_AREA_NM]), 3),
+				    ("PATIENT SUB SERVICE AREA", NAMEOF('DIM_PATIENT'[PATIENT_SUBSERVICE_AREA_NM]), 4),
+				    ("PATIENT COUNTY", NAMEOF('DIM_PATIENT'[PATIENT_STATE_COUNTY_NM]), 5),
+				    ("PATIENT CITY", NAMEOF('DIM_PATIENT'[PATIENT_CITY_STATE_NM]), 6),
+				    ("PATIENT ZIP", NAMEOF('DIM_PATIENT'[PATIENT_ZIP_CD]), 7)
+				}
+
+	annotation PBI_Id = e8f6bb3d010f4e9890ecf9ae463f893d
+

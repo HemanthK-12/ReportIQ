@@ -1,0 +1,102 @@
+table 'Patient Detail KPIs'
+	lineageTag: f9ecc8c3-960e-407b-98ec-4b78a4b433b8
+
+	column Parameter
+		lineageTag: 385b8375-c9aa-4dea-89b2-a0b066714625
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Fields'
+		isHidden
+		lineageTag: eafc270d-56d0-4d20-876c-868e97f43c72
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: bfacb4d1-f55b-492f-8520-f901336483ac
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Patient Detail KPIs' = calculated
+		mode: import
+		source = ```
+				{
+				    ("System", NAMEOF('VW_PCP_CORE_STATS'[System]), 0),
+				    ("Division", NAMEOF('VW_PCP_CORE_STATS'[Division]), 1),
+				    ("Service Area", NAMEOF('VW_PCP_CORE_STATS'[Clinical Service Area]), 2),
+				    ("Location", NAMEOF('VW_PCP_CORE_STATS'[Location]), 3),
+				    ("Department", NAMEOF('VW_PCP_CORE_STATS'[Department]), 4),
+				    ("Attending Provider", NAMEOF(VW_PCP_CORE_STATS[First Attending Provider]), 5),
+				    ("Attending Provider Specialty", NAMEOF(VW_PCP_CORE_STATS[FIRST_ATTENDING_PROVIDER_SPECIALTY_NM]),6),
+				    ("Attending Provider Type", NAMEOF(VW_PCP_CORE_STATS[FIRST_ATTENDING_PROVIDER_TYPE_NM]),7),
+				    ("Discharging Provider", NAMEOF(VW_PCP_CORE_STATS[DISCHARGINGPROVIDERNAME]), 8),
+				    ("Discharging Provider Specialty", NAMEOF(VW_PCP_CORE_STATS[DISCHARGING_PROVIDER_SPECIALTY_NM]), 9),
+				    ("Discharging Provider Type", NAMEOF(VW_PCP_CORE_STATS[DISCHARGING_PROVIDER_TYPE_NM]), 10),
+				    ("Case Manager", NAMEOF('VW_PCP_CORE_STATS'[Case Manager]),11),
+				    ("Financial Class", NAMEOF(VW_PCP_CORE_STATS[FINANCIALCLASS]),12),
+				    ("Patient Age Groups", NAMEOF(VW_PCP_CORE_STATS[AGE_GROUP_TXT]),13),
+				    ("Gender", NAMEOF(VW_PCP_CORE_STATS[GENDERIDENTITY]),14),
+				    ("MS-DRG", NAMEOF(VW_PCP_CORE_STATS[MSDRG_DSC]),15),
+				    ("Patient Class", NAMEOF(VW_PCP_CORE_STATS[Patient Class]),16), 
+				    ("Payor", NAMEOF(VW_PCP_CORE_STATS[PRIM_PAYOR_PLAN_NM]),17),
+				    ("Provider Team", NAMEOF(VW_PCP_CORE_STATS[Provider Team]),18),
+				    ("Race/ Ethnicity", NAMEOF(DIM_PATIENT[ETHNICITY_RACE_CD]),19),
+				    ("Discharge Day of Week", NAMEOF(VW_PCP_CORE_STATS[DISCHARGE_DAY_OF_WEEK_TXT]), 20),
+				    ("Discharge Hour of Day", NAMEOF(VW_PCP_CORE_STATS[DISCHARGE_HOUR_OF_DAY_NBR]), 21),
+				    ("Discharge Disposition", NAMEOF(VW_PCP_CORE_STATS[Discharge Disposition]), 22),
+				    ("Admit Source", NAMEOF(VW_PCP_CORE_STATS[ADMISSION_SOURCE_DSC]), 23),
+				    ("Conditional Discharge?", NAMEOF(VW_PCP_CORE_STATS[Conditional Discharge?]), 24),
+				    ("30 day Readmits?", NAMEOF(VW_PCP_CORE_STATS[REVISIT_WITHIN_30_DAYS_YN]),25),
+				    ("LOS Intervals", NAMEOF(VW_PCP_CORE_STATS[LOS_INTERVAL_GROUPS_TXT]), 26),
+				    ("Discharge Disposition", NAMEOF(VW_PCP_CORE_STATS[Discharge Disposition]), 27),
+				    ("GMLOS O/E", NAMEOF([GMLOS O/E]), 29),
+				    ("Observed Inpatient LOS Days",NAMEOF(VW_PCP_CORE_STATS[OBSERVED_LOS_DAYS_NBR]), 30),
+				    ("Expected GMLOS", NAMEOF(VW_PCP_CORE_STATS[MSDRG_GM_LOS_NBR]), 31),
+				    ("Expected Pt Days", NAMEOF([Total Expected Pt Days]), 32),
+				    ("Observed Inpatient Pt Days", NAMEOF([Total Observed Pt Days]), 33),
+				    ("Opportunity Days", NAMEOF([Opportunity Days]), 34),
+				    ("30-Day Readmission O/E", NAMEOF([Conversion Rate]), 35),
+				    ("Observation Converstion Count", NAMEOF([Count of Conversions]), 36),
+				    ("Hours before Observation Conversion", NAMEOF(VW_PCP_CORE_STATS[OBS_HOURS_QTY]), 37),
+				    ("Inpatient < 24 hrs", NAMEOF('VW_PCP_CORE_STATS'[IP_LESS_THAN_24_HR_YN]), 38),
+				    ("Inpatient to Observation", NAMEOF('VW_PCP_CORE_STATS'[IP_TO_OBS_YN]), 39),
+				    ("Observation at Admissions", NAMEOF([Total Obs at Admissions]), 40),
+				    ("Observation Hours", NAMEOF(VW_PCP_CORE_STATS[OBS_HOURS_QTY]), 41),
+				    ("Observation LOS > 48 hrs", NAMEOF('VW_PCP_CORE_STATS'[OBS_MORE_THAN_48_HR_YN]), 42),    
+				    ("Observation Status", NAMEOF(VW_PCP_CORE_STATS[OBSERVATION_PATIENTCLASS_YN]), 43),
+				    ("Observation to Inpatient", NAMEOF('VW_PCP_CORE_STATS'[OBS_TO_IP_YN]), 44),
+				    ("Discharge before 11 am?", NAMEOF('VW_PCP_CORE_STATS'[DISCHARGE_ORDER_HOUR_BEFORE_11_AM_YN]), 45),
+				    ("Discharge Orders before 2 pm?", NAMEOF('VW_PCP_CORE_STATS'[DISCHARGE_ORDER_HOUR_BEFORE_2_PM_YN]), 46),
+				    ("Conditional Discharge Orders?", NAMEOF('VW_PCP_CORE_STATS'[Conditional Discharge?]), 47), 
+				    ("EDD entered within 24 hrs", NAMEOF('VW_PCP_CORE_STATS'[EDD_PRESENT_YN]), 48),
+				    ("MRD entered within 36 hrs", NAMEOF('VW_PCP_CORE_STATS'[MRD_PRESENT_YN]), 49),
+				    ("Discharge Order to Discharge TAT (Minutes)", NAMEOF(VW_PCP_CORE_STATS[Median Time between Order and Discharge Mins]), 50),
+				    ("1599 Cases", NAMEOF(VW_CM_STOP_BILL[1599 Case Count]), 51),
+				    ("Condition Code 44", NAMEOF(VW_CM_STOP_BILL[CC44 Case Count]), 52),
+				    ("IMM Cases",NAMEOF(VW_IMM_MOON_CM_DOCUMENTATION[IMM Case Count]), 53),
+				    ("Moon Cases",NAMEOF(VW_IMM_MOON_CM_DOCUMENTATION[Moon Case Count]), 54),
+				    ("SDOH Compliance", NAMEOF(VW_PCP_CORE_STATS[SDOH 1 SUM]), 55) 
+				}
+				```
+
+	annotation PBI_Id = 52c2f8883b814aa0a7017e9a2aa0657d
+

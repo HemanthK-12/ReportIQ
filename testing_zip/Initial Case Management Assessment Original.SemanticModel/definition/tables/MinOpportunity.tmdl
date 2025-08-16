@@ -1,0 +1,30 @@
+table MinOpportunity
+	lineageTag: 309ee0c7-307c-4938-8e9a-0b4ba073c6a5
+
+	measure 'MinOpportunity Value' = SELECTEDVALUE('MinOpportunity'[ComplianceTarget], 0)
+		formatString: 0
+		lineageTag: a5e85ef4-7e73-447c-b07f-9557ddd7431e
+
+	measure TotalCountFilter = IF([TotalEncounters] >= 'MinOpportunity'[MinOpportunity Value], 1, 0)
+		formatString: 0
+		lineageTag: 9c2268e2-f0b7-4387-b565-c983b4406822
+
+	column ComplianceTarget
+		formatString: 0
+		lineageTag: f1d4f49e-77ee-4620-8e4e-a87def93c443
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	partition MinOpportunity = calculated
+		mode: import
+		source = GENERATESERIES(0, 500000, 1000)
+
+	annotation PBI_Id = 595cb06a0ccb463a9409797c09165871
+

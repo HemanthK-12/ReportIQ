@@ -1,0 +1,84 @@
+{{ if .Values.deployment.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "reportiq.fullname" . }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    {{- include "reportiq.labels" . | nindent 4 }}
+    {{- with .Values.additionalDeploymentLabels}}
+          {{- toYaml . | nindent 4 }}
+    {{- end }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "reportiq.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "reportiq.selectorLabels" . | nindent 8 }}
+        azure.workload.identity/use: "true"
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "reportiq.serviceAccountName" . }}
+      # volumes:
+      #   - name: secrets-store01-inline
+      #     csi:
+      #       driver: secrets-store.csi.k8s.io
+      #       readOnly: true
+      #       volumeAttributes:
+      #         # IMPORTANT name needs to match metadata.name in your SecretProviderClass
+      #         secretProviderClass: {{ .Values.secretProviderClass.name }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            # - name: COMPLETION_MODEL_API_KEY
+            #   value: "test-key"
+            # - name: COMPLETION_MODEL_ENDPOINT
+            #   value: "https://aquilla01.openai.azure.com/openai/deployments/gpt-4o/chat/completions?api-version=2025-01-01-preview"
+            # - name: KV_URI
+            #   value: "{{ .Values.kvurl }}"
+            # - name: ADO_ACCESS_TOKEN
+            #   valueFrom:
+            #     secretKeyRef:
+            #       name: {{ .Values.kvSecretName }}
+            #       key: ADO_ACCESS_TOKEN
+          ports:
+            - name: http
+              containerPort: 3008
+              protocol: TCP
+          # volumeMounts:
+          #   - name: secrets-store01-inline
+          #     mountPath: "/app/secrets-store01"
+          #     readOnly: true
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{- end -}}

@@ -1,0 +1,179 @@
+table DIM_PROCEDURE
+	lineageTag: 06f072d3-200b-4736-85ed-00a0ae295454
+
+	column PROCEDURE_CD
+		dataType: string
+		lineageTag: a0d8060f-19c2-4346-a2f4-d906308d1a41
+		summarizeBy: none
+		sourceColumn: PROCEDURE_CD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROCEDURE_DSC
+		dataType: string
+		lineageTag: fffb4816-911a-48f5-ab82-ee49f85669ca
+		summarizeBy: none
+		sourceColumn: PROCEDURE_DSC
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROCEDURE_FULL_DSC
+		dataType: string
+		lineageTag: e35ae455-f1bd-42f7-92dc-bd08320152b8
+		summarizeBy: none
+		sourceColumn: PROCEDURE_FULL_DSC
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROCD_BODY_SYSTEM_CD
+		dataType: string
+		lineageTag: fdba1384-a831-4d96-b8da-f70afeebaf30
+		summarizeBy: none
+		sourceColumn: PROCD_BODY_SYSTEM_CD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROCD_BODY_SYSTEM_DSC
+		dataType: string
+		lineageTag: 4547a46c-b6b3-4f2a-a0e3-5638c7093766
+		summarizeBy: none
+		sourceColumn: PROCD_BODY_SYSTEM_DSC
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROCD_PRODUCT_LINE_CD
+		dataType: string
+		lineageTag: 90ba748b-7855-428e-9767-e104490e3012
+		summarizeBy: none
+		sourceColumn: PROCD_PRODUCT_LINE_CD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROCD_PRODUCT_LINE_NM
+		dataType: string
+		lineageTag: 323fcad2-2c11-4584-b5ac-592b2dddc30b
+		summarizeBy: none
+		sourceColumn: PROCD_PRODUCT_LINE_NM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROCD_PRODUCT_LINE_SUB_CD
+		dataType: string
+		lineageTag: 22c7b06c-5b42-4e32-8796-b0abb2831f3b
+		summarizeBy: none
+		sourceColumn: PROCD_PRODUCT_LINE_SUB_CD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROCD_PRODUCT_LINE_SUB_NM
+		dataType: string
+		lineageTag: b3709760-0bda-481b-acea-df3f19d4b7a3
+		summarizeBy: none
+		sourceColumn: PROCD_PRODUCT_LINE_SUB_NM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROCD_ROOT_OPERATION_CD
+		dataType: string
+		lineageTag: 79f252ea-e154-4e4a-974b-1df796ad37da
+		summarizeBy: none
+		sourceColumn: PROCD_ROOT_OPERATION_CD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROCD_ROOT_OPERATION_DSC
+		dataType: string
+		lineageTag: dc9291ec-6831-4270-a44f-e7b3f1e75ffa
+		summarizeBy: none
+		sourceColumn: PROCD_ROOT_OPERATION_DSC
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROCD_ROOT_OPERATION_LONG_DSC
+		dataType: string
+		lineageTag: 58c47775-f12f-4ccf-b8ff-fc3da0288358
+		summarizeBy: none
+		sourceColumn: PROCD_ROOT_OPERATION_LONG_DSC
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROCEDURE_TYPE_CD
+		dataType: string
+		lineageTag: 518b142b-819e-4fdf-846b-d16a7b6dea08
+		summarizeBy: none
+		sourceColumn: PROCEDURE_TYPE_CD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column UPDATE_DTS
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: f86a1793-671a-49f7-bb5e-8d390dd7842d
+		summarizeBy: none
+		sourceColumn: UPDATE_DTS
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column INSERT_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1ce082cc-b888-480f-983d-6df7af0812b5
+		summarizeBy: none
+		sourceColumn: INSERT_DTS
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ICD PX CD/DESC' = CONCATENATE(CONCATENATE(DIM_PROCEDURE[PROCEDURE_CD]," - "),DIM_PROCEDURE[PROCEDURE_DSC])
+		lineageTag: 1e67d3e3-5f26-4a7c-9a32-303248376367
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_PROCEDURE = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("psjh_prod.west-us-2.azure.snowflakecomputing.com",#"WH Name",[Role=#"Role Name"]),
+				    ACOE_PROD_Database = Source{[Name=DBName,Kind="Database"]}[Data],
+				    RPT_STATE_INTELLIMED_Schema = ACOE_PROD_Database{[Name="RPT_STATE_INTELLIMED",Kind="Schema"]}[Data],
+				    DIM_PROCEDURE_Table = RPT_STATE_INTELLIMED_Schema{[Name="DIM_PROCEDURE",Kind="Table"]}[Data]
+				in
+				    DIM_PROCEDURE_Table
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

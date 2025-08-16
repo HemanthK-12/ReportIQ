@@ -1,0 +1,53 @@
+table Parameter_Caregivers
+	lineageTag: dfa4c6f2-1a42-4262-bad2-f453b15d8eb9
+
+	column Parameter_Caregivers
+		lineageTag: f1d43f62-22af-4023-b592-4163cbdd8819
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter_Caregivers Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter_Caregivers Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter_Caregivers Fields'
+		isHidden
+		lineageTag: 2b2ac82b-1dd8-4868-abaa-cc502735a195
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter_Caregivers Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter_Caregivers Order'
+		isHidden
+		formatString: 0
+		lineageTag: 1dedf708-3db2-41a4-b9ca-7d1380130698
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Parameter_Caregivers = calculated
+		mode: import
+		source =
+				{
+				    ("ABLE_TRPLA_EMPLOYEE_NAME", NAMEOF('FSMain'[ABLE_TRPLA_EMPLOYEE_NAME]), 2),
+				    ("ADMISSION_ASSESSMENT_EMPLOYEE_NAME", NAMEOF('FSMain'[ADMISSION_ASSESSMENT_EMPLOYEE_NAME]), 0),
+				    ("ANTICIPATED_DISCHARGE_DISPOSITION_EMPLOYEE_NAME", NAMEOF('FSMain'[ANTICIPATED_DISCHARGE_DISPOSITION_EMPLOYEE_NAME]), 1),
+				    ("BARRIERS_TO_DISCHARGE_EMPLOYEE_NAME", NAMEOF('FSMain'[BARRIERS_TO_DISCHARGE_EMPLOYEE_NAME]), 3),
+				    ("PATIENT_FIAWP_EMPLOYEE_NAME", NAMEOF('FSMain'[PATIENT_FIAWP_EMPLOYEE_NAME]), 4),
+				    ("READMISSION_WITHIN_THE_LAST_30_DAYS_EMPLOYEE_NAME", NAMEOF('FSMain'[READMISSION_WITHIN_THE_LAST_30_DAYS_EMPLOYEE_NAME]), 5),
+				    ("SERVICES_ANTICIPATED_AT_DISCHARGE_EMPLOYEE_NAME", NAMEOF('FSMain'[SERVICES_ANTICIPATED_AT_DISCHARGE_EMPLOYEE_NAME]), 6)
+				}
+
+	annotation PBI_Id = 79e652d2d6bd4bd88258af7c351218a0
+

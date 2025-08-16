@@ -1,0 +1,314 @@
+table VW_PATIENT_ENGAGEMENT_VISIT_SUMMARY
+	lineageTag: 7691a9bb-a59f-4db0-8db1-06909bde9f92
+
+	measure SUM_NUMERATOR = SUM(VW_PATIENT_ENGAGEMENT_VISIT_SUMMARY[NUMERATOR_NBR])
+		lineageTag: 8b8f16ef-a37c-47e9-8501-5ecfe68ee7e4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure SUM_DENOMINATOR = COALESCE(SUM(VW_PATIENT_ENGAGEMENT_VISIT_SUMMARY[DENOMINATOR_NBR]),1)
+		lineageTag: 6f23e878-2cd9-4965-a455-78b38a8298ad
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Performance = VAR NUMERATOR_S = [SUM_NUMERATOR]  VAR DENOMINATORY_S = [SUM_DENOMINATOR] RETURN DIVIDE (NUMERATOR_S,DENOMINATORY_S)
+		formatString: #,0
+		lineageTag: ea76413a-3412-4853-b028-8f1aa94f3779
+
+	measure 'Score display1' = ```
+			IF (
+			    MAX([METRIC_NM]) = "Members (Period End)",format(VW_PATIENT_ENGAGEMENT_VISIT_SUMMARY[Performance],"General Number"),
+			    VW_PATIENT_ENGAGEMENT_VISIT_SUMMARY[Performance] 
+			)
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 0133964c-b8db-4d02-a382-726fbe6bca98
+
+	column 'Incurred Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2dbbc60b-2063-4f5c-a765-536fb19ae233
+		summarizeBy: none
+		sourceColumn: Incurred Date
+
+		variation Variation
+			isDefault
+			relationship: 947da6dc-1fe6-4ee6-aa67-87e108b2741c
+			defaultHierarchy: LocalDateTable_8f71a9ea-4ed3-49d6-8146-5e9a048d89a2.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column INCURRED_YEAR_NBR
+		dataType: double
+		formatString: 0
+		lineageTag: 45fc80f2-821f-4d71-84ff-51908bc08088
+		summarizeBy: none
+		sourceColumn: INCURRED_YEAR_NBR
+
+		annotation SummarizationSetBy = User
+
+	column YEAR_END_IND
+		dataType: double
+		formatString: 0
+		lineageTag: ad222609-2174-43fd-8dd0-e42865cf3798
+		summarizeBy: sum
+		sourceColumn: YEAR_END_IND
+
+		annotation SummarizationSetBy = Automatic
+
+	column METRIC_NM
+		dataType: string
+		lineageTag: 642f5baf-4fc8-47ef-bc90-9bdc2813f9dc
+		summarizeBy: none
+		sourceColumn: METRIC_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column MASTER_CONTRACT_NM
+		dataType: string
+		lineageTag: ef2876b8-507a-4b9f-a939-c92fea5349ad
+		summarizeBy: none
+		sourceColumn: MASTER_CONTRACT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Contract Cohort'
+		dataType: string
+		lineageTag: fe748cff-7ef3-4e5e-8bb6-278c501cb32e
+		summarizeBy: none
+		sourceColumn: Contract Cohort
+
+		annotation SummarizationSetBy = Automatic
+
+	column PAYOR_GEOGRAPHY_CD
+		dataType: string
+		lineageTag: a2c53955-9abc-4fdf-bb58-3b098ecab12c
+		summarizeBy: none
+		sourceColumn: PAYOR_GEOGRAPHY_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column PAYOR_REGION_CD
+		dataType: string
+		lineageTag: 41c010e4-bd66-49d4-94b7-2d79006f4661
+		summarizeBy: none
+		sourceColumn: PAYOR_REGION_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column PAYOR_REGION_DSC
+		dataType: string
+		lineageTag: 9674d1f3-60bb-4fb6-b708-0a984e5c2d65
+		summarizeBy: none
+		sourceColumn: PAYOR_REGION_DSC
+
+		annotation SummarizationSetBy = Automatic
+
+	column PAYOR_SUBREGION_CD
+		dataType: string
+		lineageTag: 938c456b-9020-4d0d-a98b-2ce2a05aa079
+		summarizeBy: none
+		sourceColumn: PAYOR_SUBREGION_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column PAYOR_SERVICE_AREA_NM
+		dataType: string
+		lineageTag: e7d261d1-6be9-4d34-bb64-d193e0425ff3
+		summarizeBy: none
+		sourceColumn: PAYOR_SERVICE_AREA_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column PAYOR_LINE_OF_BUSINESS_NM
+		dataType: string
+		lineageTag: 5bb07833-e375-40f9-afd8-e92c4054f86c
+		summarizeBy: none
+		sourceColumn: PAYOR_LINE_OF_BUSINESS_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column PAYOR_RISK_TYPE_NM
+		dataType: string
+		lineageTag: d714448d-7749-4d79-b3b5-240695fc1da6
+		summarizeBy: none
+		sourceColumn: PAYOR_RISK_TYPE_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column PAYOR_HCP_LAN_CATEGORY_DSC
+		dataType: string
+		lineageTag: fcc4418e-6ea6-4ba5-80ea-45cfdb21d925
+		summarizeBy: none
+		sourceColumn: PAYOR_HCP_LAN_CATEGORY_DSC
+
+		annotation SummarizationSetBy = Automatic
+
+	column EPIC_PCP_CATEGORY
+		dataType: string
+		lineageTag: 80881d85-f7cb-4807-bdcb-dc7680996143
+		summarizeBy: none
+		sourceColumn: EPIC_PCP_CATEGORY
+
+		annotation SummarizationSetBy = Automatic
+
+	column DENOMINATOR_NBR
+		dataType: double
+		formatString: 0
+		lineageTag: db0bd912-8bec-4f46-a911-aac2cd4d0c0f
+		summarizeBy: sum
+		sourceColumn: DENOMINATOR_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+	column NUMERATOR_NBR
+		dataType: double
+		formatString: 0
+		lineageTag: 45e85f13-085d-4d0d-9944-080dc4c63195
+		summarizeBy: sum
+		sourceColumn: NUMERATOR_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date Range' = MIN(VW_PATIENT_ENGAGEMENT_VISIT_SUMMARY[Incurred Date]) & "-" & EOMONTH(MAX(VW_PATIENT_ENGAGEMENT_VISIT_SUMMARY[Incurred Date]), 0)
+		lineageTag: 0a1bbc82-ddb7-48d0-9f8e-5d4b12c8913b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Latest Month Flg' = IF(([Incurred Date] = ENDOFYEAR(VW_PATIENT_ENGAGEMENT_VISIT_SUMMARY[Incurred Date])),1,0)
+		formatString: 0
+		lineageTag: d8eeb8ea-ae90-4b7a-a7bb-e56c71471202
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+	column INCURRED_YEAR_TXT
+		dataType: string
+		lineageTag: 55979115-90e0-4ba0-8447-0cfc8b2bae06
+		summarizeBy: none
+		sourceColumn: INCURRED_YEAR_TXT
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'EPIC_PCP_CATEGORY - Order'
+		dataType: int64
+		formatString: 0
+		lineageTag: c3d0f401-4c14-4132-b080-a234c20bfef2
+		summarizeBy: sum
+		sourceColumn: EPIC_PCP_CATEGORY - Order
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Epic PCP Category'
+		dataType: string
+		lineageTag: 99c03af6-d43f-4777-99c9-4acae140ef1d
+		summarizeBy: none
+		sourceColumn: Epic PCP Category
+		sortByColumn: 'EPIC_PCP_CATEGORY - Order'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column METRIC_VERSION_ABBR
+		dataType: string
+		lineageTag: 0fdca2a3-a06c-47b9-981c-bcae300eba14
+		summarizeBy: none
+		sourceColumn: METRIC_VERSION_ABBR
+
+		annotation SummarizationSetBy = Automatic
+
+	column EPIC_PCP_MEDICAL_GROUP_NM
+		dataType: string
+		lineageTag: d4d4fa31-cf0e-4f8f-a72e-d0b2313e2b5d
+		summarizeBy: none
+		sourceColumn: EPIC_PCP_MEDICAL_GROUP_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column EPIC_PCP_PRACTICE_NM
+		dataType: string
+		lineageTag: d3a8b0d6-4d27-4d38-8101-287fccc2d14b
+		summarizeBy: none
+		sourceColumn: EPIC_PCP_PRACTICE_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Period End Date' = EOMONTH(VW_PATIENT_ENGAGEMENT_VISIT_SUMMARY[Incurred Date],0)
+		formatString: m/d/yyyy
+		lineageTag: 5d030553-03db-42e4-8c7a-ef1861cf6c82
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: e0216829-2158-42f5-95c1-013740da8ee0
+			defaultHierarchy: LocalDateTable_d4f7674b-4cf5-453d-a130-f60222ba2182.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column PAYOR_INSURANCE_PRODUCT_NM
+		dataType: string
+		lineageTag: 3153979f-57e1-4a2e-a5bb-e96a4f4817ea
+		summarizeBy: none
+		sourceColumn: PAYOR_INSURANCE_PRODUCT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column DX_DIABETES_IND
+		dataType: double
+		lineageTag: 127a52fd-59cb-46f4-bc31-ad2d7e4eed49
+		summarizeBy: sum
+		sourceColumn: DX_DIABETES_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DX_HTN_IND
+		dataType: double
+		lineageTag: 02fd3a89-b0ed-4b98-b382-8441098c0c64
+		summarizeBy: sum
+		sourceColumn: DX_HTN_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition VW_PATIENT_ENGAGEMENT_VISIT_SUMMARY = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("psjh_prod.west-us-2.azure.snowflakecomputing.com","ACOE_WH_M"),
+				    ACOE_PROD_Database = Source{[Name="ACOE_PROD",Kind="Database"]}[Data],
+				    RPT_VBC_Schema = ACOE_PROD_Database{[Name="RPT_VBC",Kind="Schema"]}[Data],
+				    VW_PATIENT_ENGAGEMENT_VISIT_SUMMARY_View = RPT_VBC_Schema{[Name="VW_PATIENT_ENGAGEMENT_VISIT_SUMMARY",Kind="View"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(VW_PATIENT_ENGAGEMENT_VISIT_SUMMARY_View,{{"PAYOR_COHORT_DSC", "Contract Cohort"}}),
+				    #"Duplicated Column" = Table.DuplicateColumn(#"Renamed Columns", "EPIC_PCP_CATEGORY", "EPIC_PCP_CATEGORY - Copy"),
+				    #"Split Column by Delimiter" = Table.SplitColumn(#"Duplicated Column", "EPIC_PCP_CATEGORY - Copy", Splitter.SplitTextByEachDelimiter({"."}, QuoteStyle.Csv, true), {"EPIC_PCP_CATEGORY - Copy.1", "EPIC_PCP_CATEGORY - Copy.2"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"EPIC_PCP_CATEGORY - Copy.1", Int64.Type}, {"EPIC_PCP_CATEGORY - Copy.2", type text}}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Changed Type",{{"EPIC_PCP_CATEGORY - Copy.1", "EPIC_PCP_CATEGORY - order"}, {"EPIC_PCP_CATEGORY - Copy.2", "Epic PCP Category"}, {"INCURREDYEARMONTH_DT", "Incurred Date"}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Renamed Columns1"," ","",Replacer.ReplaceText,{"Epic PCP Category"}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Replaced Value",{"Epic PCP Category", "EPIC_PCP_CATEGORY - order"}),
+				    #"Duplicated Column1" = Table.DuplicateColumn(#"Removed Columns", "EPIC_PCP_CATEGORY", "EPIC_PCP_CATEGORY - Copy"),
+				    #"Split Column by Delimiter1" = Table.SplitColumn(#"Duplicated Column1", "EPIC_PCP_CATEGORY - Copy", Splitter.SplitTextByDelimiter(":", QuoteStyle.None), {"EPIC_PCP_CATEGORY - Copy.1", "EPIC_PCP_CATEGORY - Copy.2"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Split Column by Delimiter1",{{"EPIC_PCP_CATEGORY - Copy.1", type text}, {"EPIC_PCP_CATEGORY - Copy.2", type text}}),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Changed Type1",{"EPIC_PCP_CATEGORY - Copy.2"}),
+				    #"Split Column by Delimiter2" = Table.SplitColumn(#"Removed Columns1", "EPIC_PCP_CATEGORY - Copy.1", Splitter.SplitTextByDelimiter(":", QuoteStyle.Csv), {"EPIC_PCP_CATEGORY - Copy.1.1", "EPIC_PCP_CATEGORY - Copy.1.2"}),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Split Column by Delimiter2",{{"EPIC_PCP_CATEGORY - Copy.1.1", type text}, {"EPIC_PCP_CATEGORY - Copy.1.2", type text}}),
+				    #"Removed Columns2" = Table.RemoveColumns(#"Changed Type2",{"EPIC_PCP_CATEGORY - Copy.1.2"}),
+				    #"Split Column by Delimiter3" = Table.SplitColumn(#"Removed Columns2", "EPIC_PCP_CATEGORY - Copy.1.1", Splitter.SplitTextByDelimiter(". ", QuoteStyle.None), {"EPIC_PCP_CATEGORY - Copy.1.1.1", "EPIC_PCP_CATEGORY - Copy.1.1.2"}),
+				    #"Changed Type3" = Table.TransformColumnTypes(#"Split Column by Delimiter3",{{"EPIC_PCP_CATEGORY - Copy.1.1.1", Int64.Type}, {"EPIC_PCP_CATEGORY - Copy.1.1.2", type text}}),
+				    #"Renamed Columns2" = Table.RenameColumns(#"Changed Type3",{{"EPIC_PCP_CATEGORY - Copy.1.1.1", "EPIC_PCP_CATEGORY - Order"}, {"EPIC_PCP_CATEGORY - Copy.1.1.2", "Epic PCP Category"}}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Renamed Columns2",null,"N/A",Replacer.ReplaceValue,{"PAYOR_INSURANCE_PRODUCT_NM"})
+				in
+				    #"Replaced Value1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

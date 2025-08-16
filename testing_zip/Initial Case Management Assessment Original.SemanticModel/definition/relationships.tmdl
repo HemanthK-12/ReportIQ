@@ -1,0 +1,68 @@
+relationship 6a7dee6a-add6-42ef-a8e5-b3afeb148da6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Date Last Refreshed'.'Date Last Refreshed'
+	toColumn: LocalDateTable_30aa730e-feef-4b55-87e2-451eb9d945df.Date
+
+relationship 3cf94156-65a6-4359-9d88-688df69a749b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dates.Date
+	toColumn: LocalDateTable_e78c4e85-5d81-4183-8759-ec05cead86e2.Date
+
+relationship 1eccac9b-41a1-4936-bba6-716d84ef03b1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FSMain.DISCHARGEINSTANT
+	toColumn: LocalDateTable_55415b3b-2e3d-4fd3-9a6f-6fb387af7ac2.Date
+
+relationship 6202b482-7357-43d7-a6ae-b4d81e487232
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FSMain.ADMISSION_ASSESSMENT_COMPLETED_DTS
+	toColumn: LocalDateTable_382a11f2-b5f0-4850-a4cb-d267c5db5ba7.Date
+
+relationship 210d0ee8-ecc3-436d-96f1-9831010d2544
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FSMain.ADMISSION_ASSESSMENT_WITHIN_24HRS_COMPLETED_DTS
+	toColumn: LocalDateTable_c5f7eaaa-3c35-44f8-af77-3f255a78e59a.Date
+
+relationship 50355ab2-67ff-4128-88a6-42b7f9c00955
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FSMain.ABLE_TRPLA_COMPLETED_DTS
+	toColumn: LocalDateTable_d5396ceb-251d-4f0d-a6ac-35c8e0a5c4d5.Date
+
+relationship a1583dfb-07ea-410e-a717-170293fcc5a9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FSMain.ANTICIPATED_DISCHARGE_DISPOSITION_COMPLETED_DTS
+	toColumn: LocalDateTable_0ae88e62-11ca-4916-b11f-4312e1cb1fa9.Date
+
+relationship 8ea8eadc-2cf4-44a0-a584-1e0934cf0b75
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FSMain.BARRIERS_TO_DISCHARGE_COMPLETED_DTS
+	toColumn: LocalDateTable_70d5a2f5-b248-470d-ba56-6fa750803931.Date
+
+relationship 44a545ba-3cf1-4a26-87ec-eabb6b136819
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FSMain.PATIENT_FIAWP_COMPLETED_DTS
+	toColumn: LocalDateTable_9495d46f-98d6-4025-830c-a21a5b3ecde2.Date
+
+relationship 978ef8db-d411-441b-be37-fc4ee717c5e0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FSMain.READMISSION_WITHIN_THE_LAST_30_DAYS_COMPLETED_DTS
+	toColumn: LocalDateTable_ca452716-2ca4-42a9-a955-f8ff3df83af1.Date
+
+relationship 0a3c5091-ece4-4098-ad0f-d042e9baa39c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FSMain.SERVICES_ANTICIPATED_AT_DISCHARGE_COMPLETED_DTS
+	toColumn: LocalDateTable_f287be70-b8d7-4e32-81ea-53dea228ada8.Date
+
+relationship d3a5b84c-9afb-4b5f-aeb1-ffcdb4837cfd
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FSMain.ASSESSMENTS_COMPLETED_DTS
+	toColumn: LocalDateTable_8f07d1c1-3aa5-4901-b523-76a289a00eaa.Date
+
+relationship 5271ee8a-10bb-2120-61d9-d8799eee0ad5
+	fromColumn: FSMain.'Admit Date'
+	toColumn: Dates.Date
+
+relationship 9a26766f-db7c-4f82-59fc-97920fbf05cf
+	fromColumn: FSMain.DEPARTMENTKEY
+	toColumn: DimDept.DEPARTMENTKEY
+

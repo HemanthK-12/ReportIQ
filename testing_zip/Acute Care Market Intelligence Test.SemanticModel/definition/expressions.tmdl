@@ -1,0 +1,35 @@
+expression DBName = "ACOE_DEV" meta [IsParameterQuery = true, IsParameterQueryRequired = true, Type = "Text"]
+	lineageTag: 55e07c68-8409-40a6-84b2-fa32d4286df1
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression SchemaName = "RPT_STATE_INTELLIMED" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 3c3b2e76-12bb-477f-afb4-2618cd70ee7f
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression TableName = "FACT_IP_OP_ENCOUNTERS_TEMP" meta [IsParameterQuery = true, IsParameterQueryRequired = true, Type = "Text"]
+	lineageTag: 38ff791c-7cd6-4023-a631-94e28c076a1b
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression 'WH Name' = "ACOE_WH_M" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 6c3e4ddf-1446-4484-a45b-a02167765f23
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression 'Role Name' = "ACOE_DEVELOPER" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 52efb045-ea8d-4ea4-8243-2749cb95b6e9
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+

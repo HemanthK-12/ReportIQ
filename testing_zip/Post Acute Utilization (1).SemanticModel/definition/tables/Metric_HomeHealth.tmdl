@@ -1,0 +1,66 @@
+table Metric_HomeHealth
+	lineageTag: 5b70168c-0ec6-474e-aecd-005ddb4a8bcc
+
+	column Metric_HomeHealth
+		lineageTag: 91e99d4d-3300-4126-8159-255f709cb0ec
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Metric_HomeHealth Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Metric_HomeHealth Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Metric_HomeHealth Fields'
+		lineageTag: e42bb27e-e364-405e-8a09-ed27a684eb8e
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Metric_HomeHealth Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Metric_HomeHealth Order'
+		formatString: 0
+		lineageTag: a566827d-5a78-4fd4-88ac-37b1b5e2b0f9
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Title = SWITCH([Metric_HomeHealth Order],0,"Encounters By Affiliate Type",1,"Cost Per Encounter By Affiliate Type",2,"Average Length of Stay By Affiliate Type",3,"Cost Per Day By Affiliate Type")
+		lineageTag: 1f454c4f-9940-44f1-a093-624c2970f56d
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Title_Trend_Chart = SWITCH([Metric_HomeHealth Order],0,"Encounters As Trend",1,"Cost Per Encounter As Trend",2,"Average Length of Stay As Trend",3,"Cost Per Day As Trend")
+		lineageTag: 68a30c3d-4185-4511-8b78-f58252a9ed7f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Title_Trend_Chart_Agency = SWITCH([Metric_HomeHealth Order],0,"Encounters As Trend By Agency",1,"Cost Per Encounter As Trend By Agency",2,"Average Length of Stay As Trend By Agency",3,"Cost Per Day As Trend By Agency")
+		lineageTag: 3c4b0f56-0059-499f-b3c8-6c755830eddb
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Metric_HomeHealth = calculated
+		mode: import
+		source =
+				{
+				    ("Encounters", NAMEOF('HomeHealth'[Encounters]), 0),
+				    ("Avg Length of Stay", NAMEOF('HomeHealth'[Days per Episode (ALOS)]), 2),
+				    ("Cost per Encounter", NAMEOF('HomeHealth'[Allowed per Episode]), 1),
+				    ("Cost per Day", NAMEOF('HomeHealth'[$ per Day]), 3)
+				}
+
+	annotation PBI_Id = da4fe634231b4af6a8e7be9341e191db
+

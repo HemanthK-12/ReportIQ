@@ -1,0 +1,50 @@
+table 'Stop Bill Metrics'
+	lineageTag: 55c8129d-5885-4734-aa2d-bc00929aa204
+
+	column Parameter
+		lineageTag: 521e26c5-f5f2-41db-ab84-6a70bb979f32
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Fields'
+		isHidden
+		lineageTag: 5dc8bacf-c0d6-40c8-9f3d-da1961091db1
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: d5e517eb-97ca-4322-840c-21e7b870f033
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Stop Bill Metrics' = calculated
+		mode: import
+		source =
+				{
+				    ("1599 Cases (#)", NAMEOF(VW_CM_STOP_BILL[1599 Case Count]), 35),
+				    ("Condition Code 44 (#)", NAMEOF(VW_CM_STOP_BILL[CC44 Case Count]), 36),
+				    ("IMM Cases (%)",NAMEOF(VW_IMM_MOON_CM_DOCUMENTATION[% of Cases with IMM]), 37),
+				    ("MOON Cases (%)",NAMEOF(VW_IMM_MOON_CM_DOCUMENTATION[% of Cases with MOON]), 38)
+				     }
+
+	annotation PBI_Id = bc7793b254df422cb954974b24114dea
+

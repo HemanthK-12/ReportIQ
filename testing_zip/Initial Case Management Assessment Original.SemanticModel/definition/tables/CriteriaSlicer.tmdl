@@ -1,0 +1,29 @@
+table CriteriaSlicer
+	lineageTag: 5a23e608-bfb2-4a67-8ab1-2924a7b86403
+
+	column Button
+		lineageTag: d40fe281-1331-420c-b1f8-e98d10f853e6
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Button]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition CriteriaSlicer = calculated
+		mode: import
+		source = ```
+				
+				UNION(
+				    ROW("Button", "AdmAssess_%"),
+				    ROW("Button", "AntDD_%"),
+				    ROW("Button", "ATRPLA_%"),
+				    ROW("Button", "BarrierDischarge_%"),
+				    ROW("Button", "FamAgree_%"),
+				    ROW("Button", "Readd30_%"),
+				    ROW("Button", "ServAnt_%")
+				)
+				
+				```
+
+	annotation PBI_Id = d777fd9ca14f44b8af97d93cb924756e
+

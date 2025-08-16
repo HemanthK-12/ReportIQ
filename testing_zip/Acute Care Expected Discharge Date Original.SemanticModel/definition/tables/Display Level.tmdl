@@ -1,0 +1,52 @@
+table 'Display Level'
+	lineageTag: f593dfe4-1f3c-4969-a987-343af416922d
+
+	column 'Display Level'
+		lineageTag: bde87bfc-de97-4061-be4a-808f9ac0865c
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Display Level Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Display Level Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Display Level Fields'
+		isHidden
+		lineageTag: 2a15c57d-821e-4441-8014-d8b0f23871b8
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Display Level Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Display Level Order'
+		isHidden
+		formatString: 0
+		lineageTag: ddb909e1-73d1-4ee9-ba39-d6abb3b71835
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Display Level' = calculated
+		mode: import
+		source =
+				{
+				    ("System", NAMEOF('FACT_HOSPITALADMISSION_EDD'[System]), 0),
+				    ("Division", NAMEOF('FACT_HOSPITALADMISSION_EDD'[Division]), 1),
+				    ("Service Area", NAMEOF('FACT_HOSPITALADMISSION_EDD'[Clinical Service Area]), 2),
+				    ("Location", NAMEOF('FACT_HOSPITALADMISSION_EDD'[Location]), 3),
+				    ("Department", NAMEOF('FACT_HOSPITALADMISSION_EDD'[Department]), 4),
+				    ("Case Manager", NAMEOF('FACT_HOSPITALADMISSION_EDD'[Case Manager]),5)
+				}
+
+	annotation PBI_Id = 6e9a27c10a8e4e80a1b4b0369d8ad487
+

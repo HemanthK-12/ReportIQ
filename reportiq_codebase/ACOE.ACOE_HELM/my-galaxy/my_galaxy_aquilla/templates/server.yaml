@@ -1,0 +1,12 @@
+apiVersion: policy.linkerd.io/v1beta3
+kind: Server
+metadata:
+  name: {{ include "acoeaquilla.fullname" . }}-server
+  namespace: {{ .Values.namespace }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/instance: aquilla
+      app.kubernetes.io/name: acoeaquilla
+  port: 3001
+  proxyProtocol: opaque

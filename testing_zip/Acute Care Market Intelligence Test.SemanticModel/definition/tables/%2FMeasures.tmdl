@@ -1,0 +1,763 @@
+table /Measures
+	lineageTag: 3a4cd4bf-3f48-4f89-9476-27e81899f1dc
+
+	measure 'Cases Amt Facility' = ```
+			
+			VAR CasesOfAll =
+			    CALCULATE (
+			        [Cases],
+			        REMOVEFILTERS ( 'FACILITY_NM' )
+			    )
+			RETURN
+			    IF (
+			        NOT ISINSCOPE ( FACILITY_NM[FACILITY_NM] ),
+			
+			        -- Calculation for a group of products 
+			        CasesOfAll,
+			
+			        -- Calculation for one product name
+			        VAR FacilitiesToRank = 'Rank'[Rank Value]
+			        VAR CurrentFacility = [Cases]
+			        VAR IsOtherSelected =
+			            SELECTEDVALUE ( FACILITY_NM[FACILITY_NM] ) = "Others"
+			        RETURN
+			            IF (
+			                NOT IsOtherSelected,
+			                
+			                -- Calculation for a regular product
+			                CurrentFacility,
+			
+			                -- Calculation for Others
+			                VAR VisibleFacilities =
+			                    CALCULATETABLE (
+			                        VALUES ( 'FACILITY_NM' ),
+			                        ALLSELECTED ( FACILITY_NM[FACILITY_NM])
+			                    )
+			                VAR FacilitiesWithCases =
+			                    ADDCOLUMNS (
+			                        VisibleFacilities,
+			                        "@CasesAmount", [Cases]
+			                    )
+			                VAR CasesOfTopFacilities =
+			                    SUMX (
+			                        TOPN (
+			                            FacilitiesToRank,
+			                            FacilitiesWithCases,
+			                            [@CasesAmount]
+			                        ),
+			                        [@CasesAmount]
+			                    )
+			                VAR CasesOthers = 
+			                    CasesOfAll - CasesOfTopFacilities
+			                RETURN
+			                    CasesOthers
+			            )
+			    )
+			
+			```
+		formatString: 0
+		isHidden
+		lineageTag: ed560617-3368-4f42-9eea-9b76569131cb
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'cases fac/sys__' = ```
+			
+			IF (
+			    SELECTEDVALUE ( 'System/Facility'[System/Facility Order] ) = 0,
+			    [Cases Amt],
+			    [Cases Amt Facility]
+			)
+			
+			```
+		formatString: #,0
+		isHidden
+		lineageTag: 3767ec9c-04a3-4e41-b1fb-3ae715baf682
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Cases Amt' = ```
+			
+			VAR CasesOfAll =
+			    CALCULATE (
+			        [Cases],
+			        REMOVEFILTERS ( 'FACILITY_SYSTEM_NM' )
+			    )
+			RETURN
+			    IF (
+			        NOT ISINSCOPE ( FACILITY_SYSTEM_NM[FACILITY_SYSTEM_NM] ),
+			
+			        -- Calculation for a group of products 
+			        CasesOfAll,
+			
+			        -- Calculation for one product name
+			        VAR FacilitiesToRank = 'Rank'[Rank Value]
+			        VAR CurrentFacility = [Cases]
+			        VAR IsOtherSelected =
+			            SELECTEDVALUE ( FACILITY_SYSTEM_NM[FACILITY_SYSTEM_NM] ) = "Others"
+			        RETURN
+			            IF (
+			                NOT IsOtherSelected,
+			                
+			                -- Calculation for a regular product
+			                CurrentFacility,
+			
+			                -- Calculation for Others
+			                VAR VisibleFacilities =
+			                    CALCULATETABLE (
+			                        VALUES ( 'FACILITY_SYSTEM_NM' ),
+			                        ALLSELECTED ( FACILITY_SYSTEM_NM[FACILITY_SYSTEM_NM])
+			                    )
+			                VAR FacilitiesWithCases =
+			                    ADDCOLUMNS (
+			                        VisibleFacilities,
+			                        "@CasesAmount", [Cases]
+			                    )
+			                VAR CasesOfTopFacilities =
+			                    SUMX (
+			                        TOPN (
+			                            FacilitiesToRank,
+			                            FacilitiesWithCases,
+			                            [@CasesAmount]
+			                        ),
+			                        [@CasesAmount]
+			                    )
+			                VAR CasesOthers = 
+			                    CasesOfAll - CasesOfTopFacilities
+			                RETURN
+			                    CasesOthers
+			            )
+			    )
+			
+			```
+		formatString: #,0
+		isHidden
+		lineageTag: 6d12a6cd-fada-436e-89f6-b90286188ef2
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure Cases =
+			
+			IF (
+			    SELECTEDVALUE ( 'Discharge Year Quarter'[Discharge Year/Quarter Order] ) = 0,
+			    IF (
+			        ISBLANK ( SUM ( FACT_IP_OP[ANNUALIZED_ENCOUNTER_CNT] ) ),
+			        0,
+			        SUM ( FACT_IP_OP[ANNUALIZED_ENCOUNTER_CNT] )
+			    ),
+			    IF (
+			        ISBLANK ( SUM ( FACT_IP_OP[NON_ANNUALIZED_ENCOUNTER_CNT] ) ),
+			        0,
+			        SUM ( FACT_IP_OP[NON_ANNUALIZED_ENCOUNTER_CNT] )
+			    )
+			)
+		lineageTag: 5c8aa3fd-4720-49f1-b19d-2bfa367230dc
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Cases Year/Quarter' = ```
+			
+			IF (
+			    SELECTEDVALUE ( 'Discharge Year Quarter'[Discharge Year/Quarter Order] ) = 0,
+			    CALCULATE (
+			        SUM ( FACT_IP_OP[ANNUALIZED_ENCOUNTER_CNT] ),
+			        ALLSELECTED ( DIM_DATE[YEAR_NBR] )
+			    ),
+			    CALCULATE (
+			        SUM ( FACT_IP_OP[NON_ANNUALIZED_ENCOUNTER_CNT] ),
+			        ALLSELECTED ( DIM_DATE[YEAR_QTR_DESC] )
+			    )
+			)
+			
+			```
+		isHidden
+		lineageTag: ea262d01-4538-45a4-be52-0dc75384c410
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Previous Year Cases' = CALCULATE([Cases Amt], PREVIOUSYEAR(FACT_IP_OP[DISCHARGE_DTS]))
+		formatString: 0
+		isHidden
+		lineageTag: 26a30a81-5eb1-4db1-9520-ebff93d1e143
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Top N previous year cases' = ```
+			
+			 SWITCH (
+			    TRUE (),
+			    SELECTEDVALUE ( 'Discharge Year Quarter'[Discharge Year/Quarter Order] ) = 0,
+			        CALCULATE (
+			            [cases fac/sys__],
+			            ALL ( DIM_DATE[YEAR_NBR] ),
+			            MAX ( DIM_DATE[YEAR_NBR] ) = DIM_DATE[YEAR_NBR] + 1
+			        ),
+			    SELECTEDVALUE ( 'Discharge Year Quarter'[Discharge Year/Quarter Order] ) = 1,
+			        CALCULATE (
+			            [cases fac/sys__],
+			            FILTER (
+			                ALL ( DIM_DATE[YEAR_QTR_DESC] ),
+			                DIM_DATE[YEAR_QTR_DESC] = MAX ( DIM_DATE[Previous_Quarter] )
+			            )
+			        )
+			) 
+			
+			  /* SWITCH(TRUE(),SELECTEDVALUE('Discharge Year Quarter'[Discharge Year/Quarter Order])=0,CALCULATE([cases fac/sys],'DIM_DATE'[YEAR_NBR]=max('DIM_DATE'[YEAR_NBR])+1),SELECTEDVALUE('Discharge Year Quarter'[Discharge Year/Quarter Order])=1,CALCULATE([cases fac/sys],'DIM_DATE'[YEAR_QTR_DESC]=max('FACT_IP_OP'[PreviousQuarter])))   */
+			
+			```
+		isHidden
+		lineageTag: c7fcb6f7-f205-4f02-9f7f-05f8cb7dac3a
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Top N % In Market Growth' = if([Top N in market growth min]=0,0,[Top N In Market Growth]/[Top N in market growth min])
+		formatString: 0.00%;-0.00%;0.00%
+		isHidden
+		lineageTag: 9271b500-4f97-41e4-97ea-d86f8181e1bf
+
+		changedProperty = IsHidden
+
+	measure 'Top N In Market Growth' = ([Top N in market growth Max])-([Top N in market growth min])
+		formatString: #,0
+		isHidden
+		lineageTag: 26fd41ca-83ce-43ed-a43e-07d1dfdaf511
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Top N in market growth Max' = ```
+			
+			SWITCH (
+			    TRUE (),
+			    SELECTEDVALUE ( 'Discharge Year Quarter'[Discharge Year/Quarter Order] ) = 0,
+			        CALCULATE (
+			            [cases fac/sys__],
+			            'DIM_DATE'[YEAR_NBR] = MAX ( 'DIM_DATE'[YEAR_NBR] )
+			        ),
+			    SELECTEDVALUE ( 'Discharge Year Quarter'[Discharge Year/Quarter Order] ) = 1,
+			        CALCULATE (
+			            [cases fac/sys__],
+			            'DIM_DATE'[YEAR_QTR_DESC] = MAX ( 'DIM_DATE'[YEAR_QTR_DESC] )
+			        )
+			)
+			
+			```
+		formatString: 0
+		isHidden
+		lineageTag: 2f296c5c-daa3-4de4-9b26-0864de194795
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Top N in market growth min' = ```
+			
+			
+			 SWITCH (
+			    TRUE (),
+			    SELECTEDVALUE ( 'Discharge Year Quarter'[Discharge Year/Quarter Order] ) = 0,
+			        CALCULATE (
+			            [cases fac/sys__],
+			            'DIM_DATE'[YEAR_NBR] = MIN ( 'DIM_DATE'[YEAR_NBR] )
+			        ),
+			    SELECTEDVALUE ( 'Discharge Year Quarter'[Discharge Year/Quarter Order] ) = 1,
+			        CALCULATE (
+			            [cases fac/sys__],
+			            'DIM_DATE'[YEAR_QTR_DESC] = MIN ( 'DIM_DATE'[YEAR_QTR_DESC] )
+			        )
+			) 
+			```
+		formatString: 0
+		isHidden
+		lineageTag: 010c9800-cfd9-4722-b1ff-f24528dd9d33
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure '% In Market Growth' = [In Market Growth]/[in market growth min]
+		formatString: #.##%;(#.##%);
+		isHidden
+		lineageTag: fe86ae6a-feaf-4d4f-8a83-c2f1e4f6de6b
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	measure 'In Market Growth' = if([in market growth min]=0,0,([in market growth Max])-([in market growth min]))
+		formatString: #,0.00
+		isHidden
+		lineageTag: 0f427664-5558-4c76-ad5f-4f62bc371d1a
+
+		changedProperty = IsHidden
+
+	measure 'in market growth Max' = ```
+			
+			SWITCH (
+			    TRUE (),
+			    SELECTEDVALUE ( 'Discharge Year Quarter'[Discharge Year/Quarter Order] ) = 0,
+			        CALCULATE (
+			            SUM ( FACT_IP_OP[ANNUALIZED_ENCOUNTER_CNT] ),
+			            'DIM_DATE'[YEAR_NBR] = MAX ( 'DIM_DATE'[YEAR_NBR] )
+			        ),
+			    SELECTEDVALUE ( 'Discharge Year Quarter'[Discharge Year/Quarter Order] ) = 1,
+			        CALCULATE (
+			            SUM ( FACT_IP_OP[NON_ANNUALIZED_ENCOUNTER_CNT] ),
+			            'DIM_DATE'[YEAR_QTR_DESC] = MAX ( 'DIM_DATE'[YEAR_QTR_DESC] )
+			        )
+			)
+			
+			```
+		formatString: 0
+		isHidden
+		lineageTag: 79e7bd13-c80c-489e-9167-61aaf6247138
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'in market growth min' = ```
+			
+			SWITCH (
+			    TRUE (),
+			    SELECTEDVALUE ( 'Discharge Year Quarter'[Discharge Year/Quarter Order] ) = 0,
+			        CALCULATE (
+			            SUM ( FACT_IP_OP[ANNUALIZED_ENCOUNTER_CNT] ),
+			            'DIM_DATE'[YEAR_NBR] = MIN ( 'DIM_DATE'[YEAR_NBR] )
+			        ),
+			    SELECTEDVALUE ( 'Discharge Year Quarter'[Discharge Year/Quarter Order] ) = 1,
+			        CALCULATE (
+			            SUM ( FACT_IP_OP[NON_ANNUALIZED_ENCOUNTER_CNT] ),
+			            'DIM_DATE'[YEAR_QTR_DESC] = MIN ( 'DIM_DATE'[YEAR_QTR_DESC] )
+			        )
+			)
+			
+			```
+		formatString: 0
+		isHidden
+		lineageTag: b8099891-22fb-4268-b24d-c7ae86aa80bf
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Market Share CPS' = DIVIDE([Cases],'/Measures'[Market Share CPS Denom])
+		formatString: 0.00%;-0.00%;0.00%
+		isHidden
+		lineageTag: 77e6bfd0-0c57-432b-895e-27e376be7329
+
+		changedProperty = IsHidden
+
+	measure 'Market Share CPS Denom' =
+			SWITCH(SELECTEDVALUE('Select CPS Parameter'[CPS Parameter Order]),0,
+			CALCULATE(
+				[Cases],
+				ALLSELECTED(DIM_CPS[CPS Institute])),1,CALCULATE(
+				[Cases],
+				ALLSELECTED(DIM_CPS[CPS Program])),2,CALCULATE(
+				[Cases],
+				ALLSELECTED(DIM_CPS[CPS Business Unit])
+			))
+		isHidden
+		lineageTag: 138a32ad-1344-491f-85be-3b69a033ae3b
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Market Share Payor Group' =
+			DIVIDE([Cases],
+			CALCULATE(
+				[Cases],
+				ALLSELECTED(DIM_PAYOR[Payor Group])
+			))
+		isHidden
+		lineageTag: f8efbbc0-3bd1-4365-affa-9d9b54ca527a
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Market Share System' =
+			DIVIDE([Cases],
+			CALCULATE(
+				[Cases],
+				ALLSELECTED(FACT_IP_OP[SYSTEM - PSJH/OTHER])
+			))
+		formatString: 0.00%;-0.00%;0.00%
+		isHidden
+		lineageTag: fec2b78d-a29a-4ef4-9253-1aca175a86b7
+
+		changedProperty = IsHidden
+
+	measure 'Market Share System/Facility' = ```
+			
+			DIVIDE (
+			    [cases fac/sys__],
+			    IF (
+			        SELECTEDVALUE ( 'System/Facility'[System/Facility Order] ) = 0,
+			        CALCULATE (
+			            [Cases Amt],
+			            REMOVEFILTERS ( FACILITY_SYSTEM_NM[FACILITY_SYSTEM_NM] )
+			        ),
+			        CALCULATE ( 
+			            [Cases Amt Facility], 
+			            REMOVEFILTERS ( FACILITY_NM[FACILITY_NM] )
+			        )
+			    )
+			)
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		isHidden
+		lineageTag: bb0bef75-b1cb-4ace-8bf5-4057c1016738
+
+		changedProperty = IsHidden
+
+	measure 'Previous Year Market share' =
+			DIVIDE([Top N previous year cases], if(SELECTEDVALUE('System/Facility'[System/Facility Order])=0,
+			CALCULATE(
+				[Top N previous year cases],REMOVEFILTERS(FACILITY_SYSTEM_NM[FACILITY_SYSTEM_NM])),
+			    CALCULATE(
+				[Top N previous year cases],REMOVEFILTERS(FACILITY_NM[FACILITY_NM])))
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		isHidden
+		lineageTag: 39b48748-8a2c-4e91-b0ed-f0dd4d869f43
+
+		changedProperty = IsHidden
+
+	measure 'Rate of Change - Market Share' = if([Previous Year Market share]=0,0,[Previous Year Market share]-'/Measures'[Market Share System/Facility])
+		formatString: 0.00%;-0.00%;0.00%
+		isHidden
+		lineageTag: 3f7feaa4-0cac-4558-aba5-af267f866423
+
+		changedProperty = IsHidden
+
+	measure Ranking_fac = ```
+			
+			IF (
+			    ISINSCOPE ( 'FACILITY_NM'[FACILITY_NM]),
+			    VAR FacilitiesToRank = 'Rank'[Rank Value]-1
+			    VAR CaseAmount = [Cases Year/Quarter]
+			    VAR IsOtherSelected =
+			        SELECTEDVALUE ( FACILITY_NM[FACILITY_NM] ) = "Others"
+			    RETURN
+			        IF (
+			            IsOtherSelected,
+			            
+			            -- Rank for Others
+			            FacilitiesToRank + 1,
+			            
+			            -- Rank for regular products
+			            IF (
+			                CaseAmount > 0,
+			                VAR VisibleFacilities =
+			                    CALCULATETABLE (
+			                        VALUES ( 'FACILITY_NM' ),
+			                        ALLSELECTED ( 'FACILITY_NM')
+			            
+			                    )
+			                VAR Ranking =
+			                    RANKX (
+			                        VisibleFacilities,
+			                        [Cases Year/Quarter],
+			                        CaseAmount
+			                    )
+			                RETURN
+			                    IF (
+			                        Ranking > 0 && Ranking <= FacilitiesToRank,
+			                        Ranking
+			                    )
+			            )
+			        )
+			)
+			```
+		formatString: 0
+		isHidden
+		lineageTag: 96763117-bc1c-4fbe-9bb9-df5f6b968d9c
+
+		changedProperty = IsHidden
+
+	measure 'Visible Row fac' =
+			
+			VAR Ranking = if(SELECTEDVALUE('System/Facility'[System/Facility Order])=0,[Ranking],[Ranking_fac])
+			VAR TopNValue = 'Rank'[Rank Value]
+			VAR Result =
+			    IF (
+			        NOT ISBLANK ( Ranking ),
+			        ( Ranking <= TopNValue ) - ( Ranking = TopNValue + 1 )
+			    )
+			RETURN
+			    Result
+		formatString: 0
+		isHidden
+		lineageTag: 9ce62ece-578f-4938-abd9-119da880eef3
+
+		changedProperty = IsHidden
+
+	measure Ranking = ```
+			
+			IF (
+			    ISINSCOPE ( 'FACILITY_SYSTEM_NM'[FACILITY_SYSTEM_NM] ),
+			    VAR FacilitiesToRank = 'Rank'[Rank Value]-1
+			    VAR CaseAmount = [Cases Year/Quarter]
+			    VAR IsOtherSelected =
+			        SELECTEDVALUE ( FACILITY_SYSTEM_NM[FACILITY_SYSTEM_NM] ) = "Others"
+			    RETURN
+			        IF (
+			            IsOtherSelected,
+			            
+			            -- Rank for Others
+			            FacilitiesToRank + 1,
+			            
+			            -- Rank for regular products
+			            IF (
+			                CaseAmount > 0,
+			                VAR VisibleFacilities =
+			                    CALCULATETABLE (
+			                        VALUES ( 'FACILITY_SYSTEM_NM' ),
+			                        ALLSELECTED ( 'FACILITY_SYSTEM_NM')
+			            
+			                    )
+			                VAR Ranking =
+			                    RANKX (
+			                        VisibleFacilities,
+			                        [Cases Year/Quarter],
+			                        CaseAmount
+			                    )
+			                RETURN
+			                    IF (
+			                        Ranking > 0 && Ranking <= FacilitiesToRank,
+			                        Ranking
+			                    )
+			            )
+			        )
+			)
+			```
+		formatString: 0
+		isHidden
+		lineageTag: a80dfc9d-3195-409b-9248-f675a2b3ef74
+
+		changedProperty = IsHidden
+
+	measure 'Visible Row' =
+			
+			VAR Ranking = [Ranking]
+			VAR TopNValue = 'Rank'[Rank Value]
+			VAR Result =
+			    IF (
+			        NOT ISBLANK ( Ranking ),
+			        ( Ranking <= TopNValue ) - ( Ranking = TopNValue + 1 )
+			    )
+			RETURN
+			    Result
+		formatString: 0
+		isHidden
+		lineageTag: 8ad2fffe-53e4-4b2f-8438-a5f0ce14df51
+
+		changedProperty = IsHidden
+
+	measure '% No Out Migration' = if([Cases]=0,0,[No Migration]/[Cases])
+		formatString: 0.00%;-0.00%;0.00%
+		isHidden
+		lineageTag: 0f5cf653-926f-4fed-aa44-482a0f188e1a
+
+		changedProperty = IsHidden
+
+	measure '% Out Migration' = if([Cases]=0,0,[New Out Migration]/[Cases])
+		formatString: 0.00%;-0.00%;0.00%
+		isHidden
+		lineageTag: 14beeb95-8c98-4150-9f19-67da522b159b
+
+		changedProperty = IsHidden
+
+	measure 'New Inmigration' = [Cases]-[New Out Migration]
+		isHidden
+		lineageTag: 4597ed56-4bbf-40ed-aec3-97e9fa5ae177
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'New Out Migration' = ```
+			SWITCH (
+			    TRUE (),
+			    SELECTEDVALUE ( 'Discharge Year Quarter'[Discharge Year/Quarter Order] ) = 0,
+			        SWITCH (
+			            TRUE (),
+			            SELECTEDVALUE ( 'Patient Geography'[Patient Geography Order] ) = 2, SUM ( FACT_IP_OP[Out Migration Region] ),
+			            SELECTEDVALUE ( 'Patient Geography'[Patient Geography Order] ) = 3, SUM ( FACT_IP_OP[Out Migration service area] ),
+			            SELECTEDVALUE ( 'Patient Geography'[Patient Geography Order] ) = 4, SUM ( FACT_IP_OP[Out Migration sub service area] ),
+			            SELECTEDVALUE ( 'Patient Geography'[Patient Geography Order] ) = 5, SUM ( FACT_IP_OP[Out Migration county state] ),
+			            SELECTEDVALUE ( 'Patient Geography'[Patient Geography Order] ) = 6, SUM ( FACT_IP_OP[Out Migration city] ),
+			            SELECTEDVALUE ( 'Patient Geography'[Patient Geography Order] ) = 7, SUM ( FACT_IP_OP[Out Migration Zip] ),0
+			        ),
+			    SELECTEDVALUE ( 'Discharge Year Quarter'[Discharge Year/Quarter Order] ) = 1,
+			        SWITCH (
+			            TRUE (),
+			            SELECTEDVALUE ( 'Patient Geography'[Patient Geography Order] ) = 2, SUM ( FACT_IP_OP[NA Out Migration Region] ),
+			            SELECTEDVALUE ( 'Patient Geography'[Patient Geography Order] ) = 3, SUM ( FACT_IP_OP[NA Out Migration service area] ),
+			            SELECTEDVALUE ( 'Patient Geography'[Patient Geography Order] ) = 4, SUM ( FACT_IP_OP[NA Out Migration sub service area] ),
+			            SELECTEDVALUE ( 'Patient Geography'[Patient Geography Order] ) = 5, SUM ( FACT_IP_OP[NA Out Migration county state] ),
+			            SELECTEDVALUE ( 'Patient Geography'[Patient Geography Order] ) = 6, SUM ( FACT_IP_OP[NA Out Migration city] ),
+			            SELECTEDVALUE ( 'Patient Geography'[Patient Geography Order] ) = 7, SUM ( FACT_IP_OP[NA Out Migration Zip] ),0
+			        )
+			)
+			
+			
+			```
+		formatString: #,0
+		isHidden
+		lineageTag: b179991e-1af8-4505-a04e-1f423480e494
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'No Migration' = [Cases]-[New Out Migration]
+		formatString: #,0
+		isHidden
+		lineageTag: 5d9ceb5e-5f35-4374-b6ff-37dd5f95283c
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Out Migration %' = [out migration growth]/CALCULATE([New Out Migration],'DIM_DATE'[YEAR_NBR]=min('DIM_DATE'[YEAR_NBR]))
+		formatString: 0.0%;-0.0%;0.0%
+		isHidden
+		lineageTag: fb7a44c4-1579-40c3-ba7b-c4f83209f6ea
+
+		changedProperty = IsHidden
+
+	measure 'out migration growth' = ```
+			
+			CALCULATE (
+			    [New Out Migration],
+			    'DIM_DATE'[YEAR_NBR] = MAX ( 'DIM_DATE'[YEAR_NBR] )
+			)
+			    - CALCULATE (
+			        [New Out Migration],
+			        'DIM_DATE'[YEAR_NBR] = MIN ( 'DIM_DATE'[YEAR_NBR] )
+			    )
+			
+			```
+		isHidden
+		lineageTag: c5fcd6cf-ae70-4e41-bfe6-e18377a1af9c
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Providence Growth %' = CALCULATE([In Market Growth],FACT_IP_OP[System - PSJH/Other]="PROVIDENCE")/CALCULATE([in market growth min],FACT_IP_OP[System - PSJH/Other]="PROVIDENCE")
+		isHidden
+		lineageTag: 9664b23a-a14e-4c51-af25-d4943b8c7cdf
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Rate of Change' = if([Top N previous year cases]=0,0, ([cases fac/sys__]-[Top N previous year cases]))
+		formatString: #,0
+		isHidden
+		lineageTag: 5368a4c4-ab0f-4612-955a-2060486f9911
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Out Migration Rank' = SWITCH(TRUE(),SELECTEDVALUE('System/Facility'[System/Facility Order])=0,RANKX(ALLSELECTED(FACILITY_SYSTEM_NM[FACILITY_SYSTEM_NM]),[om year/quarter],,desc),SELECTEDVALUE('System/Facility'[System/Facility Order])=1,RANKX(ALLSELECTED(FACILITY_NM),[om year/quarter],,desc))
+		formatString: 0
+		isHidden
+		lineageTag: 8109069a-381d-4bcb-b07c-2494d396bddb
+
+		changedProperty = IsHidden
+
+	measure 'om year/quarter' = if(SELECTEDVALUE('Discharge Year Quarter'[Discharge Year/Quarter Order])=0, CALCULATE([New Out Migration],REMOVEFILTERS(DIM_DATE[YEAR_NBR])),CALCULATE([New Out Migration],REMOVEFILTERS(DIM_DATE[YEAR_QTR_DESC])))
+		isHidden
+		lineageTag: c1f30c6c-33bc-409d-97f6-f448219098e2
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Previous Cases' =
+			
+			VAR LatestYearValue = 2024
+			RETURN
+			CALCULATE([Cases], DIM_DATE[YEAR_NBR] = LatestYearValue - 1)
+		formatString: 0
+		lineageTag: 3a809104-1665-44d4-bc99-3a8603f3b7c8
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Latest Year Cases' =
+			
+			VAR LatestYearValue = 2024
+			RETURN
+			CALCULATE([Cases],DIM_DATE[YEAR_NBR] = LatestYearValue)
+		formatString: 0
+		lineageTag: 009505c7-12e8-42e9-90c0-cf382e6eb060
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Latest Year Market Share' =
+			
+			VAR LatestYearValue = 2024
+			RETURN
+			CALCULATE([Market Share System],DIM_DATE[YEAR_NBR] = LatestYearValue)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: c8e458ed-f7ae-4c7c-9b73-a4c501c5a810
+
+	measure 'Previous Market Share' =
+			
+			VAR LatestYearValue = 2024
+			RETURN
+			CALCULATE([Market Share System], DIM_DATE[YEAR_NBR] = LatestYearValue - 1)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 94b36abe-f320-43d9-88dd-fe8e15a2e3ca
+
+	measure 'Cases Change' = [Previous Cases]-[Latest Year Cases]
+		formatString: 0
+		lineageTag: 24a1dee8-7cb0-4e55-9ae2-19c5dc6165f8
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Market Share Change' = [Latest Year Market Share]-[Previous Market Share]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 7b4ca9bd-0a09-47f5-a085-2f5d3deb099f
+
+	measure '% Change Arrow' = var RED = UNICHAR(9660) var GREEN = UNICHAR(9650) return if ([Market Share Change]>0, GREEN, RED)
+		lineageTag: b9dc016f-940b-44aa-b928-129576349993
+
+	partition /Measures = m
+		mode: import
+		source =
+				let
+				    Source = "let#(cr)#(lf)    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(""i45WSlGKjQUA"", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),#(cr)#(lf)    #""Changed Type"" = Table.TransformColumnTypes(Source,{{""Column1"", type text}}),#(cr)#(lf)    #""Removed Columns"" = Table.RemoveColumns(#""Changed Type"",{""Column1""})#(cr)#(lf)in#(cr)#(lf)    #""Removed Columns""",
+				    #"Removed Columns" = Table.RemoveColumns(Source,{"/Measures"})
+				in
+				    #"Removed Columns"
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+

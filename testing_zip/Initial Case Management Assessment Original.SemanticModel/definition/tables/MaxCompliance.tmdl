@@ -1,0 +1,31 @@
+table MaxCompliance
+	lineageTag: 2a273f4a-d75d-401c-9d8f-b6df6452553f
+
+	measure 'MaxCompliance Value' = SELECTEDVALUE('MaxCompliance'[MaxCompliance])
+		lineageTag: cdb6486f-7dd2-46dc-ad0a-a4342a9335c0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure TotalCompFilter = IF([TotalCompletedIn24%] > 'MaxCompliance'[MaxCompliance Value], 1, 0)
+		formatString: 0
+		lineageTag: 26918566-9cb6-47ab-bd4f-8b0f90e08400
+
+	column MaxCompliance
+		formatString: 0%;-0%;0%
+		lineageTag: 73a38f6f-61d7-44b5-82d0-05a1756cb993
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	partition MaxCompliance = calculated
+		mode: import
+		source = GENERATESERIES(0, 1.01, 0.01)
+
+	annotation PBI_Id = a7f546c74eab41f3a4098fbd0fe6d1db
+

@@ -1,0 +1,31 @@
+table CombinedFields
+	lineageTag: c3eed5c3-5319-4eb7-a23f-d0aa2a2ef99b
+
+	column Field
+		lineageTag: b209b9f4-f5c3-4f1e-ae99-98a23cf50fe5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Field]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		lineageTag: ceb7ec7a-2ed2-43b1-a5b5-2e7278caf2d6
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition CombinedFields = calculated
+		mode: import
+		source =
+				
+				UNION(
+				    SELECTCOLUMNS(Filter(FSMain, FSMain[All Elements] = "Y"), "Field", "All Elements", "Value", FSMain[All Elements]),
+				    SELECTCOLUMNS(Filter(FSMain, FSMain[All Elements Within 24H] = "Y"), "Field", "All Elements Within 24H", "Value", FSMain[All Elements Within 24H])
+				
+				)
+
+	annotation PBI_Id = a084150102b246b682b853a1502ba2f8
+

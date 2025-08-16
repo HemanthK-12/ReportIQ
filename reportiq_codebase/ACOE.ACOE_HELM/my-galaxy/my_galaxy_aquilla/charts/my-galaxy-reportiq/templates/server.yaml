@@ -1,0 +1,12 @@
+apiVersion: policy.linkerd.io/v1beta3
+kind: Server
+metadata:
+  name: {{ include "reportiq.fullname" . }}-server
+  namespace: {{ .Values.namespace }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/instance: aquilla
+      app.kubernetes.io/name: reportiq
+  port: 3008
+  proxyProtocol: opaque

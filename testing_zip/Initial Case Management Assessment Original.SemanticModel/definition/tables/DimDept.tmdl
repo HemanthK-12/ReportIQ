@@ -1,0 +1,146 @@
+table DimDept
+	lineageTag: ec13a115-9416-43a9-9cba-b865aa9db528
+
+	column DEPARTMENTKEY
+		dataType: double
+		lineageTag: d7e87767-ccd6-4843-8b99-588a24f9a0f6
+		summarizeBy: none
+		sourceColumn: DEPARTMENTKEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DEPARTMENTEPICID
+		dataType: string
+		lineageTag: c2535f48-4abc-400b-ab05-ad05d7e536cb
+		summarizeBy: none
+		sourceColumn: DEPARTMENTEPICID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Department
+		dataType: string
+		lineageTag: d7cc42d2-d20d-44cb-91ca-0d3c9325903c
+		summarizeBy: none
+		sourceColumn: Department
+
+		annotation SummarizationSetBy = Automatic
+
+	column DEPARTMENTEXTERNALNAME
+		dataType: string
+		lineageTag: 7d56ceb0-d5bc-4b49-9804-6f9eb43d9392
+		summarizeBy: none
+		sourceColumn: DEPARTMENTEXTERNALNAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column DEPARTMENTABBREVIATION
+		dataType: string
+		lineageTag: 2c2cf8e8-522f-421f-82d5-b755838de73c
+		summarizeBy: none
+		sourceColumn: DEPARTMENTABBREVIATION
+
+		annotation SummarizationSetBy = Automatic
+
+	column Division
+		dataType: string
+		lineageTag: e65ceeea-f28f-4be1-808d-5fa383c9959f
+		summarizeBy: none
+		sourceColumn: Division
+
+		annotation SummarizationSetBy = Automatic
+
+	column LOCATIONEPICID
+		dataType: string
+		lineageTag: a6d1511b-4973-40c4-84ad-bc9ed54230d7
+		summarizeBy: none
+		sourceColumn: LOCATIONEPICID
+
+		annotation SummarizationSetBy = Automatic
+
+	column LOCATIONNAME
+		dataType: string
+		lineageTag: 804f8264-f7eb-425a-b357-587999160664
+		summarizeBy: none
+		sourceColumn: LOCATIONNAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column LOCATIONABBREVIATION
+		dataType: string
+		lineageTag: 3f91ac47-ed7f-4082-ac61-483de636baa6
+		summarizeBy: none
+		sourceColumn: LOCATIONABBREVIATION
+
+		annotation SummarizationSetBy = Automatic
+
+	column REGION_X
+		dataType: string
+		lineageTag: c7468d32-39a6-40b2-91d1-128913769317
+		summarizeBy: none
+		sourceColumn: REGION_X
+
+		annotation SummarizationSetBy = Automatic
+
+	column SERVICEAREAEPICID
+		dataType: string
+		lineageTag: db8fa805-85bb-43af-85b8-0eed4e1396f1
+		summarizeBy: none
+		sourceColumn: SERVICEAREAEPICID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Service Area'
+		dataType: string
+		lineageTag: 12813282-54cc-49bf-be8f-f182ba44e3ba
+		summarizeBy: none
+		sourceColumn: Service Area
+
+		annotation SummarizationSetBy = Automatic
+
+	column STATEORPROVINCE
+		dataType: string
+		lineageTag: 8d230aa9-95a2-45b2-8747-6ce065ef8f45
+		summarizeBy: none
+		sourceColumn: STATEORPROVINCE
+
+		annotation SummarizationSetBy = Automatic
+
+	column STATEORPROVINCEABBREVIATION
+		dataType: string
+		lineageTag: 959d3d1b-847e-4edf-b1e3-c959f07f9aa3
+		summarizeBy: none
+		sourceColumn: STATEORPROVINCEABBREVIATION
+
+		annotation SummarizationSetBy = Automatic
+
+	column NAME
+		dataType: string
+		lineageTag: 0f2ed997-25d3-419e-9dc2-d6755300100e
+		summarizeBy: none
+		sourceColumn: NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column DEPARTMENTTYPE
+		dataType: string
+		lineageTag: 6de4e5c3-ed20-44e3-b4c3-e827bc82e89e
+		summarizeBy: none
+		sourceColumn: DEPARTMENTTYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimDept = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("psjh_prod.west-us-2.azure.snowflakecomputing.com","ACOE_WH_M",[Role="ACOE_DEVELOPER"]){[Name="ACOE_PROD"]}[Data], "SELECT DISTINCT #(lf)#(lf)DEPT.*#(lf)#(lf)FROM ACOE_PROD.RPT_PATIENT_JOURNEY.VW_PCP_FLOWSHEET_FIRST_ASSESSMENTS FSMain#(lf)#(lf)JOIN ACOE_PROD.DMS_PATIENT_JOURNEY.DIM_DEPARTMENT DEPT ON FSMain.DEPARTMENTKEY = DEPT.DEPARTMENTKEY", null, [EnableFolding=true]),
+				    #"Removed Columns" = Table.RemoveColumns(Source,{"BEDEPICID", "ROOMEPICID", "CAREAREAEPICID", "INSERT_DTS", "UPDATE_DTS"}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Removed Columns","DO NOT USE","ZZ_DO NOT USE",Replacer.ReplaceText,{"DEPARTMENTNAME"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Replaced Value",{{"DIVISION_X", "Division"}, {"DEPARTMENTNAME", "Department"}, {"SERVICEAREANAME", "Service Area"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,178 @@
+relationship 13353526-82f6-4bea-8856-397382e33053
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Last Refresh Date'.'Date Last Refreshed'
+	toColumn: LocalDateTable_1c2ef38e-287d-4ae4-bc23-8464d0321f6e.Date
+
+relationship 9014d55f-2af8-497a-a5f5-7e5e97456f69
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_PCP_CORE_STATS.'Inpatient Admission Date'
+	toColumn: LocalDateTable_f3326ab0-e097-4bca-9fe0-f9a57035c2d3.Date
+
+relationship 18c41398-f6f8-4bda-bd13-b7ab3bbfcf6a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_PCP_CORE_STATS.'Discharge Date'
+	toColumn: LocalDateTable_ca66e194-8d00-402a-b38e-52b31c8bf8ad.Date
+
+relationship 3466639e-7389-4566-bf8c-40ea99992c39
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_PCP_CORE_STATS.DISCHARGEORDERINSTANT
+	toColumn: LocalDateTable_9430df00-cb73-4b0a-a562-25ac036dde56.Date
+
+relationship b8e19a34-95a5-48d3-8b7b-b72e17f9e67b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_PCP_CORE_STATS.'First EDD'
+	toColumn: LocalDateTable_d4981292-981b-407c-b6b8-41a33f17ab18.Date
+
+relationship 3e048864-b15c-46c8-ad08-218dd8a81e62
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_PCP_CORE_STATS.'First EDD entered on (hx)'
+	toColumn: LocalDateTable_dd6b96d7-f5e3-4ef4-9c6a-a53c70e1dc56.Date
+
+relationship 176b4df0-ac4e-4136-8b9c-fe690adbffbb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_PCP_CORE_STATS.'Last EDD'
+	toColumn: LocalDateTable_ec528382-63f2-4fce-9973-eefca7aa609b.Date
+
+relationship 628bb378-22e4-4fa5-b190-93efb0570369
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_PCP_CORE_STATS.'Last EDD entered on (hx)'
+	toColumn: LocalDateTable_959c9359-de18-4e23-b630-16b5fdeb78d2.Date
+
+relationship d872870f-26b9-4e4c-b6c4-eb7f8a0f6e14
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_PCP_CORE_STATS.'First MRD'
+	toColumn: LocalDateTable_0f791035-d02a-41dd-9814-49c4bcbb0cac.Date
+
+relationship c29c1de4-5c81-48df-a190-e6e7069ae1a8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_PCP_CORE_STATS.FIRST_UPDATED_MRD_DTS
+	toColumn: LocalDateTable_10ed433b-5217-45f1-813d-2885b7498689.Date
+
+relationship 314f75d9-3d9c-41ca-bda9-5f78d4f82a56
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_PCP_CORE_STATS.'Last MRD'
+	toColumn: LocalDateTable_057d5829-880b-445a-941b-5112647c7642.Date
+
+relationship f1c31c1e-2393-4856-a4b4-6cfa313a0bec
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_PCP_CORE_STATS.LAST_UPDATED_MRD_DTS
+	toColumn: LocalDateTable_3068b0c3-8429-44e9-b3af-dad2603f89a3.Date
+
+relationship e3cf5340-261a-418a-8f7c-d106eb6d1c26
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_PCP_CORE_STATS.SERVICE_DTS
+	toColumn: LocalDateTable_862992d8-62fb-46ff-9701-52b8e0248d84.Date
+
+relationship c50026df-4008-4be6-8709-2bf127df48d5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_PCP_CORE_STATS.INSERT_DTS
+	toColumn: LocalDateTable_d8002b67-5a2e-4ab5-921c-af7b65fa3106.Date
+
+relationship fa669e14-76d4-4463-848e-8f87e7863baf
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_PCP_CORE_STATS.UPDATE_DTS
+	toColumn: LocalDateTable_471be29e-7e0e-4e74-8bbf-75cd1c353110.Date
+
+relationship 26b74b8c-daab-471c-b49a-fad39169fc85
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_CM_STOP_BILL.ADMIT_DTS
+	toColumn: LocalDateTable_f7a434d1-c096-4c47-9740-7cbec4070e81.Date
+
+relationship 392d537c-132a-4f6f-86a2-88517bdd1161
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_CM_STOP_BILL.DISCHARGE_DTS
+	toColumn: LocalDateTable_7f055867-b331-44bc-a75a-e4055af89c05.Date
+
+relationship 6ac78cc1-f01b-4036-b092-0c90867b4cdf
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_CM_STOP_BILL.STOP_BILL_DTS
+	toColumn: LocalDateTable_412325cf-77b5-48a2-9d16-a9fb314ea709.Date
+
+relationship b09eb383-8f5b-4e21-9475-51480e08324e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_IMM_MOON_CM_DOCUMENTATION.ADMIT_DTS
+	toColumn: LocalDateTable_18008ad4-fc5a-475f-8446-c7060b5fa305.Date
+
+relationship d35fcd61-110c-4bc2-a7af-db062610f35c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_IMM_MOON_CM_DOCUMENTATION.DISCHARGE_DTS
+	toColumn: LocalDateTable_e034cb5f-af86-46c4-abc3-81b8a398c8c8.Date
+
+relationship 9a072f7a-cae1-4616-838c-9a7d7cded42a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_IMM_MOON_CM_DOCUMENTATION.DOCUMENT_RECEIVED_DTS
+	toColumn: LocalDateTable_2baa5f81-7e3e-4d23-bb97-63157a6562f6.Date
+
+relationship f5a369aa-322a-469c-9f1e-d49525996101
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_IMM_MOON_CM_DOCUMENTATION.MOON_OBS_START_DTS
+	toColumn: LocalDateTable_9e2fcd4b-7a59-4ab5-b880-35e929684cd4.Date
+
+relationship 4594e70a-f065-48a4-ac4e-e09b277805e7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_IMM_MOON_CM_DOCUMENTATION.MOON_OBS_EFFECTIVE_DTS
+	toColumn: LocalDateTable_6c1908f6-6f62-470f-b142-f792c5430335.Date
+
+relationship e334087d-14a0-4fb7-97c8-ba681a8e7017
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_IMM_MOON_CM_DOCUMENTATION.MOON_OBS_ENTRY_DTS
+	toColumn: LocalDateTable_b82fe590-52ea-4001-b892-2cf058413b13.Date
+
+relationship a60d06be-ba83-307e-7301-acb66b557b03
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: VW_PCP_CORE_STATS.HAR
+	toColumn: VW_IMM_MOON_CM_DOCUMENTATION.HAR
+
+relationship 51da49ca-78e6-2073-4067-79933b73f6ab
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: VW_PCP_CORE_STATS.HAR
+	toColumn: VW_CM_STOP_BILL.HAR
+
+relationship 8b6be965-8277-46ac-85cf-a576615f01bb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_CM_STOP_BILL.STOP_BILL_MONTH_DTS
+	toColumn: LocalDateTable_8fe03a49-240a-403a-aeeb-d577f6b41fef.Date
+
+relationship 06efb83a-937d-49d7-86aa-966ce3ef52b7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_PCP_CORE_STATS.SDOH_REPORTING_MONTH_DT
+	toColumn: LocalDateTable_bab0c10f-08c2-4623-8a85-506e9a3f125a.Date
+
+relationship bf1aaef7-d40d-4dd3-9ced-420e629f054f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_PCP_CORE_STATS.CALCULATED_ADMISSION_DTS
+	toColumn: LocalDateTable_1ed9f354-b99e-42fe-99a4-a26ae70a3d9f.Date
+
+relationship 093eb002-cee0-44eb-a7ed-0e4114b7ad0f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_CM_STOP_BILL.STOP_BILL_DT
+	toColumn: LocalDateTable_b7b827cd-07f7-4452-9979-02b14aa90da2.Date
+
+relationship 39807306-20d7-4214-8ec4-b3f91ecfc087
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VW_IMM_MOON_CM_DOCUMENTATION.MOON_OBS_EFFECTIVE_DT
+	toColumn: LocalDateTable_36c17551-2d0f-47f5-9f15-a036dbf87554.Date
+
+relationship 7789f564-10f3-4e45-83f7-eb9ddbdbfe8a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DIM_PATIENT.DEATHINSTANT
+	toColumn: LocalDateTable_a5228da7-f5fc-473e-940e-53b091476fa3.Date
+
+relationship 996fe89c-002d-4d07-a2dc-526b1d256626
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DIM_PATIENT.INSERT_DTS
+	toColumn: LocalDateTable_c84f8627-d758-4fc3-9809-848e15c949d3.Date
+
+relationship 27d897d9-16cc-4849-b08f-64f70b4a87a9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DIM_PATIENT.UPDATE_DTS
+	toColumn: LocalDateTable_f5a789e9-1ed2-484f-ab65-5ecebf60568a.Date
+
+relationship a5d79062-3ecd-20fe-0452-7b51f43bbbfb
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: VW_PCP_CORE_STATS.'EPIC MRN ID'
+	toColumn: DIM_PATIENT.PRIMARYMRN
+

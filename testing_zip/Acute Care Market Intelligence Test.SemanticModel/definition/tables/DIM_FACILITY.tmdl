@@ -1,0 +1,189 @@
+table DIM_FACILITY
+	lineageTag: 20a78964-a7c3-4e7e-9fa7-552cc0ea0a2e
+
+	column FACILITY_KEY
+		dataType: string
+		lineageTag: 8162351a-6470-4488-9aef-588cf0a923b8
+		summarizeBy: none
+		sourceColumn: FACILITY_KEY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FACILITY_NM
+		dataType: string
+		lineageTag: 9d0c5b46-c3a3-4a14-97f8-dc77bc907a6f
+		summarizeBy: none
+		sourceColumn: FACILITY_NM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FACILITY_SYSTEM_NM
+		dataType: string
+		lineageTag: 3465cd34-d7ff-4827-aaf2-f22ea389750f
+		summarizeBy: none
+		sourceColumn: FACILITY_SYSTEM_NM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FACILITY_ZIP_CD
+		dataType: string
+		lineageTag: e4597727-c610-4fe7-9cc0-1cf062d091d1
+		summarizeBy: none
+		sourceColumn: FACILITY_ZIP_CD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FACILITY_DIVISION_NM
+		dataType: string
+		lineageTag: 2970347d-51e8-4dc7-883d-cde25ded6693
+		summarizeBy: none
+		sourceColumn: FACILITY_DIVISION_NM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FACILITY_REGION_NM
+		dataType: string
+		lineageTag: 787c743a-e5e7-49f5-bf51-7188546e4d3f
+		summarizeBy: none
+		sourceColumn: FACILITY_REGION_NM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FACILITY_SERVICE_AREA_NM
+		dataType: string
+		lineageTag: d897189f-8b60-4a68-ba18-e8c72a885261
+		summarizeBy: none
+		sourceColumn: FACILITY_SERVICE_AREA_NM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FACILITY_SUBSERVICE_AREA_NM
+		dataType: string
+		lineageTag: 8a1529b6-6393-4a0d-8bce-35689578063e
+		summarizeBy: none
+		sourceColumn: FACILITY_SUBSERVICE_AREA_NM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FACILITY_SUBSERVICE_AREA_CLASS_DSC
+		dataType: string
+		lineageTag: 4aeb5446-5261-4f6c-96c2-218e80853b76
+		summarizeBy: none
+		sourceColumn: FACILITY_SUBSERVICE_AREA_CLASS_DSC
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FACILITY_STATE_NM
+		dataType: string
+		lineageTag: eed4faef-f439-4222-acf9-49c8eb3f333f
+		summarizeBy: none
+		sourceColumn: FACILITY_STATE_NM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FACILITY_COUNTY_NM
+		dataType: string
+		lineageTag: b3c7f4dd-efce-43e2-adca-fd477848c21e
+		summarizeBy: none
+		sourceColumn: FACILITY_COUNTY_NM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FACILITY_CITY_NM
+		dataType: string
+		lineageTag: 717226d1-f5c7-4062-ad99-24a433228aea
+		summarizeBy: none
+		sourceColumn: FACILITY_CITY_NM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FACILITY_LATITUDE_NBR
+		dataType: double
+		lineageTag: f13e9040-47b2-48de-bf41-657c5f9f878f
+		summarizeBy: sum
+		sourceColumn: FACILITY_LATITUDE_NBR
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FACILITY_LONGITUDE_NBR
+		dataType: double
+		lineageTag: b54703b6-0dce-448e-87a3-cf54c6a120a2
+		summarizeBy: sum
+		sourceColumn: FACILITY_LONGITUDE_NBR
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IsActiveFacility = LOOKUPVALUE(FACT_IP_OP[I],FACT_IP_OP[FACILITY_KEY],DIM_FACILITY[FACILITY_KEY],0)
+		isHidden
+		formatString: 0
+		lineageTag: 4051f40d-6036-4f28-8fa8-c16e17743670
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FACILITY_STATE_COUNTY_NM
+		dataType: string
+		lineageTag: 19403143-45a4-4e50-8f78-82b269adb205
+		summarizeBy: none
+		sourceColumn: FACILITY_STATE_COUNTY_NM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FACILITY_CITY_STATE_NM
+		dataType: string
+		lineageTag: 1c06e9a3-036f-4c0e-bcca-ee89b424d922
+		summarizeBy: none
+		sourceColumn: FACILITY_CITY_STATE_NM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_FACILITY = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("psjh_prod.west-us-2.azure.snowflakecomputing.com",#"WH Name",[Role=#"Role Name"]){[Name=DBName]}[Data], "SELECT #(lf)    DISTINCT#(lf)        HSP.HOSPITAL_KEY as ""FACILITY_KEY"",#(lf)        ifnull(REF.FACILITY,'NA') AS ""FACILITY_NM"",#(lf)        ifnull(REF.SYSTEM,'NA') AS ""FACILITY_SYSTEM_NM"",#(lf)        HSP.ZIP_CD AS ""FACILITY_ZIP_CD"",#(lf)        REF1.DIVISION AS ""FACILITY_DIVISION_NM"",#(lf)        REF1.REGION AS ""FACILITY_REGION_NM"",#(lf)        REF1.SERVICE_AREA AS ""FACILITY_SERVICE_AREA_NM"",#(lf)        REF1.SUBSERVICE_AREA AS ""FACILITY_SUBSERVICE_AREA_NM"",#(lf)        REF1.COUNTY AS ""FACILITY_STATE_COUNTY_NM"",#(lf)        REF1.SUBSERVICE_AREA_CLASS AS ""FACILITY_SUBSERVICE_AREA_CLASS_DSC"",#(lf)    CASE#(lf)            WHEN FZIP.STATE_NM = 'Unknown Address' THEN DS.STATE_NM#(lf)            ELSE FZIP.STATE_NM#(lf)        END AS ""FACILITY_STATE_NM"",#(lf)        FZIP.COUNTY_NM AS ""FACILITY_COUNTY_NM"",#(lf)        FZIP.CITY_NM AS ""FACILITY_CITY_NM"",#(lf)REF1.CITY as FACILITY_CITY_STATE_NM, #(lf)        CAST(HSP.LATITUDE_NBR as DECIMAL(15, 6)) AS ""FACILITY_LATITUDE_NBR"",#(lf)        CAST(HSP.LONGITUDE_NBR as DECIMAL(15, 6)) AS ""FACILITY_LONGITUDE_NBR"",#(lf)FROM RPT_STATE_INTELLIMED.DIM_HOSPITAL HSP#(lf)LEFT JOIN STRATEGY_PLANNING.WHS_STATE_HOSP_DATA_PRD.REF_IM_SYSTEM_FACILITY REF ON HSP.HOSPITAL_CD = REF.IM_FACILITY_ID#(lf)LEFT JOIN STRATEGY_PLANNING.WHS_SYSTEM_SP_REF_FILES_PRD.REF_PSJH_ZIP_TO_GEOGRAPHIES REF1 ON HSP.ZIP_CD = REF1.ZIP_CODE#(lf)LEFT JOIN DMS_STATE_INTELLIMED.DIM_ZIP FZIP ON HSP.ZIP_CD = FZIP.ZIP_CD#(lf)LEFT JOIN DMS_STATE_INTELLIMED.DIM_STATE DS ON HSP.HOSPITAL_STATE_CD = DS.STATE_CD", null, [EnableFolding=true])
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

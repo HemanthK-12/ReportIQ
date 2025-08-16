@@ -1,0 +1,72 @@
+table 'Scatter Plot Metrics 2'
+	lineageTag: 9cf191aa-a00a-4b41-ad5d-1727c36b0eeb
+
+	column Parameter
+		lineageTag: 3074a590-1ca1-4aef-881d-1a030421227a
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Fields'
+		isHidden
+		lineageTag: 3f6690b4-272f-4974-b3e9-28e35e7061de
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: d789ea33-d9ed-4fdf-9ab1-1eac7f33643e
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Scatter Plot Metrics 2' = calculated
+		mode: import
+		source = ```
+				{
+				    ("Case Count", NAMEOF(VW_PCP_CORE_STATS[Encounter CSN count]), 0),
+				    ("GMLOS O/E", NAMEOF([GMLOS O/E]), 1),
+				    ("Observed Avg Inpatient LOS", NAMEOF([Average Observed LOS Days]), 2),
+				    ("Expected GMLOS", NAMEOF([Expected Avg GMLOS]), 3),
+				    ("Expected Pt Days", NAMEOF([Total Expected Pt Days]), 4),
+				    ("Observed Inpatient Pt Days", NAMEOF([Total Observed Pt Days]), 5),
+				    ("Opportunity Days", NAMEOF([Opportunity Days]), 6),
+				    ("30-Day Readmission Rate (%)", NAMEOF('VW_PCP_CORE_STATS'[% 30 Day Revisits]), 7),
+				    ("30-Day Readmission O/E", NAMEOF(VW_PCP_CORE_STATS[Hospital Wide Readmit O/E]), 8), 
+				    ("Discharge Home Health (%)", NAMEOF(VW_PCP_CORE_STATS[% Discharge Home Health]), 21),
+				    ("Discharge Home (%)", NAMEOF('VW_PCP_CORE_STATS'[% Discharge Home]), 22),
+				    ("Discharge IRF (%)", NAMEOF(VW_PCP_CORE_STATS[% Discharge IRF]), 23),
+				    ("Discharge LTAC (%)", NAMEOF(VW_PCP_CORE_STATS[% Discharge LTAC]), 24),
+				    ("Discharge Observation (%)", NAMEOF('VW_PCP_CORE_STATS'[% Obs Rate]), 25),
+				    ("Discharge SNF (%)", NAMEOF('VW_PCP_CORE_STATS'[% Discharge SNF]), 26),
+				    ("Discharge Transfer (%)", NAMEOF(VW_PCP_CORE_STATS[% Discharge Transfer]), 27),
+				    ("Discharge Orders before 11 am (%)", NAMEOF('VW_PCP_CORE_STATS'[Discharge Orders before 11 am %]), 28),
+				    ("Discharge Orders before 2 pm (%)", NAMEOF('VW_PCP_CORE_STATS'[Discharge Orders before 2 pm %]), 29),
+				    ("Conditional Discharge Orders (%)", NAMEOF('VW_PCP_CORE_STATS'[% Conditional Discharge Orders]), 30),
+				    ("Discharge Order to Discharge TAT (Minutes)", NAMEOF([Median Time between Order and Discharge Mins]), 33),
+				    ("Discharge Order to Discharge TAT within 120 min (%)", NAMEOF([% Discharge Turnaround]), 34),
+				    ("Case Mix Index(CMI)", NAMEOF(VW_PCP_CORE_STATS[Average CMI]),35),
+				    ("EDD entered within 24 hrs (%)", NAMEOF('VW_PCP_CORE_STATS'[% EDD entered within 24 hrs]), 36),
+				    ("MRD entered within 36 hrs (%)", NAMEOF('VW_PCP_CORE_STATS'[% MRD entered within 36 hrs]), 37),
+				    ("SDOH Compliance (%)", NAMEOF(VW_PCP_CORE_STATS[SDOH Compliance %]), 38)
+				    }
+				```
+
+	annotation PBI_Id = 163fc5e958f54409b0efaa2e3a81609e
+

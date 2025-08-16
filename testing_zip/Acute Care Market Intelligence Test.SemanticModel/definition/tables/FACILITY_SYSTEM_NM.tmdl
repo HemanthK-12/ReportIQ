@@ -1,0 +1,36 @@
+table FACILITY_SYSTEM_NM
+	isHidden
+	lineageTag: ad7c1ff4-7297-444e-8369-0291230fc423
+
+	measure 'Previous Year Cases new' = CALCULATE([Cases Amt],PREVIOUSYEAR(FACT_IP_OP[DISCHARGE_DTS]))
+		isHidden
+		lineageTag: 29837952-32f5-4add-a923-816ea060b2f1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Min Discharge Year' = min(DIM_DATE[YEAR_NBR])
+		isHidden
+		lineageTag: a106bcbe-9f0c-47a2-8c5f-4543a0164594
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FACILITY_SYSTEM_NM
+		isHidden
+		lineageTag: 388fe940-6bee-4db2-a0f6-03ffccd661ac
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: DIM_FACILITY[FACILITY_SYSTEM_NM]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FACILITY_SYSTEM_NM = calculated
+		mode: import
+		source =
+				
+				UNION (
+				    ALLNOBLANKROW ( DIM_FACILITY[FACILITY_SYSTEM_NM] ),
+				    { "Others" }
+				)
+
+	annotation PBI_Id = 3b73599b7cd9429e814bd80821143633
+

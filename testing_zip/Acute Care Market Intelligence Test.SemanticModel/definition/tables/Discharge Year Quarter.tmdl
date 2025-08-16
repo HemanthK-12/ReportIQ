@@ -1,0 +1,63 @@
+table 'Discharge Year Quarter'
+	isHidden
+	lineageTag: 3c3e1173-2181-464f-8c6a-d0c5c06a9f04
+
+	measure 'Axis order' = BLANK()
+		formatString: 0
+		isHidden
+		lineageTag: 222c9592-b37d-4e36-974f-f09a8b855ed8
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure order = SELECTEDVALUE('Discharge Year Quarter'[Discharge Year/Quarter Order])
+		formatString: 0
+		isHidden
+		lineageTag: c2f41334-e133-4389-8d2a-9142c2b05ee8
+
+	column 'Discharge Year/Quarter'
+		isHidden
+		lineageTag: 8fe9f97b-e4e6-4690-8bc9-de1fac0c53b1
+		isDefaultLabel
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Discharge Year/Quarter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Discharge Year/Quarter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Discharge Year/Quarter Fields'
+		isHidden
+		lineageTag: 336763af-aa70-44a4-8df7-33008a742549
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Discharge Year/Quarter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Discharge Year/Quarter Order'
+		isHidden
+		formatString: 0
+		lineageTag: b97bdb55-5434-474a-9f78-0164ec8a3f5f
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Discharge Year Quarter' = calculated
+		mode: import
+		source =
+				{
+				    ("Discharge Year", NAMEOF('DIM_DATE'[YEAR_NBR]), 0),
+				    ("Discharge Quarter", NAMEOF('DIM_DATE'[YEAR_QTR_DESC]), 1)
+				}
+
+	annotation PBI_Id = 7074820f42f440478ce558fecf787902
+

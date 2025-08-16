@@ -1,0 +1,34 @@
+table 'Level of Detail Sort'
+	lineageTag: bfd9fea1-fd83-4a04-9967-31a438520b4f
+
+	column 'Level of Detail Order'
+		dataType: int64
+		formatString: 0
+		lineageTag: c8856335-c794-4f5a-be6b-96a03120def6
+		summarizeBy: none
+		sourceColumn: Level of Detail Order
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Level of Detail Name'
+		dataType: string
+		lineageTag: 821ae9f5-b684-4306-ae55-86aa845bb910
+		summarizeBy: none
+		sourceColumn: Level of Detail Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Level of Detail Sort' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WMlTSUQrKLM5WcM7PKylKTC5RitWJVjICijrnZ+QXQbjGYC5EXkFXAUnGBKQ9NT0zPw/MNQVyg1OLyjKTUxUci1ITwYJmQEGfzLxUhfw0BafSYiCruBgsYQ6U8HAOUPBx9FNwTixJTc8vqlSKjQUA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Level of Detail Order2" = _t, #"Level of Detail Name2" = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Level of Detail Order2", Int64.Type}, {"Level of Detail Name2", type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"Level of Detail Name2", "Level of Detail Name"}, {"Level of Detail Order2", "Level of Detail Order"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

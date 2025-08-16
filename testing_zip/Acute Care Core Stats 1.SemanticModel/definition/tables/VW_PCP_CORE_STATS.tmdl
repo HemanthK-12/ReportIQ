@@ -1,0 +1,2282 @@
+table VW_PCP_CORE_STATS
+	lineageTag: ceac3665-c723-41bf-bae8-25b4b7b2f6bc
+
+	measure '% 30 Day Revisits' = SUM('VW_PCP_CORE_STATS'[30 Day Revisits])/'VW_PCP_CORE_STATS'[Encounter CSN count]
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Measures & Metrics
+		lineageTag: 38d2188b-bf76-42cd-923f-38d7a9d5d5d8
+
+	measure '% Discharge Home' = ```
+			CALCULATE(DISTINCTCOUNTNOBLANK(VW_PCP_CORE_STATS[ENCOUNTEREPICCSN]), 
+			VW_PCP_CORE_STATS[Discharge Disposition]= "Home or Self Care")
+			/DISTINCTCOUNTNOBLANK(VW_PCP_CORE_STATS[ENCOUNTEREPICCSN])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Measures & Metrics
+		lineageTag: 848681dc-a4df-4902-8a12-45bc6dbcb2f2
+
+	measure '% Discharge SNF' = ```
+			CALCULATE(DISTINCTCOUNTNOBLANK(VW_PCP_CORE_STATS[ENCOUNTEREPICCSN]), 
+			VW_PCP_CORE_STATS[Discharge Disposition]= "Skilled Nursing Facility - SNF")
+			/DISTINCTCOUNTNOBLANK(VW_PCP_CORE_STATS[ENCOUNTEREPICCSN])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Measures & Metrics
+		lineageTag: 9c4837ff-6ce0-4783-b506-a456a2ced0e7
+
+	measure '% EDD entered within 24 hrs' = CALCULATE(SUM(VW_PCP_CORE_STATS[EDD entered within 24hrs])/[Encounter CSN count], VW_PCP_CORE_STATS[EDD_IND]=1, not (VW_PCP_CORE_STATS[TIME_TO_FIRST_EDD_ENTERED_TXT]="<0"))
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Measures & Metrics
+		lineageTag: 8a80b9f2-e2cf-4b33-b8ea-aa1c90331b94
+
+	measure '% EDD present' = DISTINCTCOUNT(VW_PCP_CORE_STATS[EDD present])/[Encounter CSN count]
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Measures & Metrics
+		lineageTag: 490b927a-3601-48a3-b8b4-0e2fcf8fc775
+
+	measure '% IP < 24 hrs' = SUM(VW_PCP_CORE_STATS[IP_LESS_THAN_24_HR_IND])/[Encounter CSN count]
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Measures & Metrics
+		lineageTag: a4d970d3-f650-40df-8dea-9018e2d3edf6
+
+	measure 'Encounter CSN count' = DISTINCTCOUNTNOBLANK(VW_PCP_CORE_STATS[ENCOUNTEREPICCSN])
+		formatString: #,0
+		displayFolder: Measures & Metrics
+		lineageTag: 044fa3a3-92a0-4b06-9165-08ab2b291b28
+
+	measure '% IP to Obs' = SUM(VW_PCP_CORE_STATS[IP_TO_OBS_IND])/[Encounter CSN count]
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Measures & Metrics
+		lineageTag: 5316b7b0-7db4-417a-8606-5591f6f36534
+
+	measure '% MRD entered within 36 hrs' = CALCULATE(SUM(VW_PCP_CORE_STATS[MRD entered within 36 hrs])/[Encounter CSN count], VW_PCP_CORE_STATS[MRD_IND]=1)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Measures & Metrics
+		lineageTag: ceea15b2-23bf-40fb-a246-963a725f21c5
+
+	measure '% MRD present' = DISTINCTCOUNT(VW_PCP_CORE_STATS[MRD present])/[Encounter CSN count]
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Measures & Metrics
+		lineageTag: 365be3b7-813d-4124-8df6-0a272d437ef8
+
+	measure '% Obs LOS > 48 hrs' = SUM(VW_PCP_CORE_STATS[OBS_MORE_THAN_48_HR_IND])/[Encounter CSN count]
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Measures & Metrics
+		lineageTag: b4155e5a-a542-4ab0-b7cf-15facca0807f
+
+	measure '% Obs Rate' = SUM(VW_PCP_CORE_STATS[Discharge Obs Status Count])/[Encounter CSN count]
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Measures & Metrics
+		lineageTag: 6f0b79b5-f39c-414e-b363-49b55b20f764
+
+	measure '% Obs to IP' = SUM(VW_PCP_CORE_STATS[OBS_TO_IP_IND])/[Encounter CSN count]
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Measures & Metrics
+		lineageTag: 34bd427e-7342-409a-8cd2-8a22f4d135fe
+
+	measure 'Data Date Range' = FORMAT(CALCULATE(Min(VW_PCP_CORE_STATS[Discharge Date]), VW_PCP_CORE_STATS[Discharge Date]>0),"MM/DD/YYYY")&"  -  "&FORMAT(MAX(VW_PCP_CORE_STATS[Discharge Date]),"MM/DD/YYYY")
+		displayFolder: Measures & Metrics
+		lineageTag: c1a519aa-b130-4fe8-9e1d-47d95c4bcbec
+
+	measure 'Discharge Order count' = COUNT(VW_PCP_CORE_STATS[DISCHARGEORDERINSTANT])
+		formatString: 0
+		displayFolder: Measures & Metrics
+		lineageTag: 299db1db-2e06-47cc-9321-1b82b92e4175
+
+	measure 'Discharge Orders before 11 am %' = CALCULATE(SUM('VW_PCP_CORE_STATS'[DISCHARGE_ORDER_HOUR_BEFORE_11_AM_IND])/'VW_PCP_CORE_STATS'[Discharge Order count], VW_PCP_CORE_STATS[DISCHARGE_ORDER_IND]=1)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Measures & Metrics
+		lineageTag: 73fc3bfb-27df-4431-adbf-98b469dffffd
+
+	measure 'Discharge Orders before 2 pm %' = CALCULATE(SUM('VW_PCP_CORE_STATS'[DISCHARGE_ORDER_HOUR_BEFORE_2_PM_IND])/'VW_PCP_CORE_STATS'[Discharge Order count], VW_PCP_CORE_STATS[DISCHARGE_ORDER_IND]=1)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Measures & Metrics
+		lineageTag: 913e75b5-43a9-4971-9d6a-13e647a88795
+
+	measure '% Conditional Discharge Orders' = SUM(VW_PCP_CORE_STATS[CONDITIONAL_DISCHARGE_IND])/[Encounter CSN count]
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Measures & Metrics
+		lineageTag: cf3d4e57-9170-4230-9198-236081da7f6e
+
+	measure '% Discharge Home Health' = CALCULATE(DISTINCTCOUNTNOBLANK(VW_PCP_CORE_STATS[ENCOUNTEREPICCSN]), VW_PCP_CORE_STATS[Discharge Disposition]= "Home with Home Health")/DISTINCTCOUNTNOBLANK(VW_PCP_CORE_STATS[ENCOUNTEREPICCSN])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Measures & Metrics
+		lineageTag: 48b0e75d-cc8d-41a8-b937-b6d0cd3a12aa
+
+	measure 'Obs Status Volume' = SUM(VW_PCP_CORE_STATS[Discharge Obs Status Count])
+		formatString: #,0
+		displayFolder: Measures & Metrics
+		lineageTag: f07f8233-e864-42fe-bb3a-1f7924c88577
+
+	measure 'Average Obs Hours' = SUM(VW_PCP_CORE_STATS[OBS_HOURS_QTY])/ CALCULATE(DISTINCTCOUNTNOBLANK(VW_PCP_CORE_STATS[ENCOUNTEREPICCSN]), VW_PCP_CORE_STATS[OBS_HOURS_QTY]>0)
+		displayFolder: Measures & Metrics
+		lineageTag: 598b54ba-69f9-48f2-b378-07d5512148f9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% Discharge Transfer' = CALCULATE(DISTINCTCOUNTNOBLANK(VW_PCP_CORE_STATS[ENCOUNTEREPICCSN]), VW_PCP_CORE_STATS[Discharge Disposition]= "Cancer Center or Children's Hospital"|| VW_PCP_CORE_STATS[Discharge Disposition]="Critical Access Hospital (CAH)IP"||VW_PCP_CORE_STATS[Discharge Disposition]="Skilled Nursing Facility - SNF"|| VW_PCP_CORE_STATS[Discharge Disposition]= "Federal Hospital Facility"||VW_PCP_CORE_STATS[Discharge Disposition]= "Left to Low Acuity Care Venue"||VW_PCP_CORE_STATS[Discharge Disposition]= "Other Health Facility"||VW_PCP_CORE_STATS[Discharge Disposition]= "Short Term General Hosp IP"||VW_PCP_CORE_STATS[Discharge Disposition]= "Psychiatric Facility or unit within Hosp"||VW_PCP_CORE_STATS[Discharge Disposition]= "IP Rehab or Rehab Unit Within Hospital"||VW_PCP_CORE_STATS[Discharge Disposition]= "Acute Rehab within this Hosp (CA Only)")/DISTINCTCOUNTNOBLANK(VW_PCP_CORE_STATS[ENCOUNTEREPICCSN])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Measures & Metrics
+		lineageTag: 90a5ccbd-3dec-4a59-a9a5-c3e81c3ee53b
+
+	measure '% Discharge IRF' = ```
+			CALCULATE(DISTINCTCOUNTNOBLANK(VW_PCP_CORE_STATS[ENCOUNTEREPICCSN]), 
+			or(VW_PCP_CORE_STATS[Discharge Disposition]= "IP Rehab or Rehab Unit Within Hospital", 
+			VW_PCP_CORE_STATS[Discharge Disposition]= "Hospital Rehabilitation Inpatient or Unit"))
+			/DISTINCTCOUNTNOBLANK(VW_PCP_CORE_STATS[ENCOUNTEREPICCSN])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Measures & Metrics
+		lineageTag: 00dd42c3-c442-4f54-a0e1-9833c3b9372d
+
+	measure '% Discharge LTAC' = CALCULATE(DISTINCTCOUNTNOBLANK(VW_PCP_CORE_STATS[ENCOUNTEREPICCSN]), VW_PCP_CORE_STATS[Discharge Disposition]= "Hospital Long Term Acute Care LTAC")/DISTINCTCOUNTNOBLANK(VW_PCP_CORE_STATS[ENCOUNTEREPICCSN])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Measures & Metrics
+		lineageTag: e52b063a-96a4-498f-9142-d38121215c4d
+
+	measure 'Median Time between Order and Discharge Mins' =
+			
+			CALCULATE(MEDIAN(VW_PCP_CORE_STATS[LAST_DISCHARGE_ORDER_TO_DISCHARGE_MINUTES_NBR]), VW_PCP_CORE_STATS[DISCHARGE_ORDER_TO_DISCHARGE_TAT_IND]=1)
+			--or(VW_PCP_CORE_STATS[Discharge Disposition] = "Home or Self Care", VW_PCP_CORE_STATS[Discharge Disposition] = "Homeless Self Care"))
+		formatString: 0
+		displayFolder: Measures & Metrics
+		lineageTag: ff149ccd-3844-4782-ae2d-0e0de57856c0
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'GMLOS O/E' =
+			TRUNC(
+			    DIVIDE(
+			    CALCULATE(SUM(VW_PCP_CORE_STATS[OBSERVED_LOS_DAYS_NBR]), VW_PCP_CORE_STATS[PCP_METRIC_EXPLORER_EXCLUSION_IND] = 0),
+			    CALCULATE(SUM(VW_PCP_CORE_STATS[MSDRG_GM_LOS_NBR]), VW_PCP_CORE_STATS[PCP_METRIC_EXPLORER_EXCLUSION_IND] = 0)
+			    --VW_PCP_CORE_STATS[MSDRG_DSC]<>"Unspecified")
+			    ), 2)
+		formatString: 0.00
+		displayFolder: Measures & Metrics
+		lineageTag: 4c0fd3fd-0cd1-4605-a295-f28197bf7c2d
+
+	measure 'Average Observed LOS Days' = AVERAGE(VW_PCP_CORE_STATS[OBSERVED_LOS_DAYS_NBR])
+		displayFolder: Measures & Metrics
+		lineageTag: 6c6d88ad-7ab4-49be-91ca-8b0fd70469dc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Expected Avg GMLOS' = AVERAGE(VW_PCP_CORE_STATS[MSDRG_GM_LOS_NBR])
+		displayFolder: Measures & Metrics
+		lineageTag: c32c02c0-5e78-4fcd-a3f6-56fa5b137c05
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Observed Pt Days' = SUM(VW_PCP_CORE_STATS[OBSERVED_LOS_DAYS_NBR])
+		formatString: #,0
+		displayFolder: Measures & Metrics
+		lineageTag: c42aa354-59f9-4dc0-893b-a758adc2fab0
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Total Expected Pt Days' = SUM(VW_PCP_CORE_STATS[MSDRG_GM_LOS_NBR])
+		formatString: #,0
+		displayFolder: Measures & Metrics
+		lineageTag: 6edad87d-6f02-4c80-b9d0-359fe2c2260f
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Opportunity Days' =
+			
+			CALCULATE(SUMX(VW_PCP_CORE_STATS, VW_PCP_CORE_STATS[OBSERVED_LOS_DAYS_NBR] - VW_PCP_CORE_STATS[MSDRG_GM_LOS_NBR]),VW_PCP_CORE_STATS[OBSERVED_LOS_DAYS_NBR] > VW_PCP_CORE_STATS[MSDRG_GM_LOS_NBR])
+		formatString: #,0
+		displayFolder: Measures & Metrics
+		lineageTag: 7575bc7b-0713-4ff1-bde8-d65ce8724c1b
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure '% Discharge Turnaround' = CALCULATE( [Encounter CSN count], VW_PCP_CORE_STATS[LAST_DISCHARGE_ORDER_TO_DISCHARGE_HOURS_NBR]<=2)/ [Encounter CSN count]
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Measures & Metrics
+		lineageTag: 8cfa8eba-aef5-4589-9e16-2b2e6e4d18bb
+
+	measure 'Average LOS to GMLOS Variance' = AVERAGE(VW_PCP_CORE_STATS[OBSERVED_LOS_DAYS_NBR]) - [Expected Avg GMLOS]
+		displayFolder: Measures & Metrics
+		lineageTag: 4e882b50-54fb-49d9-90d8-ef223576f7d9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Count of Conversions' = CALCULATE(DISTINCTCOUNTNOBLANK(VW_PCP_CORE_STATS[ENCOUNTEREPICCSN]), VW_PCP_CORE_STATS[ACCOUNT_CLASS_NM]= "Inpatient", VW_PCP_CORE_STATS[OBS_HOURS_QTY]>0)
+		formatString: #,0
+		displayFolder: Measures & Metrics
+		lineageTag: 9cbcb061-f875-438e-83ab-ae3737c9d888
+
+	measure 'Total Obs at Admissions' = CALCULATE(DISTINCTCOUNTNOBLANK(VW_PCP_CORE_STATS[HAR]), VW_PCP_CORE_STATS[ACCOUNT_CLASS_NM]= "Observation", not(isblank(VW_PCP_CORE_STATS[OBS_DISCHARGE_DEPARTMENT_NM])))+[Count of Conversions]
+		formatString: #,0
+		displayFolder: Measures & Metrics
+		lineageTag: b810c323-9f35-4f3f-a0cf-4ce052520fea
+
+	measure 'Average Obs hours before conversion' = AVERAGE(VW_PCP_CORE_STATS[OBS_HOURS_QTY])
+		formatString: 0
+		displayFolder: Measures & Metrics
+		lineageTag: 4b915b15-7bc4-43ab-8784-504491f62c63
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Conversion Rate' = [Count of Conversions]/ [Total Obs at Admissions]
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Measures & Metrics
+		lineageTag: 91e74cc8-631a-46b4-a4ba-9d3362ab6bae
+
+	measure '% 1 Day IP Stay' = SUM('VW_PCP_CORE_STATS'[IP_LESS_THAN_24_HR_IND])/'VW_PCP_CORE_STATS'[Encounter CSN count]
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Measures & Metrics
+		lineageTag: e1e9cc1f-90c6-4f6c-bcc2-33661de75665
+
+	measure 'SDOH 1 SUM' = CALCULATE(SUM(VW_PCP_CORE_STATS[SDOH_MEASURE_VALUE_NBR]), VW_PCP_CORE_STATS[SDOH_MEASURE_VALUE_NBR]=1, VW_PCP_CORE_STATS[SDOH_IND]=1)
+		formatString: 0
+		displayFolder: Measures & Metrics
+		lineageTag: 8607ab98-eaed-45ad-9494-574cc29e5105
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'SDOH SUM' = CALCULATE(DISTINCTCOUNTNOBLANK(VW_PCP_CORE_STATS[ENCOUNTEREPICCSN]), not(ISBLANK(VW_PCP_CORE_STATS[SDOH_MEASURE_VALUE_NBR])))
+		formatString: 0
+		displayFolder: Measures & Metrics
+		lineageTag: af0cdccc-9e43-4886-8cdc-108bea83c9f4
+
+	measure 'SDOH Compliance %' = CALCULATE([SDOH 1 SUM]/[SDOH SUM], VW_PCP_CORE_STATS[Patient Age] >= 18, not(VW_PCP_CORE_STATS[Discharge Disposition]) = "Expired")
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Measures & Metrics
+		lineageTag: 771ed7fd-7c9a-4b48-9441-57746787675d
+
+	measure 'Hospital Wide Readmit O/E' =
+			CALCULATE(sum(VW_PCP_CORE_STATS[READMIT_NUMERATOR_NBR])
+			/sum(VW_PCP_CORE_STATS[READMIT_EXPECTED_NBR])
+			, VW_PCP_CORE_STATS[READMIT_DENOMINATOR_NBR] = 1
+			,VW_PCP_CORE_STATS[DISCHARGE_MONTHS_AGO_NBR] > 1
+			)
+		formatString: 0.00
+		displayFolder: Measures & Metrics
+		lineageTag: a8c94b29-6553-43cd-bb2c-4327d68e76db
+
+	measure 'Average CMI' = AVERAGE(VW_PCP_CORE_STATS[CMI_NBR])
+		formatString: 0.00
+		displayFolder: Measures & Metrics
+		lineageTag: a478c9bf-3238-42df-94b7-97546a64ce67
+
+	measure 'Net Opportunity Days' = SUM(VW_PCP_CORE_STATS[OBSERVED_LOS_DAYS_NBR])- SUM(VW_PCP_CORE_STATS[MSDRG_GM_LOS_NBR])
+		formatString: #,0
+		displayFolder: Measures & Metrics
+		lineageTag: 9afefd8e-ee29-4f44-aa04-2a7670240cce
+
+	measure Correlation = ```
+			
+			
+			VAR __CORRELATION_TABLE = VALUES('VW_PCP_CORE_STATS'[Discharge Date])
+			
+			VAR __COUNT =
+			
+			    COUNTX(
+			
+			        KEEPFILTERS(__CORRELATION_TABLE),
+			
+			        CALCULATE('Scatter Plot Metrics 1'[Parameter] * 'Scatter Plot Metrics 2'[Parameter])+0 //   +0 added to include all dates even if none existed for data point.
+			
+			    )
+			
+			VAR __SUM_X = SUMX(KEEPFILTERS(__CORRELATION_TABLE), CALCULATE('Scatter Plot Metric 1'[Parameter]))
+			
+			VAR __SUM_Y = SUMX(KEEPFILTERS(__CORRELATION_TABLE), CALCULATE('Scatter Plot Metric 2'[Parameter]))
+			
+			VAR __SUM_XY =
+			
+			    SUMX(
+			
+			        KEEPFILTERS(__CORRELATION_TABLE),
+			
+			        CALCULATE('Scatter Plot Metrics 1'[Parameter] * 'Scatter Plot Metrics 2'[Parameter] * 1.)
+			
+			    )
+			
+			VAR __SUM_X2 =
+			
+			    SUMX(
+			
+			        KEEPFILTERS(__CORRELATION_TABLE),
+			
+			        CALCULATE('Scatter Plot Metrics 1'[Parameter] ^ 2)
+			
+			    )
+			
+			VAR __SUM_Y2 = SUMX(KEEPFILTERS(__CORRELATION_TABLE), CALCULATE('Scatter Plot Metrics 2'[Parameter] ^ 2))
+			
+			RETURN
+			
+			 
+			
+			    if( iserror(DIVIDE(
+			
+			        __COUNT * __SUM_XY - __SUM_X * __SUM_Y * 1.,
+			
+			        SQRT(
+			
+			            (__COUNT * __SUM_X2 - __SUM_X ^ 2)
+			
+			                * (__COUNT * __SUM_Y2 - __SUM_Y ^ 2)
+			
+			        )
+			
+			    )), blank(),DIVIDE(
+			
+			        __COUNT * __SUM_XY - __SUM_X * __SUM_Y * 1.,
+			
+			        SQRT(
+			
+			            (__COUNT * __SUM_X2 - __SUM_X ^ 2)
+			
+			                * (__COUNT * __SUM_Y2 - __SUM_Y ^ 2)
+			
+			        )
+			
+			    ))
+			
+			
+			```
+		displayFolder: Measures & Metrics
+		lineageTag: f0e80f2a-d79d-4120-9c70-b6e14d850440
+
+	column HOSPITALADMISSIONKEY
+		dataType: double
+		lineageTag: dcbeab10-653e-409a-a43b-bab72e86824a
+		summarizeBy: sum
+		sourceColumn: HOSPITALADMISSIONKEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ENCOUNTEREPICCSN
+		dataType: int64
+		formatString: 0
+		lineageTag: 2cf9b76e-8ac3-4393-99a8-a0fdeb97758f
+		summarizeBy: none
+		sourceColumn: ENCOUNTEREPICCSN
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = User
+
+	column 'EPIC MRN ID'
+		dataType: string
+		lineageTag: e533c303-a0e4-40c9-b18e-ca655ee893bf
+		summarizeBy: none
+		sourceColumn: EPIC MRN ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column HAR
+		dataType: double
+		formatString: 0
+		lineageTag: 13b5e098-553c-4016-af88-2c0264cbbbb5
+		summarizeBy: none
+		sourceColumn: HAR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column 'Patient Age'
+		dataType: double
+		lineageTag: f8c05f2d-1c08-433e-803d-4e9b2c8250bd
+		summarizeBy: sum
+		sourceColumn: Patient Age
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Inpatient Admission Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 69c9aa0f-d533-4b0c-b5e8-dddf544e5582
+		summarizeBy: none
+		sourceColumn: Inpatient Admission Date
+
+		variation Variation
+			isDefault
+			relationship: 9014d55f-2af8-497a-a5f5-7e5e97456f69
+			defaultHierarchy: LocalDateTable_f3326ab0-e097-4bca-9fe0-f9a57035c2d3.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column INPATIENTADMISSION_DAY_OF_WEEK_NBR
+		dataType: double
+		lineageTag: d45fe664-37f9-4c19-a6ff-68b7c33bed87
+		summarizeBy: sum
+		sourceColumn: INPATIENTADMISSION_DAY_OF_WEEK_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column INPATIENTADMISSION_HOUR_OF_DAY_NBR
+		dataType: double
+		lineageTag: da85a69e-63e2-472e-a211-54a722549c0d
+		summarizeBy: sum
+		sourceColumn: INPATIENTADMISSION_HOUR_OF_DAY_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Discharge Date'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f6647300-c249-4cd9-afbf-8f0f7d58c8be
+		summarizeBy: none
+		sourceColumn: Discharge Date
+
+		variation Variation
+			isDefault
+			relationship: 18c41398-f6f8-4bda-bd13-b7ab3bbfcf6a
+			defaultHierarchy: LocalDateTable_ca66e194-8d00-402a-b38e-52b31c8bf8ad.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCHARGE_DAY_OF_WEEK_NBR
+		dataType: double
+		lineageTag: f18312b6-f759-4660-a17d-85ae0e2e4d64
+		summarizeBy: sum
+		sourceColumn: DISCHARGE_DAY_OF_WEEK_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DISCHARGE_HOUR_OF_DAY_NBR
+		dataType: double
+		formatString: 0
+		lineageTag: d400b6cd-e57d-4333-8be7-44a0c3f81c9f
+		summarizeBy: sum
+		sourceColumn: DISCHARGE_HOUR_OF_DAY_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column DISCHARGEINSTANT_UTC_TXT
+		dataType: string
+		lineageTag: 0db1c8e6-f4cd-45c6-81a1-4e089b4042dc
+		summarizeBy: none
+		sourceColumn: DISCHARGEINSTANT_UTC_TXT
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCHARGEORDERINSTANT
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4a895b7d-39d9-4ae9-9df5-55937032b908
+		summarizeBy: none
+		sourceColumn: DISCHARGEORDERINSTANT
+
+		variation Variation
+			isDefault
+			relationship: 3466639e-7389-4566-bf8c-40ea99992c39
+			defaultHierarchy: LocalDateTable_9430df00-cb73-4b0a-a562-25ac036dde56.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCHARGE_ORDER_HOUR_NBR
+		dataType: double
+		lineageTag: 813b8ad9-aefc-48a0-89d6-fa1099199d13
+		summarizeBy: sum
+		sourceColumn: DISCHARGE_ORDER_HOUR_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DISCHARGE_ORDER_HOUR_BEFORE_11_AM_IND
+		dataType: double
+		formatString: 0
+		lineageTag: c6bedd75-6312-4474-a304-b31cabba1602
+		summarizeBy: sum
+		sourceColumn: DISCHARGE_ORDER_HOUR_BEFORE_11_AM_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column DISCHARGE_ORDER_HOUR_BEFORE_2_PM_IND
+		dataType: double
+		formatString: 0
+		lineageTag: 7e6f4314-2488-43f1-bbcb-89ed66517aa5
+		summarizeBy: sum
+		sourceColumn: DISCHARGE_ORDER_HOUR_BEFORE_2_PM_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column DISCHARGE_WEEKS_AGO_NBR
+		dataType: double
+		lineageTag: a3dfce7e-8577-4091-a026-857a3283d6cd
+		summarizeBy: sum
+		sourceColumn: DISCHARGE_WEEKS_AGO_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DISCHARGE_MONTHS_AGO_NBR
+		dataType: double
+		lineageTag: ec40a42b-8bde-4ef6-8ff3-d3ca08efba8d
+		summarizeBy: sum
+		sourceColumn: DISCHARGE_MONTHS_AGO_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DISCHARGE_YEARS_AGO_NBR
+		dataType: double
+		lineageTag: 052f67dc-878f-44e8-a219-9536ac3439db
+		summarizeBy: sum
+		sourceColumn: DISCHARGE_YEARS_AGO_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column GENDERIDENTITY
+		dataType: string
+		lineageTag: 935ff8ec-934c-4878-9ae1-854955d737a7
+		summarizeBy: none
+		sourceColumn: GENDERIDENTITY
+
+		annotation SummarizationSetBy = Automatic
+
+	column FIRSTRACE
+		dataType: string
+		lineageTag: 381f0e32-8e03-4c54-92d1-d66491af1e02
+		summarizeBy: none
+		sourceColumn: FIRSTRACE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ETHNICITY
+		dataType: string
+		lineageTag: 961a723d-1fdc-4d44-be76-2bbf9267a7d1
+		summarizeBy: none
+		sourceColumn: ETHNICITY
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: c830f6c4-d135-45b7-8c0b-e0be1eda65ed
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column Division
+		dataType: string
+		lineageTag: f0dd9439-bdf6-4509-80d0-d4dfb6126b15
+		summarizeBy: none
+		sourceColumn: Division
+
+		annotation SummarizationSetBy = Automatic
+
+	column STATEORPROVINCE
+		dataType: string
+		lineageTag: af21b37e-1420-4131-973a-5d033aa25895
+		summarizeBy: none
+		sourceColumn: STATEORPROVINCE
+
+		annotation SummarizationSetBy = Automatic
+
+	column STATEORPROVINCEABBREVIATION
+		dataType: string
+		lineageTag: b4cda4d1-88bd-491d-9229-fbba248820ea
+		summarizeBy: none
+		sourceColumn: STATEORPROVINCEABBREVIATION
+
+		annotation SummarizationSetBy = Automatic
+
+	column SERVICEAREAEPICID
+		dataType: string
+		lineageTag: fb750ae0-5000-4717-b044-29ad4d48421b
+		summarizeBy: none
+		sourceColumn: SERVICEAREAEPICID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'EPIC Service Area'
+		dataType: string
+		lineageTag: 96f9ca42-24c6-46de-9c61-f8d4b809b058
+		summarizeBy: none
+		sourceColumn: EPIC Service Area
+
+		annotation SummarizationSetBy = Automatic
+
+	column FACILITY_CD
+		dataType: string
+		lineageTag: b69ed8d3-26a7-4ad2-92e4-e8a02983560e
+		summarizeBy: none
+		sourceColumn: FACILITY_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column FACILITY_NM
+		dataType: string
+		lineageTag: 33d9efa1-ddcd-46da-a622-395f172c2769
+		summarizeBy: none
+		sourceColumn: FACILITY_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column DEPARTMENTKEY
+		dataType: double
+		lineageTag: 9e0800c1-582b-44e5-8c18-26009c0ac304
+		summarizeBy: sum
+		sourceColumn: DEPARTMENTKEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DEPARTMENTEPICID
+		dataType: string
+		lineageTag: 6d47ee7a-6995-4ddf-93c5-52b94080d559
+		summarizeBy: none
+		sourceColumn: DEPARTMENTEPICID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Department
+		dataType: string
+		lineageTag: 25db7a2e-d114-4971-93d4-6c94e921f337
+		summarizeBy: none
+		sourceColumn: Department
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Department Type'
+		dataType: string
+		lineageTag: 32d6ddcf-69ab-42cd-a8e0-8d1c8f36885b
+		summarizeBy: none
+		sourceColumn: Department Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column LOCATIONEPICID
+		dataType: string
+		lineageTag: 57e80d8e-47dc-4282-a834-ae70375ac0ca
+		summarizeBy: none
+		sourceColumn: LOCATIONEPICID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: 95a2f045-5e3e-4eb4-afb8-ca643505a688
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column LOCATIONABBREVIATION
+		dataType: string
+		lineageTag: 9b49c242-c7c1-4447-b690-3d384c039c05
+		summarizeBy: none
+		sourceColumn: LOCATIONABBREVIATION
+
+		annotation SummarizationSetBy = Automatic
+
+	column CLINICAL_SERVICE_AREA_CD
+		dataType: string
+		lineageTag: 03f861f3-9d69-449d-90ba-502e238957a1
+		summarizeBy: none
+		sourceColumn: CLINICAL_SERVICE_AREA_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Clinical Service Area'
+		dataType: string
+		lineageTag: d8da257b-e5bb-466a-8194-bb3964e48554
+		summarizeBy: none
+		sourceColumn: Clinical Service Area
+
+		annotation SummarizationSetBy = Automatic
+
+	column Room
+		dataType: string
+		lineageTag: 91977949-d833-42b1-8934-4ad51dbb9139
+		summarizeBy: none
+		sourceColumn: Room
+
+		annotation SummarizationSetBy = Automatic
+
+	column IP_TO_OBS_IND
+		dataType: double
+		formatString: 0
+		lineageTag: 6a612fdc-e5d5-4ee8-ae0a-60767a2e9424
+		summarizeBy: sum
+		sourceColumn: IP_TO_OBS_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column OBS_TO_IP_IND
+		dataType: double
+		formatString: 0
+		lineageTag: c816f181-69d1-4aff-8e97-8463c3df4d68
+		summarizeBy: sum
+		sourceColumn: OBS_TO_IP_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column IP_LESS_THAN_24_HR_IND
+		dataType: double
+		formatString: 0
+		lineageTag: 55d2b394-cb52-4806-a142-c0a53c16ca64
+		summarizeBy: sum
+		sourceColumn: IP_LESS_THAN_24_HR_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column OBS_MORE_THAN_48_HR_IND
+		dataType: double
+		formatString: 0
+		lineageTag: 8d81f7e9-f3b3-4eb1-bd7b-fce122a2f4ff
+		summarizeBy: sum
+		sourceColumn: OBS_MORE_THAN_48_HR_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column OBSERVED_LOS_DAYS_NBR
+		dataType: double
+		lineageTag: f65e7ce1-53e3-4bc0-a980-67630fc8a86a
+		summarizeBy: sum
+		sourceColumn: OBSERVED_LOS_DAYS_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MSDRG_GM_LOS_NBR
+		dataType: double
+		lineageTag: 832793be-35a5-40ba-a16a-418414561579
+		summarizeBy: sum
+		sourceColumn: MSDRG_GM_LOS_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OBSERVED_OVER_GMLOS_RATIO
+		dataType: double
+		lineageTag: ab4ef1c7-1c3a-4d40-be82-db8ee4459abf
+		summarizeBy: sum
+		sourceColumn: OBSERVED_OVER_GMLOS_RATIO
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column READMIT_DAYS_NBR
+		dataType: double
+		lineageTag: 65190d33-5f04-4398-bf41-428488db26a7
+		summarizeBy: sum
+		sourceColumn: READMIT_DAYS_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Patient Class'
+		dataType: string
+		lineageTag: 55c4846c-ae93-4681-86f3-743afae9d603
+		summarizeBy: none
+		sourceColumn: Patient Class
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCHARGEPATIENTCLASS
+		dataType: string
+		lineageTag: d31e66cf-2736-4513-883b-46a81cc00d56
+		summarizeBy: none
+		sourceColumn: DISCHARGEPATIENTCLASS
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Discharge Disposition'
+		dataType: string
+		lineageTag: 8ba96dd0-e483-4277-92d2-0b6fdd1e1648
+		summarizeBy: none
+		sourceColumn: Discharge Disposition
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCHARGEDISPOSITION_GROUP_NM
+		dataType: string
+		lineageTag: 222a0244-2ed2-43e4-b1c5-f1f421376b94
+		summarizeBy: none
+		sourceColumn: DISCHARGEDISPOSITION_GROUP_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCHARGINGPROVIDERKEY
+		dataType: double
+		lineageTag: bfc7fb10-424c-47db-9d23-8f30a85b8783
+		summarizeBy: sum
+		sourceColumn: DISCHARGINGPROVIDERKEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DISCHARGE_TO_HOME_IND
+		dataType: double
+		lineageTag: a49c8f84-51f9-4921-859b-de770ffac860
+		summarizeBy: sum
+		sourceColumn: DISCHARGE_TO_HOME_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DISCHARGE_TO_SNF_IND
+		dataType: double
+		lineageTag: cdd8ca23-c967-402a-920c-8c6e5fabd5a8
+		summarizeBy: sum
+		sourceColumn: DISCHARGE_TO_SNF_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Case Manager'
+		dataType: string
+		lineageTag: 60a008a8-b7c6-4ef1-af8c-1beb006da8e9
+		summarizeBy: none
+		sourceColumn: Case Manager
+
+		annotation SummarizationSetBy = Automatic
+
+	column FIRSTATTENDINGPROVIDERID
+		dataType: string
+		lineageTag: 2f17688e-a572-4030-9afa-264692bf129f
+		summarizeBy: none
+		sourceColumn: FIRSTATTENDINGPROVIDERID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'First Attending Provider'
+		dataType: string
+		lineageTag: 04af43b2-7e4c-486a-9676-c768188f7b5e
+		summarizeBy: none
+		sourceColumn: First Attending Provider
+
+		annotation SummarizationSetBy = Automatic
+
+	column BILLINGPROVIDERID
+		dataType: string
+		lineageTag: 4b12a611-c77b-427d-99c2-f10a6b1b8760
+		summarizeBy: none
+		sourceColumn: BILLINGPROVIDERID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Last Attending Provider'
+		dataType: string
+		lineageTag: d279eb60-e824-4a07-9dd3-64242a47dfd0
+		summarizeBy: none
+		sourceColumn: Last Attending Provider
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCHARGINGPROVIDERID
+		dataType: string
+		lineageTag: 5b93649d-ebdb-458d-8bd9-4956fc40a10d
+		summarizeBy: none
+		sourceColumn: DISCHARGINGPROVIDERID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCHARGINGPROVIDERNAME
+		dataType: string
+		lineageTag: f316561f-5ff6-4258-8ceb-944b3d09c927
+		summarizeBy: none
+		sourceColumn: DISCHARGINGPROVIDERNAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Provider Team'
+		dataType: string
+		lineageTag: 10f1e054-4e05-4aab-93e0-fd78fed0db9b
+		summarizeBy: none
+		sourceColumn: Provider Team
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'First EDD'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c36826cc-803f-4692-b57f-f90da9f94236
+		summarizeBy: none
+		sourceColumn: First EDD
+
+		variation Variation
+			isDefault
+			relationship: b8e19a34-95a5-48d3-8b7b-b72e17f9e67b
+			defaultHierarchy: LocalDateTable_d4981292-981b-407c-b6b8-41a33f17ab18.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'First EDD entered on (hx)'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7a0d14dc-e20f-4573-b55a-3322b82e0556
+		summarizeBy: none
+		sourceColumn: First EDD entered on (hx)
+
+		variation Variation
+			isDefault
+			relationship: 3e048864-b15c-46c8-ad08-218dd8a81e62
+			defaultHierarchy: LocalDateTable_dd6b96d7-f5e3-4ef4-9c6a-a53c70e1dc56.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column FIRST_UPDATED_EDD_USER_ID
+		dataType: string
+		lineageTag: d68aa3a4-1ff5-4b70-a39f-a65d632ae223
+		summarizeBy: none
+		sourceColumn: FIRST_UPDATED_EDD_USER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'First EDD entered by'
+		dataType: string
+		lineageTag: 1c934cf5-2d78-4d40-9eec-392188632dfd
+		summarizeBy: none
+		sourceColumn: First EDD entered by
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'First EDD Comment'
+		dataType: string
+		lineageTag: c8699680-8919-4af5-9fb4-7110b77959ec
+		summarizeBy: none
+		sourceColumn: First EDD Comment
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Last EDD'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 220f3f42-5116-4ca6-9c47-7d552ae38ecf
+		summarizeBy: none
+		sourceColumn: Last EDD
+
+		variation Variation
+			isDefault
+			relationship: 176b4df0-ac4e-4136-8b9c-fe690adbffbb
+			defaultHierarchy: LocalDateTable_ec528382-63f2-4fce-9973-eefca7aa609b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Last EDD entered on (hx)'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 990dcaa3-0c62-4c9f-bc35-6f650daf6e9a
+		summarizeBy: none
+		sourceColumn: Last EDD entered on (hx)
+
+		variation Variation
+			isDefault
+			relationship: 628bb378-22e4-4fa5-b190-93efb0570369
+			defaultHierarchy: LocalDateTable_959c9359-de18-4e23-b630-16b5fdeb78d2.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column LAST_UPDATED_EDD_PRIOR_TO_DC_DTS_USER_ID
+		dataType: string
+		lineageTag: 3b787825-5b48-47fc-838d-43928648ed80
+		summarizeBy: none
+		sourceColumn: LAST_UPDATED_EDD_PRIOR_TO_DC_DTS_USER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Last EDD entered by'
+		dataType: string
+		lineageTag: 266f905d-d7a7-4694-bdbf-9ea739bee62b
+		summarizeBy: none
+		sourceColumn: Last EDD entered by
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'First MRD'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: dc61fc0a-d9cf-48d2-a8a2-3f2921c3b11b
+		summarizeBy: none
+		sourceColumn: First MRD
+
+		variation Variation
+			isDefault
+			relationship: d872870f-26b9-4e4c-b6c4-eb7f8a0f6e14
+			defaultHierarchy: LocalDateTable_0f791035-d02a-41dd-9814-49c4bcbb0cac.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column FIRST_UPDATED_MRD_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: bf815b23-0c68-4961-b15e-cd6bc115365b
+		summarizeBy: none
+		sourceColumn: FIRST_UPDATED_MRD_DTS
+
+		variation Variation
+			isDefault
+			relationship: c29c1de4-5c81-48df-a190-e6e7069ae1a8
+			defaultHierarchy: LocalDateTable_10ed433b-5217-45f1-813d-2885b7498689.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'First MRD entered by'
+		dataType: string
+		lineageTag: ed06a344-808e-460f-a918-edc178285fa3
+		summarizeBy: none
+		sourceColumn: First MRD entered by
+
+		annotation SummarizationSetBy = Automatic
+
+	column FIRST_MRD_TIMEFRAME_TXT
+		dataType: string
+		lineageTag: 08d7f65c-47e7-4fca-975a-5a4f5cf1392c
+		summarizeBy: none
+		sourceColumn: FIRST_MRD_TIMEFRAME_TXT
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Last MRD'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 24211f0c-552b-4f5f-b378-f0c00f28ee68
+		summarizeBy: none
+		sourceColumn: Last MRD
+
+		variation Variation
+			isDefault
+			relationship: 314f75d9-3d9c-41ca-bda9-5f78d4f82a56
+			defaultHierarchy: LocalDateTable_057d5829-880b-445a-941b-5112647c7642.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column LAST_UPDATED_MRD_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: dea0d917-9dd3-4096-9819-9457e3978770
+		summarizeBy: none
+		sourceColumn: LAST_UPDATED_MRD_DTS
+
+		variation Variation
+			isDefault
+			relationship: f1c31c1e-2393-4856-a4b4-6cfa313a0bec
+			defaultHierarchy: LocalDateTable_3068b0c3-8429-44e9-b3af-dad2603f89a3.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Last MRD entered by'
+		dataType: string
+		lineageTag: 2dffedb2-545c-40ed-9c78-1f412edba4dc
+		summarizeBy: none
+		sourceColumn: Last MRD entered by
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Last Anticipated MRD Timeframe'
+		dataType: string
+		lineageTag: fda3c87f-a1de-4158-8aec-d048ccb85cbb
+		summarizeBy: none
+		sourceColumn: Last Anticipated MRD Timeframe
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'EDD entered within 24hrs'
+		dataType: double
+		formatString: 0
+		lineageTag: c57fd57b-67ba-4ec4-97d8-5e76cd6c8423
+		summarizeBy: sum
+		sourceColumn: EDD entered within 24hrs
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column 'MRD entered within 36 hrs'
+		dataType: double
+		formatString: 0
+		lineageTag: a826bb8a-0c8e-443c-9f4f-eea3ee7cd1c9
+		summarizeBy: sum
+		sourceColumn: MRD entered within 36 hrs
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column 'Inpatient Length of Stay (hrs)'
+		dataType: double
+		lineageTag: eaa666a1-a4d2-4eb7-b0ab-68d51649f023
+		summarizeBy: sum
+		sourceColumn: Inpatient Length of Stay (hrs)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FIRST_EDD_TO_DISCHARGE_NBR
+		dataType: double
+		lineageTag: ac1d72c8-b529-4162-82df-80690448bc64
+		summarizeBy: sum
+		sourceColumn: FIRST_EDD_TO_DISCHARGE_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Last EDD to Discharge (hrs)'
+		dataType: double
+		lineageTag: ecc9c7af-dfca-4a34-b37a-b1cff906a441
+		summarizeBy: sum
+		sourceColumn: Last EDD to Discharge (hrs)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ADMISSION_TO_FIRST_EDD_NBR
+		dataType: double
+		lineageTag: 5c70a9a9-db62-4d21-80d5-5d94f23218ff
+		summarizeBy: sum
+		sourceColumn: ADMISSION_TO_FIRST_EDD_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Admission to Last EDD (hrs)'
+		dataType: double
+		lineageTag: 7f9a434c-726d-48d3-8429-6b181b8545a4
+		summarizeBy: sum
+		sourceColumn: Admission to Last EDD (hrs)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FIRST_EDD_TO_DISCHARGE_TXT
+		dataType: string
+		lineageTag: 44535671-6c40-4fb8-86c6-9b68fe5aad52
+		summarizeBy: none
+		sourceColumn: FIRST_EDD_TO_DISCHARGE_TXT
+
+		annotation SummarizationSetBy = Automatic
+
+	column TIME_TO_FIRST_EDD_TXT
+		dataType: string
+		lineageTag: dec56e80-99fc-46d6-ba65-e1e6a5b8fb5e
+		summarizeBy: none
+		sourceColumn: TIME_TO_FIRST_EDD_TXT
+
+		annotation SummarizationSetBy = Automatic
+
+	column LAST_EDD_TO_DISCHARGE_TXT
+		dataType: string
+		lineageTag: 403e5738-e1d2-461a-8931-972759c7333f
+		summarizeBy: none
+		sourceColumn: LAST_EDD_TO_DISCHARGE_TXT
+
+		annotation SummarizationSetBy = Automatic
+
+	column TIME_TO_FIRST_EDD_ENTERED_TXT
+		dataType: string
+		lineageTag: 408ddce9-d354-4189-86cc-e8fb38398117
+		summarizeBy: none
+		sourceColumn: TIME_TO_FIRST_EDD_ENTERED_TXT
+
+		annotation SummarizationSetBy = Automatic
+
+	column LAST_EDD_ENTERED_TO_DISCHARGE_TXT
+		dataType: string
+		lineageTag: 6e27fd16-ed87-4c59-afe5-3fc41f7e4ef4
+		summarizeBy: none
+		sourceColumn: LAST_EDD_ENTERED_TO_DISCHARGE_TXT
+
+		annotation SummarizationSetBy = Automatic
+
+	column TIME_TO_FIRST_MRD_TXT
+		dataType: string
+		lineageTag: 4ce256d3-7bf1-45a9-b068-53b766c0fdd8
+		summarizeBy: none
+		sourceColumn: TIME_TO_FIRST_MRD_TXT
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Last MRD to Discharge (hrs)'
+		dataType: string
+		lineageTag: f7bca400-30df-4b3c-9713-b2defaa1e38d
+		summarizeBy: none
+		sourceColumn: Last MRD to Discharge (hrs)
+
+		annotation SummarizationSetBy = Automatic
+
+	column TIME_TO_FIRST_MRD_ENTERED_TXT
+		dataType: string
+		lineageTag: ea9d089a-d20a-44e5-9aae-7ff79c49fad9
+		summarizeBy: none
+		sourceColumn: TIME_TO_FIRST_MRD_ENTERED_TXT
+
+		annotation SummarizationSetBy = Automatic
+
+	column LAST_MRD_ENTERED_TO_DISCHARGE_TXT
+		dataType: string
+		lineageTag: 45e27de6-a743-48e0-b570-6d872675718d
+		summarizeBy: none
+		sourceColumn: LAST_MRD_ENTERED_TO_DISCHARGE_TXT
+
+		annotation SummarizationSetBy = Automatic
+
+	column LAST_DISCHARGE_ORDER_TO_DISCHARGE_HOURS_NBR
+		dataType: int64
+		formatString: 0
+		lineageTag: 16f0b073-0973-4456-af3b-43ebe59569fa
+		summarizeBy: sum
+		sourceColumn: LAST_DISCHARGE_ORDER_TO_DISCHARGE_HOURS_NBR
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column ADMISSION_TO_DISCHARGE_DAYS_NBR
+		dataType: double
+		lineageTag: be9acdf8-3991-4cbb-9564-c5848f15909f
+		summarizeBy: sum
+		sourceColumn: ADMISSION_TO_DISCHARGE_DAYS_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LOS_120_DAY_PLUS_IND
+		dataType: double
+		lineageTag: d74380ae-d22f-4e44-9974-18fccd924b90
+		summarizeBy: sum
+		sourceColumn: LOS_120_DAY_PLUS_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column HOSPICE_COHORT_IND
+		dataType: double
+		lineageTag: 3716e7ac-2f0a-47b4-9ecb-9cfaf8a6ae17
+		summarizeBy: sum
+		sourceColumn: HOSPICE_COHORT_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BEHAVIORAL_HEALTH_DEPT_IND
+		dataType: double
+		lineageTag: 6861ba18-d571-4916-bec7-9707f9a9ad6e
+		summarizeBy: sum
+		sourceColumn: BEHAVIORAL_HEALTH_DEPT_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NEONATAL_IND
+		dataType: double
+		lineageTag: 76ce204f-0a66-4604-83f2-531cb857e28d
+		summarizeBy: sum
+		sourceColumn: NEONATAL_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column COVID_ICD10DX_IND
+		dataType: double
+		lineageTag: 99bb99e8-38b4-4905-a7c1-b30dc58246a6
+		summarizeBy: sum
+		sourceColumn: COVID_ICD10DX_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SWING_BED_IND
+		dataType: double
+		lineageTag: 71dd9a3e-5e8d-4c3a-a93d-a5e6a0e44ba7
+		summarizeBy: sum
+		sourceColumn: SWING_BED_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column REHAB_IND
+		dataType: double
+		lineageTag: 14f01a5b-40cc-420e-9dac-edcb627bbac3
+		summarizeBy: sum
+		sourceColumn: REHAB_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LTACH_IND
+		dataType: double
+		lineageTag: 57b541ff-4780-4553-862d-527e2a030208
+		summarizeBy: sum
+		sourceColumn: LTACH_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SNF_IND
+		dataType: double
+		lineageTag: a8db580d-c5a5-4383-88c9-98c2875751b0
+		summarizeBy: sum
+		sourceColumn: SNF_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OUTPATIENT_IND
+		dataType: double
+		lineageTag: fdf2bb14-688e-4850-bb2c-e252b53aa8ea
+		summarizeBy: sum
+		sourceColumn: OUTPATIENT_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OBSERVATION_PATIENTCLASS_IND
+		dataType: double
+		formatString: 0
+		lineageTag: a2de09c0-fc54-4b8a-9e3a-dc95754818cd
+		summarizeBy: sum
+		sourceColumn: OBSERVATION_PATIENTCLASS_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column OBSERVATION_PATIENTCLASS_YN
+		dataType: string
+		lineageTag: 6ebd56bb-1357-4ed3-8c80-fe8f3ce52fa5
+		summarizeBy: none
+		sourceColumn: OBSERVATION_PATIENTCLASS_YN
+
+		annotation SummarizationSetBy = Automatic
+
+	column REGION_CD
+		dataType: string
+		lineageTag: f83d30c2-20f1-4c8b-989f-f3a69ec07897
+		summarizeBy: none
+		sourceColumn: REGION_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column MEDICAL_GROUP_NM
+		dataType: string
+		lineageTag: a8caaf33-68a7-4e78-a8ad-ecbaa21b557d
+		summarizeBy: none
+		sourceColumn: MEDICAL_GROUP_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column OBS_DISCHARGE_DEPARTMENT_NM
+		dataType: string
+		lineageTag: bc90374e-fe9b-41e2-98e9-2b2377d42b80
+		summarizeBy: none
+		sourceColumn: OBS_DISCHARGE_DEPARTMENT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCHARGE_DEPARTMENT_KEY
+		dataType: double
+		lineageTag: 1cab6106-826a-43b4-9562-c885517cee4a
+		summarizeBy: sum
+		sourceColumn: DISCHARGE_DEPARTMENT_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OBS_HOURS_QTY
+		dataType: double
+		formatString: 0
+		lineageTag: 311646cd-784b-4072-8faa-d00e760fd04e
+		summarizeBy: sum
+		sourceColumn: OBS_HOURS_QTY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column SERVICE_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: faa9f663-9a8c-41fa-8105-f8006ba2cff4
+		summarizeBy: none
+		sourceColumn: SERVICE_DTS
+
+		variation Variation
+			isDefault
+			relationship: e3cf5340-261a-418a-8f7c-d106eb6d1c26
+			defaultHierarchy: LocalDateTable_862992d8-62fb-46ff-9701-52b8e0248d84.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column FINANCE_OBSERVATION_HOURS_IND
+		dataType: double
+		lineageTag: 2e140ccb-340d-42d9-9ca7-fd6a3d6a8604
+		summarizeBy: sum
+		sourceColumn: FINANCE_OBSERVATION_HOURS_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CONDITIONAL_DISCHARGE_IND
+		dataType: double
+		formatString: 0
+		lineageTag: 4afdf34c-1ec9-4436-a8ac-a797725634d0
+		summarizeBy: sum
+		sourceColumn: CONDITIONAL_DISCHARGE_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column PCP_METRIC_EXPLORER_EXCLUSION_IND
+		dataType: double
+		lineageTag: a093d1c1-716b-4903-b357-473dc1671032
+		summarizeBy: sum
+		sourceColumn: PCP_METRIC_EXPLORER_EXCLUSION_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column COMFORT_CARE_IND
+		dataType: double
+		lineageTag: 7c39b223-f472-4503-8de0-7dc4af45724b
+		summarizeBy: sum
+		sourceColumn: COMFORT_CARE_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EMERGENCY_SEVERITY_INDEX_NBR
+		dataType: double
+		lineageTag: 254bfacc-0bed-4135-a5a9-0fe6a3edff16
+		summarizeBy: sum
+		sourceColumn: EMERGENCY_SEVERITY_INDEX_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ADT8B_IND
+		dataType: double
+		lineageTag: fbffc652-00cb-442f-8271-cc70454acc67
+		summarizeBy: sum
+		sourceColumn: ADT8B_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column AVOIDABLE_DAYS_REASON_DSC
+		dataType: string
+		lineageTag: 6f2ac349-52b6-4b67-bca6-c8f4712e4f22
+		summarizeBy: none
+		sourceColumn: AVOIDABLE_DAYS_REASON_DSC
+
+		annotation SummarizationSetBy = Automatic
+
+	column ASSESSMENTS_COMPLETED_MET_24_HOURS_IND
+		dataType: double
+		lineageTag: dd618277-1373-4575-8ac5-28286b579d1e
+		summarizeBy: sum
+		sourceColumn: ASSESSMENTS_COMPLETED_MET_24_HOURS_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FINANCIALCLASS
+		dataType: string
+		lineageTag: b57f86b3-0bb9-40ba-bf9e-88b69168b7f8
+		summarizeBy: none
+		sourceColumn: FINANCIALCLASS
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRIM_PAYOR_PLAN_NM
+		dataType: string
+		lineageTag: 88b7b531-3824-404d-8d9d-fa65754bd8be
+		summarizeBy: none
+		sourceColumn: PRIM_PAYOR_PLAN_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column MSDRG_CD
+		dataType: string
+		lineageTag: 96e808fd-1823-4573-85d7-e755e57feb2d
+		summarizeBy: none
+		sourceColumn: MSDRG_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column MSDRG_DSC
+		dataType: string
+		lineageTag: 42b3f055-a6bb-477b-a7b8-3f882572ec3e
+		summarizeBy: none
+		sourceColumn: MSDRG_DSC
+
+		annotation SummarizationSetBy = Automatic
+
+	column MAJOR_DIAGNOSTIC_CATEGORY_CD
+		dataType: string
+		lineageTag: ccec13bf-17ac-45d2-93ad-c3406a6d9d97
+		summarizeBy: none
+		sourceColumn: MAJOR_DIAGNOSTIC_CATEGORY_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column MAJOR_DIAGNOSTIC_CATEGORY_NM
+		dataType: string
+		lineageTag: 40233e65-3f70-45c8-acb2-2c42fdbe87bb
+		summarizeBy: none
+		sourceColumn: MAJOR_DIAGNOSTIC_CATEGORY_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRIMARY_ICD_CD
+		dataType: string
+		lineageTag: 3c3b6adf-7aee-4e67-8f61-f0a4c846bcc0
+		summarizeBy: none
+		sourceColumn: PRIMARY_ICD_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRIMARY_DX_NM
+		dataType: string
+		lineageTag: 04d7ff6a-94a3-4e63-a8dd-efd976f9e764
+		summarizeBy: none
+		sourceColumn: PRIMARY_DX_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRIMARY_DIAGNOSIS_DSC
+		dataType: string
+		lineageTag: 297ed210-69d9-47c0-82aa-5c889f0735be
+		summarizeBy: none
+		sourceColumn: PRIMARY_DIAGNOSIS_DSC
+
+		annotation SummarizationSetBy = Automatic
+
+	column INSERT_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 8e873a8e-e98c-4c34-9588-0a6c6833b0f8
+		summarizeBy: none
+		sourceColumn: INSERT_DTS
+
+		variation Variation
+			isDefault
+			relationship: c50026df-4008-4be6-8709-2bf127df48d5
+			defaultHierarchy: LocalDateTable_d8002b67-5a2e-4ab5-921c-af7b65fa3106.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column UPDATE_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 97fcd3ad-61a3-44c1-9ff5-f45cf243a10b
+		summarizeBy: none
+		sourceColumn: UPDATE_DTS
+
+		variation Variation
+			isDefault
+			relationship: fa669e14-76d4-4463-848e-8f87e7863baf
+			defaultHierarchy: LocalDateTable_471be29e-7e0e-4e74-8bbf-75cd1c353110.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column System = "System"
+		displayFolder: Measures & Metrics
+		lineageTag: 10d5d914-eb0b-4150-be52-f9d79d3d7968
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column '30 Day Revisits' = IF(VW_PCP_CORE_STATS[READMIT_DAYS_NBR]> 30, 1, 0)
+		formatString: 0
+		displayFolder: Measures & Metrics
+		lineageTag: a9888f1c-581a-44f3-b544-45c0ab6fc92b
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current Period Discharge Month' = month(MAX(VW_PCP_CORE_STATS[Discharge Date]))
+		formatString: 0
+		displayFolder: Measures & Metrics
+		lineageTag: bc3938ec-bb54-438a-b5e4-70637a61e194
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Current Period Discharge Year' = MAX(VW_PCP_CORE_STATS[Discharge Date].[Year])
+		formatString: 0
+		displayFolder: Measures & Metrics
+		lineageTag: f6d513e8-3a41-4515-9ef5-fa6008bbbacb
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Discharge Obs Status Count' = IF(VW_PCP_CORE_STATS[DISCHARGEPATIENTCLASS]= "Observation", 1, 0)
+		formatString: 0
+		displayFolder: Measures & Metrics
+		lineageTag: 7f74ea3c-cbe8-4517-abad-2d8b4a9ba7ab
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'EDD present' = if(not ISBLANK(VW_PCP_CORE_STATS[First EDD]) || not ISBLANK(VW_PCP_CORE_STATS[Last EDD]), VW_PCP_CORE_STATS[ENCOUNTEREPICCSN], BLANK())
+		displayFolder: Measures & Metrics
+		lineageTag: d33cd9ff-6066-4d5d-bc92-6c4fc67779e9
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Month/ Year' = FORMAT('VW_PCP_CORE_STATS'[Discharge Date], "MM/YYYY")
+		displayFolder: Measures & Metrics
+		lineageTag: 08521c35-cfb8-4538-b178-17568ddd076b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'MRD present' = if(not ISBLANK(VW_PCP_CORE_STATS[First MRD]) || not ISBLANK(VW_PCP_CORE_STATS[Last MRD]), VW_PCP_CORE_STATS[ENCOUNTEREPICCSN], BLANK())
+		formatString: 0
+		displayFolder: Measures & Metrics
+		lineageTag: 1bc95e2b-53a7-41e7-8204-2613d26f70c7
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column PRIMARYCODEDPROCEDUREKEY
+		dataType: double
+		lineageTag: da654ca5-5310-418f-9033-9b90527e4501
+		summarizeBy: sum
+		sourceColumn: PRIMARYCODEDPROCEDUREKEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PRIMARY_ICD_PROCEDURE_CD
+		dataType: string
+		lineageTag: 7e9369e1-cc36-4327-bca6-a923aeda8c94
+		summarizeBy: none
+		sourceColumn: PRIMARY_ICD_PROCEDURE_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRIMARY_ICD_PROCEDURE_NM
+		dataType: string
+		lineageTag: a4ea9a02-5e33-43d0-98e5-edeed82aa273
+		summarizeBy: none
+		sourceColumn: PRIMARY_ICD_PROCEDURE_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCHARGE_MONTH_NBR
+		dataType: double
+		lineageTag: fc401d7f-6c05-495f-92bf-e12d7ec10843
+		summarizeBy: sum
+		sourceColumn: DISCHARGE_MONTH_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DISCHARGE_YEAR_NBR
+		dataType: double
+		lineageTag: dac9ed00-c4b3-4ca2-8a25-ceaea447f3f0
+		summarizeBy: sum
+		sourceColumn: DISCHARGE_YEAR_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DISCHARGE_MONTH_YEAR_TXT
+		dataType: string
+		lineageTag: cf2b0632-2526-457f-a7b9-f4b04258dab8
+		summarizeBy: none
+		sourceColumn: DISCHARGE_MONTH_YEAR_TXT
+
+		annotation SummarizationSetBy = Automatic
+
+	column REVISIT_WITHIN_30_DAYS_IND
+		dataType: double
+		lineageTag: a36f41e8-c31e-4c23-965c-b0c1ed5b09cd
+		summarizeBy: sum
+		sourceColumn: REVISIT_WITHIN_30_DAYS_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column REVISIT_WITHIN_30_DAYS_YN
+		dataType: string
+		lineageTag: 226d1728-33b5-4e0b-838f-abb09aee4bb1
+		summarizeBy: none
+		sourceColumn: REVISIT_WITHIN_30_DAYS_YN
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCHARGE_OBSERVATION_STATUS_IND
+		dataType: double
+		lineageTag: 076904a5-6f8a-4971-b4bc-eec7344745e6
+		summarizeBy: sum
+		sourceColumn: DISCHARGE_OBSERVATION_STATUS_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DISCHARGE_OBSERVATION_STATUS_YN
+		dataType: string
+		lineageTag: 49ad5e84-d6c1-41ec-ac3a-6a51bac65af4
+		summarizeBy: none
+		sourceColumn: DISCHARGE_OBSERVATION_STATUS_YN
+
+		annotation SummarizationSetBy = Automatic
+
+	column EDD_PRESENT_IND
+		dataType: double
+		lineageTag: 493ae444-3f64-4055-ac1f-efe076f582e2
+		summarizeBy: sum
+		sourceColumn: EDD_PRESENT_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EDD_PRESENT_YN
+		dataType: string
+		lineageTag: ef606d53-37e5-4744-bd20-d750d5d11a1a
+		summarizeBy: none
+		sourceColumn: EDD_PRESENT_YN
+
+		annotation SummarizationSetBy = Automatic
+
+	column MRD_PRESENT_IND
+		dataType: double
+		lineageTag: 8cb182a6-219f-4654-99aa-b7d3f1853dd3
+		summarizeBy: sum
+		sourceColumn: MRD_PRESENT_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MRD_PRESENT_YN
+		dataType: string
+		lineageTag: 08681dbc-5174-4f55-882e-344a76ed7119
+		summarizeBy: none
+		sourceColumn: MRD_PRESENT_YN
+
+		annotation SummarizationSetBy = Automatic
+
+	column PCP_METRIC_EXPLORER_EXCLUSION_YN
+		dataType: string
+		lineageTag: e8ac2e23-8955-436e-adbc-19a798dcda2d
+		summarizeBy: none
+		sourceColumn: PCP_METRIC_EXPLORER_EXCLUSION_YN
+
+		annotation SummarizationSetBy = Automatic
+
+	column BUSINESS_UNIT_NM
+		dataType: string
+		lineageTag: 6299e761-03fa-4dac-bd8a-24f6d812f34a
+		summarizeBy: none
+		sourceColumn: BUSINESS_UNIT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROGRAM_NM
+		dataType: string
+		lineageTag: 460d79c3-9154-485f-afdc-49d785756a9f
+		summarizeBy: none
+		sourceColumn: PROGRAM_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column INSTITUTE_NM
+		dataType: string
+		lineageTag: ec0e090d-dc17-4cca-8872-8025c75392cd
+		summarizeBy: none
+		sourceColumn: INSTITUTE_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column VOA_COHORT_NM
+		dataType: string
+		lineageTag: 5edd52ff-d7a8-4051-92fe-79b0d1a120cd
+		summarizeBy: none
+		sourceColumn: VOA_COHORT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column PCP_CLOSE_REPORT_COHORT_IND
+		dataType: double
+		lineageTag: 7cb2bc4e-510d-47ba-b960-452c123ec6f8
+		summarizeBy: sum
+		sourceColumn: PCP_CLOSE_REPORT_COHORT_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PCP_CLOSE_REPORT_COHORT_YN
+		dataType: string
+		lineageTag: 1314b0e2-64d2-42a1-9b17-1319f9aeedcf
+		summarizeBy: none
+		sourceColumn: PCP_CLOSE_REPORT_COHORT_YN
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADMISSION_SOURCE_DSC
+		dataType: string
+		lineageTag: ee24f7a7-b65d-4e4f-88b3-02f88eb075c3
+		summarizeBy: none
+		sourceColumn: ADMISSION_SOURCE_DSC
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCHARGE_DAY_OF_WEEK_TXT
+		dataType: string
+		lineageTag: 72e4c3ce-05c2-4467-afe5-58deff183667
+		summarizeBy: none
+		sourceColumn: DISCHARGE_DAY_OF_WEEK_TXT
+
+		annotation SummarizationSetBy = Automatic
+
+	column FIRST_ATTENDING_PROVIDER_SPECIALTY_NM
+		dataType: string
+		lineageTag: 140409f4-1d3d-447c-ac4f-da607ffb701e
+		summarizeBy: none
+		sourceColumn: FIRST_ATTENDING_PROVIDER_SPECIALTY_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCHARGING_PROVIDER_SPECIALTY_NM
+		dataType: string
+		lineageTag: 38e1bfc9-0e34-48c4-aa2a-ace6e2d877b2
+		summarizeBy: none
+		sourceColumn: DISCHARGING_PROVIDER_SPECIALTY_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACCOUNT_CLASS_NM
+		dataType: string
+		lineageTag: 958644c8-2e27-4375-bcaf-f51adbf0fdef
+		summarizeBy: none
+		sourceColumn: ACCOUNT_CLASS_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column FIRST_ATTENDING_PROVIDER_TYPE_NM
+		dataType: string
+		lineageTag: 6c1d8126-4add-467e-b79f-b76dffc1b651
+		summarizeBy: none
+		sourceColumn: FIRST_ATTENDING_PROVIDER_TYPE_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column BILLING_PROVIDER_SPECIALTY_NM
+		dataType: string
+		lineageTag: a080a7cf-f8d4-418d-917a-aa77735b7aae
+		summarizeBy: none
+		sourceColumn: BILLING_PROVIDER_SPECIALTY_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column BILLING_PROVIDER_TYPE_NM
+		dataType: string
+		lineageTag: a2969888-357e-450f-987d-bd252fa005f3
+		summarizeBy: none
+		sourceColumn: BILLING_PROVIDER_TYPE_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCHARGING_PROVIDER_TYPE_NM
+		dataType: string
+		lineageTag: e0433090-76f6-4c5d-bddc-b27d5194fe12
+		summarizeBy: none
+		sourceColumn: DISCHARGING_PROVIDER_TYPE_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Conditional Discharge?'
+		dataType: string
+		lineageTag: 03b2f4d1-6fd8-456e-b56f-f1037f149420
+		summarizeBy: none
+		sourceColumn: Conditional Discharge?
+
+		annotation SummarizationSetBy = Automatic
+
+	column AGE_GROUP_TXT
+		dataType: string
+		lineageTag: 8b2b28ba-db9d-485e-8055-fafa22c055b2
+		summarizeBy: none
+		sourceColumn: AGE_GROUP_TXT
+
+		annotation SummarizationSetBy = Automatic
+
+	column LOS_INTERVAL_GROUPS_TXT
+		dataType: string
+		lineageTag: dbda326a-fd39-47ec-9049-793cc5d67cee
+		summarizeBy: none
+		sourceColumn: LOS_INTERVAL_GROUPS_TXT
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCHARGE_DESTINATION_NM
+		dataType: string
+		lineageTag: 903297fa-f179-429a-8f9a-9ad25e14b224
+		summarizeBy: none
+		sourceColumn: DISCHARGE_DESTINATION_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCHARGE_ORDER_HOUR_BEFORE_11_AM_YN
+		dataType: string
+		lineageTag: 097ac6af-1ad9-488c-9e49-e1f3780d023c
+		summarizeBy: none
+		sourceColumn: DISCHARGE_ORDER_HOUR_BEFORE_11_AM_YN
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCHARGE_ORDER_HOUR_BEFORE_2_PM_YN
+		dataType: string
+		lineageTag: 35e097ef-2e4a-453f-96ea-d2c78b7c83ba
+		summarizeBy: none
+		sourceColumn: DISCHARGE_ORDER_HOUR_BEFORE_2_PM_YN
+
+		annotation SummarizationSetBy = Automatic
+
+	column IP_TO_OBS_YN
+		dataType: string
+		lineageTag: 8494b6b7-8825-47b0-ac71-fd244cb25b40
+		summarizeBy: none
+		sourceColumn: IP_TO_OBS_YN
+
+		annotation SummarizationSetBy = Automatic
+
+	column OBS_TO_IP_YN
+		dataType: string
+		lineageTag: 5bc4a3e3-4391-48d4-9b11-ee1230cdcb42
+		summarizeBy: none
+		sourceColumn: OBS_TO_IP_YN
+
+		annotation SummarizationSetBy = Automatic
+
+	column IP_LESS_THAN_24_HR_YN
+		dataType: string
+		lineageTag: 8be2baa2-a915-4697-87ab-6eac9890c13a
+		summarizeBy: none
+		sourceColumn: IP_LESS_THAN_24_HR_YN
+
+		annotation SummarizationSetBy = Automatic
+
+	column OBS_MORE_THAN_48_HR_YN
+		dataType: string
+		lineageTag: 8dd4a7d2-59da-4d10-bec5-3fc8a613e4b3
+		summarizeBy: none
+		sourceColumn: OBS_MORE_THAN_48_HR_YN
+
+		annotation SummarizationSetBy = Automatic
+
+	column LAST_DISCHARGE_ORDER_TO_DISCHARGE_MINUTES_NBR
+		dataType: double
+		lineageTag: 89c932c3-5145-422d-b699-e746a997db6c
+		summarizeBy: sum
+		sourceColumn: LAST_DISCHARGE_ORDER_TO_DISCHARGE_MINUTES_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DISCHARGE_ORDER_TO_DISCHARGE_TAT_IND
+		dataType: double
+		lineageTag: dbc97dfd-55b9-49ff-a9bf-1abe27615699
+		summarizeBy: sum
+		sourceColumn: DISCHARGE_ORDER_TO_DISCHARGE_TAT_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SDOH_MEASURE_VALUE_NBR
+		dataType: double
+		lineageTag: 8a81ca40-50ed-477d-a404-6ef9ed090cd2
+		summarizeBy: sum
+		sourceColumn: SDOH_MEASURE_VALUE_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SDOH_REPORTING_MONTH_DT
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 182882eb-1e7a-47f8-bb18-4793adc576ba
+		summarizeBy: none
+		sourceColumn: SDOH_REPORTING_MONTH_DT
+
+		variation Variation
+			isDefault
+			relationship: 06efb83a-937d-49d7-86aa-966ce3ef52b7
+			defaultHierarchy: LocalDateTable_bab0c10f-08c2-4623-8a85-506e9a3f125a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column SDOH_REFUSED_UNASSESSED_IND
+		dataType: double
+		lineageTag: 5780e161-956d-4ce8-82a8-c5c780508997
+		summarizeBy: sum
+		sourceColumn: SDOH_REFUSED_UNASSESSED_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SDOH_IND
+		dataType: double
+		lineageTag: 02481642-3dbd-48f9-8447-71f4a5a6b083
+		summarizeBy: sum
+		sourceColumn: SDOH_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DISCHARGE_ORDER_IND
+		dataType: double
+		lineageTag: fa8d6948-eaa3-4c60-b894-e95f022729df
+		summarizeBy: sum
+		sourceColumn: DISCHARGE_ORDER_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EDD_IND
+		dataType: double
+		lineageTag: ec6f53d3-6dbe-4044-9939-ba322abe8f25
+		summarizeBy: sum
+		sourceColumn: EDD_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MRD_IND
+		dataType: double
+		lineageTag: 53b862f2-fa2f-4cca-8e7b-6680326cdc1f
+		summarizeBy: sum
+		sourceColumn: MRD_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column READMIT_NUMERATOR_NBR
+		dataType: double
+		lineageTag: 60a2bd1c-e8e9-43c9-b53b-3dec3eb2c353
+		summarizeBy: sum
+		sourceColumn: READMIT_NUMERATOR_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column READMIT_DENOMINATOR_NBR
+		dataType: double
+		lineageTag: 2a2d9a13-5743-4800-80e0-db9bcabd39ce
+		summarizeBy: sum
+		sourceColumn: READMIT_DENOMINATOR_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column READMIT_EXPECTED_NBR
+		dataType: double
+		lineageTag: f7750629-cf37-4e1d-8c71-89b3b8ad440d
+		summarizeBy: sum
+		sourceColumn: READMIT_EXPECTED_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CALCULATED_ADMISSION_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0454a750-d1cd-40e3-b90b-de8a9bfc7738
+		summarizeBy: none
+		sourceColumn: CALCULATED_ADMISSION_DTS
+
+		variation Variation
+			isDefault
+			relationship: bf1aaef7-d40d-4dd3-9ced-420e629f054f
+			defaultHierarchy: LocalDateTable_1ed9f354-b99e-42fe-99a4-a26ae70a3d9f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column OBS_ADMISSION_IND
+		dataType: double
+		lineageTag: 4db7301b-76f4-4634-a6fe-799ad412e838
+		summarizeBy: sum
+		sourceColumn: OBS_ADMISSION_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OBS_ADMISSION_YN
+		dataType: string
+		lineageTag: dd6cc9fb-86c9-4cdb-8f72-cab6ac764966
+		summarizeBy: none
+		sourceColumn: OBS_ADMISSION_YN
+
+		annotation SummarizationSetBy = Automatic
+
+	column IP_ADMISSION_IND
+		dataType: double
+		lineageTag: 66dd225c-7f18-4f97-be9d-21f9e7f2fead
+		summarizeBy: sum
+		sourceColumn: IP_ADMISSION_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IP_ADMISSION_YN
+		dataType: string
+		lineageTag: 6f0a0236-845b-4cfd-bea2-bcfbe75913c3
+		summarizeBy: none
+		sourceColumn: IP_ADMISSION_YN
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCHARGINGPROVIDERDURABLEKEY
+		dataType: double
+		lineageTag: 10438f24-3c9f-4ddd-99af-3d20e1b50361
+		summarizeBy: sum
+		sourceColumn: DISCHARGINGPROVIDERDURABLEKEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CMI_NBR
+		dataType: double
+		lineageTag: 54f6255a-bb7b-4610-8b0d-431c650c872d
+		summarizeBy: sum
+		sourceColumn: CMI_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PCP_COHORT_NM
+		dataType: string
+		lineageTag: 1308ff84-a84c-410b-b18c-2213babf908d
+		summarizeBy: none
+		sourceColumn: PCP_COHORT_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column APRDRG_DSC
+		dataType: string
+		lineageTag: 25e1825e-4257-4503-93a9-f771e2c3173f
+		summarizeBy: none
+		sourceColumn: APRDRG_DSC
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Division Hierarchy'
+		lineageTag: 1ea27556-d9ed-4d44-8dd3-979019f755cc
+
+		level Division
+			lineageTag: f78a963f-029e-47ba-a0ca-436fd4a1e1ab
+			column: Division
+
+		level 'Clinical Service Area'
+			lineageTag: 3228aa83-b28a-4730-97cc-df5312535867
+			column: 'Clinical Service Area'
+
+		level Location
+			lineageTag: 414a0df7-6365-4eb1-b9d5-639ba3e77d8c
+			column: Location
+
+		level Department
+			lineageTag: bd6414ed-b4b5-42ae-b5ae-e9f26917eb13
+			column: Department
+
+	partition VW_PCP_CORE_STATS = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("psjh_prod.west-us-2.azure.snowflakecomputing.com","ACOE_WH_M",[Role="ACOE_REPORTING_RO"]),
+				    ACOE_DEV_Database = Source{[Name="ACOE_PROD",Kind="Database"]}[Data],
+				    RPT_PATIENT_JOURNEY_Schema = ACOE_DEV_Database{[Name="RPT_PATIENT_JOURNEY",Kind="Schema"]}[Data],
+				    VW_PCP_CORE_STATS_View = RPT_PATIENT_JOURNEY_Schema{[Name="VW_PCP_CORE_STATS",Kind="View"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(VW_PCP_CORE_STATS_View,{{"DIVISION_X", "Division"}, {"EDD_24H_UPDATE_IND", "EDD entered within 24hrs"}, {"REGION_X", "Region"}, {"PATIENTCLASS", "Patient Class"}, {"SERVICEAREANAME", "EPIC Service Area"}, {"LOCATIONNAME", "Location"}, {"INPATIENTADMISSIONINSTANT", "Inpatient Admission Date"}, {"ROOM_NAME", "Room"}, {"BILLINGPROVIDERNAME", "Last Attending Provider"}, {"DEPARTMENTNAME", "Department"}, {"PATIENT_MRN_ID", "EPIC MRN ID"}, {"DISCHARGEINSTANT", "Discharge Date"}, {"PROVIDERTEAMNAME", "Provider Team"}, {"FIRST_EDD_ON_ADMIT_DTS", "First EDD"}, {"FIRST_UPDATED_EDD_USER_NAME", "First EDD entered by"}, {"LAST_EDD_PRIOR_TO_DC_DTS", "Last EDD"}, {"LAST_UPDATED_EDD_PRIOR_TO_DC_DTS_USER_NAME", "Last EDD entered by"}, {"ADMISSION_TO_LAST_EDD_NBR", "Admission to Last EDD (hrs)"}, {"LAST_EDD_TO_DISCHARGE_NBR", "Last EDD to Discharge (hrs)"}, {"DISCHARGEDISPOSITION", "Discharge Disposition"}, {"AGE_YEAR_AT_ADMISSION_NBR", "Patient Age"}, {"INPATIENTLENGTHOFSTAYINHRS", "Inpatient Length of Stay (hrs)"}, {"LAST_MRD_DTS", "Last MRD"}, {"FIRST_MRD_DTS", "First MRD"}, {"FIRSTATTENDINGPROVIDERNAME", "First Attending Provider"}, {"FIRST_MRD_USER_NM", "First MRD entered by"}, {"LAST_MRD_USER_NM", "Last MRD entered by"}, {"MRD_36H_UPDATE_IND", "MRD entered within 36 hrs"}, {"FIRSTCASEMANAGER", "Case Manager"}, {"DEPARTMENTTYPE", "Department Type"}, {"LAST_MRD_TO_DISCHARGE_TXT", "Last MRD to Discharge (hrs)"}, {"LAST_UPDATED_EDD_PRIOR_TO_DC_DTS", "Last EDD entered on (hx)"}, {"FIRST_UPDATED_EDD_ON_ADMIT_DTS", "First EDD entered on (hx)"}, {"CLINICAL_SERVICE_AREA_NM", "Clinical Service Area"}, {"LAST_MRD_TIMEFRAME_TXT", "Last Anticipated MRD Timeframe"}, {"FIRST_EDD_COMMENT_TXT", "First EDD Comment"}, {"CONDITIONAL_DISCHARGE_YN", "Conditional Discharge?"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

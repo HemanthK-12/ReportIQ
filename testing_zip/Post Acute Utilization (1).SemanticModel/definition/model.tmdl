@@ -1,0 +1,36 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Min # of Encounters","VW_PACSNF","DB_NAME","HomeHealth","Display Top N Records"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.145.1105.0 (25.07)+decbc46fce458c5b8d5109d6f32a743f2ac949c8
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_81b97091-4b0c-412c-a4e0-cfef80f8068f
+ref table Metric
+ref table 'Min # of Encounters'
+ref table VW_PACSNF
+ref table LocalDateTable_bcca7b1e-8237-4619-aeca-b537e5b8319e
+ref table LocalDateTable_16b98cea-6079-43d5-b0ec-5987b73a677e
+ref table LocalDateTable_fcc2f972-d97c-43fc-a835-82156c7e3a81
+ref table LocalDateTable_4f72104c-96da-4fff-823d-7430466faa95
+ref table LocalDateTable_71d39923-67a7-4862-8f7a-aaedf23cd5f9
+ref table HomeHealth
+ref table LocalDateTable_fac78f75-43b0-4c3f-a918-0a240716900c
+ref table LocalDateTable_59f67382-f0b6-4464-b441-f89e4ae33b88
+ref table LocalDateTable_770ae082-e859-4645-914c-8e9a338dff19
+ref table LocalDateTable_fc0506a3-bd2e-48c2-93ad-9892fc7c554d
+ref table LocalDateTable_8ae13b76-e479-4d1c-be79-cc19c680459d
+ref table Metric_HomeHealth
+ref table 'Display Top N Records'
+
+ref cultureInfo en-US
+

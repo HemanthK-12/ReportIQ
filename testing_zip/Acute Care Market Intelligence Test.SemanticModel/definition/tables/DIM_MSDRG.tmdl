@@ -1,0 +1,73 @@
+table DIM_MSDRG
+	lineageTag: b87b253b-7301-4682-9884-b473e7820581
+
+	column MSDRG_CD
+		dataType: string
+		lineageTag: 40ee09df-b559-48bd-a2d3-06fc32bf24e7
+		summarizeBy: none
+		sourceColumn: MSDRG_CD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column MSDRG_DSC
+		dataType: string
+		lineageTag: ea18173d-b5fd-4a6a-8b8b-70c8545d6dd7
+		summarizeBy: none
+		sourceColumn: MSDRG_DSC
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'MSDRG Med/Surg Flag'
+		dataType: string
+		lineageTag: 94a71de7-f559-4a98-99a4-93f3be78585b
+		summarizeBy: none
+		sourceColumn: MSDRG Med/Surg Flag
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column MSDRG_SERVICE_LINE_DSC
+		dataType: string
+		lineageTag: 73a3f367-9e78-4b1b-bfc1-40ba97f713bd
+		summarizeBy: none
+		sourceColumn: MSDRG_SERVICE_LINE_DSC
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column MSDRG_SUB_SERVICE_LINE_DSC
+		dataType: string
+		lineageTag: fd3226ec-0792-412b-8668-bd796117f7c7
+		summarizeBy: none
+		sourceColumn: MSDRG_SUB_SERVICE_LINE_DSC
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_MSDRG = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("psjh_prod.west-us-2.azure.snowflakecomputing.com",#"WH Name",[Role=#"Role Name"]),
+				    HI_DB_Database = Source{[Name="HI_DB",Kind="Database"]}[Data],
+				    STG_INSIGHTS_Schema = HI_DB_Database{[Name="STG_INSIGHTS",Kind="Schema"]}[Data],
+				    DIM_MSDRG_Table = STG_INSIGHTS_Schema{[Name="DIM_MSDRG",Kind="Table"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(DIM_MSDRG_Table,{"MSDRG_CD", "MSDRG_DSC", "MSDRG_MED_SURG_TYPE_CD","MSDRG_SERVICE_LINE_DSC","MSDRG_SUB_SERVICE_LINE_DSC"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns"),
+				    #"Sorted Rows" = Table.Sort(#"Removed Duplicates",{{"MSDRG_CD", Order.Ascending}}),
+				    #"Removed Duplicates1" = Table.Distinct(#"Sorted Rows", {"MSDRG_CD"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Duplicates1",{{"MSDRG_MED_SURG_TYPE_CD", "MSDRG Med/Surg Flag"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

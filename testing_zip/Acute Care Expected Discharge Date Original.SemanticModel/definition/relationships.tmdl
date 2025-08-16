@@ -1,0 +1,95 @@
+relationship a27dfea9-d074-4d8f-b146-c483e987347c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Last Refresh Date'.'Date Last Refreshed'
+	toColumn: LocalDateTable_61a3a043-0d4a-4254-9eef-1457fc073468.Date
+
+relationship db1bfd2f-7756-4edb-8ba8-98580356c0f4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_HOSPITALADMISSION_EDD.'Inpatient Admission Date'
+	toColumn: LocalDateTable_f0100d79-8dd4-4393-94e9-d7afcd32bd28.Date
+
+relationship 0bb3b4d0-6ead-4324-ac2d-ec7b4e8a3fb3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_HOSPITALADMISSION_EDD.'First EDD'
+	toColumn: LocalDateTable_e980968d-d955-4e8d-b85b-7d3c915bdab6.Date
+
+relationship fac606e1-9dc1-4ce6-b80a-be7374255c3d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_HOSPITALADMISSION_EDD.'First EDD entered on (hx)'
+	toColumn: LocalDateTable_8657659d-a618-4444-8521-7dd8560bfe28.Date
+
+relationship 3e5b102c-8677-4270-a2b6-aa839b2cdb9c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_HOSPITALADMISSION_EDD.'Last EDD'
+	toColumn: LocalDateTable_a1e8e2c8-a695-42f9-8445-387e6c080324.Date
+
+relationship 140bcf0b-7f1e-4c03-a834-4c8cbeb53ef7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_HOSPITALADMISSION_EDD.'Last EDD entered on (hx)'
+	toColumn: LocalDateTable_60fd01d5-5d9e-483f-842b-bb8b9a3ce7bb.Date
+
+relationship 1d92e169-68fa-4c90-bd87-fc0ed996f951
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_HOSPITALADMISSION_EDD.'First MRD'
+	toColumn: LocalDateTable_e9cee9a1-da2d-46c0-b863-8fb873c60854.Date
+
+relationship ad1aeb47-7ce1-441b-967b-7eba45e4df1e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_HOSPITALADMISSION_EDD.'Last MRD'
+	toColumn: LocalDateTable_de4c180b-bf94-4ab9-bcf4-542471f3e90a.Date
+
+relationship 04137fa4-8481-412e-a11a-e4f2fd575e58
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_HOSPITALADMISSION_EDD.'Discharge Date Year'
+	toColumn: LocalDateTable_0f9998cc-f2f9-4f43-b74b-f64fc91b5b82.Date
+
+relationship 0b61d3b7-4cd0-4003-94fa-63363bbd7e5c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_HOSPITALADMISSION_EDD.INSERT_DTS
+	toColumn: LocalDateTable_c5a3f110-964a-4ac0-acc2-a940e6a2bd20.Date
+
+relationship 86f541bf-46cc-4d6a-8682-ff0f63f04c1e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_HOSPITALADMISSION_EDD.UPDATE_DTS
+	toColumn: LocalDateTable_af19c6c6-211f-4889-9288-6ec0dffa66a7.Date
+
+relationship 808c058a-8c41-40be-b841-ac9771752d96
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_HOSPITALADMISSION_EDD.FIRST_UPDATED_MRD_DTS
+	toColumn: LocalDateTable_ba556605-a4d0-4456-9881-6794e44c21a1.Date
+
+relationship 4d153a15-ec54-4ec5-8871-ccec7466f1ce
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_HOSPITALADMISSION_EDD.LAST_UPDATED_MRD_DTS
+	toColumn: LocalDateTable_1a903809-abb5-4da5-b771-1a913b5c1124.Date
+
+relationship dd38ea99-e3a0-428e-abe3-74d08e4d6f10
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_HOSPITALADMISSION_EDD.'Discharge Date'
+	toColumn: LocalDateTable_e163a063-10b9-40cc-bf04-e37d38a457ac.Date
+
+relationship aeb00608-6570-404a-a938-a05d6bd445ec
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_HOSPITALADMISSION_EDD.DISCHARGEORDERINSTANT
+	toColumn: LocalDateTable_a585bf5c-670b-457a-9409-bc3d7f2280a5.Date
+
+relationship fa64bf03-3222-47b8-8d24-8060c4cad3a5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_HOSPITALADMISSION_EDD.SERVICE_DTS
+	toColumn: LocalDateTable_4b2435b0-16ed-490e-8472-846f6a3074e8.Date
+
+relationship 391c7032-e901-42ca-afa5-5038b38f6930
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_HOSPITALADMISSION_EDD.INPATIENTADMISSION_DT
+	toColumn: LocalDateTable_8f09662f-697a-4052-9de4-2eac239337e4.Date
+
+relationship 24cc263a-ca9c-4b15-9a22-80047ab3dd36
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_HOSPITALADMISSION_EDD.SDOH_REPORTING_MONTH_DT
+	toColumn: LocalDateTable_f8a96f09-9013-42d0-83d3-2bb68f2e5388.Date
+
+relationship d9ce5eda-8b79-48fe-99af-2676cce50cce
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_HOSPITALADMISSION_EDD.CALCULATED_ADMISSION_DTS
+	toColumn: LocalDateTable_7de592ef-7b00-4bb2-b0cd-8975ad42be46.Date
+

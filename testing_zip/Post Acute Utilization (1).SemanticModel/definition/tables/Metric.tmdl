@@ -1,0 +1,70 @@
+table Metric
+	lineageTag: d653cc5d-1374-4ab1-b30e-e9d96ce6372e
+
+	column Metric
+		lineageTag: 2b58b21b-f3d6-4899-a3d0-790824ee1020
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Metric Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Metric Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Metric Fields'
+		lineageTag: 4de916f2-67b7-45c0-a068-f1cd5137e23e
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Metric Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Metric Order'
+		formatString: 0
+		lineageTag: 10ad5f85-7e26-4863-9dc8-c407b99e9060
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Title = SWITCH([Metric Order],0,"Encounters By Affiliate Type",1,"Cost Per Encounter By Affiliate Type",2,"Average Length of Stay By Affiliate Type",3,"Cost Per Day By Affiliate Type")
+		lineageTag: 107309a0-a69e-4d9e-a3bd-1254dc919ba7
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Title_Trend_Chart = SWITCH([Metric Order],0,"Encounters As Trend",1,"Cost Per Encounter As Trend",2,"Average Length of Stay As Trend",3,"Cost Per Day As Trend")
+		lineageTag: 7ae3bc17-1215-463a-84ad-08f3dde32523
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Title_Trend_Chart_SNF = SWITCH([Metric Order],0,"Encounters As Trend By SNF",1,"Cost Per Encounter As Trend BY SNF",2,"Average Length of Stay As Trend By SNF",3,"Cost Per Day As Trend By SNF")
+		lineageTag: 54f534f9-4fb9-4538-bbd9-71d66144407c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Metric = calculated
+		mode: import
+		source = ```
+				{
+				    ("Encounters", NAMEOF('VW_PACSNF'[Encounter]), 0),
+				    ("Cost per Encounter",NAMEOF('VW_PACSNF'[Cost Per Episode]),1) ,      
+				    ("Avg Length of Stay",NAMEOF(VW_PACSNF[Days Per Episode]),2),
+				    ("Cost per Day", NAMEOF(VW_PACSNF[Cost Per Day]), 3)
+				    
+				}
+				
+				
+				```
+
+	annotation PBI_Id = b4ffdebc889642039f0d82b4a05943c1
+

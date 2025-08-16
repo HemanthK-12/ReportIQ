@@ -1,0 +1,371 @@
+table VBA_DATA_SHOP_EMPANELED_PATIENTS
+	lineageTag: 72bcf0bf-d583-411d-a563-4621a9e250b5
+
+	measure 'Date Range1' =
+			--Date Range (Header)
+			MIN(VBA_DATA_SHOP_EMPANELED_PATIENTS[YearMonth]) & "-" & EOMONTH(MAX(VBA_DATA_SHOP_EMPANELED_PATIENTS[YearMonth]), 0)
+		lineageTag: 5b6654c9-732e-49d2-9e30-b50816eab0be
+
+	measure 'Last Refreshed1' = FORMAT(MAX(VBA_DATA_SHOP_EMPANELED_PATIENTS[INSERT_DTS]), "M/D/YYYY")
+		lineageTag: 63d7c347-36fc-425f-8a0d-1d3cd79d9edd
+
+	column MasterPersonDWKey
+		dataType: double
+		lineageTag: b1b68034-8c05-4ae7-b158-d5e13ae6fd11
+		summarizeBy: count
+		sourceColumn: MasterPersonDWKey
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MasterContractKey
+		dataType: double
+		lineageTag: 33bf83f4-9b2f-4f39-80b8-3f9d4115d6bf
+		summarizeBy: count
+		sourceColumn: MasterContractKey
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Payer Member ID'
+		dataType: string
+		lineageTag: e21bdd0e-a188-460a-a6b6-b072e934a168
+		summarizeBy: none
+		sourceColumn: Payer Member ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonth
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8dc23364-e863-4907-871b-71ce5e3be60e
+		summarizeBy: none
+		sourceColumn: YearMonth
+
+		variation Variation
+			isDefault
+			relationship: 37c851b9-175a-49e0-8652-8f4b4a005b01
+			defaultHierarchy: LocalDateTable_13ccad5a-20d4-4dd7-b5aa-330130d9350b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'First Name'
+		dataType: string
+		lineageTag: 1247253e-4be3-4600-9d7c-39859e4dc988
+		summarizeBy: none
+		sourceColumn: First Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Last Name'
+		dataType: string
+		lineageTag: bc304a3b-9a9f-4445-8c97-242399216e5e
+		summarizeBy: none
+		sourceColumn: Last Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column DOB
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 91efe1b1-785b-42aa-b299-3acc8c819148
+		summarizeBy: none
+		sourceColumn: DOB
+
+		variation Variation
+			isDefault
+			relationship: 7493042f-75c3-4e85-9f3e-0781916b7cbe
+			defaultHierarchy: LocalDateTable_4786c6fe-9afb-4b8f-82a2-fb5eedd69680.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Address Line 1'
+		dataType: string
+		lineageTag: 39ade6de-4d9c-441c-9984-a93d3b7d7c38
+		summarizeBy: none
+		sourceColumn: Address Line 1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Address Line 2'
+		dataType: string
+		lineageTag: 36637708-2178-4595-864e-17c6574781f6
+		summarizeBy: none
+		sourceColumn: Address Line 2
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: 86c15a0a-9534-4c24-a88d-a5ccf834b5cd
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: string
+		lineageTag: ed630490-02bc-4de3-a201-6e9e1893ead7
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Zip Code'
+		dataType: string
+		lineageTag: 518081ae-c3e5-4e19-8131-af93349ce5f1
+		summarizeBy: none
+		sourceColumn: Zip Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Home Phone Nbr'
+		dataType: string
+		lineageTag: eb989545-ab06-4dea-b702-d13dbd659b03
+		summarizeBy: none
+		sourceColumn: Home Phone Nbr
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Email Address'
+		dataType: string
+		lineageTag: c4595e9b-c303-4efb-a98a-ec71a9d1d7f6
+		summarizeBy: none
+		sourceColumn: Email Address
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Line of Business'
+		dataType: string
+		lineageTag: d49f4222-1cac-40e6-93b7-17285d42437d
+		summarizeBy: none
+		sourceColumn: Line of Business
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Risk Contract'
+		dataType: string
+		lineageTag: ecc903a3-765b-49bd-86c4-a4f90c978d42
+		summarizeBy: none
+		sourceColumn: Risk Contract
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cohort
+		dataType: string
+		lineageTag: 2049ff9c-3244-4084-8cd7-2db9260f19de
+		summarizeBy: none
+		sourceColumn: Cohort
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: 41840d7e-d3bb-4d0e-be02-589c545f53ea
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Service Area'
+		dataType: string
+		lineageTag: f2203a7d-1702-45e0-9ca7-74843327bfbe
+		summarizeBy: none
+		sourceColumn: Service Area
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payer PCP NPI'
+		dataType: string
+		lineageTag: 4beb00de-d470-4f4d-aeea-c5877e11b450
+		summarizeBy: none
+		sourceColumn: Payer PCP NPI
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payer PCP'
+		dataType: string
+		lineageTag: 03c3ef59-f501-4733-935b-cbe04244e14c
+		summarizeBy: none
+		sourceColumn: Payer PCP
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Epic Patient ID'
+		dataType: string
+		lineageTag: a63b2fd7-2c99-4a92-a92b-a0f72ce57938
+		summarizeBy: none
+		sourceColumn: Epic Patient ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column EpicMRN
+		dataType: string
+		lineageTag: bfc104fb-7a50-4d90-8078-44bc1bdc62c6
+		summarizeBy: none
+		sourceColumn: EpicMRN
+
+		annotation SummarizationSetBy = Automatic
+
+	column EpicNPI
+		dataType: string
+		lineageTag: 8bad4bfb-630a-4665-8449-d40a1b4e91fb
+		summarizeBy: none
+		sourceColumn: EpicNPI
+
+		annotation SummarizationSetBy = Automatic
+
+	column EpicPCP
+		dataType: string
+		lineageTag: 6d8b0cf9-bdae-4902-8542-fae4adc30644
+		summarizeBy: none
+		sourceColumn: EpicPCP
+
+		annotation SummarizationSetBy = Automatic
+
+	column EpicDepartment
+		dataType: string
+		lineageTag: 1f261da9-cb6b-407b-9dd6-14a0a68e6ffe
+		summarizeBy: none
+		sourceColumn: EpicDepartment
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Member Epic Status'
+		dataType: string
+		lineageTag: a43b7e19-4f06-4880-b3f3-e426aa98df8e
+		summarizeBy: none
+		sourceColumn: Member Epic Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column INSERT_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: df70346b-d5d1-4ea7-b47d-54b4cfc87d11
+		summarizeBy: none
+		sourceColumn: INSERT_DTS
+
+		variation Variation
+			isDefault
+			relationship: 2e64e1f9-e7db-493f-ace3-84a4b40e8754
+			defaultHierarchy: LocalDateTable_a59e8280-3831-4686-ade7-98536a35159c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column UPDATE_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e8a0786b-fcdc-470f-911f-4e1f48ed7b54
+		summarizeBy: none
+		sourceColumn: UPDATE_DTS
+
+		variation Variation
+			isDefault
+			relationship: 761f7e30-8d57-4b9b-9bf8-f351c869fa6f
+			defaultHierarchy: LocalDateTable_7fddd957-a6d1-4e6b-92f2-cac1936434fe.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Number' = MONTH(VBA_DATA_SHOP_EMPANELED_PATIENTS[YearMonth])
+		formatString: 0
+		lineageTag: 230e1698-d3c6-45a9-a5c9-5b418cbcc4ef
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthName = FORMAT(VBA_DATA_SHOP_EMPANELED_PATIENTS[YearMonth], "MMMM")
+		lineageTag: aa271943-d58a-44e1-a6fc-86263a28364e
+		summarizeBy: none
+		sortByColumn: 'Month Number'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Key_empaneled = VBA_DATA_SHOP_EMPANELED_PATIENTS[Region CD]&VBA_DATA_SHOP_EMPANELED_PATIENTS[Service Area]&VBA_DATA_SHOP_EMPANELED_PATIENTS[Line of Business]&VBA_DATA_SHOP_EMPANELED_PATIENTS[Cohort]&VBA_DATA_SHOP_EMPANELED_PATIENTS[Risk Contract]&VBA_DATA_SHOP_EMPANELED_PATIENTS[HCP LAN Category DSC]&VBA_DATA_SHOP_EMPANELED_PATIENTS[Include Partners CD]
+		lineageTag: 86a02e50-1383-4dc5-b72b-eb3856bd5266
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Region CD'
+		dataType: string
+		lineageTag: d20ceb2f-a94f-49a9-8010-ff3a8910bbfe
+		summarizeBy: none
+		sourceColumn: Region CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'HCP LAN Category DSC'
+		dataType: string
+		lineageTag: d261adb6-0b6a-44a0-a31c-f53158ee40cf
+		summarizeBy: none
+		sourceColumn: HCP LAN Category DSC
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Include Partners CD'
+		dataType: string
+		lineageTag: f33fed2b-0a09-4791-85cd-6ee9f687b271
+		summarizeBy: none
+		sourceColumn: Include Partners CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column EPIC_PAT_ID_SEQ_NBR
+		dataType: double
+		lineageTag: 821e224e-a31b-489b-8eb7-01c37bb98391
+		summarizeBy: sum
+		sourceColumn: EPIC_PAT_ID_SEQ_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EPIC_MRN_ID
+		dataType: string
+		lineageTag: 0c06ac17-31a5-48db-afdb-2f9f96e52488
+		summarizeBy: none
+		sourceColumn: EPIC_MRN_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column EpicMRN_A
+		dataType: string
+		lineageTag: 38a564d2-e9aa-4034-a4e9-9db80fcb0d28
+		summarizeBy: none
+		sourceColumn: EpicMRN_A
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Year' = FORMAT(VBA_DATA_SHOP_EMPANELED_PATIENTS[YearMonth],"MMM YYYY")
+		lineageTag: 48bc50af-2541-4892-8520-d7e7eae73457
+		summarizeBy: none
+		sortByColumn: YearMonth
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	partition VBA_DATA_SHOP_EMPANELED_PATIENTS = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("psjh_prod.west-us-2.azure.snowflakecomputing.com","ACOE_WH_M",[Role="ACOE_REPORTING_RO"]){[Name=DB_NAME]}[Data], "WITH cte AS (#(lf)  SELECT DISTINCT a.""MasterPersonDWKey"", #(lf)                  b.EPIC_MRN_ID,#(lf)                  b.epic_patient_id, #(lf)                  b.epic_pat_id_seq_nbr#(lf)  FROM ACOE_PROD.RPT_VBC.VBA_DATA_SHOP_EMPANELED_PATIENTS a#(lf)  LEFT JOIN DMS_VBC.FACT_MEMBER_ENROLLMENT_W_EPIC_INFO b #(lf)    ON a.""MasterPersonDWKey"" = b.master_person_dw_key #(lf)    AND a.""Epic Patient ID"" = b.epic_patient_id#(lf)  WHERE b.epic_pat_id_seq_nbr = 1#(lf))#(lf) select distinct *,   CASE #(lf)    WHEN ""Epic Patient ID"" IS NULL AND epic_pat_id_seq_nbr IS NULL THEN 1#(lf)     when ""Epic Patient ID"" IS NOT NULL AND epic_pat_id_seq_nbr IS not NULL THEN 1#(lf)    ELSE 0#(lf)  END AS primaryFlag  from (#(lf)SELECT DISTINCT #(lf)  b.epic_pat_id_seq_nbr,#(lf)  b.EPIC_MRN_ID,#(lf)  a.""EpicMRN"" AS ""EpicMRN_A"", -- Renamed to avoid conflict#(lf)  a.*#(lf)-- Adding primaryFlag based on conditions#(lf)FROM ACOE_PROD.RPT_VBC.VBA_DATA_SHOP_EMPANELED_PATIENTS a#(lf)LEFT JOIN cte b #(lf)  ON a.""MasterPersonDWKey"" = b.""MasterPersonDWKey"" #(lf)  AND b.epic_patient_id = a.""Epic Patient ID""#(lf))", null, [EnableFolding=true]),
+				    #"Replaced Value" = Table.ReplaceValue(Source,null,"Null",Replacer.ReplaceValue,{"HCP LAN Category DSC"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value",null,"Null",Replacer.ReplaceValue,{"Line of Business"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Replaced Value1", each ([PRIMARYFLAG] = 1)),
+				    #"Removed Columns" = Table.RemoveColumns(#"Filtered Rows",{"PayerSourceInstanceCD", "PayerPatMthSeqNbr", "Payer Enroll Term Date", "Payer PCP Tax ID", "PRIMARYFLAG"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Columns")
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

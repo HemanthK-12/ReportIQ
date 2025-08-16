@@ -1,0 +1,596 @@
+table HomeHealth
+	lineageTag: f75cc229-20fc-4faa-a059-f5923b4f686d
+
+	measure 'Days per Episode (ALOS)' = SUM(HomeHealth[TotalDays])/SUM(HomeHealth[Episodes])
+		formatString: 0
+		lineageTag: 0f6400d4-ea5d-4513-8a82-f48d69106be5
+
+		changedProperty = IsHidden
+
+	measure 'Certifications per Episode' = [Days per Episode (ALOS)]/60
+		formatString: 0.00
+		lineageTag: 534479bd-783e-439f-90bf-b80df02bc099
+
+		changedProperty = IsHidden
+
+	measure 'Allowed per Episode' = SUM(HomeHealth[Allowed])/SUM(HomeHealth[Episodes])
+		formatString: \$#,0.0;(\$#,0.0);\$#,0.0
+		lineageTag: 2b40877c-8094-4ef0-b68d-c6a32793e844
+
+		changedProperty = IsHidden
+
+	measure '$ per Day' = SUM(HomeHealth[Allowed])/SUM(HomeHealth[TotalDays])
+		formatString: \$#,0.0;(\$#,0.0);\$#,0.0
+		lineageTag: 298425bc-f897-4b8a-b5b6-fa988b05f616
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure Encounters = SUM(HomeHealth[Episodes])
+		formatString: 0
+		lineageTag: cc0a0744-5655-48a9-a174-5aa9be447e09
+
+		changedProperty = IsHidden
+
+	measure 'Top Records' = IF(CALCULATE(SUM(HomeHealth[Episodes]),REMOVEFILTERS(HomeHealth[AffiliateType])) >= SELECTEDVALUE('Display Top N Records'[Records]),1,0)
+		formatString: 0
+		lineageTag: a0565c83-4ed6-4ee1-879f-8e56774e63e0
+
+		changedProperty = IsHidden
+
+	measure 'HHAide %' = SUM(HomeHealth[HHAide])/SUM(HomeHealth[All Services])
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 39be2996-5e07-4162-87aa-05c4b9578ac6
+
+		changedProperty = IsHidden
+
+	measure 'Nursing %' = SUM(HomeHealth[Nursing])/Sum(HomeHealth[All Services])
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: d4096076-bfb2-493b-9715-1c9997eafa23
+
+		changedProperty = IsHidden
+
+	measure 'OT %' = SUM(HomeHealth[OT])/SUM(HomeHealth[All Services])
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 341e03b5-69dc-4cb0-abe5-896efbbefffe
+
+		changedProperty = IsHidden
+
+	measure 'PT %' = SUM(HomeHealth[PT])/SUM(HomeHealth[All Services])
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 22d3c2c3-dcf7-4e17-a763-2bc9dcf5066c
+
+		changedProperty = IsHidden
+
+	measure SocialSrvc% = SUM(HomeHealth[Social Services])/SUM(HomeHealth[All Services])
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: baf551e6-ca9d-40f0-a006-0ba977974c99
+
+		changedProperty = IsHidden
+
+	measure 'Speech Therapy %' = SUM(HomeHealth[SpeechTherapy])/Sum(HomeHealth[All Services])
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: c8caa91d-44f3-4620-a8ae-adcb13ae0ea3
+
+		changedProperty = IsHidden
+
+	measure 'Supplies %' = SUM(HomeHealth[Supplies])/SUM(HomeHealth[All Services])
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 5f7dea68-8b37-4a0f-9450-f6682c1032c6
+
+		changedProperty = IsHidden
+
+	measure DateRange =
+			--Date Range (Header)
+			MIN(HomeHealth[ENDDT]) & "-" & EOMONTH(MAX(HomeHealth[ENDDT]), 0)
+		lineageTag: 3c5b4006-a376-4847-91b1-15b5edffdef3
+
+	measure 'Filter for HomeHealth Trend' = CALCULATE ( IF ( ISFILTERED ( HomeHealth[Home Health Agency] ), 1, 0 ), ALLSELECTED ( HomeHealth ) )
+		formatString: 0
+		lineageTag: 71f91513-7f64-46a1-9f2a-a1d7dfddd8a1
+
+	measure 'Show Text Agency' = IF(ISFILTERED(HomeHealth[Home Health Agency])," ","Click on the Home Health Agency in table below to see the trend")
+		lineageTag: eaf7cc44-4db8-40a0-91b1-260f8741a387
+
+	column SourceMemberID
+		dataType: string
+		lineageTag: 35542527-29c3-4d3b-bc5c-d9107e67133a
+		summarizeBy: none
+		sourceColumn: SourceMemberID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Risk Contract'
+		dataType: string
+		lineageTag: 89019867-3d27-4df5-a0ef-ae4110d3299f
+		summarizeBy: none
+		sourceColumn: Risk Contract
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cohort
+		dataType: string
+		lineageTag: 697c2ffa-1026-4384-9e6b-ad651bd01b6d
+		summarizeBy: none
+		sourceColumn: Cohort
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: 9c7edb12-f77d-42db-ad33-1a8599bdf6eb
+		summarizeBy: none
+		sourceColumn: Region
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Service Area'
+		dataType: string
+		lineageTag: 121eaa60-b80e-4e3a-884e-9dd663fe02ab
+		summarizeBy: none
+		sourceColumn: Service Area
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column BillingProvNPI
+		dataType: string
+		lineageTag: df33c1f6-4d01-4527-bf8a-5397aa7f5bea
+		summarizeBy: none
+		sourceColumn: BillingProvNPI
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column StartDT
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 2cda15b6-8985-45e2-8fc7-b72959619b8e
+		summarizeBy: none
+		sourceColumn: StartDT
+
+		variation Variation
+			isDefault
+			relationship: d9c2e5e9-62c0-4f0d-8e83-d5193be5911c
+			defaultHierarchy: LocalDateTable_fac78f75-43b0-4c3f-a918-0a240716900c.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column EndDT
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 0e0969d8-e4fa-40dd-a7fd-049705f8fcd0
+		summarizeBy: none
+		sourceColumn: EndDT
+
+		variation Variation
+			isDefault
+			relationship: c3223f57-d01a-42ee-a46a-79e126b69513
+			defaultHierarchy: LocalDateTable_59f67382-f0b6-4464-b441-f89e4ae33b88.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column Allowed
+		dataType: double
+		formatString: \$#,0.0;(\$#,0.0);\$#,0.0
+		lineageTag: e3524061-a096-4f10-9781-02facc34bb2f
+		summarizeBy: sum
+		sourceColumn: Allowed
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalDays
+		dataType: double
+		formatString: 0
+		lineageTag: a1c45781-e53a-4908-86e2-3a41b051bfd1
+		summarizeBy: sum
+		sourceColumn: TotalDays
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cases
+		dataType: double
+		lineageTag: 65ca31aa-8606-4d34-b92a-44bb9701115b
+		summarizeBy: sum
+		sourceColumn: Cases
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CompleteClaim
+		dataType: string
+		lineageTag: 642cf8fa-5e80-450f-9e58-c731d30965c4
+		summarizeBy: none
+		sourceColumn: CompleteClaim
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column OT
+		dataType: double
+		formatString: #,0
+		lineageTag: 744a3d66-ac2a-41c6-bc0e-086678cf6195
+		summarizeBy: sum
+		sourceColumn: OT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PT
+		dataType: double
+		formatString: #,0
+		lineageTag: 4a1a9b16-35d8-46e2-b2dd-6f518fb2c811
+		summarizeBy: sum
+		sourceColumn: PT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SpeechTherapy
+		dataType: double
+		formatString: #,0
+		lineageTag: 621fe2ff-718f-42f7-af71-ee887c1e31b8
+		summarizeBy: sum
+		sourceColumn: SpeechTherapy
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nursing
+		dataType: double
+		formatString: #,0
+		lineageTag: 762faea4-c5ef-4c05-9225-67420b4082b0
+		summarizeBy: sum
+		sourceColumn: Nursing
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column HHAide
+		dataType: double
+		formatString: #,0
+		lineageTag: c472a3a7-5e8e-43e4-ab23-780641f533c5
+		summarizeBy: sum
+		sourceColumn: HHAide
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Social Services'
+		dataType: double
+		formatString: #,0
+		lineageTag: 48644c02-2a12-4cd6-b44a-204f40f52c94
+		summarizeBy: sum
+		sourceColumn: Social Services
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Supplies
+		dataType: double
+		formatString: #,0
+		lineageTag: 5da9f082-6819-43e5-a9b7-b4a674cf12df
+		summarizeBy: sum
+		sourceColumn: Supplies
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column RHCHomeVisit
+		dataType: double
+		lineageTag: 5da5324f-b610-49ee-a107-235e2b1e99bc
+		summarizeBy: sum
+		sourceColumn: RHCHomeVisit
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column InfusionDrugs
+		dataType: double
+		lineageTag: a8fc80b2-a973-43f7-aee3-712fb11005b7
+		summarizeBy: sum
+		sourceColumn: InfusionDrugs
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DischargingFacilityNPI
+		dataType: string
+		lineageTag: 5a7f026f-7f32-4991-9789-60291586c357
+		summarizeBy: none
+		sourceColumn: DischargingFacilityNPI
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DischargingDRG
+		dataType: string
+		lineageTag: 17f0ab61-9bde-4df0-be76-ec50f47fca02
+		summarizeBy: none
+		sourceColumn: DischargingDRG
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DRG_DESC
+		dataType: string
+		lineageTag: 52a0a231-db95-42b1-b0d0-71b653fffe68
+		summarizeBy: none
+		sourceColumn: DRG_DESC
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FacilityName
+		dataType: string
+		lineageTag: bf144fa1-eaff-4d89-835b-0dffa393751f
+		summarizeBy: none
+		sourceColumn: FacilityName
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column AffiliateType
+		dataType: string
+		lineageTag: 104e16c8-85b9-402f-891d-b63e68023001
+		summarizeBy: none
+		sourceColumn: AffiliateType
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DischargingFacility
+		dataType: string
+		lineageTag: fdea1d8d-9123-4c10-adeb-2e32876d984d
+		summarizeBy: none
+		sourceColumn: DischargingFacility
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ServiceProvNPI
+		dataType: string
+		lineageTag: 3b7fdf67-5ec8-43d2-9db1-8d25dc235db6
+		summarizeBy: none
+		sourceColumn: ServiceProvNPI
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProviderFirstNM
+		dataType: string
+		lineageTag: edd0d882-eaf1-4d33-b86d-068c3b74ca3b
+		summarizeBy: none
+		sourceColumn: ProviderFirstNM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProviderLastNM
+		dataType: string
+		lineageTag: 71f5f1a4-1e14-481b-843a-ed9ba4c92aaa
+		summarizeBy: none
+		sourceColumn: ProviderLastNM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourceFirstNM
+		dataType: string
+		lineageTag: d4e6b744-4a6b-4c1a-b28f-a0fc34299283
+		summarizeBy: none
+		sourceColumn: SourceFirstNM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourceLastNM
+		dataType: string
+		lineageTag: f58a784c-97e9-4418-b0f4-a6df48011377
+		summarizeBy: none
+		sourceColumn: SourceLastNM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DOB
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: a2a1f049-11a8-42ae-b222-f9f14adcc5eb
+		summarizeBy: none
+		sourceColumn: DOB
+
+		variation Variation
+			isDefault
+			relationship: f35b2429-16d8-4a04-8234-242b99d4e710
+			defaultHierarchy: LocalDateTable_770ae082-e859-4645-914c-8e9a338dff19.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column INSERT_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 22cddf61-cd56-447c-ada9-c8047ed147f6
+		summarizeBy: none
+		sourceColumn: INSERT_DTS
+
+		variation Variation
+			isDefault
+			relationship: 38021724-4e5b-438e-838d-f95630be6735
+			defaultHierarchy: LocalDateTable_fc0506a3-bd2e-48c2-93ad-9892fc7c554d.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column UPDATE_DTS
+		dataType: dateTime
+		formatString: mm/dd/yyyy
+		lineageTag: 61f7e641-8656-43f4-8dc3-5be417ec3bae
+		summarizeBy: none
+		sourceColumn: UPDATE_DTS
+
+		variation Variation
+			isDefault
+			relationship: fc39aa57-4c87-4dae-8788-225ca45e5e02
+			defaultHierarchy: LocalDateTable_8ae13b76-e479-4d1c-be79-cc19c680459d.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'Number Of Records' = 1
+		formatString: 0
+		lineageTag: c549e033-692f-4c0c-8933-a4f677234d1b
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Episodes = 1
+		formatString: 0
+		lineageTag: f145056e-78aa-4f77-823f-22542204c448
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Encounter End Date' = (year([EndDT]))&" Q"&(QUARTER([EndDT]))
+		lineageTag: 5ca3da28-67be-4416-bdca-61c3bfb1cdae
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Referring DRG' = IF(ISBLANK([DischargingDRG]) ,"Unknown",IF([DischargingDRG]="Null","Unknown",[DischargingDRG]&": "&[DRG_DESC]))
+		lineageTag: dd32fb25-fa9e-4452-897f-ccb9964df594
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Home Health Agency' = IF (ISBLANK(HomeHealth[FacilityName]),HomeHealth[BillingProvNPI],UPPER(HomeHealth[FacilityName]))
+		lineageTag: 529fc246-921d-453e-933b-99d00153f146
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Provider = IF(ISBLANK([ServiceProvNPI]), "Unknown",(IF(ISBLANK([ProviderLastNM]),[ServiceProvNPI],[ProviderLastNM]&", "&[ProviderFirstNM])))
+		lineageTag: 71d70b85-b204-420c-acb2-4c118f1d05e2
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column EndDate_Year_Month_No = ```
+			YEAR(HomeHealth[ENDDT]) &"-"& FORMAT(HomeHealth[ENDDT],"mm")  
+			```
+		lineageTag: 3d7cc125-0183-4d07-add1-286aaba691b6
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'All Services' = 'HomeHealth'[HHAide]+'HomeHealth'[Nursing]+'HomeHealth'[OT]+'HomeHealth'[PT]+'HomeHealth'[SpeechTherapy]+'HomeHealth'[Supplies]+'HomeHealth'[Social Services]
+		lineageTag: cad489d7-5c9f-4827-ad61-437ef2e3ddbd
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Patient Name' = [SOURCELASTNM]&", "&[SOURCEFIRSTNM]
+		lineageTag: 496d1f86-36a0-4299-9afc-f78372bf4be6
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition HomeHealth = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("psjh_prod.west-us-2.azure.snowflakecomputing.com","ACOE_WH_M",[Role="ACOE_DEVELOPER"]),
+				    ACOE_DEV_Database = Source{[Name=DB_NAME,Kind="Database"]}[Data],
+				    RPT_VBC_Schema = ACOE_DEV_Database{[Name="RPT_VBC",Kind="Schema"]}[Data],
+				    VBA_POST_ACUTE_HOMEHEALTH_Table = RPT_VBC_Schema{[Name="VBA_POST_ACUTE_HOMEHEALTH",Kind="Table"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(VBA_POST_ACUTE_HOMEHEALTH_Table,{{"SocialSvcs", "Social Services"}})
+				in
+				    #"Renamed Columns"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Exception
+

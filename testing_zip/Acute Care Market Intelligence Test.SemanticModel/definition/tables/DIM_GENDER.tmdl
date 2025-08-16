@@ -1,0 +1,51 @@
+table DIM_GENDER
+	lineageTag: 5c1f71c3-3955-4960-b147-2ea40eacf1b3
+
+	column GENDER_CD
+		dataType: string
+		lineageTag: f80a23e4-acca-482b-8265-5bf3cec0f6c0
+		summarizeBy: none
+		sourceColumn: GENDER_CD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column GENDER_DSC
+		dataType: string
+		lineageTag: bb3b08ed-3212-45bf-bd26-acd8eecd5593
+		summarizeBy: none
+		sourceColumn: GENDER_DSC
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column isActiveGender = LOOKUPVALUE(FACT_IP_OP[I],FACT_IP_OP[GENDER_CD],DIM_GENDER[GENDER_CD],0)
+		isHidden
+		formatString: 0
+		lineageTag: 3b5383ce-cfd6-436d-9d66-010fdfa57804
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_GENDER = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("psjh_prod.west-us-2.azure.snowflakecomputing.com",#"WH Name",[Role=#"Role Name"]),
+				    ACOE_PROD_Database = Source{[Name=DBName,Kind="Database"]}[Data],
+				    RPT_STATE_INTELLIMED_Schema = ACOE_PROD_Database{[Name="RPT_STATE_INTELLIMED",Kind="Schema"]}[Data],
+				    DIM_GENDER_Table = RPT_STATE_INTELLIMED_Schema{[Name="DIM_GENDER",Kind="Table"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(DIM_GENDER_Table,{"GENDER_CD", "GENDER_DSC"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns"),
+				    #"Filtered Rows" = Table.SelectRows(#"Removed Duplicates", each ([GENDER_DSC] <> "Unrecorded"))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

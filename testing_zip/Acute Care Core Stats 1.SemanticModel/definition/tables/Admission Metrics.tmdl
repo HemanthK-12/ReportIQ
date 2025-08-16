@@ -1,0 +1,49 @@
+table 'Admission Metrics'
+	lineageTag: e6c513fd-bd89-4df2-b016-7a7a3086d6e8
+
+	column Parameter
+		lineageTag: 590b82c6-97f3-4001-baa2-478fa095f1a7
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Fields'
+		isHidden
+		lineageTag: bfb40120-33b3-4de8-ae6d-e2dc84ed86e6
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: fb3c70af-0b25-4193-b844-717cfba16d2e
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Admission Metrics' = calculated
+		mode: import
+		source =
+				{
+				    ("EDD entered within 24 hrs (%)", NAMEOF('VW_PCP_CORE_STATS'[% EDD entered within 24 hrs]), 31),
+				    ("MRD entered within 36 hrs (%)", NAMEOF('VW_PCP_CORE_STATS'[% MRD entered within 36 hrs]), 32),
+				    ("SDOH Compliance (%)", NAMEOF(VW_PCP_CORE_STATS[SDOH Compliance %]), 39)
+				    }
+
+	annotation PBI_Id = 63c9192ce571486880aefa23b217e8a3
+

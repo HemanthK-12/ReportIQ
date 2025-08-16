@@ -1,0 +1,48 @@
+table Perspective
+	lineageTag: 5a7652fe-4225-4deb-83ae-94c088ac66cc
+
+	column Location
+		lineageTag: 237757a5-2203-40ed-9fb2-88b7fa5efe26
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Fields'
+		isHidden
+		lineageTag: 4f54f7f8-01f1-4f58-a504-b58d0fc4823a
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: a407d8e9-8be3-4a7e-a425-b0c95ac31264
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Perspective = calculated
+		mode: import
+		source =
+				{
+				    ("Collection Hospital", NAMEOF('VW_LAB_ORDER_TURNAROUND'[Hospital]), 0),
+				    ("Resulting Lab", NAMEOF('VW_LAB_ORDER_TURNAROUND'[RESULTING_LAB]), 1)
+				}
+
+	annotation PBI_Id = 057d70d3261c44bcbc7483ce72871544
+

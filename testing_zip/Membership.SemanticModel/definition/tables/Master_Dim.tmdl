@@ -1,0 +1,80 @@
+table Master_Dim
+	lineageTag: 2d85a61d-04a0-4c50-a7c6-cb58fee09bd5
+
+	column Region
+		dataType: string
+		lineageTag: a7e82a4c-e339-4835-95a0-a07a6ae33375
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Service Area'
+		dataType: string
+		lineageTag: 64f4b4d4-31de-49bd-92c3-e6910bc3e676
+		summarizeBy: none
+		sourceColumn: Service Area
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Line of Business'
+		dataType: string
+		lineageTag: c9515ef7-aac6-4623-9ea5-11c20dfec6a8
+		summarizeBy: none
+		sourceColumn: Line of Business
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cohort
+		dataType: string
+		lineageTag: 46dc5e88-b4cd-4bf1-b038-e5f6c4cbce65
+		summarizeBy: none
+		sourceColumn: Cohort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Risk Contract'
+		dataType: string
+		lineageTag: c8843e23-d03f-4e34-8296-cc8f5b77aed6
+		summarizeBy: none
+		sourceColumn: Risk Contract
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'HCP LAN Category'
+		dataType: string
+		lineageTag: 41d4466e-bc47-4842-a850-29dea9d18761
+		summarizeBy: none
+		sourceColumn: HCP LAN Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Include Partners'
+		dataType: string
+		lineageTag: 9b1a930f-73c5-4243-804e-43a2ed1d8331
+		summarizeBy: none
+		sourceColumn: Include Partners
+
+		annotation SummarizationSetBy = Automatic
+
+	column Key = Master_Dim[Region]&Master_Dim[Service Area]&Master_Dim[Line of Business]&Master_Dim[Cohort]&Master_Dim[Risk Contract]&Master_Dim[HCP LAN Category]&Master_Dim[Include Partners]
+		lineageTag: 8774a066-67ae-4b0f-ab0e-633219ad2157
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Master_Dim = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("psjh_prod.west-us-2.azure.snowflakecomputing.com","ACOE_WH_M",[Role="ACOE_REPORTING_RO"]){[Name="ACOE_PROD"]}[Data], "select distinct ""Region"",""Service Area"",""Line of Business"",""Cohort"",""Risk Contract"",""HCP LAN Category"",""Include Partners"" from ACOE_PROD.RPT_VBC.VBA_MEMBERSHIP_SUMMARY#(lf)union#(lf)select distinct ""Region CD"",""Service Area"",""Line of Business"",""Cohort"",""Risk Contract"",""HCP LAN Category DSC"",""Include Partners CD"" from ACOE_PROD.RPT_VBC.VBA_DATA_SHOP_EMPANELED_PATIENTS", null, [EnableFolding=true]),
+				    #"Replaced Value" = Table.ReplaceValue(Source,null,"Null",Replacer.ReplaceValue,{"HCP LAN Category"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value",null,"Null",Replacer.ReplaceValue,{"Line of Business"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Replaced Value1")
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

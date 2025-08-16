@@ -1,0 +1,33 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Data Source Display Sort","VBA_MEMBERSHIP_SUMMARY","Level of Detail Sort","VBA_DATA_SHOP_EMPANELED_PATIENTS","DB_NAME","Master_Dim"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.145.1105.0 (25.07)+decbc46fce458c5b8d5109d6f32a743f2ac949c8
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_8aabf327-10cb-4eb6-8157-b26bac2278e0
+ref table 'Data Source Display Sort'
+ref table VBA_MEMBERSHIP_SUMMARY
+ref table LocalDateTable_86f85d04-f8a7-425c-a8db-533c965a9b35
+ref table LocalDateTable_e9476a28-ab00-4879-a48b-a4fa697cb62d
+ref table LocalDateTable_3d153ffe-ce3e-499b-8a20-8ff3311c1ae7
+ref table LocalDateTable_4bd9fd0b-c7b7-487d-9b7d-9e78d072f34d
+ref table 'Level of Detail Sort'
+ref table VBA_DATA_SHOP_EMPANELED_PATIENTS
+ref table LocalDateTable_13ccad5a-20d4-4dd7-b5aa-330130d9350b
+ref table LocalDateTable_4786c6fe-9afb-4b8f-82a2-fb5eedd69680
+ref table LocalDateTable_a59e8280-3831-4686-ade7-98536a35159c
+ref table LocalDateTable_7fddd957-a6d1-4e6b-92f2-cac1936434fe
+ref table Master_Dim
+
+ref cultureInfo en-US
+

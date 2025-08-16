@@ -1,0 +1,297 @@
+table Metrics
+	lineageTag: 4bd63bdc-39a7-489f-9668-99430eeb90a4
+
+	measure 'Data Date Range' = Min('FSMain'[Admit Date])&"  -  "&max('FSMain'[Admit Date])
+		displayFolder: Standards
+		lineageTag: f9b85afc-634b-4802-a8c8-b61c9c2ec27e
+
+	measure 'Date LastRefreshed' = VALUES ('Date Last Refreshed'[Date Last Refreshed])
+		formatString: General Date
+		displayFolder: Standards
+		lineageTag: ee4f18ed-61b2-4c1f-991f-be440927f7d3
+
+	measure 'Refresh Frequency' = "Daily by 8am"
+		displayFolder: Standards
+		lineageTag: 2e103707-ded3-48eb-8fdd-a71382cd4c14
+
+	measure BGTransparent = "rgba(255,255,255,0)"
+		displayFolder: Standards
+		lineageTag: 30848156-4486-453a-990b-3ef890e80711
+
+	measure TotalCompletedIn24 =
+			
+			--Assessment In Criteria, In 24Hr
+			IF(
+			    ISBLANK(
+			        CALCULATE(
+			            COUNTROWS('FSMain'),
+			            FSMain[ASSESSMENTS_COMPLETED_MET_24_HOURS_IND] = 1
+			        )
+			    ),
+			    0,
+			    CALCULATE(
+			        COUNTROWS('FSMain'),
+			        FSMain[ASSESSMENTS_COMPLETED_MET_24_HOURS_IND] = 1
+			    )
+			)
+		formatString: #,0
+		lineageTag: 9c6f681c-7688-40c7-8c0c-5694bb2e078d
+
+	measure TotalCompletedIn24% =
+			
+			--Assessment in Criteria in 24Hr / TotalDistinctEncounters
+			IF(
+			ISBLANK([TotalCompletedIn24]) || ISBLANK([TotalEncounters]),
+			0,
+			DIVIDE([TotalCompletedIn24], [TotalEncounters])
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: e64a4463-39ee-4084-94e5-910e95399e18
+
+	measure TotalEncounters = DISTINCTCOUNT('FSMain'[CSN])
+		formatString: #,0
+		lineageTag: dfe71820-3ec8-4535-b7c6-5f04beccc1a9
+
+	measure TotalStartedIn24 =
+			
+			--Assessment Started, In 24Hr
+			IF(
+			CALCULATE(
+			COUNTROWS('FSMain'),
+			FSMain[0_AssessmentStarted]  =1
+			) > 0,
+			CALCULATE(
+			COUNTROWS('FSMain'),
+			FSMain[0_AssessmentStarted] = 1
+			),
+			0
+			)
+		formatString: #,0
+		lineageTag: b7641680-de15-4a7c-a5bf-5232025067d4
+
+	measure ATRPLA_Count =
+			
+			--Able to return to prior living arragements, In 24Hr
+			CALCULATE(
+			    COUNTROWS('FSMain'),
+			    'FSMain'[1_ABLE_TRPLA_IND] = 1, 'FSMain'[8_ADMISSION_ASSESSMENT_WITHIN_24HRS_IND] = 1
+			)
+		formatString: #,0
+		displayFolder: CriteriaMeasures
+		lineageTag: 498ced81-3329-4877-ab49-6062a97c90a7
+
+	measure AdmAssess_Count =
+			
+			--Admission Assessment, In 24Hr
+			CALCULATE(
+			    COUNTROWS('FSMain'),
+			    'FSMain'[2_ADMISSION_ASSESSMENT_IND] = 1, 'FSMain'[8_ADMISSION_ASSESSMENT_WITHIN_24HRS_IND] = 1
+			)
+		formatString: #,0
+		displayFolder: CriteriaMeasures
+		lineageTag: 9ce52888-7f9e-4571-ab97-e052179bf9fc
+
+	measure AntDD_Count =
+			
+			--Anticipated Discharge Disposition, In 24Hr
+			CALCULATE(
+			    COUNTROWS('FSMain'),
+			    'FSMain'[3_ANTICIPATED_DISCHARGE_DISPOSITION_IND] = 1, 'FSMain'[8_ADMISSION_ASSESSMENT_WITHIN_24HRS_IND] = 1
+			)
+		formatString: #,0
+		displayFolder: CriteriaMeasures
+		lineageTag: d9fbea1c-7960-4311-bc4f-a686e191e62e
+
+	measure BarrierDischarge_Count =
+			
+			--Barriers to Discharge, In 24Hr
+			CALCULATE(
+			    COUNTROWS('FSMain'),
+			    'FSMain'[4_BARRIERS_TO_DISCHARGE_IND] = 1, 'FSMain'[8_ADMISSION_ASSESSMENT_WITHIN_24HRS_IND] = 1
+			)
+		formatString: #,0
+		displayFolder: CriteriaMeasures
+		lineageTag: bb8a9548-b3d9-4910-a54c-280b94bff75a
+
+	measure FamAgree_Count =
+			
+			--Patient Family in Agreement with Plan, In 24Hr
+			CALCULATE(
+			    COUNTROWS('FSMain'),
+			    'FSMain'[5_PATIENT_FIAWP_IND] = 1, 'FSMain'[8_ADMISSION_ASSESSMENT_WITHIN_24HRS_IND] = 1
+			)
+		formatString: #,0
+		displayFolder: CriteriaMeasures
+		lineageTag: 4ef1eb08-90aa-4fb5-89b1-8f5cc5a84117
+
+	measure Readd30_Count =
+			
+			--Readmission in 30 days, In 24Hr
+			CALCULATE(
+			    COUNTROWS('FSMain'),
+			    'FSMain'[6_READMISSION_WITHIN_THE_LAST_30_DAYS_IND] = 1, 'FSMain'[8_ADMISSION_ASSESSMENT_WITHIN_24HRS_IND] = 1
+			)
+		formatString: #,0
+		displayFolder: CriteriaMeasures
+		lineageTag: 37d6f224-c856-4340-ab49-4f7779b6a202
+
+	measure ServAnt_Count =
+			
+			--Services Anticipated at Dicharge, In 24Hr
+			CALCULATE(
+			    COUNTROWS('FSMain'),
+			    'FSMain'[7_SERVICES_ANTICIPATED_AT_DISCHARGE_IND] = 1, 'FSMain'[8_ADMISSION_ASSESSMENT_WITHIN_24HRS_IND] = 1
+			)
+		formatString: #,0
+		displayFolder: CriteriaMeasures
+		lineageTag: 14152289-980a-41aa-9c07-708c2ec98cf3
+
+	measure 'Admission Assessment %' = CALCULATE(DIVIDE([AdmAssess_Count], [TotalEncounters]))
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: CriteriaMeasures
+		lineageTag: 611dd7ae-5bfc-4233-8ed7-f4e4ce02ba7b
+
+	measure 'Anticipated Discharge Disp %' = CALCULATE(DIVIDE([AntDD_Count], [TotalEncounters]))
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: CriteriaMeasures
+		lineageTag: 17826d9f-a890-428f-8a78-f9525aec40cf
+
+	measure 'Able to Return to PLA %' = CALCULATE(DIVIDE([ATRPLA_Count], [TotalEncounters]))
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: CriteriaMeasures
+		lineageTag: 34f51eed-8312-4126-a2ea-b56b3ef06777
+
+	measure 'Barriers to Disch %' = CALCULATE(DIVIDE([BarrierDischarge_Count], [TotalEncounters]))
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: CriteriaMeasures
+		lineageTag: 3f7dc115-69c9-4437-a7e9-ba780d868a47
+
+	measure 'Pt Family Agree w Plan %' = CALCULATE(DIVIDE([FamAgree_Count], [TotalEncounters]))
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: CriteriaMeasures
+		lineageTag: c6af27f3-a921-42b1-85bd-d9a9363a20d2
+
+	measure 'Readmit Risk 30d %' = CALCULATE(DIVIDE([Readd30_Count], [TotalEncounters]))
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: CriteriaMeasures
+		lineageTag: 5c260108-e18b-4e77-a835-26522b0fc7bf
+
+	measure 'Serv Ant at Disch %' = CALCULATE(DIVIDE([ServAnt_Count], [TotalEncounters]))
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: CriteriaMeasures
+		lineageTag: eb7c54cc-e71a-4472-a09a-4ee095a2cc8b
+
+	measure FTSource = "Data Source: RPT_PATIENT_JOURNEY.VW_PCP_FLOWSHEET_FIRST_ASSESSMENTS, Developed By: ACOE Analytics"
+		displayFolder: Standards
+		lineageTag: 52175955-5017-4d94-9892-67b9de207569
+
+	measure FTDisclaimer = "CONFIDENTIAL: This dashboard includes sensitive data and is intended for internal use within Providence St. Joseph Health only. Do not share."
+		displayFolder: Standards
+		lineageTag: 2ecf97db-5f2a-46b0-8a7c-6cd35833a44e
+
+	measure Measure_Selected_Column =
+			
+			VAR SelectedButton = SELECTEDVALUE('CriteriaSlicer'[Button])
+			RETURN
+			SWITCH(
+			    SelectedButton,
+			    "AdmAssess_%", [Admission Assessment %],
+			    "AntDD_%", [Anticipated Discharge Disp %],
+			    "ATRPLA_%", [Able to Return to PLA %],
+			    "BarrierDischarge_%", [Barriers to Disch %],
+			    "FamAgree_%", [Pt Family Agree w Plan %],
+			    "Readd30_%", [Readmit Risk 30d %],
+			    "ServAnt_%", [Serv Ant at Disch %],
+			    BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 9a0c4dd2-239b-4bde-a28a-8510e94a3621
+
+	measure Row_Selected_Column =
+			
+			VAR SelectedButton = SELECTEDVALUE('CriteriaSlicer'[Button])
+			RETURN
+			SWITCH(
+			    SelectedButton,
+			    "ABLE_TRPLA_EMPLOYEE_NAME", SELECTEDVALUE('FSMain'[ABLE_TRPLA_EMPLOYEE_NAME]),
+			    "ADMISSION_ASSESSMENT_EMPLOYEE_NAME", SELECTEDVALUE('FSMain'[ADMISSION_ASSESSMENT_EMPLOYEE_NAME]),
+			    "ANTICIPATED_DISCHARGE_DISPOSITION_EMPLOYEE_NAME", SELECTEDVALUE('FSMain'[ANTICIPATED_DISCHARGE_DISPOSITION_EMPLOYEE_NAME]),
+			    "BARRIERS_TO_DISCHARGE_EMPLOYEE_NAME", SELECTEDVALUE('FSMain'[BARRIERS_TO_DISCHARGE_EMPLOYEE_NAME]),
+			    "PATIENT_FIAWP_EMPLOYEE_NAME", SELECTEDVALUE('FSMain'[PATIENT_FIAWP_EMPLOYEE_NAME]),
+			    "READMISSION_WITHIN_THE_LAST_30_DAYS_EMPLOYEE_NAME", SELECTEDVALUE('FSMain'[READMISSION_WITHIN_THE_LAST_30_DAYS_EMPLOYEE_NAME]),
+			    "SERVICES_ANTICIPATED_AT_DISCHARGE_EMPLOYEE_NAME", SELECTEDVALUE('FSMain'[SERVICES_ANTICIPATED_AT_DISCHARGE_EMPLOYEE_NAME]),
+			    BLANK()
+			)
+		lineageTag: 4fa40c19-551a-42b4-ac0e-d0313f640bc3
+
+	measure TableLine = ""
+		displayFolder: Standards
+		lineageTag: cdc1cb13-c0da-4ae4-b09c-522bbe129f9f
+
+	measure CMAssigned =
+			
+			--Case Manager assigned
+			IF(
+			    ISBLANK(
+			        CALCULATE(
+			            COUNTROWS('FSMain'),
+			            FSMain[First Care Manager Name] <> "No CM Assigned"
+			        )
+			    ),
+			    0,
+			        CALCULATE(
+			            COUNTROWS('FSMain'),
+			            FSMain[First Care Manager Name] <> "No CM Assigned"
+			        )
+			)
+		formatString: 0
+		lineageTag: 8ef2c5e4-c5ba-41ce-8894-9e4a1bdd4074
+
+	measure CMAssigned% =
+			
+			--CM is assigned / TotalDistinctEncounters
+			IF(
+			ISBLANK([CMAssigned]) || ISBLANK([TotalEncounters]),
+			0,
+			DIVIDE([CMAssigned], [TotalEncounters])
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 665f556b-0ca5-4cac-b924-e971f7d6fb55
+
+	measure 'Target CM Assignment' = 1
+		formatString: 0%;-0%;0%
+		lineageTag: 29150bb3-c1a5-4545-bdcf-041f7b517100
+
+	measure TotalStartedIn24% =
+			
+			--Assessment in Criteria in 24Hr / TotalDistinctEncounters
+			IF(
+			ISBLANK([TotalStartedIn24]) || ISBLANK([TotalEncounters]),
+			0,
+			DIVIDE([TotalStartedIn24], [TotalEncounters])
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Standards
+		lineageTag: 0aa72a75-e920-4645-8bed-a244fc3456ce
+
+	measure StartedNotCompletedIn24 =
+			
+			CALCULATE(SUM('FSMain'[0_AssessmentStarted])) - CALCULATE(SUM('FSMain'[ASSESSMENTS_COMPLETED_MET_24_HOURS_IND]))
+		formatString: #,0
+		displayFolder: Standards
+		lineageTag: a73cd45a-5253-48a6-a7c1-aed44c7bc273
+
+	partition Metrics = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

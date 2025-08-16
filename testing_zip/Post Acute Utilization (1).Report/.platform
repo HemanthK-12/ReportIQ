@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Post Acute Utilization (1)"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "acb87299-9ca3-419d-a0cc-31cabc331282"
+  }
+}

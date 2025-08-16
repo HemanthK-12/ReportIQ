@@ -1,0 +1,127 @@
+{
+  "name": "PSJH Healthcare Intelligence",
+  "textClasses": {
+    "label": {
+      "color": "#384050",
+      "fontFace": "Arial",
+      "fontSize": 11
+    },
+    "callout": {
+      "color": "#333333",
+      "fontFace": "Calibri"
+    },
+    "title": {
+      "color": "#384050",
+      "fontFace": "Arial",
+      "fontSize": 24
+    },
+    "header": {
+      "color": "#384050",
+      "fontFace": "Arial",
+      "fontSize": 14
+    }
+  },
+  "dataColors": [
+    "#00338E",
+    "#359347",
+    "#C1B789",
+    "#D59A59",
+    "#A83958",
+    "#F37F63",
+    "#64B456",
+    "#E25D7F"
+  ],
+  "bad": "#C73222",
+  "good": "#27AE86",
+  "neutral": "#EAAB00",
+  "minimum": "#78AFD4",
+  "center": "#3E73B2",
+  "maximum": "#00338E",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "visualHeader": [
+          {
+            "background": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "foreground": {
+              "solid": {
+                "color": "#333333"
+              }
+            }
+          }
+        ],
+        "visualTooltip": [
+          {
+            "titleFontColor": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "valueFontColor": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            }
+          }
+        ],
+        "outspacePane": [
+          {
+            "foregroundColor": {
+              "solid": {
+                "color": "#384050"
+              }
+            },
+            "titleSize": 12,
+            "headerSize": 10,
+            "checkboxAndApplyColor": {
+              "solid": {
+                "color": "#64B456"
+              }
+            }
+          }
+        ],
+        "filterCard": [
+          {
+            "$id": "Applied",
+            "backgroundColor": {
+              "solid": {
+                "color": "#EFF2F8"
+              }
+            },
+            "textSize": 9,
+            "transparency": 0
+          },
+          {
+            "$id": "Available",
+            "foregroundColor": {
+              "solid": {
+                "color": "#384050"
+              }
+            },
+            "textSize": 9
+          }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#EFF2F8"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "foreground": "#2A3039",
+  "foregroundNeutralSecondary": "#384050",
+  "backgroundLight": "#98A2B2"
+}

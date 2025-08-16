@@ -1,0 +1,321 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 1474.2419138036144,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 818.22977661756556,
+            "y": 0
+          },
+          "nodeIndex": "Date Last Refreshed",
+          "nodeLineageTag": "0bb0e9c1-5b95-4f22-a1fb-1df2bb435e77",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 1760.1608490635422,
+            "y": 241.02075856532986
+          },
+          "nodeIndex": "Select CPS Parameter",
+          "nodeLineageTag": "7fe9c678-3d5e-4729-8b39-ccc1ba12c88c",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 1436.6083804253728,
+            "y": 175.49477374514495
+          },
+          "nodeIndex": "Rank",
+          "nodeLineageTag": "815bde1c-5067-4843-9c92-89067f6e6b56",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 1769.0695817322028,
+            "y": 444.85884507490238
+          },
+          "nodeIndex": "Measure Selection",
+          "nodeLineageTag": "e75982e7-b0ef-4703-b0e3-b4dc2336a70b",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 1749.5287674237088,
+            "y": 847.40138662104584
+          },
+          "nodeIndex": "Patient Geography",
+          "nodeLineageTag": "73faa30d-742b-40b4-a4ef-e84daa390d74",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 1316.637236407126,
+            "y": 431.48761425738809
+          },
+          "nodeIndex": "FACILITY_SYSTEM_NM",
+          "nodeLineageTag": "ad7c1ff4-7297-444e-8369-0291230fc423",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 12
+        },
+        {
+          "location": {
+            "x": 591.6301369863013,
+            "y": 589.52054520175875
+          },
+          "nodeIndex": "FACT_IP_OP",
+          "nodeLineageTag": "bd179c0b-3aeb-458e-8044-6c5440b974e4",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 20
+        },
+        {
+          "location": {
+            "x": 128.65569046256553,
+            "y": 708.52545487199461
+          },
+          "nodeIndex": "DIM_PATIENT",
+          "nodeLineageTag": "ad93764a-084a-45ff-9587-4b6a758165b6",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 18
+        },
+        {
+          "location": {
+            "x": 1111.8812343663187,
+            "y": 622.128253018344
+          },
+          "nodeIndex": "DIM_FACILITY",
+          "nodeLineageTag": "20a78964-a7c3-4e7e-9fa7-552cc0ea0a2e",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 15
+        },
+        {
+          "location": {
+            "x": 601.24610381459752,
+            "y": 312.18577714612888
+          },
+          "nodeIndex": "DIM_CPS",
+          "nodeLineageTag": "4d935755-94d2-4b02-9922-d157f8e3acf6",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 16
+        },
+        {
+          "location": {
+            "x": 895.84712506623964,
+            "y": 1062.616792978798
+          },
+          "nodeIndex": "DIM_MSDRG",
+          "nodeLineageTag": "b87b253b-7301-4682-9884-b473e7820581",
+          "size": {
+            "height": 155.13698630136969,
+            "width": 234
+          },
+          "zIndex": 13
+        },
+        {
+          "location": {
+            "x": 171.94135217830731,
+            "y": 997.32810823974773
+          },
+          "nodeIndex": "DIM_DIAGNOSIS",
+          "nodeLineageTag": "7463d4cd-b8b1-4a9f-af08-3dff0c57e5f6",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 14
+        },
+        {
+          "location": {
+            "x": 895.09239505414371,
+            "y": 345.61628631887538
+          },
+          "nodeIndex": "DIM_DATE",
+          "nodeLineageTag": "e6efd998-0d4a-4742-a760-f9ac68d817f9",
+          "size": {
+            "height": 214.29325003144083,
+            "width": 234
+          },
+          "zIndex": 23
+        },
+        {
+          "location": {
+            "x": 305.01374421470518,
+            "y": 370.88482204663569
+          },
+          "nodeIndex": "DIM_AGE",
+          "nodeLineageTag": "92725e18-be44-46c1-a690-3f0287cc2650",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 17
+        },
+        {
+          "location": {
+            "x": 653.9626548009818,
+            "y": 1183.0583098439347
+          },
+          "nodeIndex": "DIM_PAYOR",
+          "nodeLineageTag": "f5b8b49a-cd8b-4993-9e42-2c695e086f03",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 1167.6817893199338,
+            "y": 1016.907444521427
+          },
+          "nodeIndex": "DIM_PROCEDURE",
+          "nodeLineageTag": "06f072d3-200b-4736-85ed-00a0ae295454",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 22
+        },
+        {
+          "location": {
+            "x": 1504.6387846399218,
+            "y": 591.80436759512588
+          },
+          "nodeIndex": "Discharge Year Quarter",
+          "nodeLineageTag": "3c3e1173-2181-464f-8c6a-d0c5c06a9f04",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 1003.4444437088189,
+            "y": 175.3538705788601
+          },
+          "nodeIndex": "DIM_GENDER",
+          "nodeLineageTag": "5c1f71c3-3955-4960-b147-2ea40eacf1b3",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 19
+        },
+        {
+          "location": {
+            "x": 1448.03207734114,
+            "y": 867.67021276498826
+          },
+          "nodeIndex": "FACILITY_NM",
+          "nodeLineageTag": "044a4255-2fdb-4f76-bef2-a072b009f79c",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 2119.3958567149639,
+            "y": 603.52915492196735
+          },
+          "nodeIndex": "System/Facility",
+          "nodeLineageTag": "f33b313a-738e-463e-a3dd-5cb2f9cff6f3",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 2274.7401662523985,
+            "y": 603.52915492196735
+          },
+          "nodeIndex": "Service Line Group Options",
+          "nodeLineageTag": "4d04137b-0a84-44f6-aef8-ccecec18cd24",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 2430.084475789833,
+            "y": 627.52915492196735
+          },
+          "nodeIndex": "/Measures",
+          "nodeLineageTag": "3a4cd4bf-3f48-4f89-9476-27e81899f1dc",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 2585.4287853272676,
+            "y": 529.52915492196735
+          },
+          "nodeIndex": "PSJH_ZIP_TO_GEOGRAPHIES",
+          "nodeLineageTag": "81a20942-271e-40af-b682-6470e0168797",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 21
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 55.712248125492657,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

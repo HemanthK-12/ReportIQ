@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Acute Care Expected Discharge Date Original"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "19aded79-4cb0-47a8-bdc0-84ef1e5d6280"
+  }
+}

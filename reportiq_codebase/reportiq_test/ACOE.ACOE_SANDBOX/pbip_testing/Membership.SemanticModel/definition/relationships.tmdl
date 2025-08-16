@@ -1,0 +1,56 @@
+relationship 02ebca3b-7e70-4a62-ae36-adc478255679
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VBA_MEMBERSHIP_SUMMARY.INCURREDYEARMONTH_DT
+	toColumn: LocalDateTable_86f85d04-f8a7-425c-a8db-533c965a9b35.Date
+
+relationship 9b9aa59c-aa8a-4767-8394-f5c79e690e1a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VBA_MEMBERSHIP_SUMMARY.DATA_THROUGH_DT
+	toColumn: LocalDateTable_e9476a28-ab00-4879-a48b-a4fa697cb62d.Date
+
+relationship AutoDetected_1466e12d-fe18-4554-9bc4-806392a49feb
+	fromColumn: VBA_MEMBERSHIP_SUMMARY.'Data Source Display'
+	toColumn: 'Data Source Display Sort'.'Data Source Display Name'
+
+relationship 245860fd-5b5c-4a29-b624-9f5cfa75fd2a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VBA_MEMBERSHIP_SUMMARY.INSERT_DTS
+	toColumn: LocalDateTable_3d153ffe-ce3e-499b-8a20-8ff3311c1ae7.Date
+
+relationship 99e0c94d-a5e5-4e09-bd28-47f8db3a0e99
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VBA_MEMBERSHIP_SUMMARY.UPDATE_DTS
+	toColumn: LocalDateTable_4bd9fd0b-c7b7-487d-9b7d-9e78d072f34d.Date
+
+relationship AutoDetected_0166442b-4358-4390-afa0-26045100de8a
+	fromColumn: VBA_MEMBERSHIP_SUMMARY.'Level of Detail'
+	toColumn: 'Level of Detail Sort'.'Level of Detail Name'
+
+relationship 37c851b9-175a-49e0-8652-8f4b4a005b01
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VBA_DATA_SHOP_EMPANELED_PATIENTS.YearMonth
+	toColumn: LocalDateTable_13ccad5a-20d4-4dd7-b5aa-330130d9350b.Date
+
+relationship 7493042f-75c3-4e85-9f3e-0781916b7cbe
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VBA_DATA_SHOP_EMPANELED_PATIENTS.DOB
+	toColumn: LocalDateTable_4786c6fe-9afb-4b8f-82a2-fb5eedd69680.Date
+
+relationship 2e64e1f9-e7db-493f-ace3-84a4b40e8754
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VBA_DATA_SHOP_EMPANELED_PATIENTS.INSERT_DTS
+	toColumn: LocalDateTable_a59e8280-3831-4686-ade7-98536a35159c.Date
+
+relationship 761f7e30-8d57-4b9b-9bf8-f351c869fa6f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: VBA_DATA_SHOP_EMPANELED_PATIENTS.UPDATE_DTS
+	toColumn: LocalDateTable_7fddd957-a6d1-4e6b-92f2-cac1936434fe.Date
+
+relationship 9b65cabf-2d73-3c0a-fefa-f0061ae7a0de
+	fromColumn: VBA_MEMBERSHIP_SUMMARY.Key_membership
+	toColumn: Master_Dim.Key
+
+relationship a861a3ed-8ffe-e6ba-a689-3419ac5ab7f9
+	fromColumn: VBA_DATA_SHOP_EMPANELED_PATIENTS.Key_empaneled
+	toColumn: Master_Dim.Key
+

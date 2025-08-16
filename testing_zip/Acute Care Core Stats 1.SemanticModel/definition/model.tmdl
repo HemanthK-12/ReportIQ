@@ -1,0 +1,69 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.145.1105.0 (25.07)+decbc46fce458c5b8d5109d6f32a743f2ac949c8
+
+annotation PBI_QueryOrder = ["Last Refresh Date","VW_PCP_CORE_STATS","VW_CM_STOP_BILL","VW_IMM_MOON_CM_DOCUMENTATION","DIM_PATIENT"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_e230f877-184a-4c83-ae5c-da505ce9b7ca
+ref table 'Display Level'
+ref table 'Display Level MRD'
+ref table 'Last Refresh Date'
+ref table LocalDateTable_1c2ef38e-287d-4ae4-bc23-8464d0321f6e
+ref table KPIs
+ref table VW_PCP_CORE_STATS
+ref table LocalDateTable_f3326ab0-e097-4bca-9fe0-f9a57035c2d3
+ref table LocalDateTable_ca66e194-8d00-402a-b38e-52b31c8bf8ad
+ref table LocalDateTable_9430df00-cb73-4b0a-a562-25ac036dde56
+ref table LocalDateTable_d4981292-981b-407c-b6b8-41a33f17ab18
+ref table LocalDateTable_dd6b96d7-f5e3-4ef4-9c6a-a53c70e1dc56
+ref table LocalDateTable_ec528382-63f2-4fce-9973-eefca7aa609b
+ref table LocalDateTable_959c9359-de18-4e23-b630-16b5fdeb78d2
+ref table LocalDateTable_0f791035-d02a-41dd-9814-49c4bcbb0cac
+ref table LocalDateTable_10ed433b-5217-45f1-813d-2885b7498689
+ref table LocalDateTable_057d5829-880b-445a-941b-5112647c7642
+ref table LocalDateTable_3068b0c3-8429-44e9-b3af-dad2603f89a3
+ref table LocalDateTable_862992d8-62fb-46ff-9701-52b8e0248d84
+ref table LocalDateTable_d8002b67-5a2e-4ab5-921c-af7b65fa3106
+ref table LocalDateTable_471be29e-7e0e-4e74-8bbf-75cd1c353110
+ref table VW_CM_STOP_BILL
+ref table LocalDateTable_f7a434d1-c096-4c47-9740-7cbec4070e81
+ref table LocalDateTable_7f055867-b331-44bc-a75a-e4055af89c05
+ref table LocalDateTable_412325cf-77b5-48a2-9d16-a9fb314ea709
+ref table VW_IMM_MOON_CM_DOCUMENTATION
+ref table LocalDateTable_18008ad4-fc5a-475f-8446-c7060b5fa305
+ref table LocalDateTable_e034cb5f-af86-46c4-abc3-81b8a398c8c8
+ref table LocalDateTable_2baa5f81-7e3e-4d23-bb97-63157a6562f6
+ref table LocalDateTable_9e2fcd4b-7a59-4ab5-b880-35e929684cd4
+ref table LocalDateTable_6c1908f6-6f62-470f-b142-f792c5430335
+ref table LocalDateTable_b82fe590-52ea-4001-b892-2cf058413b13
+ref table 'Patient Detail KPIs'
+ref table LocalDateTable_8fe03a49-240a-403a-aeeb-d577f6b41fef
+ref table LocalDateTable_bab0c10f-08c2-4623-8a85-506e9a3f125a
+ref table 'Admission Metrics'
+ref table 'Discharge Metrics'
+ref table 'Stop Bill Metrics'
+ref table 'Observation Metrics'
+ref table LocalDateTable_1ed9f354-b99e-42fe-99a4-a26ae70a3d9f
+ref table 'Discharge Metrics 2'
+ref table 'Admission Metrics 2'
+ref table LocalDateTable_b7b827cd-07f7-4452-9979-02b14aa90da2
+ref table LocalDateTable_36c17551-2d0f-47f5-9f15-a036dbf87554
+ref table 'Scatter Plot Metrics 1'
+ref table 'Scatter Plot Metrics 2'
+ref table DIM_PATIENT
+ref table LocalDateTable_a5228da7-f5fc-473e-940e-53b091476fa3
+ref table LocalDateTable_c84f8627-d758-4fc3-9809-848e15c949d3
+ref table LocalDateTable_f5a789e9-1ed2-484f-ab65-5ecebf60568a
+
+ref cultureInfo en-US
+

@@ -1,0 +1,175 @@
+# Default values for a mygalaxy.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+#
+
+replicaCount: 1
+namespace : my-galaxy
+
+image:
+  repository: artifactory.wu2.cloud.providence.org/docker-acoedataops/mygalaxy/reportiq/dev/my-galaxy-reportiq
+  #docker-acoedataops/mygalaxy/reportiq/dev/my-galaxy-reportiq/my_galaxy_reportiq.09bf4f4/
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag:  "my_galaxy_reportiq.9c141f7"
+
+imagePullSecrets: []
+nameOverride: "reportiq"
+fullnameOverride: "reportiq"
+
+deployment:
+  enabled: true # Enable deployment
+  # The name of the deployment to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: "reportiq"
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: 
+    azure.workload.identity/client-id: 7f7d2731-f8ed-4e61-ab2e-218aae34ccc0 # Client ID of Azure Managed Identity
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: "reportiq"
+
+podAnnotations:
+  container.apparmor.security.beta.kubernetes.io/reportiq: runtime/default
+
+podSecurityContext: 
+  fsGroup: 1000
+  runAsUser: 1000
+  runAsGroup: 1000
+  supplementalGroups: [1000]
+
+securityContext:
+  allowPrivilegeEscalation: false # Ensures no child process in container can gain more privileges than it's parent
+  privileged: false
+
+service:
+  type: ClusterIP
+  port: 443
+
+additionalDeploymentLabels:
+  owner: "acoe_devops.providence.org"
+  app: webapp
+  environment: "DEV"
+  costCenter: "6515879504"
+
+
+identity:
+  clientID: 7f7d2731-f8ed-4e61-ab2e-218aae34ccc0 # Client ID of Azure Managed Identity
+  
+secretProviderClass:
+  enabled: false # Enable SecretProviderClass
+  name: acoe-priority-class-v1 # Name of the Secret Provider Class
+  keyvaultName: kv-acoe-test-01 # Name of the Azure Key Vault
+  #secretName: reportiqSercret
+  resourceGroupName: rg-windl-sjh-ndops1-westus2 # Name  of the Resource Group the KeyVault is in
+  subscriptionId: 2d17f53b-5992-46af-8c9a-bb4fae3d5d52 # Subscription ID containing the Azure Key Vault instance
+  tenantId: 2e319086-9a26-46a3-865f-615bed576786 # Tenant ID containing the Azure Key Vault instance
+
+  
+kvSecretName: acoe-priority-class-v1
+kvurl: "https://kv-acoe-test-01.vault.azure.net/"
+
+
+
+
+
+
+ingress:
+  enabled: true
+  annotations: 
+    cert-manager.io/cluster-issuer: letsencrypt-prod-azure # Add for auto SSL certificate
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    kubernetes.io/ingress.allow-http: "false" # Required for Gatekeeper admission
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    nginx.org/client-max-body-size: "10g"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "180"
+  hosts:
+    - host: reportiq.devwu2.cloud.providence.org
+      paths:
+      - path: /
+        backend:
+          service:
+            name: reportiq
+            port:
+              number: 443
+  tls: 
+    - secretName: reportiq-tls
+      hosts:
+      - reportiq.devwu2.cloud.providence.org
+resources: 
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+    limits:
+      cpu: 750m
+      memory: 8192Mi
+    requests:
+      cpu: 250m
+      memory: 4096Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector:
+  nodepool: user
+
+tolerations: []
+
+affinity: {}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

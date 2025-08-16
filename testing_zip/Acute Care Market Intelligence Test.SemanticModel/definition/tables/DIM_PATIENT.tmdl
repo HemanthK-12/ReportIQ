@@ -1,0 +1,123 @@
+table DIM_PATIENT
+	lineageTag: ad93764a-084a-45ff-9587-4b6a758165b6
+
+	column PATIENT_ZIP_CD
+		dataType: string
+		lineageTag: 7bbe73c5-a549-4505-a8ab-cf0ceb09aea1
+		summarizeBy: none
+		sourceColumn: PATIENT_ZIP_CD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PATIENT_COUNTY_NM
+		dataType: string
+		lineageTag: 6503afcb-8f33-4824-a0ea-87800adf68ca
+		summarizeBy: none
+		sourceColumn: PATIENT_COUNTY_NM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PATIENT_CITY_NM
+		dataType: string
+		lineageTag: 6224c9f7-52ba-4208-99a4-270c83960e4b
+		summarizeBy: none
+		sourceColumn: PATIENT_CITY_NM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PATIENT_DIVISION_NM
+		dataType: string
+		lineageTag: eb61e91a-77fc-4c8f-ad76-2f7441f310f8
+		summarizeBy: none
+		sourceColumn: PATIENT_DIVISION_NM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PATIENT_REGION_NM
+		dataType: string
+		lineageTag: 03f58af6-0002-424b-8cc9-6d93ba40b179
+		summarizeBy: none
+		sourceColumn: PATIENT_REGION_NM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PATIENT_SERVICE_AREA_NM
+		dataType: string
+		lineageTag: 6b612f24-0a3f-4d0a-8365-dbd84c3325a4
+		summarizeBy: none
+		sourceColumn: PATIENT_SERVICE_AREA_NM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PATIENT_SUBSERVICE_AREA_NM
+		dataType: string
+		lineageTag: 53468f2b-9e9b-411a-ba5d-6cefbc65a5a1
+		summarizeBy: none
+		sourceColumn: PATIENT_SUBSERVICE_AREA_NM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PATIENT_SYSTEM_NM = SWITCH(DIM_PATIENT[PATIENT_DIVISION_NM],"NORTH","SYSTEM","SOUTH","SYSTEM","CENTRAL","SYSTEM","OTHER US")
+		lineageTag: 437a70c8-78db-42f6-b5ae-d25cb4d3cc97
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column isActivePatientZipCD = LOOKUPVALUE(FACT_IP_OP[I],FACT_IP_OP[PATIENT_ZIP_CD],DIM_PATIENT[PATIENT_ZIP_CD],0)
+		isHidden
+		formatString: 0
+		lineageTag: 012c42f3-2327-467e-875e-717691997a9f
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PATIENT_STATE_COUNTY_NM
+		dataType: string
+		lineageTag: e1a89c0a-a48d-445f-9c4f-4b589539f5ab
+		summarizeBy: none
+		sourceColumn: PATIENT_STATE_COUNTY_NM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PATIENT_CITY_STATE_NM
+		dataType: string
+		lineageTag: 8af63fe8-bfa3-4800-9a21-e2fea382974f
+		summarizeBy: none
+		sourceColumn: PATIENT_CITY_STATE_NM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_PATIENT = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("psjh_prod.west-us-2.azure.snowflakecomputing.com",#"WH Name",[Role=#"Role Name"]){[Name=DBName]}[Data], "SELECT #(lf)DISTINCT#(lf)PZIP.zip_cd AS PATIENT_ZIP_CD,#(lf)PZip.county_nm as PATIENT_COUNTY_NM, #(lf)REF.COUNTY as PATIENT_STATE_COUNTY_NM,#(lf)PZip.city_nm as PATIENT_CITY_NM,#(lf)REF.CITY as PATIENT_CITY_STATE_NM,    #(lf)REF.DIVISION AS PATIENT_DIVISION_NM,    #(lf)REF.REGION AS PATIENT_REGION_NM,    #(lf)REF.SERVICE_AREA AS PATIENT_SERVICE_AREA_NM,    #(lf)REF.SUBSERVICE_AREA AS PATIENT_SUBSERVICE_AREA_NM#(lf)FROM RPT_STATE_INTELLIMED.DIM_ZIP PZip#(lf)LEFT JOIN STRATEGY_PLANNING.WHS_SYSTEM_SP_REF_FILES_PRD.REF_PSJH_ZIP_TO_GEOGRAPHIES REF    #(lf)on PZip.zip_cd = REF.zip_code", null, [EnableFolding=true])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

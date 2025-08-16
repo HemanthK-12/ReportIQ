@@ -1,0 +1,1271 @@
+table FSMain
+	lineageTag: fcbeda0d-dfc4-4195-a80c-046dc9cb0c24
+
+	column CSN
+		dataType: string
+		lineageTag: e2411321-3bce-4d11-afee-d345263b6166
+		summarizeBy: none
+		sourceColumn: CSN
+
+		annotation SummarizationSetBy = Automatic
+
+	column MRN
+		dataType: string
+		lineageTag: 24e8143a-5004-4f52-b8d8-d58117bc88bf
+		summarizeBy: none
+		sourceColumn: MRN
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Admit Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 5be0017e-0c12-4a12-ab99-1dbb5c5c3c7b
+		summarizeBy: none
+		sourceColumn: Admit Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 2_ADMISSION_ASSESSMENT_IND
+		dataType: int64
+		formatString: 0
+		lineageTag: 2123147a-2476-43d7-be9b-bb90d78d0177
+		summarizeBy: sum
+		sourceColumn: 2_ADMISSION_ASSESSMENT_IND
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADMISSION_ASSESSMENT_FSD_LINE_ID
+		dataType: string
+		lineageTag: db542f2f-2765-4ebf-adfb-528714db44eb
+		summarizeBy: none
+		sourceColumn: ADMISSION_ASSESSMENT_FSD_LINE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADMISSION_ASSESSMENT_TEMPLATE_NAME
+		dataType: string
+		lineageTag: 0bbcccec-64d2-4068-8d1a-0803fb4bc782
+		summarizeBy: none
+		sourceColumn: ADMISSION_ASSESSMENT_TEMPLATE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADMISSION_ASSESSMENT_MEASURE_ID
+		dataType: double
+		lineageTag: ce52de92-98fa-4b92-b07c-bb865251e5a1
+		summarizeBy: count
+		sourceColumn: ADMISSION_ASSESSMENT_MEASURE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ADMISSION_ASSESSMENT_MEASURE_NAME
+		dataType: string
+		lineageTag: a62fc783-13a4-4cc5-b852-0075e309e129
+		summarizeBy: none
+		sourceColumn: ADMISSION_ASSESSMENT_MEASURE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADMISSION_ASSESSMENT_MEASURE_VALUE
+		dataType: string
+		lineageTag: 8250ee11-54e8-4ab0-8c37-1fa1518b96f2
+		summarizeBy: none
+		sourceColumn: ADMISSION_ASSESSMENT_MEASURE_VALUE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADMISSION_ASSESSMENT_EMPLOYEE_ID
+		dataType: double
+		lineageTag: ab53494a-9aa7-4120-9965-df3fb0e0f2c3
+		summarizeBy: count
+		sourceColumn: ADMISSION_ASSESSMENT_EMPLOYEE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ADMISSION_ASSESSMENT_EMPLOYEE_NAME
+		dataType: string
+		lineageTag: 80510784-480b-467d-bc5b-0e86e1d79f35
+		summarizeBy: none
+		sourceColumn: ADMISSION_ASSESSMENT_EMPLOYEE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADMISSION_ASSESSMENT_CLINICIAN_TITLE
+		dataType: string
+		lineageTag: 42fdf8d7-394d-4961-8f4d-59bfa840b3d3
+		summarizeBy: none
+		sourceColumn: ADMISSION_ASSESSMENT_CLINICIAN_TITLE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADMISSION_ASSESSMENT_PROVIDER_TYPE
+		dataType: string
+		lineageTag: edb210ad-d03d-4e1b-838f-c6b704d361dd
+		summarizeBy: none
+		sourceColumn: ADMISSION_ASSESSMENT_PROVIDER_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADMISSION_ASSESSMENT_TAT_MINUTES
+		dataType: double
+		lineageTag: c6965f65-decb-44a9-ac4d-b5c15680a6cb
+		summarizeBy: sum
+		sourceColumn: ADMISSION_ASSESSMENT_TAT_MINUTES
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 8_ADMISSION_ASSESSMENT_WITHIN_24HRS_IND
+		dataType: int64
+		formatString: 0
+		lineageTag: e734b5ef-8d5e-4501-8b59-0f8a5765629f
+		summarizeBy: sum
+		sourceColumn: 8_ADMISSION_ASSESSMENT_WITHIN_24HRS_IND
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADMISSION_ASSESSMENT_WITHIN_24HRS_FSD_LINE_ID
+		dataType: string
+		lineageTag: df6ae564-76dc-4ff0-a785-4266416a63ef
+		summarizeBy: none
+		sourceColumn: ADMISSION_ASSESSMENT_WITHIN_24HRS_FSD_LINE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADMISSION_ASSESSMENT_WITHIN_24HRS_TEMPLATE_NAME
+		dataType: string
+		lineageTag: 563c16ce-d3cd-440a-b546-680b28db3db0
+		summarizeBy: none
+		sourceColumn: ADMISSION_ASSESSMENT_WITHIN_24HRS_TEMPLATE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADMISSION_ASSESSMENT_WITHIN_24HRS_MEASURE_ID
+		dataType: double
+		lineageTag: c1a46f84-b627-4d75-89da-65976152eaa9
+		summarizeBy: count
+		sourceColumn: ADMISSION_ASSESSMENT_WITHIN_24HRS_MEASURE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ADMISSION_ASSESSMENT_WITHIN_24HRS_MEASURE_NAME
+		dataType: string
+		lineageTag: bf9323f6-2e85-4715-a977-d531868fe9ac
+		summarizeBy: none
+		sourceColumn: ADMISSION_ASSESSMENT_WITHIN_24HRS_MEASURE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADMISSION_ASSESSMENT_WITHIN_24HRS_MEASURE_VALUE
+		dataType: string
+		lineageTag: 551978da-8d2f-422e-b964-740406c35de8
+		summarizeBy: none
+		sourceColumn: ADMISSION_ASSESSMENT_WITHIN_24HRS_MEASURE_VALUE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADMISSION_ASSESSMENT_WITHIN_24HRS_EMPLOYEE_ID
+		dataType: double
+		lineageTag: ec24770c-f0bd-42df-87ea-f5de661389db
+		summarizeBy: count
+		sourceColumn: ADMISSION_ASSESSMENT_WITHIN_24HRS_EMPLOYEE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ADMISSION_ASSESSMENT_WITHIN_24HRS_EMPLOYEE_NAME
+		dataType: string
+		lineageTag: 0816e319-1300-45b3-b277-b6548c43e543
+		summarizeBy: none
+		sourceColumn: ADMISSION_ASSESSMENT_WITHIN_24HRS_EMPLOYEE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADMISSION_ASSESSMENT_WITHIN_24HRS_CLINICIAN_TITLE
+		dataType: string
+		lineageTag: a209bb3a-05d8-407d-9936-cdec33b06544
+		summarizeBy: none
+		sourceColumn: ADMISSION_ASSESSMENT_WITHIN_24HRS_CLINICIAN_TITLE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADMISSION_ASSESSMENT_WITHIN_24HRS_PROVIDER_TYPE
+		dataType: string
+		lineageTag: 4157b14b-784f-4fb1-8128-4e91d3df63e4
+		summarizeBy: none
+		sourceColumn: ADMISSION_ASSESSMENT_WITHIN_24HRS_PROVIDER_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADMISSION_ASSESSMENT_WITHIN_24HRS_TAT_MINUTES
+		dataType: double
+		lineageTag: 7ffa8c18-64bb-4cf7-b96f-945652fd3b9f
+		summarizeBy: sum
+		sourceColumn: ADMISSION_ASSESSMENT_WITHIN_24HRS_TAT_MINUTES
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 1_ABLE_TRPLA_IND
+		dataType: int64
+		formatString: 0
+		lineageTag: 32ace07e-7d3f-4d57-8af4-2dae38ba6416
+		summarizeBy: sum
+		sourceColumn: 1_ABLE_TRPLA_IND
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column ABLE_TRPLA_FSD_LINE_ID
+		dataType: string
+		lineageTag: 75734cb8-1480-4037-ba3b-86479a5b413a
+		summarizeBy: none
+		sourceColumn: ABLE_TRPLA_FSD_LINE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ABLE_TRPLA_TEMPLATE_NAME
+		dataType: string
+		lineageTag: ae701f48-52c6-42c0-8d56-fc9cb90b0375
+		summarizeBy: none
+		sourceColumn: ABLE_TRPLA_TEMPLATE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ABLE_TRPLA_MEASURE_ID
+		dataType: double
+		lineageTag: a598f670-c1a2-49e4-9494-98b54d2d3b22
+		summarizeBy: count
+		sourceColumn: ABLE_TRPLA_MEASURE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ABLE_TRPLA_MEASURE_NAME
+		dataType: string
+		lineageTag: 772fe41f-7f28-4d0c-9809-54b5385ee1a6
+		summarizeBy: none
+		sourceColumn: ABLE_TRPLA_MEASURE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ABLE_TRPLA_MEASURE_VALUE
+		dataType: string
+		lineageTag: 541476ef-045c-460b-9ad4-3fdb9cac461f
+		summarizeBy: none
+		sourceColumn: ABLE_TRPLA_MEASURE_VALUE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ABLE_TRPLA_EMPLOYEE_ID
+		dataType: double
+		lineageTag: 23425004-637f-4f4f-9666-606a494911cf
+		summarizeBy: count
+		sourceColumn: ABLE_TRPLA_EMPLOYEE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ABLE_TRPLA_EMPLOYEE_NAME
+		dataType: string
+		lineageTag: ff548e78-a38a-4579-a798-6ff8c4353ce5
+		summarizeBy: none
+		sourceColumn: ABLE_TRPLA_EMPLOYEE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ABLE_TO_RETURN_TO_PRIOR_LIVING_ARRANGEMENTS_CLINICIAN_TITLE
+		dataType: string
+		lineageTag: 1ae05a17-95a9-4b61-a46f-cc974cc85c09
+		summarizeBy: none
+		sourceColumn: ABLE_TO_RETURN_TO_PRIOR_LIVING_ARRANGEMENTS_CLINICIAN_TITLE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ABLE_TRPLA_PROVIDER_TYPE
+		dataType: string
+		lineageTag: 339a1b39-6893-43e4-b53b-0042e6f00823
+		summarizeBy: none
+		sourceColumn: ABLE_TRPLA_PROVIDER_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ABLE_TRPLA_TAT_MINUTES
+		dataType: double
+		lineageTag: 8dbf677d-6efd-4663-b083-5f314f7a5dbb
+		summarizeBy: sum
+		sourceColumn: ABLE_TRPLA_TAT_MINUTES
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 3_ANTICIPATED_DISCHARGE_DISPOSITION_IND
+		dataType: int64
+		formatString: 0
+		lineageTag: c46cbf9f-762c-4213-9147-a63d59940989
+		summarizeBy: sum
+		sourceColumn: 3_ANTICIPATED_DISCHARGE_DISPOSITION_IND
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column ANTICIPATED_DISCHARGE_DISPOSITION_FSD_LINE_ID
+		dataType: string
+		lineageTag: 2324de55-1905-45b4-8f13-142e1b9747f2
+		summarizeBy: none
+		sourceColumn: ANTICIPATED_DISCHARGE_DISPOSITION_FSD_LINE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ANTICIPATED_DISCHARGE_DISPOSITION_TEMPLATE_NAME
+		dataType: string
+		lineageTag: f2037121-74cd-4357-bfc0-46045ee021e1
+		summarizeBy: none
+		sourceColumn: ANTICIPATED_DISCHARGE_DISPOSITION_TEMPLATE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ANTICIPATED_DISCHARGE_DISPOSITION_MEASURE_ID
+		dataType: double
+		lineageTag: 9e57da23-2cc2-4c1c-b74f-c82db37f0761
+		summarizeBy: count
+		sourceColumn: ANTICIPATED_DISCHARGE_DISPOSITION_MEASURE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ANTICIPATED_DISCHARGE_DISPOSITION_MEASURE_NAME
+		dataType: string
+		lineageTag: 3854b340-80bc-4b20-bac5-4c52a7205a05
+		summarizeBy: none
+		sourceColumn: ANTICIPATED_DISCHARGE_DISPOSITION_MEASURE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ANTICIPATED_DISCHARGE_DISPOSITION_MEASURE_VALUE
+		dataType: string
+		lineageTag: aee4022c-4d6c-4b9b-ae26-a66fe7ca42d0
+		summarizeBy: none
+		sourceColumn: ANTICIPATED_DISCHARGE_DISPOSITION_MEASURE_VALUE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ANTICIPATED_DISCHARGE_DISPOSITION_EMPLOYEE_ID
+		dataType: double
+		lineageTag: 8bfa2636-931f-42c0-b4b5-d195326dec42
+		summarizeBy: count
+		sourceColumn: ANTICIPATED_DISCHARGE_DISPOSITION_EMPLOYEE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ANTICIPATED_DISCHARGE_DISPOSITION_EMPLOYEE_NAME
+		dataType: string
+		lineageTag: 35c4e0ef-b6d1-4a04-a648-16c3e03cec21
+		summarizeBy: none
+		sourceColumn: ANTICIPATED_DISCHARGE_DISPOSITION_EMPLOYEE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ANTICIPATED_DISCHARGE_DISPOSITION_CLINICIAN_TITLE
+		dataType: string
+		lineageTag: fe8b6245-9326-4fb7-bc46-8d2b62031a1a
+		summarizeBy: none
+		sourceColumn: ANTICIPATED_DISCHARGE_DISPOSITION_CLINICIAN_TITLE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ANTICIPATED_DISCHARGE_DISPOSITION_PROVIDER_TYPE
+		dataType: string
+		lineageTag: cd569ac3-3003-46ad-ae8c-7fa4615d91b8
+		summarizeBy: none
+		sourceColumn: ANTICIPATED_DISCHARGE_DISPOSITION_PROVIDER_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ANTICIPATED_DISCHARGE_DISPOSITION_TAT_MINUTES
+		dataType: double
+		lineageTag: 13630121-fd34-4011-8a9a-ab5a8b3fbc04
+		summarizeBy: sum
+		sourceColumn: ANTICIPATED_DISCHARGE_DISPOSITION_TAT_MINUTES
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 4_BARRIERS_TO_DISCHARGE_IND
+		dataType: int64
+		formatString: 0
+		lineageTag: 6a794dc4-caa5-449a-aa24-a723178fc50e
+		summarizeBy: sum
+		sourceColumn: 4_BARRIERS_TO_DISCHARGE_IND
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column BARRIERS_TO_DISCHARGE_FSD_LINE_ID
+		dataType: string
+		lineageTag: 09eafe2d-b96e-4d7b-be2c-dfbca13720f4
+		summarizeBy: none
+		sourceColumn: BARRIERS_TO_DISCHARGE_FSD_LINE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BARRIERS_TO_DISCHARGE_TEMPLATE_NAME
+		dataType: string
+		lineageTag: b52d5314-0979-4a37-af23-060ccef85a5d
+		summarizeBy: none
+		sourceColumn: BARRIERS_TO_DISCHARGE_TEMPLATE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column BARRIERS_TO_DISCHARGE_MEASURE_ID
+		dataType: double
+		lineageTag: 35c7d1c9-8dae-4ad0-bb03-7d7d062e8698
+		summarizeBy: count
+		sourceColumn: BARRIERS_TO_DISCHARGE_MEASURE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BARRIERS_TO_DISCHARGE_MEASURE_NAME
+		dataType: string
+		lineageTag: 000b29ee-e581-40bb-acef-c780ff9e0ab2
+		summarizeBy: none
+		sourceColumn: BARRIERS_TO_DISCHARGE_MEASURE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column BARRIERS_TO_DISCHARGE_MEASURE_VALUE
+		dataType: string
+		lineageTag: 597c15cb-5bb2-4e8e-b5d1-7e417d86a2fa
+		summarizeBy: none
+		sourceColumn: BARRIERS_TO_DISCHARGE_MEASURE_VALUE
+
+		annotation SummarizationSetBy = Automatic
+
+	column BARRIERS_TO_DISCHARGE_EMPLOYEE_ID
+		dataType: double
+		lineageTag: e00aaf95-9120-43fc-86f8-7e756e0ee0e8
+		summarizeBy: count
+		sourceColumn: BARRIERS_TO_DISCHARGE_EMPLOYEE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BARRIERS_TO_DISCHARGE_EMPLOYEE_NAME
+		dataType: string
+		lineageTag: de2c5c40-5971-4358-9613-39eb4f715f08
+		summarizeBy: none
+		sourceColumn: BARRIERS_TO_DISCHARGE_EMPLOYEE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column BARRIERS_TO_DISCHARGE_CLINICIAN_TITLE
+		dataType: string
+		lineageTag: 77903806-ca39-4682-baa6-05199e3f79a1
+		summarizeBy: none
+		sourceColumn: BARRIERS_TO_DISCHARGE_CLINICIAN_TITLE
+
+		annotation SummarizationSetBy = Automatic
+
+	column BARRIERS_TO_DISCHARGE_PROVIDER_TYPE
+		dataType: string
+		lineageTag: 9554334d-4b04-4cab-aa59-2f4e4941c9c4
+		summarizeBy: none
+		sourceColumn: BARRIERS_TO_DISCHARGE_PROVIDER_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column BARRIERS_TO_DISCHARGE_TAT_MINUTES
+		dataType: double
+		lineageTag: b483f10d-f3ec-4e2c-8a40-b34d325f40ba
+		summarizeBy: sum
+		sourceColumn: BARRIERS_TO_DISCHARGE_TAT_MINUTES
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 5_PATIENT_FIAWP_IND
+		dataType: int64
+		formatString: 0
+		lineageTag: 628cd75b-5d8f-4e94-9190-2abe17ae7a9d
+		summarizeBy: sum
+		sourceColumn: 5_PATIENT_FIAWP_IND
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column PATIENT_FIAWP_FSD_LINE_ID
+		dataType: string
+		lineageTag: 277a8046-d4d6-42be-81fd-84371edec949
+		summarizeBy: none
+		sourceColumn: PATIENT_FIAWP_FSD_LINE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PATIENT_FIAWP_TEMPLATE_NAME
+		dataType: string
+		lineageTag: 99118a0a-c01e-4ea6-9010-28df7f05fb41
+		summarizeBy: none
+		sourceColumn: PATIENT_FIAWP_TEMPLATE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column PATIENT_FIAWP_MEASURE_ID
+		dataType: double
+		lineageTag: cc55b139-37ec-4b14-be50-f3d65be6cff1
+		summarizeBy: count
+		sourceColumn: PATIENT_FIAWP_MEASURE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PATIENT_FIAWP_MEASURE_NAME
+		dataType: string
+		lineageTag: a26269d7-8645-4ac8-97f9-a8c71598207a
+		summarizeBy: none
+		sourceColumn: PATIENT_FIAWP_MEASURE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column PATIENT_FIAWP_MEASURE_VALUE
+		dataType: string
+		lineageTag: 51ea3ef3-e554-46e5-b7be-4662522e0480
+		summarizeBy: none
+		sourceColumn: PATIENT_FIAWP_MEASURE_VALUE
+
+		annotation SummarizationSetBy = Automatic
+
+	column PATIENT_FIAWP_EMPLOYEE_ID
+		dataType: double
+		lineageTag: 16aa7ec0-5f87-4a8e-b9d7-d563706d70de
+		summarizeBy: count
+		sourceColumn: PATIENT_FIAWP_EMPLOYEE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PATIENT_FIAWP_EMPLOYEE_NAME
+		dataType: string
+		lineageTag: 04a2a621-dcb6-4dae-a7a1-b202d2ca90f8
+		summarizeBy: none
+		sourceColumn: PATIENT_FIAWP_EMPLOYEE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column PATIENT_FAMILY_IN_AGREEMENT_WITH_PLAN_CLINICIAN_TITLE
+		dataType: string
+		lineageTag: 7100c74b-c41f-4359-b0ee-18daad6eb49c
+		summarizeBy: none
+		sourceColumn: PATIENT_FAMILY_IN_AGREEMENT_WITH_PLAN_CLINICIAN_TITLE
+
+		annotation SummarizationSetBy = Automatic
+
+	column PATIENT_FIAWP_PROVIDER_TYPE
+		dataType: string
+		lineageTag: adf59d75-3344-4388-8a2e-0e422b6ed9ce
+		summarizeBy: none
+		sourceColumn: PATIENT_FIAWP_PROVIDER_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column PATIENT_FIAWP_TAT_MINUTES
+		dataType: double
+		lineageTag: 810df57f-912b-4b86-8ee6-a6d544f98c32
+		summarizeBy: sum
+		sourceColumn: PATIENT_FIAWP_TAT_MINUTES
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 6_READMISSION_WITHIN_THE_LAST_30_DAYS_IND
+		dataType: int64
+		formatString: 0
+		lineageTag: 875ec13b-a281-4333-81cf-0ff5f7f7fb46
+		summarizeBy: sum
+		sourceColumn: 6_READMISSION_WITHIN_THE_LAST_30_DAYS_IND
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column READMISSION_WITHIN_THE_LAST_30_DAYS_FSD_LINE_ID
+		dataType: string
+		lineageTag: 8e9e7841-44f5-457a-bf3e-d9148eee9b82
+		summarizeBy: none
+		sourceColumn: READMISSION_WITHIN_THE_LAST_30_DAYS_FSD_LINE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column READMISSION_WITHIN_THE_LAST_30_DAYS_TEMPLATE_NAME
+		dataType: string
+		lineageTag: 0ce5e99b-aa6d-478c-8f78-1a3229f1c608
+		summarizeBy: none
+		sourceColumn: READMISSION_WITHIN_THE_LAST_30_DAYS_TEMPLATE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column READMISSION_WITHIN_THE_LAST_30_DAYS_MEASURE_ID
+		dataType: double
+		lineageTag: 9eb24786-685a-4c14-9956-d6f38aa8dff1
+		summarizeBy: count
+		sourceColumn: READMISSION_WITHIN_THE_LAST_30_DAYS_MEASURE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column READMISSION_WITHIN_THE_LAST_30_DAYS_MEASURE_NAME
+		dataType: string
+		lineageTag: e1131ba3-f6c6-4021-b8de-b562c710faf3
+		summarizeBy: none
+		sourceColumn: READMISSION_WITHIN_THE_LAST_30_DAYS_MEASURE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column READMISSION_WITHIN_THE_LAST_30_DAYS_MEASURE_VALUE
+		dataType: string
+		lineageTag: b87e336b-7d31-43af-b782-215fd2d63af5
+		summarizeBy: none
+		sourceColumn: READMISSION_WITHIN_THE_LAST_30_DAYS_MEASURE_VALUE
+
+		annotation SummarizationSetBy = Automatic
+
+	column READMISSION_WITHIN_THE_LAST_30_DAYS_EMPLOYEE_ID
+		dataType: double
+		lineageTag: f6ea33cc-59de-4eac-bc80-6b1a2d0c5fb6
+		summarizeBy: count
+		sourceColumn: READMISSION_WITHIN_THE_LAST_30_DAYS_EMPLOYEE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column READMISSION_WITHIN_THE_LAST_30_DAYS_EMPLOYEE_NAME
+		dataType: string
+		lineageTag: 1ce9ee25-f9c6-421f-ae0d-94e8c5a9d1b0
+		summarizeBy: none
+		sourceColumn: READMISSION_WITHIN_THE_LAST_30_DAYS_EMPLOYEE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column READMISSION_WITHIN_THE_LAST_30_DAYS_CLINICIAN_TITLE
+		dataType: string
+		lineageTag: 068e571c-3f91-4cfe-b961-73cd4c7701a5
+		summarizeBy: none
+		sourceColumn: READMISSION_WITHIN_THE_LAST_30_DAYS_CLINICIAN_TITLE
+
+		annotation SummarizationSetBy = Automatic
+
+	column READMISSION_WITHIN_THE_LAST_30_DAYS_PROVIDER_TYPE
+		dataType: string
+		lineageTag: b02e23fb-e9d9-49e3-9e4e-a3fb0fdb3f92
+		summarizeBy: none
+		sourceColumn: READMISSION_WITHIN_THE_LAST_30_DAYS_PROVIDER_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column READMISSION_WITHIN_THE_LAST_30_DAYS_TAT_MINUTES
+		dataType: double
+		lineageTag: 99862ac6-769e-4a2e-9970-1cf3ff5f3fdc
+		summarizeBy: sum
+		sourceColumn: READMISSION_WITHIN_THE_LAST_30_DAYS_TAT_MINUTES
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 7_SERVICES_ANTICIPATED_AT_DISCHARGE_IND
+		dataType: int64
+		formatString: 0
+		lineageTag: 33846af2-45c7-4c81-8528-40bbad4f0709
+		summarizeBy: sum
+		sourceColumn: 7_SERVICES_ANTICIPATED_AT_DISCHARGE_IND
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column SERVICES_ANTICIPATED_AT_DISCHARGE_FSD_LINE_ID
+		dataType: string
+		lineageTag: 6aa4d5a3-04b9-491a-aa6a-b36c601e3c65
+		summarizeBy: none
+		sourceColumn: SERVICES_ANTICIPATED_AT_DISCHARGE_FSD_LINE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SERVICES_ANTICIPATED_AT_DISCHARGE_TEMPLATE_NAME
+		dataType: string
+		lineageTag: ad597535-b4b5-44f2-940b-1cae0deb7c45
+		summarizeBy: none
+		sourceColumn: SERVICES_ANTICIPATED_AT_DISCHARGE_TEMPLATE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column SERVICES_ANTICIPATED_AT_DISCHARGE_MEASURE_ID
+		dataType: double
+		lineageTag: 10ddd4bc-b290-41e7-8247-14f14eb90099
+		summarizeBy: count
+		sourceColumn: SERVICES_ANTICIPATED_AT_DISCHARGE_MEASURE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SERVICES_ANTICIPATED_AT_DISCHARGE_MEASURE_NAME
+		dataType: string
+		lineageTag: d2d30aca-ad07-44d7-80f7-027077135a4c
+		summarizeBy: none
+		sourceColumn: SERVICES_ANTICIPATED_AT_DISCHARGE_MEASURE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column SERVICES_ANTICIPATED_AT_DISCHARGE_MEASURE_VALUE
+		dataType: string
+		lineageTag: 0f978b9c-0cc6-4bad-90b6-68f043edf811
+		summarizeBy: none
+		sourceColumn: SERVICES_ANTICIPATED_AT_DISCHARGE_MEASURE_VALUE
+
+		annotation SummarizationSetBy = Automatic
+
+	column SERVICES_ANTICIPATED_AT_DISCHARGE_EMPLOYEE_ID
+		dataType: double
+		lineageTag: a3775503-1e54-498c-b391-159ee182617e
+		summarizeBy: count
+		sourceColumn: SERVICES_ANTICIPATED_AT_DISCHARGE_EMPLOYEE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SERVICES_ANTICIPATED_AT_DISCHARGE_EMPLOYEE_NAME
+		dataType: string
+		lineageTag: f225be30-4bbd-4370-a42c-bd47c086527f
+		summarizeBy: none
+		sourceColumn: SERVICES_ANTICIPATED_AT_DISCHARGE_EMPLOYEE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column SERVICES_ANTICIPATED_AT_DISCHARGE_CLINICIAN_TITLE
+		dataType: string
+		lineageTag: 408b026c-637c-426d-bd97-9fbf8a5d89ff
+		summarizeBy: none
+		sourceColumn: SERVICES_ANTICIPATED_AT_DISCHARGE_CLINICIAN_TITLE
+
+		annotation SummarizationSetBy = Automatic
+
+	column SERVICES_ANTICIPATED_AT_DISCHARGE_PROVIDER_TYPE
+		dataType: string
+		lineageTag: a2e1e76b-6b50-4a26-92b1-b607a379ccd3
+		summarizeBy: none
+		sourceColumn: SERVICES_ANTICIPATED_AT_DISCHARGE_PROVIDER_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column SERVICES_ANTICIPATED_AT_DISCHARGE_TAT_MINUTES
+		dataType: double
+		lineageTag: 3974ded7-d44a-4b19-9111-1fd6b1911825
+		summarizeBy: sum
+		sourceColumn: SERVICES_ANTICIPATED_AT_DISCHARGE_TAT_MINUTES
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DEPARTMENTKEY
+		dataType: double
+		lineageTag: 10d6195c-2ae9-438f-b729-232cd2b6e535
+		summarizeBy: none
+		sourceColumn: DEPARTMENTKEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 0_AssessmentCriteriaCompleted =
+			IF(
+			                   FSMain[2_ADMISSION_ASSESSMENT_IND] = 1 &&
+			                   FSMain[6_READMISSION_WITHIN_THE_LAST_30_DAYS_IND] = 1 &&
+			                   FSMain[1_ABLE_TRPLA_IND] = 1 &&
+			                   FSMain[4_BARRIERS_TO_DISCHARGE_IND] = 1 &&
+			                   FSMain[7_SERVICES_ANTICIPATED_AT_DISCHARGE_IND] = 1 &&
+			                   FSMain[3_ANTICIPATED_DISCHARGE_DISPOSITION_IND] = 1 &&
+			                   FSMain[5_PATIENT_FIAWP_IND] = 1,
+			                   1,
+			                   0
+			                )
+		formatString: 0
+		lineageTag: e1d68ecc-a4ac-4313-ab8d-fe77a2d5a344
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 0_AssessmentStarted =
+			IF(
+			               (FSMain[2_ADMISSION_ASSESSMENT_IND] = 1 ||
+			               FSMain[6_READMISSION_WITHIN_THE_LAST_30_DAYS_IND] = 1 ||
+			               FSMain[1_ABLE_TRPLA_IND] = 1 ||
+			               FSMain[4_BARRIERS_TO_DISCHARGE_IND] = 1 ||
+			               FSMain[7_SERVICES_ANTICIPATED_AT_DISCHARGE_IND] = 1 ||
+			               FSMain[3_ANTICIPATED_DISCHARGE_DISPOSITION_IND] = 1 ||
+			               FSMain[5_PATIENT_FIAWP_IND] = 1),
+			               1,
+			               0
+			            )
+		formatString: 0
+		lineageTag: 91cd4a89-ef2c-4b81-b67f-68f8e5b6fb8e
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 0_AssessmentCriteriaCompleted24 =
+			IF(
+			                   FSMain[2_ADMISSION_ASSESSMENT_IND] = 1 &&
+			                   FSMain[6_READMISSION_WITHIN_THE_LAST_30_DAYS_IND] = 1 &&
+			                   FSMain[1_ABLE_TRPLA_IND] = 1 &&
+			                   FSMain[4_BARRIERS_TO_DISCHARGE_IND] = 1 &&
+			                   FSMain[7_SERVICES_ANTICIPATED_AT_DISCHARGE_IND] = 1 &&
+			                   FSMain[3_ANTICIPATED_DISCHARGE_DISPOSITION_IND] = 1 &&
+			                   FSMain[5_PATIENT_FIAWP_IND] = 1 &&
+			                   FSMain[8_ADMISSION_ASSESSMENT_WITHIN_24HRS_IND] = 1 && FSMain[ASSESSMENTS_COMPLETED_MET_24_HOURS_IND] = 1,
+			                   1,
+			                   0
+			                )
+		formatString: 0
+		lineageTag: 57b008de-bd39-4c02-b934-4d8be4be0774
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column DISCHARGEINSTANT
+		dataType: dateTime
+		formatString: m/d/yyyy
+		lineageTag: 6ee497a7-cfe5-427e-93aa-b3df35bc022b
+		summarizeBy: none
+		sourceColumn: DISCHARGEINSTANT
+
+		variation Variation
+			isDefault
+			relationship: 1eccac9b-41a1-4936-bba6-716d84ef03b1
+			defaultHierarchy: LocalDateTable_55415b3b-2e3d-4fd3-9a6f-6fb387af7ac2.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column AGE_YEAR_AT_ADMISSION_NBR
+		dataType: double
+		lineageTag: 82310b62-cf40-4fb2-ba7c-e2eda3f98f98
+		summarizeBy: sum
+		sourceColumn: AGE_YEAR_AT_ADMISSION_NBR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ADMISSION_ASSESSMENT_COMPLETED_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5fccee8a-ced7-4716-83ca-4446f0c5512b
+		summarizeBy: none
+		sourceColumn: ADMISSION_ASSESSMENT_COMPLETED_DTS
+
+		variation Variation
+			isDefault
+			relationship: 6202b482-7357-43d7-a6ae-b4d81e487232
+			defaultHierarchy: LocalDateTable_382a11f2-b5f0-4850-a4cb-d267c5db5ba7.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADMISSION_ASSESSMENT_WITHIN_24HRS_COMPLETED_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ca86fdf9-dc26-4bfc-a0a8-a047a547b569
+		summarizeBy: none
+		sourceColumn: ADMISSION_ASSESSMENT_WITHIN_24HRS_COMPLETED_DTS
+
+		variation Variation
+			isDefault
+			relationship: 210d0ee8-ecc3-436d-96f1-9831010d2544
+			defaultHierarchy: LocalDateTable_c5f7eaaa-3c35-44f8-af77-3f255a78e59a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ABLE_TRPLA_COMPLETED_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 8c90d70f-ff68-46f2-8971-0217d603f315
+		summarizeBy: none
+		sourceColumn: ABLE_TRPLA_COMPLETED_DTS
+
+		variation Variation
+			isDefault
+			relationship: 50355ab2-67ff-4128-88a6-42b7f9c00955
+			defaultHierarchy: LocalDateTable_d5396ceb-251d-4f0d-a6ac-35c8e0a5c4d5.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ANTICIPATED_DISCHARGE_DISPOSITION_COMPLETED_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5c6dd1cb-ff87-401b-94cd-f9ba4d45399f
+		summarizeBy: none
+		sourceColumn: ANTICIPATED_DISCHARGE_DISPOSITION_COMPLETED_DTS
+
+		variation Variation
+			isDefault
+			relationship: a1583dfb-07ea-410e-a717-170293fcc5a9
+			defaultHierarchy: LocalDateTable_0ae88e62-11ca-4916-b11f-4312e1cb1fa9.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column BARRIERS_TO_DISCHARGE_COMPLETED_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 816ae700-5fcf-49b8-81b5-dbbe157c7130
+		summarizeBy: none
+		sourceColumn: BARRIERS_TO_DISCHARGE_COMPLETED_DTS
+
+		variation Variation
+			isDefault
+			relationship: 8ea8eadc-2cf4-44a0-a584-1e0934cf0b75
+			defaultHierarchy: LocalDateTable_70d5a2f5-b248-470d-ba56-6fa750803931.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column PATIENT_FIAWP_COMPLETED_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1c7003bc-2413-4166-9469-650b87d5759b
+		summarizeBy: none
+		sourceColumn: PATIENT_FIAWP_COMPLETED_DTS
+
+		variation Variation
+			isDefault
+			relationship: 44a545ba-3cf1-4a26-87ec-eabb6b136819
+			defaultHierarchy: LocalDateTable_9495d46f-98d6-4025-830c-a21a5b3ecde2.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column READMISSION_WITHIN_THE_LAST_30_DAYS_COMPLETED_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d0027cd4-3b0b-4825-a6f8-5c216d13660e
+		summarizeBy: none
+		sourceColumn: READMISSION_WITHIN_THE_LAST_30_DAYS_COMPLETED_DTS
+
+		variation Variation
+			isDefault
+			relationship: 978ef8db-d411-441b-be37-fc4ee717c5e0
+			defaultHierarchy: LocalDateTable_ca452716-2ca4-42a9-a955-f8ff3df83af1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column SERVICES_ANTICIPATED_AT_DISCHARGE_COMPLETED_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: bdac67c7-5995-41aa-bcb6-33243f02e2d6
+		summarizeBy: none
+		sourceColumn: SERVICES_ANTICIPATED_AT_DISCHARGE_COMPLETED_DTS
+
+		variation Variation
+			isDefault
+			relationship: 0a3c5091-ece4-4098-ad0f-d042e9baa39c
+			defaultHierarchy: LocalDateTable_f287be70-b8d7-4e32-81ea-53dea228ada8.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ASSESSMENT_SUM
+		dataType: double
+		formatString: 0
+		lineageTag: aba919d4-78f0-4ce5-8ec7-b0d01539341c
+		summarizeBy: sum
+		sourceColumn: ASSESSMENT_SUM
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column ASSESSMENTS_COMPLETED_IND
+		dataType: double
+		lineageTag: 9ab1f8b8-fe59-4610-bf36-8ff5ee67a104
+		summarizeBy: sum
+		sourceColumn: ASSESSMENTS_COMPLETED_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ASSESSMENTS_COMPLETED_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 68e28986-118e-4cf0-ab1e-79c2d4155277
+		summarizeBy: none
+		sourceColumn: ASSESSMENTS_COMPLETED_DTS
+
+		variation Variation
+			isDefault
+			relationship: d3a5b84c-9afb-4b5f-aeb1-ffcdb4837cfd
+			defaultHierarchy: LocalDateTable_8f07d1c1-3aa5-4901-b523-76a289a00eaa.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ASSESSMENTS_COMPLETED_TAT_MINUTES
+		dataType: double
+		lineageTag: 0d55ac4e-18d8-4359-8c5f-3a9b47e9719a
+		summarizeBy: sum
+		sourceColumn: ASSESSMENTS_COMPLETED_TAT_MINUTES
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ASSESSMENTS_COMPLETED_TAT_HOURS
+		dataType: double
+		lineageTag: 01f0f122-23c3-45e6-ab50-e8acf9c3c1bc
+		summarizeBy: sum
+		sourceColumn: ASSESSMENTS_COMPLETED_TAT_HOURS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ASSESSMENTS_COMPLETED_MET_24_HOURS_IND
+		dataType: double
+		lineageTag: b6ed960d-3614-44cb-9332-7449dc88a3c8
+		summarizeBy: sum
+		sourceColumn: ASSESSMENTS_COMPLETED_MET_24_HOURS_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ASSESSMENTS_COMPLETED_PRE_INPATIENT_ADMISSION_IND
+		dataType: double
+		lineageTag: a286dc42-2810-4e33-b0ab-d8cc6fcd9a3f
+		summarizeBy: sum
+		sourceColumn: ASSESSMENTS_COMPLETED_PRE_INPATIENT_ADMISSION_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ASSESSMENTS_COMPLETED_PRE_INPATIENT_PATIENTCLASS_NM
+		dataType: string
+		lineageTag: b31750fd-28f3-4025-968d-6b548f4a1d62
+		summarizeBy: none
+		sourceColumn: ASSESSMENTS_COMPLETED_PRE_INPATIENT_PATIENTCLASS_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column ATRPLA = IF([1_ABLE_TRPLA_IND] = 1, "Y", "N")
+		lineageTag: df00c9f5-6824-4e98-bace-21e4faf4c89b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ass. Type' = IF([2_ADMISSION_ASSESSMENT_IND] = 1, "Y", "N")
+		lineageTag: e30b16a8-d1a2-4650-b972-f91436e7d49f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Anticipated DC' = IF([3_ANTICIPATED_DISCHARGE_DISPOSITION_IND] = 1, "Y", "N")
+		lineageTag: b0aebe81-3173-4ce9-9847-460767d7cfd5
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Barriers = IF([4_BARRIERS_TO_DISCHARGE_IND] = 1, "Y", "N")
+		lineageTag: 6b58ccb0-974c-446f-b010-9e768d4e5c4c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column FIAWP = IF([5_PATIENT_FIAWP_IND] = 1, "Y", "N")
+		lineageTag: f8f0d229-f97a-4f33-b1a5-86452c7235a5
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Readmit = IF([6_READMISSION_WITHIN_THE_LAST_30_DAYS_IND] = 1, "Y", "N")
+		lineageTag: c88a9968-6d2c-4cf0-bd33-6110a78c1ab4
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Services at DC' = IF([7_SERVICES_ANTICIPATED_AT_DISCHARGE_IND] = 1, "Y", "N")
+		lineageTag: 679f649a-43f5-4f0c-adea-27cf9e7d65d6
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'All Elements Within 24H' = IF(FSMain[ASSESSMENTS_COMPLETED_MET_24_HOURS_IND] = 1, "Y", "N")
+		lineageTag: 2123f5af-856c-4b6f-b9e7-79ec5e5bf5ba
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'All Elements' = IF([ASSESSMENTS_COMPLETED_IND] = 1, "Y", "N")
+		lineageTag: 9ef872cf-5169-4c2b-a123-9833e86c7604
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Assesments Started Before Admit' = IF(FSMain[ASSESSMENTS_COMPLETED_PRE_INPATIENT_ADMISSION_IND], "Y", "N")
+		lineageTag: a12df33b-d929-46fa-94da-b4352d6facfb
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Slowest TAT HOURS' = ```
+			
+			MAXX(
+			    {
+			        FSMain[ADMISSION_ASSESSMENT_TAT_MINUTES],
+			        FSMain[BARRIERS_TO_DISCHARGE_TAT_MINUTES],
+			        FSMain[ANTICIPATED_DISCHARGE_DISPOSITION_TAT_MINUTES],
+			        FSMain[PATIENT_FIAWP_TAT_MINUTES], FSMain[READMISSION_WITHIN_THE_LAST_30_DAYS_TAT_MINUTES], FSMain[SERVICES_ANTICIPATED_AT_DISCHARGE_TAT_MINUTES], FSMain[ABLE_TRPLA_TAT_MINUTES]
+			    },
+			    [Value]/60
+			)
+			
+			```
+		lineageTag: 9aa48232-43ad-4f18-adbf-d87fdf6ae521
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'First Care Manager Name' = IF(FSMain[First Assigned Care Member Name] = "", "No CM Assigned", FSMain[First Assigned Care Member Name])
+		lineageTag: db26132f-f707-43cb-ab2b-b89317462e87
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column HOSPITALACCOUNTEPICID
+		dataType: int64
+		lineageTag: dfa306e8-7fb3-468c-9c8b-f5eb1a5e3684
+		summarizeBy: none
+		sourceColumn: HOSPITALACCOUNTEPICID
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CLINICAL_SERVICE_AREA_CD
+		dataType: string
+		lineageTag: 909fad9b-0efb-4f3a-aca8-1a07506976ea
+		summarizeBy: none
+		sourceColumn: CLINICAL_SERVICE_AREA_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column CLINICAL_SERVICE_AREA_NM
+		dataType: string
+		lineageTag: b8ccc9af-7e7d-4861-a72e-3b9e994ec7a5
+		summarizeBy: none
+		sourceColumn: CLINICAL_SERVICE_AREA_NM
+
+		annotation SummarizationSetBy = Automatic
+
+	column HAR
+		dataType: int64
+		formatString: 0
+		lineageTag: d9d54144-fee8-4c74-9157-0ea2687dd9a5
+		summarizeBy: none
+		sourceColumn: HAR
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = User
+
+	column 'First Assigned Care Member Name'
+		dataType: string
+		lineageTag: 4b51dba4-0104-4433-b83d-d1652ef3d5e3
+		summarizeBy: none
+		sourceColumn: First Assigned Care Member Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column FIRST_ASSIGNED_CARE_TEAM_EMPLOYEE_ID
+		dataType: string
+		lineageTag: 9979f98f-2bdf-4db9-ada9-a3b4676cea3d
+		summarizeBy: none
+		sourceColumn: FIRST_ASSIGNED_CARE_TEAM_EMPLOYEE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column FIRST_ASSIGNED_CARE_TEAM_PROVIDER_TYPE
+		dataType: string
+		lineageTag: 0e41a5a0-4243-493a-9df0-462e19011a09
+		summarizeBy: none
+		sourceColumn: FIRST_ASSIGNED_CARE_TEAM_PROVIDER_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column FIRST_ASSIGNED_CARE_TEAM_DEPARTMENT
+		dataType: string
+		lineageTag: 696f0f16-8755-49dd-8003-5774f5458c50
+		summarizeBy: none
+		sourceColumn: FIRST_ASSIGNED_CARE_TEAM_DEPARTMENT
+
+		annotation SummarizationSetBy = Automatic
+
+	column FIRST_ASSIGNED_CARE_TEAM_ROLE_DSC
+		dataType: string
+		lineageTag: 21912231-8b3c-4f16-a1de-edd40e98bf13
+		summarizeBy: none
+		sourceColumn: FIRST_ASSIGNED_CARE_TEAM_ROLE_DSC
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FSMain = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("psjh_prod.west-us-2.azure.snowflakecomputing.com","ACOE_WH_M",[Role="ACOE_DEVELOPER"]){[Name="ACOE_PROD"]}[Data], "SELECT *#(lf)FROM ACOE_PROD.RPT_PATIENT_JOURNEY.VW_PCP_FLOWSHEET_FIRST_ASSESSMENTS", null, [EnableFolding=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"ENCOUNTEREPICCSN", type text}, {"INPATIENTADMISSIONINSTANT", type date}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"ABLE_TO_RETURN_TO_PRIOR_LIVING_ARRANGEMENTS_EMPLOYEE_ID", "ABLE_TRPLA_EMPLOYEE_ID"}, {"ABLE_TO_RETURN_TO_PRIOR_LIVING_ARRANGEMENTS_EMPLOYEE_NAME", "ABLE_TRPLA_EMPLOYEE_NAME"}, {"ABLE_TO_RETURN_TO_PRIOR_LIVING_ARRANGEMENTS_FSD_LINE_ID", "ABLE_TRPLA_FSD_LINE_ID"}, {"ABLE_TO_RETURN_TO_PRIOR_LIVING_ARRANGEMENTS_IND", "1_ABLE_TRPLA_IND"}, {"ABLE_TO_RETURN_TO_PRIOR_LIVING_ARRANGEMENTS_MEASURE_ID", "ABLE_TRPLA_MEASURE_ID"}, {"ABLE_TO_RETURN_TO_PRIOR_LIVING_ARRANGEMENTS_MEASURE_NAME", "ABLE_TRPLA_MEASURE_NAME"}, {"ABLE_TO_RETURN_TO_PRIOR_LIVING_ARRANGEMENTS_MEASURE_VALUE", "ABLE_TRPLA_MEASURE_VALUE"}, {"ABLE_TO_RETURN_TO_PRIOR_LIVING_ARRANGEMENTS_PROVIDER_TYPE", "ABLE_TRPLA_PROVIDER_TYPE"}, {"ABLE_TO_RETURN_TO_PRIOR_LIVING_ARRANGEMENTS_COMPLETED_DTS", "ABLE_TRPLA_COMPLETED_DTS"}, {"ABLE_TO_RETURN_TO_PRIOR_LIVING_ARRANGEMENTS_TAT_MINUTES", "ABLE_TRPLA_TAT_MINUTES"}, {"ABLE_TO_RETURN_TO_PRIOR_LIVING_ARRANGEMENTS_TEMPLATE_NAME", "ABLE_TRPLA_TEMPLATE_NAME"}, {"PATIENT_FAMILY_IN_AGREEMENT_WITH_PLAN_EMPLOYEE_ID", "PATIENT_FIAWP_EMPLOYEE_ID"}, {"PATIENT_FAMILY_IN_AGREEMENT_WITH_PLAN_EMPLOYEE_NAME", "PATIENT_FIAWP_EMPLOYEE_NAME"}, {"PATIENT_FAMILY_IN_AGREEMENT_WITH_PLAN_FSD_LINE_ID", "PATIENT_FIAWP_FSD_LINE_ID"}, {"PATIENT_FAMILY_IN_AGREEMENT_WITH_PLAN_IND", "5_PATIENT_FIAWP_IND"}, {"PATIENT_FAMILY_IN_AGREEMENT_WITH_PLAN_MEASURE_ID", "PATIENT_FIAWP_MEASURE_ID"}, {"PATIENT_FAMILY_IN_AGREEMENT_WITH_PLAN_MEASURE_NAME", "PATIENT_FIAWP_MEASURE_NAME"}, {"PATIENT_FAMILY_IN_AGREEMENT_WITH_PLAN_MEASURE_VALUE", "PATIENT_FIAWP_MEASURE_VALUE"}, {"PATIENT_FAMILY_IN_AGREEMENT_WITH_PLAN_PROVIDER_TYPE", "PATIENT_FIAWP_PROVIDER_TYPE"}, {"PATIENT_FAMILY_IN_AGREEMENT_WITH_PLAN_COMPLETED_DTS", "PATIENT_FIAWP_COMPLETED_DTS"}, {"PATIENT_FAMILY_IN_AGREEMENT_WITH_PLAN_TAT_MINUTES", "PATIENT_FIAWP_TAT_MINUTES"}, {"PATIENT_FAMILY_IN_AGREEMENT_WITH_PLAN_TEMPLATE_NAME", "PATIENT_FIAWP_TEMPLATE_NAME"}, {"ADMISSION_ASSESSMENT_IND", "2_ADMISSION_ASSESSMENT_IND"}, {"ANTICIPATED_DISCHARGE_DISPOSITION_IND", "3_ANTICIPATED_DISCHARGE_DISPOSITION_IND"}, {"BARRIERS_TO_DISCHARGE_IND", "4_BARRIERS_TO_DISCHARGE_IND"}, {"READMISSION_WITHIN_THE_LAST_30_DAYS_IND", "6_READMISSION_WITHIN_THE_LAST_30_DAYS_IND"}, {"SERVICES_ANTICIPATED_AT_DISCHARGE_IND", "7_SERVICES_ANTICIPATED_AT_DISCHARGE_IND"}, {"ADMISSION_ASSESSMENT_WITHIN_24HRS_IND", "8_ADMISSION_ASSESSMENT_WITHIN_24HRS_IND"}, {"PAT_MRN_ID", "MRN"}, {"ENCOUNTEREPICCSN", "CSN"}, {"INPATIENTADMISSIONINSTANT", "Admit Date"}, {"FIRST_ASSIGNED_CARE_TEAM_EMPLOYEE_NAME", "First Assigned Care Member Name"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

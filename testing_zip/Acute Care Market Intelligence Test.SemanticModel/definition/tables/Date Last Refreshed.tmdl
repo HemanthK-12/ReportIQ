@@ -1,0 +1,48 @@
+table 'Date Last Refreshed'
+	isHidden
+	lineageTag: 0bb0e9c1-5b95-4f22-a1fb-1df2bb435e77
+
+	measure Measure = "Quarterly"
+		isHidden
+		lineageTag: 9d293083-2f5c-408f-ba2b-df1b449b9520
+
+		changedProperty = IsHidden
+
+	column 'Date Last Refreshed'
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: 80e66d45-cf0c-4921-a198-934b106fc1fe
+		summarizeBy: none
+		sourceColumn: Date Last Refreshed
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column schedule = "Quarterly"
+		isHidden
+		lineageTag: 81005fb6-f411-45bd-bcf3-76b4375f9149
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Date Last Refreshed' = m
+		mode: import
+		source =
+				let
+				
+				Source = #table(type table[Date Last Refreshed=datetime], {{DateTime.LocalNow()}})
+				
+				in
+				
+				Source
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

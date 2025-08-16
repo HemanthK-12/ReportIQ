@@ -1,0 +1,30 @@
+table 'Date Last Refreshed'
+	lineageTag: d4494f1f-5aa8-4967-85a1-118ab975c399
+
+	column 'Date Last Refreshed'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 2b789a6f-66d1-4965-a2b7-08980b7d963e
+		summarizeBy: none
+		sourceColumn: Date Last Refreshed
+
+		variation Variation
+			isDefault
+			relationship: 6a7dee6a-add6-42ef-a8e5-b3afeb148da6
+			defaultHierarchy: LocalDateTable_30aa730e-feef-4b55-87e2-451eb9d945df.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Date Last Refreshed' = m
+		mode: import
+		source =
+				let
+				
+				Source = #table(type table[Date Last Refreshed=datetime], {{DateTime.LocalNow()}})
+				
+				in
+				
+				Source
+
+	annotation PBI_ResultType = Table
+

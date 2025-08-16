@@ -1,0 +1,87 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 473.33333333333331,
+            "y": 791.66666666666663
+          },
+          "nodeIndex": "Data Source Display Sort",
+          "nodeLineageTag": "9d8a4892-0dfd-44a8-8041-dd4f80aee62e",
+          "size": {
+            "height": 128,
+            "width": 254
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 216,
+            "y": 307
+          },
+          "nodeIndex": "VBA_MEMBERSHIP_SUMMARY",
+          "nodeLineageTag": "f28fb9c9-26d2-49c3-9e2b-51d5c6283ea4",
+          "size": {
+            "height": 306.66666666666663,
+            "width": 353
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 793.72916666666663
+          },
+          "nodeIndex": "Level of Detail Sort",
+          "nodeLineageTag": "bfd9fea1-fd83-4a04-9967-31a438520b4f",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 993.75950782997779,
+            "y": 312.670581655481
+          },
+          "nodeIndex": "VBA_DATA_SHOP_EMPANELED_PATIENTS",
+          "nodeLineageTag": "72bcf0bf-d583-411d-a563-4621a9e250b5",
+          "size": {
+            "height": 513,
+            "width": 287
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 619.42617449664453,
+            "y": 143.33333333333331
+          },
+          "nodeIndex": "Master_Dim",
+          "nodeLineageTag": "2d85a61d-04a0-4c50-a7c6-cb58fee09bd5",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 4
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 50,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

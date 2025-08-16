@@ -1,0 +1,50 @@
+table System/Facility
+	isHidden
+	lineageTag: f33b313a-738e-463e-a3dd-5cb2f9cff6f3
+
+	column System/Facility
+		isHidden
+		lineageTag: 543b16a7-c019-4213-b984-a37cbbeec3f1
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'System/Facility Order'
+
+		relatedColumnDetails
+			groupByColumn: 'System/Facility Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'System/Facility Fields'
+		isHidden
+		lineageTag: 3d05e9f5-54f2-4b18-b78e-fb0f6afb07ed
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'System/Facility Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'System/Facility Order'
+		isHidden
+		formatString: 0
+		lineageTag: ca8c354a-bb5a-4226-b29a-d075540404cc
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition System/Facility = calculated
+		mode: import
+		source =
+				{
+				    ("Facility System", NAMEOF('FACILITY_SYSTEM_NM'[FACILITY_SYSTEM_NM]), 0),
+				    ("Facility", NAMEOF('FACILITY_NM'[FACILITY_NM]), 1)
+				}
+
+	annotation PBI_Id = 0c11e46d7aef49608b4b438f41c9123f
+

@@ -1,0 +1,82 @@
+table 'Display Level'
+	lineageTag: a65abd1c-7292-474c-8f97-8ff24effdbe5
+
+	column 'Display Level'
+		lineageTag: 71b584d5-89ac-4e45-8c1d-19c452d37eb3
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Display Level Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Display Level Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Display Level Fields'
+		isHidden
+		lineageTag: af0ea022-96ac-479a-97cc-78a4e1ef9940
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Display Level Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Display Level Order'
+		isHidden
+		formatString: 0
+		lineageTag: fd22b2a0-e680-4dd9-b493-c6c1c22162b6
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		lineageTag: 501e4372-ac35-4443-bc1e-06d95351d7e8
+		summarizeBy: none
+		sourceColumn: [Value4]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Display Level' = calculated
+		mode: import
+		source = ```
+				{
+				    ("System", NAMEOF('VW_PCP_CORE_STATS'[System]), 0, "Facility Based"),
+				    ("Division", NAMEOF('VW_PCP_CORE_STATS'[Division]), 1, "Facility Based"),
+				    ("Service Area", NAMEOF('VW_PCP_CORE_STATS'[Clinical Service Area]), 2, "Facility Based"),
+				    ("Location", NAMEOF('VW_PCP_CORE_STATS'[Location]), 3, "Facility Based"),
+				    ("Department", NAMEOF('VW_PCP_CORE_STATS'[Department]), 4, "Facility Based"),
+				    ("Attending Provider", NAMEOF(VW_PCP_CORE_STATS[First Attending Provider]), 5,"Facility Based"),
+				    ("Attending Provider Specialty", NAMEOF(VW_PCP_CORE_STATS[FIRST_ATTENDING_PROVIDER_SPECIALTY_NM]),6,"Facility Based"),
+				    ("Attending Provider Type", NAMEOF(VW_PCP_CORE_STATS[FIRST_ATTENDING_PROVIDER_TYPE_NM]),7,"Facility Based"),
+				    ("Discharging Provider", NAMEOF(VW_PCP_CORE_STATS[DISCHARGINGPROVIDERNAME]), 8,"Facility Based"),
+				    ("Discharging Provider Specialty", NAMEOF(VW_PCP_CORE_STATS[DISCHARGING_PROVIDER_SPECIALTY_NM]), 9,"Facility Based"),
+				    ("Discharging Provider Type", NAMEOF(VW_PCP_CORE_STATS[DISCHARGING_PROVIDER_TYPE_NM]), 10, "Facility Based"),
+				    ("Case Manager", NAMEOF('VW_PCP_CORE_STATS'[Case Manager]),11, "Team Based"),
+				    ("Financial Class", NAMEOF(VW_PCP_CORE_STATS[FINANCIALCLASS]),12, "Team Based"),
+				    ("Patient Age Groups", NAMEOF(VW_PCP_CORE_STATS[AGE_GROUP_TXT]),13,"Team Based"),
+				    ("Gender", NAMEOF(VW_PCP_CORE_STATS[GENDERIDENTITY]),14, "Team Based"),
+				    ("MS-DRG", NAMEOF(VW_PCP_CORE_STATS[MSDRG_DSC]),15, "Team Based"),
+				    ("APR-DRG", NAMEOF(VW_PCP_CORE_STATS[APRDRG_DSC]),16,"Team Based"),
+				    ("Patient Class", NAMEOF(VW_PCP_CORE_STATS[Patient Class]),17, "Team Based"), 
+				    ("Payor", NAMEOF(VW_PCP_CORE_STATS[PRIM_PAYOR_PLAN_NM]),18, "Team Based"),
+				    --("Provider Team", NAMEOF(VW_PCP_CORE_STATS[Provider Team]),19, "Team Based"),
+				    ("Race/ Ethnicity", NAMEOF(DIM_PATIENT[ETHNICITY_RACE_CD]),20, "Team Based"),
+				    ("Discharge Day of Week", NAMEOF(VW_PCP_CORE_STATS[DISCHARGE_DAY_OF_WEEK_TXT]), 21, "Discharge Based"),
+				    ("Discharge Hour of Day", NAMEOF(VW_PCP_CORE_STATS[DISCHARGE_HOUR_OF_DAY_NBR]), 22, "Discharge Based"),
+				    ("Discharge Disposition", NAMEOF(VW_PCP_CORE_STATS[Discharge Disposition]), 23, "Discharge Based"),
+				    ("Admit Source", NAMEOF(VW_PCP_CORE_STATS[ADMISSION_SOURCE_DSC]), 24, "Admit Based"),
+				    ("Conditional Discharge?", NAMEOF(VW_PCP_CORE_STATS[Conditional Discharge?]), 25, "Discharge Based"),
+				    ("30 day Readmits?", NAMEOF(VW_PCP_CORE_STATS[REVISIT_WITHIN_30_DAYS_YN]),26, "Discharge Based"),
+				    ("LOS Intervals", NAMEOF(VW_PCP_CORE_STATS[LOS_INTERVAL_GROUPS_TXT]), 27, "Discharge Based")
+				}
+				```
+
+	annotation PBI_Id = 94988c8e6e444d1089a3c5eefe784163
+

@@ -1,0 +1,48 @@
+table Metric
+	lineageTag: aa5763a8-81df-4432-89f3-d71ea4e4bbc7
+
+	column Parameter
+		lineageTag: 707f3aed-c7c6-4dfc-a837-1d3260349c54
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Fields'
+		isHidden
+		lineageTag: 99b48fb4-b023-492e-89b8-fbaef852172a
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: e33f49c2-8c61-4a55-8193-0109a7b580b8
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Metric = calculated
+		mode: import
+		source =
+				{
+				    ("Case Manager", NAMEOF('FACT_HOSPITALADMISSION_EDD'[Case Manager]), 0),
+				    ("First Attending Provider", NAMEOF('FACT_HOSPITALADMISSION_EDD'[First Attending Provider]), 1)
+				}
+
+	annotation PBI_Id = b8bb9277f6824ff5a9697d37b3d22a04
+

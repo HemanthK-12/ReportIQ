@@ -1,0 +1,113 @@
+table DIM_DIAGNOSIS
+	lineageTag: 7463d4cd-b8b1-4a9f-af08-3dff0c57e5f6
+
+	column DIAGNOSIS_CD
+		dataType: string
+		lineageTag: 9111a3a8-636f-40b7-8ec3-120a5808f95b
+		summarizeBy: none
+		sourceColumn: DIAGNOSIS_CD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DIAGNOSIS_DSC
+		dataType: string
+		lineageTag: c9ca28ec-7b5f-4de1-908e-b2bd6881c32f
+		summarizeBy: none
+		sourceColumn: DIAGNOSIS_DSC
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DIAGNOSIS_FULL_DSC
+		dataType: string
+		lineageTag: 7f9fc5cb-c3f8-4571-848d-5bb4cde35b03
+		summarizeBy: none
+		sourceColumn: DIAGNOSIS_FULL_DSC
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DIAGNOSIS_PRODUCT_LINE_CD
+		dataType: double
+		lineageTag: 357674f3-f65d-4d44-b5d0-645f3d9e8a13
+		summarizeBy: sum
+		sourceColumn: DIAGNOSIS_PRODUCT_LINE_CD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DIAGNOSIS_PRODUCT_LINE_NM
+		dataType: string
+		lineageTag: ab73007d-2e31-4ad0-8719-f83bede48c16
+		summarizeBy: none
+		sourceColumn: DIAGNOSIS_PRODUCT_LINE_NM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DIAGNOSIS_PRODUCT_LINE_SUB_CD
+		dataType: double
+		lineageTag: e1ce1818-6db9-4fd1-b05c-f1f62b328100
+		summarizeBy: sum
+		sourceColumn: DIAGNOSIS_PRODUCT_LINE_SUB_CD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DIAGNOSIS_PRODUCT_LINE_SUB_NM
+		dataType: string
+		lineageTag: cc8ac897-96b0-4778-8a73-f63d12dae630
+		summarizeBy: none
+		sourceColumn: DIAGNOSIS_PRODUCT_LINE_SUB_NM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DIAGNOSIS_TYPE_CD
+		dataType: double
+		lineageTag: 46cc2507-a0ec-4ef2-b112-5e0d3bd27d1e
+		summarizeBy: sum
+		sourceColumn: DIAGNOSIS_TYPE_CD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'ICD DX CD/DESC' = CONCATENATE(CONCATENATE(DIM_DIAGNOSIS[DIAGNOSIS_CD]," - "),DIM_DIAGNOSIS[DIAGNOSIS_DSC])
+		lineageTag: 8cf4d639-0fed-4b50-9342-8574b34b034f
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_DIAGNOSIS = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("psjh_prod.west-us-2.azure.snowflakecomputing.com",#"WH Name",[Role=#"Role Name"]),
+				    ACOE_DEV_Database = Source{[Name=DBName,Kind="Database"]}[Data],
+				    DMS_STATE_INTELLIMED_Schema = ACOE_DEV_Database{[Name="DMS_STATE_INTELLIMED",Kind="Schema"]}[Data],
+				    DIM_DIAGNOSIS_Table = DMS_STATE_INTELLIMED_Schema{[Name="DIM_DIAGNOSIS",Kind="Table"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(DIM_DIAGNOSIS_Table,{"UPDATE_DTS", "INSERT_DTS"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

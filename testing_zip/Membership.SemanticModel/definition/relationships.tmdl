@@ -1,0 +1,16 @@
+relationship AutoDetected_1466e12d-fe18-4554-9bc4-806392a49feb
+	fromColumn: VBA_MEMBERSHIP_SUMMARY.'Data Source Display'
+	toColumn: 'Data Source Display Sort'.'Data Source Display Name'
+
+relationship AutoDetected_0166442b-4358-4390-afa0-26045100de8a
+	fromColumn: VBA_MEMBERSHIP_SUMMARY.'Level of Detail'
+	toColumn: 'Level of Detail Sort'.'Level of Detail Name'
+
+relationship 9b65cabf-2d73-3c0a-fefa-f0061ae7a0de
+	fromColumn: VBA_MEMBERSHIP_SUMMARY.Key_membership
+	toColumn: Master_Dim.Key
+
+relationship a861a3ed-8ffe-e6ba-a689-3419ac5ab7f9
+	fromColumn: VBA_DATA_SHOP_EMPANELED_PATIENTS.Key_empaneled
+	toColumn: Master_Dim.Key
+

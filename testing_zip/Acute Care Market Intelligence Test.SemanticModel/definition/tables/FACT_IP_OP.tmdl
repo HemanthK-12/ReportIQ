@@ -1,0 +1,644 @@
+table FACT_IP_OP
+	lineageTag: bd179c0b-3aeb-458e-8044-6c5440b974e4
+
+	measure 'Date range n' = FORMAT(Min('FACT_IP_OP'[DISCHARGE_DTS]), "mm/dd/yyyy")&"  -  "&FORMAT(MAX('FACT_IP_OP'[DISCHARGE_DTS]), "mm/dd/yyyy")
+		lineageTag: a2548cf9-b78c-4320-9d0f-9228084a7f49
+
+		changedProperty = IsHidden
+
+	measure 'is selected system' = CALCULATE(RANKX(ALL(DIM_FACILITY[FACILITY_SYSTEM_NM]),[Cases]),REMOVEFILTERS(DIM_DATE[YEAR_NBR]))
+		formatString: 0
+		isHidden
+		lineageTag: 2957f85b-f955-49de-a9ea-227e0bc06a3f
+
+		changedProperty = IsHidden
+
+	measure 'is selected system rank' =
+			var system_rank= [is selected system]
+			var selected_rank='Rank'[Rank Value]
+			return
+			if (and (not ISBLANK(system_rank),not ISBLANK('Rank'[Rank Value])),
+			if([is selected system]<='Rank'[Rank Value],1,0), 0)
+		formatString: 0
+		isHidden
+		lineageTag: f8c22d04-718b-4384-9c54-20f9975ae1b4
+
+		changedProperty = IsHidden
+
+	measure 'Visual Title' = max('System/Facility'[System/Facility]) & " " & max('Measure Selection'[Measure_Names])
+		isHidden
+		lineageTag: 2d921d05-e613-4c5e-8b41-211331a0f48b
+
+		changedProperty = IsHidden
+
+	measure 'Visual Title 2' =
+			SWITCH(TRUE(),
+			SELECTEDVALUE('Discharge Year Quarter'[Discharge Year/Quarter Order])=0,
+			(max('System/Facility'[System/Facility]) & " Growth " & min(DIM_DATE[YEAR_NBR]) & " - " & max(DIM_DATE[YEAR_NBR])),SELECTEDVALUE('Discharge Year Quarter'[Discharge Year/Quarter Order])=1,
+			(max('System/Facility'[System/Facility]) & " Growth " & min(DIM_DATE[YEAR_QTR_DESC])) & " - " & max(DIM_DATE[YEAR_QTR_DESC]))
+			
+			/* SWITCH(TRUE(),SELECTEDVALUE('Discharge Year Quarter'[Discharge Year/Quarter Order])=0,CONCATENATE(CONCATENATE(CONCATENATE("System/Facility Growth " , min(DIM_DATE[YEAR_NBR])) ," - ") , max(DIM_DATE[YEAR_NBR])),SELECTEDVALUE('Discharge Year Quarter'[Discharge Year/Quarter Order])=1,CONCATENATE(CONCATENATE(CONCATENATE("System/Facility Growth " , min(DIM_DATE[YEAR_QTR_DESC])) ," - ") , max(DIM_DATE[YEAR_QTR_DESC]))) */
+		isHidden
+		lineageTag: 916c5a4a-a0ce-4599-abea-d0d3ffbd3419
+
+		changedProperty = IsHidden
+
+	measure 'Value and Percent' =
+			
+			CONCATENATE([Cases]," ("&FORMAT([Market Share System],"0.0%")&")")
+		isHidden
+		lineageTag: 419e22d4-619e-4959-9f4a-3b261f02f985
+
+		changedProperty = IsHidden
+
+	measure Rowcount = COUNTROWS(FACT_IP_OP)
+		formatString: 0
+		isHidden
+		lineageTag: 4fa63cf4-55f4-4436-88fd-faa82c79e7e2
+
+		changedProperty = IsHidden
+
+	measure 'Visual Title Trend' = max('System/Facility'[System/Facility]) & " " & max('Measure Selection'[Measure_Names]) & " Trend "
+		isHidden
+		lineageTag: 6d09ca7e-28e0-4913-8eb0-88d05cd75966
+
+		changedProperty = IsHidden
+
+	measure 'Visual Title Outmigration' = max('System/Facility'[System/Facility]) & " Out-migration"
+		isHidden
+		lineageTag: 39b8ba11-7f3a-4a79-a23c-1da84203439c
+
+		changedProperty = IsHidden
+
+	column DISCHARGE_DTS
+		dataType: dateTime
+		formatString: Short Date
+		sourceProviderType: datetime2
+		lineageTag: c106632d-df07-418b-88ee-d47af9231692
+		summarizeBy: none
+		sourceColumn: DISCHARGE_DTS
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column AGE_CD
+		dataType: double
+		isHidden
+		sourceProviderType: nvarchar(256)
+		lineageTag: 151a7ffd-57ca-45fa-b8d5-39f03cd2921f
+		summarizeBy: none
+		sourceColumn: AGE_CD
+
+		changedProperty = DataType
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PATIENT_ZIP_CD
+		dataType: string
+		isHidden
+		sourceProviderType: nvarchar(256)
+		lineageTag: cdfa1614-4498-46c0-a4a2-924c4f538c28
+		summarizeBy: none
+		sourceColumn: PATIENT_ZIP_CD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ANNUALIZED_ENCOUNTER_CNT
+		dataType: double
+		sourceProviderType: decimal(18, 2)
+		lineageTag: 96d5ea59-d5c9-4de0-9693-2f170627b2ce
+		summarizeBy: sum
+		sourceColumn: ANNUALIZED_ENCOUNTER_CNT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'System - PSJH/Other' = if(RELATED(DIM_FACILITY[FACILITY_SYSTEM_NM])="PROVIDENCE","PROVIDENCE","ALL OTHERS")
+		lineageTag: c28eb66f-c2a2-446d-8161-c5b9d75b67d8
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column I = 1
+		isHidden
+		formatString: 0
+		lineageTag: e17dd10b-f813-4bb5-a500-9ee10f5063c9
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Out Migration service area' =
+			if(RELATED(DIM_PATIENT[PATIENT_SERVICE_AREA_NM])<>RELATED(DIM_FACILITY[FACILITY_SERVICE_AREA_NM]),FACT_IP_OP[ANNUALIZED_ENCOUNTER_CNT],0)
+			
+			/* SWITCH(TRUE(),SELECTEDVALUE('Discharge Year/Quarter'[Discharge Year/Quarter Order])=0,
+			SWITCH(TRUE(),
+			SELECTEDVALUE('Patient Geography'[Patient Geography Order])=0,
+			if(VW_STATE_MARKET_IP_TABLEAU[PATIENT SYSTEM]<>VW_STATE_MARKET_IP_TABLEAU[FACILITY_SYSTEM_NM],VW_STATE_MARKET_IP_TABLEAU[ANNUALIZED_ENCOUNTER_CNT],0),
+			SELECTEDVALUE('Patient Geography'[Patient Geography Order])=1,
+			if(VW_STATE_MARKET_IP_TABLEAU[PATIENT_DIVISION_NM]<>VW_STATE_MARKET_IP_TABLEAU[FACILITY_DIVISION_NM],VW_STATE_MARKET_IP_TABLEAU[ANNUALIZED_ENCOUNTER_CNT],0),
+			SELECTEDVALUE('Patient Geography'[Patient Geography Order])=2,
+			if(VW_STATE_MARKET_IP_TABLEAU[PATIENT_REGION_NM]<>VW_STATE_MARKET_IP_TABLEAU[FACILITY_REGION_NM],VW_STATE_MARKET_IP_TABLEAU[ANNUALIZED_ENCOUNTER_CNT],0),
+			SELECTEDVALUE('Patient Geography'[Patient Geography Order])=3,
+			if(VW_STATE_MARKET_IP_TABLEAU[FACILITY_SERVICE_AREA_NM]<>VW_STATE_MARKET_IP_TABLEAU[PATIENT_SERVICE_AREA_NM],VW_STATE_MARKET_IP_TABLEAU[ANNUALIZED_ENCOUNTER_CNT],0)),
+			SELECTEDVALUE('Discharge Year/Quarter'[Discharge Year/Quarter Order])=1,
+			SWITCH(TRUE(),
+			SELECTEDVALUE('Patient Geography'[Patient Geography Order])=0,
+			if(VW_STATE_MARKET_IP_TABLEAU[PATIENT SYSTEM]<>VW_STATE_MARKET_IP_TABLEAU[FACILITY_SYSTEM_NM],VW_STATE_MARKET_IP_TABLEAU[NON_ANNUALIZED_ENCOUNTER_CNT],0),
+			SELECTEDVALUE('Patient Geography'[Patient Geography Order])=1,
+			if(VW_STATE_MARKET_IP_TABLEAU[PATIENT_DIVISION_NM]<>VW_STATE_MARKET_IP_TABLEAU[FACILITY_DIVISION_NM],VW_STATE_MARKET_IP_TABLEAU[NON_ANNUALIZED_ENCOUNTER_CNT],0),
+			SELECTEDVALUE('Patient Geography'[Patient Geography Order])=2,
+			if(VW_STATE_MARKET_IP_TABLEAU[PATIENT_REGION_NM]<>VW_STATE_MARKET_IP_TABLEAU[FACILITY_REGION_NM],VW_STATE_MARKET_IP_TABLEAU[NON_ANNUALIZED_ENCOUNTER_CNT],0),
+			SELECTEDVALUE('Patient Geography'[Patient Geography Order])=3,
+			if(VW_STATE_MARKET_IP_TABLEAU[PATIENT_REGION_NM]<>VW_STATE_MARKET_IP_TABLEAU[FACILITY_REGION_NM],VW_STATE_MARKET_IP_TABLEAU[NON_ANNUALIZED_ENCOUNTER_CNT],0)
+			)
+			) */
+		isHidden
+		lineageTag: d8f7ff79-f426-4cf4-8005-bd5165d688a6
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'PATIENT SYSTEM' = SWITCH(RELATED(DIM_PATIENT[PATIENT_DIVISION_NM]),"NORTH","SYSTEM","SOUTH","SYSTEM","CENTRAL","SYSTEM","OTHER US")
+		lineageTag: f9104e16-9974-4cb0-8751-9fcb486c279e
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column NON_ANNUALIZED_ENCOUNTER_CNT
+		dataType: double
+		sourceProviderType: decimal(18, 2)
+		lineageTag: 51cd5a81-4eaf-4f01-acc1-8de19aff342d
+		summarizeBy: sum
+		sourceColumn: NON_ANNUALIZED_ENCOUNTER_CNT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Out Migration Region' = if(RELATED(DIM_FACILITY[FACILITY_REGION_NM])<>RELATED(DIM_PATIENT[PATIENT_REGION_NM]),FACT_IP_OP[ANNUALIZED_ENCOUNTER_CNT],0)
+		isHidden
+		lineageTag: 78a88dce-fa07-42eb-ae9a-6f76d836029d
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Out Migration sub service area' = ```
+			if(RELATED(DIM_FACILITY[FACILITY_SUBSERVICE_AREA_NM])<>RELATED(DIM_PATIENT[PATIENT_SUBSERVICE_AREA_NM]),FACT_IP_OP[ANNUALIZED_ENCOUNTER_CNT],0)
+			
+			```
+		isHidden
+		lineageTag: 39b293a2-cfe3-404d-9acc-adc7336ac223
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Out Migration county' = ```
+			if(RELATED(DIM_FACILITY[FACILITY_COUNTY_NM])<>RELATED(DIM_PATIENT[PATIENT_COUNTY_NM]),FACT_IP_OP[ANNUALIZED_ENCOUNTER_CNT],0)
+			
+			```
+		isHidden
+		lineageTag: b185c4f0-7843-4f74-8f76-fced9ef9c392
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Out Migration city' = ```
+			if(RELATED(DIM_FACILITY[FACILITY_CITY_STATE_NM])<>RELATED(DIM_PATIENT[PATIENT_CITY_STATE_NM]),FACT_IP_OP[ANNUALIZED_ENCOUNTER_CNT],0)
+			
+			```
+		isHidden
+		lineageTag: ac61ffbb-34fb-4313-b174-9452d686db15
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Out Migration Zip' = ```
+			if(RELATED(DIM_FACILITY[FACILITY_ZIP_CD])<>RELATED(DIM_PATIENT[PATIENT_ZIP_CD]), FACT_IP_OP[ANNUALIZED_ENCOUNTER_CNT],0)
+			
+			```
+		isHidden
+		lineageTag: 94643cb9-2bc9-4fea-894b-e1102099965c
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'NA Out Migration city' = ```
+			if(RELATED(DIM_FACILITY[FACILITY_CITY_STATE_NM])<>RELATED(DIM_PATIENT[PATIENT_CITY_STATE_NM]),FACT_IP_OP[NON_ANNUALIZED_ENCOUNTER_CNT],0)
+			
+			```
+		isHidden
+		lineageTag: e7149352-83df-4740-a604-cda6a02f2542
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'NA Out Migration county' = ```
+			if(RELATED(DIM_FACILITY[FACILITY_COUNTY_NM])<>RELATED(DIM_PATIENT[PATIENT_COUNTY_NM]),FACT_IP_OP[NON_ANNUALIZED_ENCOUNTER_CNT],0)
+			
+			```
+		isHidden
+		lineageTag: f9f5bffc-f285-4066-accd-32f773ae9ed8
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'NA Out Migration Region' = if(RELATED(DIM_FACILITY[FACILITY_REGION_NM])<>RELATED(DIM_PATIENT[PATIENT_REGION_NM]),FACT_IP_OP[NON_ANNUALIZED_ENCOUNTER_CNT],0)
+		isHidden
+		lineageTag: a5d33f3d-d5b8-4346-b25a-d14fdfd7a0cb
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'NA Out Migration service area' = if(RELATED(DIM_PATIENT[PATIENT_SERVICE_AREA_NM])<>RELATED(DIM_FACILITY[FACILITY_SERVICE_AREA_NM]),FACT_IP_OP[NON_ANNUALIZED_ENCOUNTER_CNT],0)
+		isHidden
+		lineageTag: 0732057f-938d-4c57-8e14-b6265c1ac3d2
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'NA Out Migration sub service area' = ```
+			if(RELATED(DIM_FACILITY[FACILITY_SUBSERVICE_AREA_NM])<>RELATED(DIM_PATIENT[PATIENT_SUBSERVICE_AREA_NM]),FACT_IP_OP[NON_ANNUALIZED_ENCOUNTER_CNT],0)
+			
+			```
+		isHidden
+		lineageTag: a5aea4d4-92c7-41fd-bdba-3e7c5aff1f50
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'NA Out Migration Zip' = if(RELATED(DIM_FACILITY[FACILITY_ZIP_CD])<>RELATED(DIM_PATIENT[PATIENT_ZIP_CD]),FACT_IP_OP[NON_ANNUALIZED_ENCOUNTER_CNT],0)
+		isHidden
+		lineageTag: e881cb1f-e3e4-4a80-b4dd-ddacb9a09260
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PreviousQuarter =
+			
+			VAR CurrentQuarter = QUARTER(FACT_IP_OP[DISCHARGE_DTS])
+			VAR CurrentYear = RELATED(DIM_DATE[YEAR_NBR])
+			RETURN
+			    IF(
+			        CurrentQuarter = 1,
+			        FORMAT(DATE(CurrentYear - 1, 12, 31), "YYYY \Q4"),
+			        FORMAT(DATE(CurrentYear, (CurrentQuarter - 1) * 3, 1), "YYYY \Q") & CurrentQuarter - 1
+			    )
+		isHidden
+		lineageTag: a278592d-951e-4bc6-b7e4-fed89e358dc9
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter_no = CONCATENATE(RELATED(DIM_DATE[YEAR_NBR]),RELATED(DIM_DATE[QUARTER_OF_YEAR_NBR]))
+		isHidden
+		lineageTag: 55796ab6-1ca3-4b4c-b30d-aa2d162a07b4
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NB Filter' = IF(IF(RELATED(DIM_MSDRG[MSDRG_CD]) = "795", "Y","N")="N","Exclude Normal Newborns",BLANK())
+		lineageTag: 946b7a81-5f8b-4307-a5b3-8eb47f2bf033
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Base Class'
+		dataType: string
+		lineageTag: bc71e46f-9956-490a-9a45-d87b417a5e45
+		summarizeBy: none
+		sourceColumn: Base Class
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FACILITY_KEY
+		dataType: string
+		isHidden
+		lineageTag: 10153761-17fa-4ba8-8cf8-3b895c00364c
+		summarizeBy: none
+		sourceColumn: FACILITY_KEY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATE_KEY
+		dataType: double
+		isHidden
+		lineageTag: 10fd08b2-cba4-484c-9635-ad008116ea5c
+		summarizeBy: none
+		sourceColumn: DATE_KEY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PAYOR_KEY
+		dataType: string
+		isHidden
+		lineageTag: 3f1b9123-3a78-4da4-896d-849cc6b7819e
+		summarizeBy: none
+		sourceColumn: PAYOR_KEY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DIAGNOSIS_CD
+		dataType: string
+		isHidden
+		lineageTag: 54854637-d8cb-4483-a50e-0a977d2140a1
+		summarizeBy: none
+		sourceColumn: DIAGNOSIS_CD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROCD_CD
+		dataType: string
+		isHidden
+		lineageTag: 84ddec26-cafb-4af3-94e9-845572a8c0d6
+		summarizeBy: none
+		sourceColumn: PROCD_CD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column MSDRG_CD
+		dataType: string
+		isHidden
+		lineageTag: a7512eb7-b78f-4d50-a3c4-2f51edb9d8d9
+		summarizeBy: none
+		sourceColumn: MSDRG_CD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CPS_KEY
+		dataType: string
+		isHidden
+		lineageTag: 2e9d4dbf-d445-4dd1-adce-9da87df7ec46
+		summarizeBy: none
+		sourceColumn: CPS_KEY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column HIGHEST_WEIGHTED_CPT_VAL
+		dataType: string
+		lineageTag: 0ac5a4ac-ef92-46d9-8976-58a49d31637a
+		summarizeBy: none
+		sourceColumn: HIGHEST_WEIGHTED_CPT_VAL
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DRG_CPT_CD = SWITCH(FACT_IP_OP[Base Class],"IP",FACT_IP_OP[MSDRG_CD],"OP",FACT_IP_OP[HIGHEST_WEIGHTED_CPT_VAL],"NA")
+		lineageTag: 1c884f59-044b-4154-90b0-f031526c13bb
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DRG_DESC = CONCATENATE(FACT_IP_OP[MSDRG_CD],CONCATENATE(" - ",RELATED(DIM_MSDRG[MSDRG_DSC])))
+		lineageTag: f5ece97c-9a62-4c50-83e9-c0f81bcbc3ac
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CPT_DESC = CONCATENATE(FACT_IP_OP[HIGHEST_WEIGHTED_CPT_VAL],CONCATENATE(" - ",RELATED(DIM_PROCEDURE[PROCEDURE_DSC])))
+		lineageTag: ecb4746c-4bc8-4130-aa79-5b733dbe4386
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column MSDRG/CPT = SWITCH(FACT_IP_OP[Base Class],"IP",FACT_IP_OP[DRG_DESC],"OP",FACT_IP_OP[CPT_DESC],"NA")
+		lineageTag: 44ec48d4-2f9c-47c9-859c-420be778cec1
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Out Migration county state' = ```
+			if(RELATED(DIM_FACILITY[FACILITY_STATE_COUNTY_NM])<>RELATED(DIM_PATIENT[PATIENT_STATE_COUNTY_NM]),FACT_IP_OP[ANNUALIZED_ENCOUNTER_CNT],0)
+			
+			```
+		isHidden
+		lineageTag: 5df6f47b-5e0c-401c-869f-8b189dce3497
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'NA Out Migration county state' = ```
+			if(RELATED(DIM_FACILITY[FACILITY_STATE_COUNTY_NM])<>RELATED(DIM_PATIENT[PATIENT_STATE_COUNTY_NM]),FACT_IP_OP[NON_ANNUALIZED_ENCOUNTER_CNT],0)
+			
+			```
+		isHidden
+		lineageTag: e131e4e5-e303-42d2-92f0-26e95df03c74
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column GENDER_CD
+		dataType: string
+		isHidden
+		lineageTag: b75d68b8-200c-4325-bb25-f683a2edf093
+		summarizeBy: none
+		sourceColumn: GENDER_CD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column RC_SURG_IND
+		dataType: double
+		lineageTag: ac08fffc-6b4a-4408-9ac6-1684291784ee
+		summarizeBy: sum
+		sourceColumn: RC_SURG_IND
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BUSINESS_UNIT_TYPE_CD
+		dataType: string
+		lineageTag: 92d65bd7-4faf-44f8-9825-b04d9382cc1f
+		summarizeBy: none
+		sourceColumn: BUSINESS_UNIT_TYPE_CD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ATTENDING_PHYSICIAN_NPI_CD
+		dataType: string
+		isHidden
+		lineageTag: 0911b1c7-9111-45e8-9d2e-262bc1e8fb1d
+		summarizeBy: none
+		sourceColumn: ATTENDING_PHYSICIAN_NPI_CD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column OPERATING_PHYSICIAN_NPI_CD
+		dataType: string
+		isHidden
+		lineageTag: 308a308c-0bb3-4c7d-90da-ca2b373c59ea
+		summarizeBy: none
+		sourceColumn: OPERATING_PHYSICIAN_NPI_CD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHARGE_AMT
+		dataType: double
+		lineageTag: d4f98c1d-fcb2-40d1-b681-ea3934bb9754
+		summarizeBy: sum
+		sourceColumn: CHARGE_AMT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column INSERT_DTS
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: 46bd451d-3ded-463d-8b49-17d2aef795e6
+		summarizeBy: none
+		sourceColumn: INSERT_DTS
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column UPDATE_DTS
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: 346f62b3-6fdd-485e-a36e-da8ce0929114
+		summarizeBy: none
+		sourceColumn: UPDATE_DTS
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FACT_IP_OP = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("psjh_prod.west-us-2.azure.snowflakecomputing.com",#"WH Name",[Role=#"Role Name"]),
+				    ACOE_DEV_Database = Source{[Name=DBName,Kind="Database"]}[Data],
+				    RPT_STATE_INTELLIMED_Schema = ACOE_DEV_Database{[Name="RPT_STATE_INTELLIMED",Kind="Schema"]}[Data],
+				    FACT_MARKET_SHARE_DASHBOARD_IP_OP_TEMP_Table = RPT_STATE_INTELLIMED_Schema{[Name=TableName,Kind="Table"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(FACT_MARKET_SHARE_DASHBOARD_IP_OP_TEMP_Table,{{"BASE_CLASS_CD", "Base Class"}})
+				in
+				    #"Renamed Columns"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

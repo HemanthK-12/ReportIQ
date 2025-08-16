@@ -1,0 +1,52 @@
+table Parameter_Views
+	lineageTag: 16c4f762-fac4-4461-b04e-ee3dfbd72e0a
+
+	column Parameter
+		lineageTag: e857782a-8790-4f74-8231-68871309248b
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Fields'
+		isHidden
+		lineageTag: 14d33760-e46e-42f3-ada8-211146d9794b
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: cd69652d-82af-4040-9966-82079b8becf6
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Parameter_Views = calculated
+		mode: import
+		source =
+				{
+				--    ("Region", NAMEOF('DimDept'[REGION_X]), 0),
+				    ("Division", NAMEOF('DimDept'[Division]), 1),
+				    ("Department", NAMEOF('DimDept'[Department]), 5),
+				    ("Service Area", NAMEOF(FSMain[CLINICAL_SERVICE_AREA_NM]), 3),
+				    ("State", NAMEOF('DimDept'[STATEORPROVINCE]), 2),
+				    ("Location", NAMEOF('DimDept'[LOCATIONNAME]), 4)
+				}
+
+	annotation PBI_Id = 9b0a170d4f964ea2b34fe3cb7fbacc3a
+

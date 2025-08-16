@@ -1,0 +1,54 @@
+table 'Display Level MRD'
+	lineageTag: 1b3311f8-dc93-4e6c-8185-6f9dc152f80c
+
+	column 'Display Level'
+		lineageTag: 043d77bd-d56e-402e-b991-3682e91eeeb5
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Display Level (MRD) Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Display Level (MRD) Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Display Level (MRD) Fields'
+		isHidden
+		lineageTag: cac31608-f621-4d1c-8cdf-9b76cceaa373
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Display Level (MRD) Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Display Level (MRD) Order'
+		isHidden
+		formatString: 0
+		lineageTag: 5f24f144-23cc-4c82-b2e5-f95dad36e1e5
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Display Level MRD' = calculated
+		mode: import
+		source =
+				{
+				    ("System", NAMEOF('FACT_HOSPITALADMISSION_EDD'[System]), 0),
+				    ("Division", NAMEOF('FACT_HOSPITALADMISSION_EDD'[Division]), 1),
+				    ("Service Area", NAMEOF('FACT_HOSPITALADMISSION_EDD'[Clinical Service Area]), 2),
+				    ("Location", NAMEOF('FACT_HOSPITALADMISSION_EDD'[Location]), 3),
+				    ("Department", NAMEOF('FACT_HOSPITALADMISSION_EDD'[Department]), 4),
+				    ("First Attending Provider", NAMEOF('FACT_HOSPITALADMISSION_EDD'[First Attending Provider]), 5),
+				    ("Last Attending Provider", NAMEOF('FACT_HOSPITALADMISSION_EDD'[Last Attending Provider]), 6),
+				    ("Provider Team", NAMEOF(FACT_HOSPITALADMISSION_EDD[Provider Team]), 7)
+				}
+
+	annotation PBI_Id = 902fc47d32a24a1caf5fe7c07714bd4f
+

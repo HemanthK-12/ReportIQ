@@ -1,0 +1,74 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 1009.0823470294466,
+            "y": 0
+          },
+          "nodeIndex": "VW_PATIENT_ENGAGEMENT_VISIT_SUMMARY",
+          "nodeLineageTag": "7691a9bb-a59f-4db0-8db1-06909bde9f92",
+          "size": {
+            "height": 1000,
+            "width": 397.14878892733577
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 1417.294263640383,
+            "y": 0
+          },
+          "nodeIndex": "VW_PATIENT_ENGAGEMENT_VISIT_DETAIL",
+          "nodeLineageTag": "a6c73d6e-2c44-4884-ae53-5634d324dba8",
+          "size": {
+            "height": 1000,
+            "width": 357.356401384083
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 568.00000000000011,
+            "y": 363.95414240795247
+          },
+          "nodeIndex": "Sort Order",
+          "nodeLineageTag": "e28d5048-102d-4fdd-8496-dcf9f7204b60",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 566.3605436899104,
+            "y": 205.96654050962152
+          },
+          "nodeIndex": "Last Refresh Date",
+          "nodeLineageTag": "3733cd6c-335a-4c27-a9eb-d5dbe33aadc3",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 2
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100.52173913043478,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

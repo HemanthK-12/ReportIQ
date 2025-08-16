@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Lab Order Turnaround Times 1"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "fb7d790d-2f19-4247-af30-ace32662d24c"
+  }
+}

@@ -1,0 +1,56 @@
+table DIM_PAYOR
+	lineageTag: f5b8b49a-cd8b-4993-9e42-2c695e086f03
+
+	column PAYOR_KEY
+		dataType: string
+		lineageTag: 630de891-ae71-4314-9243-764551cbd313
+		summarizeBy: none
+		sourceColumn: PAYOR_KEY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column STATE_ID
+		dataType: string
+		lineageTag: d4b4d605-b093-435c-ba67-55741d38d551
+		summarizeBy: none
+		sourceColumn: STATE_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ST_PAYOR_NAME
+		dataType: string
+		lineageTag: 28530c2d-d390-4eba-add6-7fc38abc1eff
+		summarizeBy: none
+		sourceColumn: ST_PAYOR_NAME
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payor Group'
+		dataType: string
+		lineageTag: 8f36cdd9-9083-4830-823e-8e958515e1d3
+		summarizeBy: none
+		sourceColumn: Payor Group
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_PAYOR = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("psjh_prod.west-us-2.azure.snowflakecomputing.com",#"WH Name",[Role=#"Role Name"]){[Name="STRATEGY_PLANNING"]}[Data], "select      DISTINCT concat(state_id,'_',st_payor_code) as PAYOR_KEY#(lf), STATE_ID#(lf), ST_PAYOR_NAME#(lf), PSJH_PAYOR_GROUP#(lf)from STRATEGY_PLANNING.WHS_STATE_HOSP_DATA_PRD.REF_IM_PAYOR_GROUPS", null, [EnableFolding=true]),
+				    #"Renamed Columns" = Table.RenameColumns(Source,{{"PSJH_PAYOR_GROUP", "Payor Group"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

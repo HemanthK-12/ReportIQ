@@ -1,0 +1,58 @@
+table 'Observation Metrics'
+	lineageTag: 0d7070f5-d1df-47e7-87f2-871724ddf395
+
+	column Parameter
+		lineageTag: 5e7ce703-1671-4401-b7b6-5ae8c9cc55e8
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Fields'
+		isHidden
+		lineageTag: 46e2915c-efc9-4040-b0ed-2aade76314ed
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: 0f95f4c1-5354-411a-a69f-9f37873dedc4
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Observation Metrics' = calculated
+		mode: import
+		source =
+				{
+				    ("Observation Conversion Rate", NAMEOF([Conversion Rate]), 9),
+				    ("Observation Conversions Count (#)", NAMEOF([Count of Conversions]), 10),
+				    ("Hours before Observation Conversion Average (#)", NAMEOF([Average Obs hours before conversion]), 11),
+				    ("Inpatient < 24 hrs (%)", NAMEOF('VW_PCP_CORE_STATS'[% IP < 24 hrs]), 12),
+				    ("Inpatient to Observation (%)", NAMEOF('VW_PCP_CORE_STATS'[% IP to Obs]), 13),
+				    ("Observation at Admissions (#)", NAMEOF([Total Obs at Admissions]), 14),
+				    ("Observation Hours Average (#)", NAMEOF(VW_PCP_CORE_STATS[Average Obs Hours]), 15),
+				    ("Observation LOS > 48 hrs (%)", NAMEOF('VW_PCP_CORE_STATS'[% Obs LOS > 48 hrs]), 16),
+				    ("1 day Inpatient Stay (%)", NAMEOF(VW_PCP_CORE_STATS[% 1 Day IP Stay]), 17),
+				    ("Observation Rate (%)", NAMEOF(VW_PCP_CORE_STATS[% Obs Rate]), 18),
+				    ("Observation Status Volume (#)", NAMEOF(VW_PCP_CORE_STATS[Obs Status Volume]), 19),
+				    ("Observation to Inpatient (%)", NAMEOF('VW_PCP_CORE_STATS'[% Obs to IP]), 20)
+				    }
+
+	annotation PBI_Id = f5b26479882643d7b960cb8d2adbd247
+

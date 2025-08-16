@@ -1,0 +1,56 @@
+table DIM_CPS
+	lineageTag: 4d935755-94d2-4b02-9922-d157f8e3acf6
+
+	column CPS_KEY
+		dataType: string
+		lineageTag: d15c93b8-bab1-48a1-9346-b3a0d15f3d65
+		summarizeBy: none
+		sourceColumn: CPS_KEY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CPS Business Unit'
+		dataType: string
+		lineageTag: f3fc466a-485f-45c8-9b61-83cba2236984
+		summarizeBy: none
+		sourceColumn: CPS Business Unit
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CPS Program'
+		dataType: string
+		lineageTag: fab23029-836b-40d7-8e5e-a8b5408e4f10
+		summarizeBy: none
+		sourceColumn: CPS Program
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CPS Institute'
+		dataType: string
+		lineageTag: 7a1dd799-f5f5-4423-ad07-c24bc416d4ee
+		summarizeBy: none
+		sourceColumn: CPS Institute
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_CPS = m
+		mode: import
+		source =
+				let
+				    Source = Value.NativeQuery(Snowflake.Databases("psjh_prod.west-us-2.azure.snowflakecomputing.com",#"WH Name",[Role=#"Role Name"]){[Name=DBName]}[Data], "SELECT DISTINCT CONCAT(BUSINESS_UNIT_NM, PROGRAM_NM, INSTITUTE_NM) AS CPS_KEY, BUSINESS_UNIT_NM, PROGRAM_NM, INSTITUTE_NM#(lf)FROM DMS_STATE_INTELLIMED.CPS_FIN_INSTITUTE_MAP", null, [EnableFolding=true]),
+				    #"Renamed Columns" = Table.RenameColumns(Source,{{"INSTITUTE_NM", "CPS Institute"}, {"PROGRAM_NM", "CPS Program"}, {"BUSINESS_UNIT_NM", "CPS Business Unit"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

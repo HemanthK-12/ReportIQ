@@ -1,0 +1,48 @@
+table 'Hours Between EDD'
+	lineageTag: ba1c8bac-183f-4f41-83bf-4cb6a0e9d986
+
+	column 'Hours Between EDD'
+		lineageTag: 8bb65944-a628-4ae8-b69a-47f342b4f898
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Hours Between Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Hours Between Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hours Between Fields'
+		isHidden
+		lineageTag: c0b7082f-7966-4c7e-a376-b130d54b1a01
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Hours Between Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hours Between Order'
+		isHidden
+		formatString: 0
+		lineageTag: 433e0878-7f40-4a88-bce7-0bc5102edf5a
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Hours Between EDD' = calculated
+		mode: import
+		source =
+				{
+				    ("Hours Between Admission and First EDD Entered", NAMEOF('FACT_HOSPITALADMISSION_EDD'[Time To First EDD Entered Label]), 0),
+				    ("Hours Between Last EDD Entered and Discharge", NAMEOF('FACT_HOSPITALADMISSION_EDD'[Last EDD to Discharge Label]), 1)
+				}
+
+	annotation PBI_Id = bb1528a51bfa469a9c248c2d96012218
+

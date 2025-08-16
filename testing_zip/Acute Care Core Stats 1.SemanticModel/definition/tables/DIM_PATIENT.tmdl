@@ -1,0 +1,179 @@
+table DIM_PATIENT
+	lineageTag: c7515219-49f0-4548-a17d-828223c28a21
+
+	column PATIENTKEY
+		dataType: double
+		lineageTag: 07bf802b-0cf4-457f-ab34-a0b0a970e3f9
+		summarizeBy: sum
+		sourceColumn: PATIENTKEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DURABLEKEY
+		dataType: double
+		lineageTag: 0d603685-c064-4554-9e2a-3cf87f0e1655
+		summarizeBy: sum
+		sourceColumn: DURABLEKEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PATIENTEPICID
+		dataType: string
+		lineageTag: 24ab8ec3-9a18-4527-91d3-30dd817aa64a
+		summarizeBy: none
+		sourceColumn: PATIENTEPICID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRIMARYMRN
+		dataType: string
+		lineageTag: aa01d90f-4b96-48ae-a0f2-99cb7e113d05
+		summarizeBy: none
+		sourceColumn: PRIMARYMRN
+
+		annotation SummarizationSetBy = Automatic
+
+	column PATIENTNAME
+		dataType: string
+		lineageTag: 111f157d-54ec-4d26-b422-cf64e7980409
+		summarizeBy: none
+		sourceColumn: PATIENTNAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column DEATHINSTANT
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 8489e570-a73a-4de5-a3e7-3f777755b913
+		summarizeBy: none
+		sourceColumn: DEATHINSTANT
+
+		variation Variation
+			isDefault
+			relationship: 7789f564-10f3-4e45-83f7-eb9ddbdbfe8a
+			defaultHierarchy: LocalDateTable_a5228da7-f5fc-473e-940e-53b091476fa3.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column STATUS
+		dataType: string
+		lineageTag: 02f39aa0-574e-46de-8026-8c4bb8d6bf27
+		summarizeBy: none
+		sourceColumn: STATUS
+
+		annotation SummarizationSetBy = Automatic
+
+	column ISCURRENT
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 8878636b-0af6-4921-b49a-199f1bfd0402
+		summarizeBy: none
+		sourceColumn: ISCURRENT
+
+		annotation SummarizationSetBy = Automatic
+
+	column AGEINYEARS
+		dataType: double
+		lineageTag: f4baac09-6aa9-4785-bd87-236bb4ed90a1
+		summarizeBy: sum
+		sourceColumn: AGEINYEARS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FIRSTRACE
+		dataType: string
+		lineageTag: b7386315-814f-4048-9dbf-fbe6d26694f7
+		summarizeBy: none
+		sourceColumn: FIRSTRACE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ETHNICITY
+		dataType: string
+		lineageTag: 1b60e5fc-e01c-4864-9b00-ef765732cfa4
+		summarizeBy: none
+		sourceColumn: ETHNICITY
+
+		annotation SummarizationSetBy = Automatic
+
+	column ETHNICITY_RACE_CD
+		dataType: string
+		lineageTag: 3e758a8b-9bf1-4b69-b45e-4cba49619586
+		summarizeBy: none
+		sourceColumn: ETHNICITY_RACE_CD
+
+		annotation SummarizationSetBy = Automatic
+
+	column SEXASSIGNEDATBIRTH
+		dataType: string
+		lineageTag: 416c4cc6-5f59-4729-bff4-5507c5358601
+		summarizeBy: none
+		sourceColumn: SEXASSIGNEDATBIRTH
+
+		annotation SummarizationSetBy = Automatic
+
+	column GENDERIDENTITY
+		dataType: string
+		lineageTag: 3f05264b-9ef4-4531-9978-944dd2864c3c
+		summarizeBy: none
+		sourceColumn: GENDERIDENTITY
+
+		annotation SummarizationSetBy = Automatic
+
+	column PREFERREDLANGUAGE
+		dataType: string
+		lineageTag: b3fbeceb-e259-4bf5-a6ce-f42316afae81
+		summarizeBy: none
+		sourceColumn: PREFERREDLANGUAGE
+
+		annotation SummarizationSetBy = Automatic
+
+	column INSERT_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: fe474fea-0fcd-4c5e-9bec-d5c231c401e6
+		summarizeBy: none
+		sourceColumn: INSERT_DTS
+
+		variation Variation
+			isDefault
+			relationship: 996fe89c-002d-4d07-a2dc-526b1d256626
+			defaultHierarchy: LocalDateTable_c84f8627-d758-4fc3-9809-848e15c949d3.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column UPDATE_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e77f8598-dac9-419a-82e2-49f3ad2cc2b0
+		summarizeBy: none
+		sourceColumn: UPDATE_DTS
+
+		variation Variation
+			isDefault
+			relationship: 27d897d9-16cc-4849-b08f-64f70b4a87a9
+			defaultHierarchy: LocalDateTable_f5a789e9-1ed2-484f-ab65-5ecebf60568a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_PATIENT = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("psjh_prod.west-us-2.azure.snowflakecomputing.com","ACOE_WH_M"),
+				    ACOE_PROD_Database = Source{[Name="ACOE_PROD",Kind="Database"]}[Data],
+				    DMS_PATIENT_JOURNEY_Schema = ACOE_PROD_Database{[Name="DMS_PATIENT_JOURNEY",Kind="Schema"]}[Data],
+				    DIM_PATIENT_Table = DMS_PATIENT_JOURNEY_Schema{[Name="DIM_PATIENT",Kind="Table"]}[Data]
+				in
+				    DIM_PATIENT_Table
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

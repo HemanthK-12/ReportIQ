@@ -1,0 +1,301 @@
+table PSJH_ZIP_TO_GEOGRAPHIES
+	isHidden
+	lineageTag: 81a20942-271e-40af-b682-6470e0168797
+
+	measure value = 0
+		formatString: 0
+		isHidden
+		lineageTag: 414aef47-81dc-4735-9444-d70e5f1819c2
+
+		changedProperty = IsHidden
+
+	column ZIP_CD
+		dataType: string
+		isHidden
+		lineageTag: cf0eb3d3-54e1-4bd5-9b03-9746f3cb3b42
+		dataCategory: PostalCode
+		summarizeBy: none
+		sourceColumn: ZIP_CD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DIVISION_NM
+		dataType: string
+		isHidden
+		lineageTag: 75c2173c-ac21-4844-a769-2743bdaa1b5f
+		summarizeBy: none
+		sourceColumn: DIVISION_NM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column REGION_CD
+		dataType: string
+		isHidden
+		lineageTag: 12e17449-c85e-40a6-aa23-d59fae134c29
+		summarizeBy: none
+		sourceColumn: REGION_CD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column REGION_NM
+		dataType: string
+		isHidden
+		lineageTag: f31909c4-98d3-4cdb-8f63-1a0bc2a54b9e
+		summarizeBy: none
+		sourceColumn: REGION_NM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SERVICE_AREA_CD
+		dataType: string
+		isHidden
+		lineageTag: 63009dd8-ee27-457a-89d9-5d11457d9658
+		summarizeBy: none
+		sourceColumn: SERVICE_AREA_CD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUBSERVICE_AREA_CD
+		dataType: string
+		isHidden
+		lineageTag: 8851c383-7312-40f3-8c3b-ae22877445a2
+		summarizeBy: none
+		sourceColumn: SUBSERVICE_AREA_CD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUBSERVICE_AREA_CLASS_CD
+		dataType: string
+		isHidden
+		lineageTag: 1e225943-8c98-4d50-a260-dca9000038e1
+		summarizeBy: none
+		sourceColumn: SUBSERVICE_AREA_CLASS_CD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column COUNTY_TXT
+		dataType: string
+		isHidden
+		lineageTag: d8f7c5c0-2542-4859-8398-d888e046a9c8
+		summarizeBy: none
+		sourceColumn: COUNTY_TXT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CITY_TXT
+		dataType: string
+		isHidden
+		lineageTag: 1c1eb365-10a5-4a5c-9e8e-7e610153683d
+		summarizeBy: none
+		sourceColumn: CITY_TXT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column STATE_CD
+		dataType: string
+		isHidden
+		lineageTag: 2c998c0a-000b-4f8d-b8b2-9fb6d0b39181
+		summarizeBy: none
+		sourceColumn: STATE_CD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column STATE_NM
+		dataType: string
+		isHidden
+		lineageTag: 5a1fb306-4f83-4304-8399-602c4d9bd263
+		dataCategory: StateOrProvince
+		summarizeBy: none
+		sourceColumn: STATE_NM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CBSA_NM
+		dataType: string
+		isHidden
+		lineageTag: 67d3f772-5dc9-420a-8564-071237e4b4a1
+		summarizeBy: none
+		sourceColumn: CBSA_NM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ZIP_CODE_IND
+		dataType: double
+		isHidden
+		lineageTag: 6fc99358-0c8e-4938-88eb-4067ce479b85
+		summarizeBy: sum
+		sourceColumn: ZIP_CODE_IND
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ZIP_CODE_NM
+		dataType: string
+		isHidden
+		lineageTag: 49c2e15f-1c03-4b34-a464-6e836221cbd0
+		summarizeBy: none
+		sourceColumn: ZIP_CODE_NM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ZIP_CODE_CLASS_CD
+		dataType: string
+		isHidden
+		lineageTag: f5b7714a-bc61-4003-8fe3-14160c51b95a
+		summarizeBy: none
+		sourceColumn: ZIP_CODE_CLASS_CD
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ZIP_CODE_LAT_TXT
+		dataType: double
+		isHidden
+		lineageTag: 02223844-7cbd-41b0-b2be-4e03eacb0823
+		summarizeBy: sum
+		sourceColumn: ZIP_CODE_LAT_TXT
+
+		changedProperty = IsHidden
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ZIP_CODE_LON_TXT
+		dataType: double
+		isHidden
+		lineageTag: 3678bffd-0b75-4112-b0a8-0956d0ced09f
+		summarizeBy: sum
+		sourceColumn: ZIP_CODE_LON_TXT
+
+		changedProperty = IsHidden
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column COUNTY_NM
+		dataType: string
+		isHidden
+		lineageTag: 67b5450a-ace4-4c1c-a85a-628be03ad73b
+		summarizeBy: none
+		sourceColumn: COUNTY_NM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CITY_NM
+		dataType: string
+		isHidden
+		lineageTag: 0333eb44-9c51-4c41-81d3-f5bff3cd26ad
+		summarizeBy: none
+		sourceColumn: CITY_NM
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SOURCE_INSERT_DTS
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: 43619cec-fbc4-48db-b31c-70eca528ff07
+		summarizeBy: none
+		sourceColumn: SOURCE_INSERT_DTS
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column INSERT_DTS
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: 46bbbdfb-3f6a-4d19-968a-09d7472ce837
+		summarizeBy: none
+		sourceColumn: INSERT_DTS
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column UPDATE_DTS
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: e7bb8d76-34bc-4f58-b3ef-a903b8cda722
+		summarizeBy: none
+		sourceColumn: UPDATE_DTS
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column COUNTRY = ```
+			"USA" 
+			```
+		lineageTag: ee01ab9f-3857-4e09-b617-ffa5ad9dc3d3
+		dataCategory: Country
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition PSJH_ZIP_TO_GEOGRAPHIES = m
+		mode: import
+		source =
+				/* let
+				    Source = Snowflake.Databases("psjh-prod.snowflakecomputing.com","ACOE_WH_M",[Implementation="2.0", Role="ACOE_DEVELOPER"]),
+				    ACOE_PROD_Database = Source{[Name="ACOE_PROD",Kind="Database"]}[Data],
+				    REF_Schema = ACOE_PROD_Database{[Name="REF",Kind="Schema"]}[Data],
+				    PSJH_ZIP_TO_GEOGRAPHIES_Table = REF_Schema{[Name="PSJH_ZIP_TO_GEOGRAPHIES",Kind="Table"]}[Data]
+				in
+				    PSJH_ZIP_TO_GEOGRAPHIES_Table */
+				
+				
+				    let
+				    Source = Value.NativeQuery(Snowflake.Databases("psjh_prod.west-us-2.azure.snowflakecomputing.com",#"WH Name",[Role=#"Role Name"])
+				    {[Name=DBName]}[Data], "SELECT * FROM ACOE_PROD.REF.PSJH_ZIP_TO_GEOGRAPHIES WHERE DIVISION_NM<>'OTHER US' ", null, [EnableFolding=true])
+				in
+				    Source
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

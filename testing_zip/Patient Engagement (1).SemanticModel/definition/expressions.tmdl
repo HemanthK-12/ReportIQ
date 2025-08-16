@@ -1,0 +1,7 @@
+expression 'Enviroment Switch CDW Schema' = "ACOE_PROD" meta [IsParameterQuery=true, List={"PHYS_SERV_PERF_ANALYTICS_DEV", "ACOE_PROD"}, DefaultValue="ACOE_PROD", Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 5dfaf8dc-e226-4d10-b0f3-5f4839f3f955
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+

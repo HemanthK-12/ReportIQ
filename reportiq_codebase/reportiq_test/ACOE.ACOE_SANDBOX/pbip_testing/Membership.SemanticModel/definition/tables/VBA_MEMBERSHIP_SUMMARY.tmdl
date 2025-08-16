@@ -1,0 +1,429 @@
+table VBA_MEMBERSHIP_SUMMARY
+	lineageTag: f28fb9c9-26d2-49c3-9e2b-51d5c6283ea4
+
+	measure 'Member Count' =
+			--Membership count (Membership Trend by Month, Grand Totals)
+			ROUND(SUM(VBA_MEMBERSHIP_SUMMARY[MEMBER_CNT]),0)
+		formatString: #,0
+		displayFolder: /Measures
+		lineageTag: 87cca263-a144-4331-b33f-04ad134abed5
+
+	measure 'Member Count_Yr' =
+			--Membership counts for latest month in year (Membership Trend by Year)
+			CALCULATE(
+			    VBA_MEMBERSHIP_SUMMARY[Member Count]
+			    ,FILTER(VBA_MEMBERSHIP_SUMMARY, VBA_MEMBERSHIP_SUMMARY[LATEST_MONTH_IN_YEAR_IND] = 1)
+			)
+		formatString: #,0
+		displayFolder: /Measures
+		lineageTag: bea51efc-f14a-47ee-9dbc-9f0f3fd3df90
+
+	measure 'Member Count_Contract' =
+			--Membership count (Membership by Level of Detail)
+			CALCULATE(
+			    ROUND(SUM(VBA_MEMBERSHIP_SUMMARY[MEMBER_CNT]),0)
+			    ,FILTER(VBA_MEMBERSHIP_SUMMARY, VBA_MEMBERSHIP_SUMMARY[Membership Count] = "Contract Membership")
+			)
+		displayFolder: /Measures
+		lineageTag: 8ff1d40f-5814-4245-baf7-cb3aff50f255
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Member Count Display_Contract' = ```
+			
+			IF(
+			    ISBLANK([Member Count_Contract]) || [Member Count_Contract] = 0,
+			    BLANK(),
+			    CONCATENATE(
+			        FORMAT([Member Count_Contract], "#,###,###"),
+			        IF(MIN(VBA_MEMBERSHIP_SUMMARY[CARRYOVER_IND]) = 1, "*")
+			    )
+			)
+			
+			```
+		displayFolder: /Measures
+		lineageTag: 45fc8991-f4ba-4b16-b529-afadbe4751a2
+
+	measure 'Data Source Color' = ```
+			-- Data source display color (Membership by Level of Detail) 
+			IF(
+			    CALCULATE(DISTINCTCOUNT(VBA_MEMBERSHIP_SUMMARY[Data Source])) > 1
+			    , "*"
+			    , MAX(VBA_MEMBERSHIP_SUMMARY[Data Source])
+			)
+			```
+		displayFolder: /Measures
+		lineageTag: 0d6e5c12-d8f7-468a-8369-b9bcb5dc0129
+
+	column VBA_MEMBERSHIP_SUMMARY_KEY
+		dataType: double
+		formatString: 0
+		lineageTag: 4e88cac0-a321-4d5d-b93e-f78de7980a65
+		summarizeBy: sum
+		sourceColumn: VBA_MEMBERSHIP_SUMMARY_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Performance Year'
+		dataType: string
+		lineageTag: f95bee9d-ed5f-400a-89b0-ef27b595ae2d
+		summarizeBy: none
+		sourceColumn: Performance Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column INCURREDYEARMONTH_DT
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 3e835bab-985c-4f33-b137-dafd39de726a
+		summarizeBy: none
+		sourceColumn: INCURREDYEARMONTH_DT
+
+		variation Variation
+			isDefault
+			relationship: 02ebca3b-7e70-4a62-ae36-adc478255679
+			defaultHierarchy: LocalDateTable_86f85d04-f8a7-425c-a8db-533c965a9b35.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Incurred YearMo'
+		dataType: string
+		lineageTag: 58aa054f-d884-4248-adc2-a85310b09d21
+		summarizeBy: none
+		sourceColumn: Incurred YearMo
+
+		annotation SummarizationSetBy = Automatic
+
+	column MASTER_CONTRACT_KEY
+		dataType: double
+		lineageTag: 3b1d3449-50a2-4875-a791-9f501aa99f1b
+		summarizeBy: sum
+		sourceColumn: MASTER_CONTRACT_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Risk Contract'
+		dataType: string
+		lineageTag: c5c6e133-8aff-46e7-aaec-3b8ac66cd04c
+		summarizeBy: none
+		sourceColumn: Risk Contract
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cohort
+		dataType: string
+		lineageTag: fe327a01-904c-4b39-bff6-b16652179f0c
+		summarizeBy: none
+		sourceColumn: Cohort
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: 79bcc051-ffe3-4d0b-bca2-91bdbd4a3f53
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Service Area'
+		dataType: string
+		lineageTag: b8b4c1fe-f867-4d16-aefb-1c2bad60e676
+		summarizeBy: none
+		sourceColumn: Service Area
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Line of Business'
+		dataType: string
+		lineageTag: 2937a71c-ece9-4e4d-80fe-5a97863dc708
+		summarizeBy: none
+		sourceColumn: Line of Business
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'HCP LAN Category'
+		dataType: string
+		lineageTag: 3e056791-d285-4e55-8104-9c3f5283d9e0
+		summarizeBy: none
+		sourceColumn: HCP LAN Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Include Partners'
+		dataType: string
+		lineageTag: 56cde9c6-18d6-41a8-816b-f1db3db93f93
+		summarizeBy: none
+		sourceColumn: Include Partners
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Level of Detail'
+		dataType: string
+		lineageTag: 1abd50f4-36a2-45a4-9820-a7f3a5de8455
+		summarizeBy: none
+		sourceColumn: Level of Detail
+		sortByColumn: 'Level of Detail Sort.Level of Detail Order'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Membership Count'
+		dataType: string
+		lineageTag: 770af57e-60c8-499d-9980-20bd097f46f2
+		summarizeBy: none
+		sourceColumn: Membership Count
+
+		annotation SummarizationSetBy = Automatic
+
+	column MEMBER_CNT
+		dataType: double
+		lineageTag: c9bb99ce-8389-4877-8155-38379bdd59fa
+		summarizeBy: sum
+		sourceColumn: MEMBER_CNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Data Source'
+		dataType: string
+		lineageTag: 8857b8f1-13d2-4669-af5a-a456b94f16b0
+		summarizeBy: none
+		sourceColumn: Data Source
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Data Source Display'
+		dataType: string
+		lineageTag: e1bd3975-ca04-4f3c-8d5e-2fa709075074
+		summarizeBy: none
+		sourceColumn: Data Source Display
+		sortByColumn: 'Data Source Display Sort.Data Source Display Order'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column CARRYOVER_IND
+		dataType: double
+		lineageTag: aeaa2887-1b64-4c3e-b9ca-12b2925407a6
+		summarizeBy: sum
+		sourceColumn: CARRYOVER_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LATEST_MONTH_IN_YEAR_IND
+		dataType: double
+		lineageTag: 960fff7f-732d-4bd6-90c8-a4646be56eb2
+		summarizeBy: sum
+		sourceColumn: LATEST_MONTH_IN_YEAR_IND
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DATA_THROUGH_DT
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4ca4aa7b-7baf-486e-a030-6de832c2a22f
+		summarizeBy: none
+		sourceColumn: DATA_THROUGH_DT
+
+		variation Variation
+			isDefault
+			relationship: 9b9aa59c-aa8a-4767-8394-f5c79e690e1a
+			defaultHierarchy: LocalDateTable_e9476a28-ab00-4879-a48b-a4fa697cb62d.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Date Range' =
+			--Date Range (Header)
+			MIN(VBA_MEMBERSHIP_SUMMARY[INCURREDYEARMONTH_DT]) & "-" & EOMONTH(MAX(VBA_MEMBERSHIP_SUMMARY[INCURREDYEARMONTH_DT]), 0)
+		displayFolder: /Columns
+		lineageTag: 7ab3ac7d-2814-46e9-942c-4c7edf0bb563
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category = ```
+			
+			IF(
+			    ISBLANK([Member Count_Contract]) || [Member Count_Contract] = 0,
+			    BLANK(),
+			    COALESCE(
+			        IF(VBA_MEMBERSHIP_SUMMARY[Level of Detail]="Risk Contract", VBA_MEMBERSHIP_SUMMARY[Risk Contract]),
+			        IF(VBA_MEMBERSHIP_SUMMARY[Level of Detail]="Cohort", VBA_MEMBERSHIP_SUMMARY[Cohort]),
+			        IF(VBA_MEMBERSHIP_SUMMARY[Level of Detail]="Contract - Cohort", VBA_MEMBERSHIP_SUMMARY[Contract - Cohort]),
+			        IF(VBA_MEMBERSHIP_SUMMARY[Level of Detail]="Region", VBA_MEMBERSHIP_SUMMARY[Region]),
+			        IF(VBA_MEMBERSHIP_SUMMARY[Level of Detail]="Service Area", VBA_MEMBERSHIP_SUMMARY[Service Area]),
+			        IF(VBA_MEMBERSHIP_SUMMARY[Level of Detail]="Line of Business", VBA_MEMBERSHIP_SUMMARY[Line of Business]),
+			        IF(VBA_MEMBERSHIP_SUMMARY[Level of Detail]="HCP LAN Category", VBA_MEMBERSHIP_SUMMARY[HCP LAN Category])
+			    )
+			)
+			
+			```
+		displayFolder: /Columns
+		lineageTag: 3b5536e9-b6cd-4dce-9a69-f026b35c24d2
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'LOD Membership Title' =
+			--Title display (Membership by Level of Detail)
+			CONCATENATE("Membership by ", VBA_MEMBERSHIP_SUMMARY[Level of Detail])
+		displayFolder: /Columns
+		lineageTag: 12676768-2ec7-4aa9-abb8-eb4ce452367c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Data Source Display Sort.Data Source Display Order'
+		dataType: double
+		lineageTag: ba856cab-b6e7-48f9-876f-dcf8f269c018
+		summarizeBy: sum
+		sourceColumn: Data Source Display Sort.Data Source Display Order
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CONTRACT_COHORT_KEY
+		dataType: double
+		lineageTag: d487fe17-48f8-4f31-ba26-c7d3335f86e7
+		summarizeBy: sum
+		sourceColumn: CONTRACT_COHORT_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column GEOGRAPHY_KEY
+		dataType: double
+		lineageTag: fa723635-e8a7-40b4-8f05-a04087d50537
+		summarizeBy: sum
+		sourceColumn: GEOGRAPHY_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SUBREGION_KEY
+		dataType: double
+		lineageTag: a19b3f6d-d21f-4ff0-b523-1e8d138184b7
+		summarizeBy: sum
+		sourceColumn: SUBREGION_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CONTRACT_DW_KEY
+		dataType: double
+		lineageTag: 7f9a84d8-9291-4b6d-a98d-2301401edd75
+		summarizeBy: sum
+		sourceColumn: CONTRACT_DW_KEY
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column INSERT_DTS
+		dataType: dateTime
+		formatString: m/d/yyyy
+		lineageTag: b8a465a3-487d-495b-9783-d03f8286e705
+		summarizeBy: none
+		sourceColumn: INSERT_DTS
+
+		variation Variation
+			isDefault
+			relationship: 245860fd-5b5c-4a29-b624-9f5cfa75fd2a
+			defaultHierarchy: LocalDateTable_3d153ffe-ce3e-499b-8a20-8ff3311c1ae7.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column UPDATE_DTS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6fe73428-5b6c-4a7a-a52f-1a0407ae1060
+		summarizeBy: none
+		sourceColumn: UPDATE_DTS
+
+		variation Variation
+			isDefault
+			relationship: 99e0c94d-a5e5-4e09-bd28-47f8db3a0e99
+			defaultHierarchy: LocalDateTable_4bd9fd0b-c7b7-487d-9b7d-9e78d072f34d.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grand Total Title' =
+			--Title display (Grand Totals)
+			"Grand Total (" & VBA_MEMBERSHIP_SUMMARY[Membership Count] & ")"
+		displayFolder: /Columns
+		lineageTag: 0966b8d9-3fdf-4b2a-9d65-e96465194bc3
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Contract - Cohort'
+		dataType: string
+		lineageTag: 6a200625-3113-4e40-97c1-f8937ac9f25d
+		summarizeBy: none
+		sourceColumn: Contract - Cohort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Level of Detail Sort.Level of Detail Order'
+		dataType: int64
+		formatString: 0
+		lineageTag: b59563b7-a610-4127-9641-f8e7572d71bc
+		summarizeBy: sum
+		sourceColumn: Level of Detail Sort.Level of Detail Order
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Last Refreshed' = FORMAT(MAX(VBA_MEMBERSHIP_SUMMARY[INSERT_DTS]), "M/D/YYYY")
+		displayFolder: /Columns
+		lineageTag: 0d3e63df-252c-423e-af3d-bf48bc1cdb4d
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Key_membership = VBA_MEMBERSHIP_SUMMARY[Region]&VBA_MEMBERSHIP_SUMMARY[Service Area]&VBA_MEMBERSHIP_SUMMARY[Line of Business]&VBA_MEMBERSHIP_SUMMARY[Cohort]&VBA_MEMBERSHIP_SUMMARY[Risk Contract]&VBA_MEMBERSHIP_SUMMARY[HCP LAN Category]&VBA_MEMBERSHIP_SUMMARY[Include Partners]
+		lineageTag: 0e081987-e450-4274-9333-b9817c19b95a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition VBA_MEMBERSHIP_SUMMARY = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("psjh_prod.west-us-2.azure.snowflakecomputing.com","ACOE_WH_M",[Role="ACOE_REPORTING_RO"]),
+				    ACOE_DEV_Database = Source{[Name=DB_NAME,Kind="Database"]}[Data],
+				    RPT_VBC_Schema = ACOE_DEV_Database{[Name="RPT_VBC",Kind="Schema"]}[Data],
+				    VBA_MEMBERSHIP_SUMMARY_Table = RPT_VBC_Schema{[Name="VBA_MEMBERSHIP_SUMMARY",Kind="Table"]}[Data],
+				    #"Merged Queries" = Table.NestedJoin(VBA_MEMBERSHIP_SUMMARY_Table, {"Data Source Display"}, #"Data Source Display Sort", {"Data Source Display Name"}, "Data Source Display Sort", JoinKind.LeftOuter),
+				    #"Expanded Data Source Display Sort" = Table.ExpandTableColumn(#"Merged Queries", "Data Source Display Sort", {"Data Source Display Order"}, {"Data Source Display Sort.Data Source Display Order"}),
+				    #"Merged Queries1" = Table.NestedJoin(#"Expanded Data Source Display Sort", {"Level of Detail"}, #"Level of Detail Sort", {"Level of Detail Name"}, "Level of Detail Sort", JoinKind.LeftOuter),
+				    #"Expanded Level of Detail Sort" = Table.ExpandTableColumn(#"Merged Queries1", "Level of Detail Sort", {"Level of Detail Order"}, {"Level of Detail Sort.Level of Detail Order"})
+				in
+				    #"Expanded Level of Detail Sort"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Imaging Analytics Report"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "0d687977-c7dc-4be0-a999-39ece1dc2779"
+  }
+}

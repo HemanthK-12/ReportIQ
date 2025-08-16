@@ -1,0 +1,44 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Metrics","Date Last Refreshed","FSMain","DimDept"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.145.1105.0 (25.07)+decbc46fce458c5b8d5109d6f32a743f2ac949c8
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_9c4910d2-f1b1-488e-a01c-06c683933108
+ref table Metrics
+ref table 'Date Last Refreshed'
+ref table LocalDateTable_30aa730e-feef-4b55-87e2-451eb9d945df
+ref table Dates
+ref table FSMain
+ref table LocalDateTable_e78c4e85-5d81-4183-8759-ec05cead86e2
+ref table DimDept
+ref table Parameter_Views
+ref table Parameter_Caregivers
+ref table Parameter_Criteria
+ref table CriteriaSlicer
+ref table MinOpportunity
+ref table MaxCompliance
+ref table LocalDateTable_55415b3b-2e3d-4fd3-9a6f-6fb387af7ac2
+ref table LocalDateTable_382a11f2-b5f0-4850-a4cb-d267c5db5ba7
+ref table LocalDateTable_c5f7eaaa-3c35-44f8-af77-3f255a78e59a
+ref table LocalDateTable_d5396ceb-251d-4f0d-a6ac-35c8e0a5c4d5
+ref table LocalDateTable_0ae88e62-11ca-4916-b11f-4312e1cb1fa9
+ref table LocalDateTable_70d5a2f5-b248-470d-ba56-6fa750803931
+ref table LocalDateTable_9495d46f-98d6-4025-830c-a21a5b3ecde2
+ref table LocalDateTable_ca452716-2ca4-42a9-a955-f8ff3df83af1
+ref table LocalDateTable_f287be70-b8d7-4e32-81ea-53dea228ada8
+ref table LocalDateTable_8f07d1c1-3aa5-4901-b523-76a289a00eaa
+ref table CombinedFields
+
+ref cultureInfo en-US
+

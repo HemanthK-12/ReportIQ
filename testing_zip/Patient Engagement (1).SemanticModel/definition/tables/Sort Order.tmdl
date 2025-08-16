@@ -1,0 +1,40 @@
+table 'Sort Order'
+	lineageTag: e28d5048-102d-4fdd-8496-dcf9f7204b60
+
+	column METRIC_NM
+		dataType: string
+		lineageTag: a6155abd-b9f4-4165-b183-df94ef98cb4f
+		summarizeBy: none
+		sourceColumn: METRIC_NM
+		sortByColumn: Order
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Order
+		dataType: int64
+		formatString: 0
+		lineageTag: 426e9071-5f16-46f2-aa17-f725a027830c
+		summarizeBy: none
+		sourceColumn: Order
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Sort Order' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WigxxUfBNzU1KLSpW0lEyVIrVgYi55hYk5qXmpKYoBCSWZKbmlYCkjeDSMEGF4NTUPKCMMaZMeGZJhoJjeBhQ1kQpNhYA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [METRIC_NM = _t, Order = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"METRIC_NM", type text}, {"Order", Int64.Type}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Changed Type","YTD Members","Members (Period End)",Replacer.ReplaceText,{"METRIC_NM"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","YTD Empaneled Patients","Empanelment (Period End)",Replacer.ReplaceText,{"METRIC_NM"}),
+				    #"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1","YTD Patients Seen","Patients Seen",Replacer.ReplaceText,{"METRIC_NM"}),
+				    #"Replaced Value3" = Table.ReplaceValue(#"Replaced Value2","YTD Patients With AWV","Patients With AWV",Replacer.ReplaceText,{"METRIC_NM"})
+				in
+				    #"Replaced Value3"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

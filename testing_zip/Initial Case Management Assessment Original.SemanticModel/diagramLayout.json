@@ -1,0 +1,178 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 14.231968470982792
+          },
+          "nodeIndex": "Metrics",
+          "nodeLineageTag": "4bd63bdc-39a7-489f-9668-99430eeb90a4",
+          "size": {
+            "height": 560.750392464678,
+            "width": 234
+          },
+          "zIndex": 12
+        },
+        {
+          "location": {
+            "x": 277.89638932496075,
+            "y": 856.12757286658791
+          },
+          "nodeIndex": "Date Last Refreshed",
+          "nodeLineageTag": "d4494f1f-5aa8-4967-85a1-118ab975c399",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 277.42857142857167,
+            "y": 431.70071847098313
+          },
+          "nodeIndex": "Dates",
+          "nodeLineageTag": "002de2cc-00d9-41fb-8100-55dcdcb91138",
+          "size": {
+            "height": 382.85714285714289,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 605.43446244477173,
+            "y": 0
+          },
+          "nodeIndex": "FSMain",
+          "nodeLineageTag": "fcbeda0d-dfc4-4195-a80c-046dc9cb0c24",
+          "size": {
+            "height": 1000,
+            "width": 529.71428571428578
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 1193.8134511536573,
+            "y": 0
+          },
+          "nodeIndex": "DimDept",
+          "nodeLineageTag": "ec13a115-9416-43a9-9cba-b865aa9db528",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 1495.1428571428573,
+            "y": 175.4551827566977
+          },
+          "nodeIndex": "Parameter_Views",
+          "nodeLineageTag": "16c4f762-fac4-4461-b04e-ee3dfbd72e0a",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 1494.8571428571431,
+            "y": 587.24089704241135
+          },
+          "nodeIndex": "Parameter_Caregivers",
+          "nodeLineageTag": "dfa4c6f2-1a42-4262-bad2-f453b15d8eb9",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 1493.1428571428576,
+            "y": 0
+          },
+          "nodeIndex": "Parameter_Criteria",
+          "nodeLineageTag": "4d3f882b-095b-4799-b035-1abb2ad7b4f3",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 1501.428571428572,
+            "y": 369.22303989955412
+          },
+          "nodeIndex": "CriteriaSlicer",
+          "nodeLineageTag": "5a23e608-bfb2-4a67-8ab1-2924a7b86403",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 1205.4285714285718,
+            "y": 523.79670061383945
+          },
+          "nodeIndex": "MinOpportunity",
+          "nodeLineageTag": "309ee0c7-307c-4938-8e9a-0b4ba073c6a5",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 1209.428571428572,
+            "y": 768.36812918526778
+          },
+          "nodeIndex": "MaxCompliance",
+          "nodeLineageTag": "2a273f4a-d75d-401c-9d8f-b6df6452553f",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 290.5714285714289,
+            "y": 0
+          },
+          "nodeIndex": "CombinedFields",
+          "nodeLineageTag": "c3eed5c3-5319-4eb7-a23f-d0aa2a2ef99b",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 7
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 70,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

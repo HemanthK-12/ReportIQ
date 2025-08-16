@@ -1,0 +1,125 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 656
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 41,
+            "y": 1032.484375
+          },
+          "nodeIndex": "FACT_HOSPITALADMISSION_EDD",
+          "nodeLineageTag": "80aee4cf-2ea9-4f7a-8eff-d86ea44d35ab",
+          "size": {
+            "height": 646,
+            "width": 304
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 436.5950753997713,
+            "y": 1572.109375
+          },
+          "nodeIndex": "Last Refresh Date",
+          "nodeLineageTag": "0a3afc14-00f0-4611-8f51-86c3dbb9c7d9",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 423.5950753997713,
+            "y": 1031.484375
+          },
+          "nodeIndex": "Display Level",
+          "nodeLineageTag": "f593dfe4-1f3c-4969-a987-343af416922d",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 429.5950753997713,
+            "y": 1210.484375
+          },
+          "nodeIndex": "Metric",
+          "nodeLineageTag": "aa5763a8-81df-4432-89f3-d71ea4e4bbc7",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 687.5950753997713,
+            "y": 1211.234375
+          },
+          "nodeIndex": "Hours Between EDD",
+          "nodeLineageTag": "ba1c8bac-183f-4f41-83bf-4cb6a0e9d986",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 945.5950753997713,
+            "y": 1218.359375
+          },
+          "nodeIndex": "Hours Between MRD",
+          "nodeLineageTag": "20eab297-9f7f-4667-b8a1-474a1f40d071",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 697.5950753997713,
+            "y": 1031.984375
+          },
+          "nodeIndex": "Display Level MRD",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 1188.5950753997713,
+            "y": 579.328125
+          },
+          "nodeIndex": "DIM_METRIC_DEFINITION",
+          "nodeLineageTag": "de12e154-12fc-483c-8e5c-a5e1b6e9fd57",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}
